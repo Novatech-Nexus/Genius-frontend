@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Validation from '../helper/validation';
 import styles from '../styles/Username.module.css';
 import avatar from '../assets/avatar.png';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -116,14 +117,14 @@ const Register = () => {
                   {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
                 </div>
                 
-                <button type='submit' className={styles.btn1}>Sign in</button>
+                <button type='submit' className={styles.btn2}>Register</button>
       
     </form>
     <div>
     <span>Already registered? </span>
-    {/* <Link to='/register'>
-      Sign in
-    </Link> */}
+    <Link to='/username'>
+      Login
+    </Link>
   </div>
 </div>
 
