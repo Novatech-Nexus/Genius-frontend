@@ -1,93 +1,136 @@
-import React, { useState } from "react";
+import { useState } from 'react';
+import Validation from '../helper/validation';
+import styles from '../styles/Username.module.css';
+import avatar from '../assets/avatar.png';
 
-function LoginForm() {
+const Register = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: ""
+    firstname: '',
+    lastname: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
   });
 
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
+  const handleChange = (e) => {
     setFormData({
       ...formData,
-      [name]: value
+      [e.target.name]: e.target.value,
     });
-  };
-
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = {};
-
-    // Validate email
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-      isValid = false;
-    }
-
-    // Validate password
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      // Form is valid, you can submit or process the data here
-      console.log("Form data:", formData);
-      setSubmitted(true); // Set a submitted flag
-    } else {
-      // Form is not valid, display error messages
+    // Perform validation using the Validation component
+    const validationErrors = Validation.validate(formData);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      alert('Form Submitted successfully');
     }
   };
 
-  const isFormValid = Object.keys(errors).length === 0;
-
   return (
+    <div className='container mx-auto'>
+      <div className='d-flex h-screen justify-content-center align-items-center'>
+        <div className={styles.glassbox}>
+
+          <div className='d-flex flex-column align-items-center'>
+            <h4 className='fs-1 display-100 fw-bold'>Create an account</h4>
+            
+            <div>
+                <label htmlFor='profile'>
+                  <img src={avatar} className={styles.avatar} alt='avatar'/>
+                </label>
+
+                <input type='file'id='profile'name='profile'/>
+              </div>
+    <form onSubmit={handleSubmit}>
+      <div>
+                  <input 
+                    type='text' 
+                    name='firstname' 
+                    className={styles.textbox} 
+                    placeholder='First name' 
+                    onClick={handleChange}
+                  />
+                  {errors.firstname && <span>{errors.firstname}</span>}
+                </div>
+
+                <div>
+                  <input 
+                    type='text'  
+                    name='lastname' 
+                    className={styles.textbox} 
+                    placeholder='Lastname'
+                    onClick={handleChange} 
+                  />
+                  {errors.lastname && <span>{errors.lastname}</span>}
+                </div>
+
+                <div>
+                  <input 
+                    type='text' 
+                    name='email' 
+                    className={styles.textbox} 
+                    placeholder='Email'
+                    onClick={handleChange} 
+                  />
+                  {errors.email && <span>{errors.email}</span>}
+                </div>
+
+                <div>
+                  <input 
+                    type='text' 
+                    name='phoneNumber' 
+                    className={styles.textbox} 
+                    placeholder='Phone number'
+                    onClick={handleChange} 
+                  />
+                  {errors.phoneNumber && <span>{errors.phoneNumber}</span>}
+                </div>
+
+                <div>
+                  <input 
+                    type='text' 
+                    name='password' 
+                    className={styles.textbox} 
+                    placeholder='Password'
+                    onClick={handleChange} 
+                  />
+                  {errors.password && <span>{errors.password}</span>}
+                </div>
+
+                <div>
+                  <input 
+                    type='text' 
+                    name='confirmPassword' 
+                    className={styles.textbox} 
+                    placeholder='Confirm password'
+                    onClick={handleChange} 
+                  />
+                  {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
+                </div>
+                
+                <button type='submit' className={styles.btn1}>Sign in</button>
+      
+    </form>
     <div>
-      <h2>Login</h2>
-      {submitted ? (
-        <div className="success-message">Login successful!</div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Email:</label>
-            <input
-              type="text"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-            {errors.email && <div className="error">{errors.email}</div>}
-          </div>
+    <span>Already registered? </span>
+    {/* <Link to='/register'>
+      Sign in
+    </Link> */}
+  </div>
+</div>
 
-          <div>
-            <label>Password:</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-            />
-            {errors.password && <div className="error">{errors.password}</div>}
-          </div>
-
-          <button type="submit" disabled={!isFormValid}>
-            Login
-          </button>
-        </form>
-      )}
-    </div>
+</div>
+</div>
+</div>
   );
-}
+};
 
-export default LoginForm;
+export default Register;

@@ -1,21 +1,8 @@
 import { Link } from 'react-router-dom'
 import avatar from '../assets/avatar.png';
 import styles from '../styles/Username.module.css'
-// import {useFormik} from 'formik';
 
 export default function Password() {
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //     username: ''
-  //   },
-  //   validate:
-  //   validateOnBlur: false,
-  //   validateOnChange: false,
-  //   onSubmit: async values => {
-  //     console.log(values)
-  //   }
-  // })
 
   return (
     <div className='container mx-auto'>
