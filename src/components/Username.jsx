@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import avatar from '../assets/avatar.png';
+// import avatar from '../assets/avatar.png';
 import styles from '../styles/Username.module.css'
 
 export default function Username() {
@@ -13,9 +13,9 @@ export default function Username() {
             <h4 className='fs-1 display-100 fw-bold'>Hello again!</h4>
             
             <form className='container py-1'>
-              <div>
+              {/* <div>
                 <img src={avatar} className={styles.avatar} alt='avatar'/>
-              </div>
+              </div> */}
 
               <div>
                 <input type='text' className={styles.textbox} placeholder='username' />
