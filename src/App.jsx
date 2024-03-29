@@ -1,14 +1,14 @@
 import {Routes, Route} from 'react-router-dom';
 
 /**Import all routes */
-import Home from './components/Home';
-import Username from './components/Username';
-import Register from './components/Register';
-import Profile from './components/Profile';
-import Password from './components/Password';
-import Reset from './components/Reset';
-import Recovery from './components/Recovery';
-import PageNotFound from './components/PageNotFound';
+import Home from './pages/Home';
+import Username from './pages/user-management/Username';
+import Register from './pages/user-management/Register';
+import Profile from './pages/user-management/Profile';
+import Password from './pages/user-management/Password';
+import Reset from './pages/user-management/Reset';
+import Recovery from './pages/user-management/Recovery';
+import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
 
 function App() {
