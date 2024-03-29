@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Validation from '../helper/validation';
-import styles from '../styles/Username.module.css';
-import avatar from '../assets/avatar.png';
+import Validation from '../../helper/validation';
+import styles from '../../styles/Username.module.css';
+import avatar from '../../assets/avatar.png';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
