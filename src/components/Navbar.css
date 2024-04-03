@@ -50,20 +50,4 @@ ul li{
     background-color: #ff0000bb;
 }
 
-.navbar-toggler {
-    border: none;
-}
 
-.navbar-toggler:focus, btn-close:focus {
-    box-shadow: none;
-    outline: none;
-}
-
-.nav-link {
-    color: white;
-    font-weight: 500;
-}
-
-.nav-link:hover, .nav-link.active {
-    color:#111111
-}

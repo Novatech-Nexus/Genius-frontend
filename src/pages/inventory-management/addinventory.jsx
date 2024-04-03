@@ -1,12 +1,17 @@
 
-import addItem from '../../components/inventory/additem';
+import AddItem from '../../components/inventory/additem';
+import Header from'../../components/inventory/header';
+import Navbar from '../../components/inventory/navbar';
 
-function addItempage() {
+
+function AddItempage() {
     return (
       <div>
-        <addItem/>  
+        <Header/>
+        <Navbar/>
+        <AddItem/>  
       </div>
     );
   }
   
-  export default addItempage;
+  export default AddItempage;

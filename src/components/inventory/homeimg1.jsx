@@ -1,8 +1,10 @@
 import React from "react";
 import homeimg1 from '../../assets/inventory-images/addInv.png'
+import {useNavigate} from "react-router-dom";
 
 
 function HomeImg1 (){
+    const navigate = useNavigate();
     return(
 
         <div style={{ display: "flex", alignItems: "center",justifyContent:"center",flexWrap:"wrap" }}>
@@ -17,7 +19,7 @@ function HomeImg1 (){
                 </h2>
             </div>
             <div style={{ marginLeft: "200px" }}>
-                <button type="button" class="btn btn-danger" onClick={{}}>+ Add item</button>
+                <button type="button" class="btn btn-danger" onClick={() => navigate("/dashboard/additem")}>+ Add item</button>
             </div>
         </div>
 
