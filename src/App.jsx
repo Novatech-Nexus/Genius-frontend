@@ -13,6 +13,8 @@ import Navbar from './components/Navbar';
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
+import Contact from './pages/customer-care-management/Contact';
+import Feedback from './pages/customer-care-management/Feedback';
 
 
 
@@ -40,6 +42,10 @@ function App() {
 
         {/* Table Reservation */}
         <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+
+        {/* Customer-care */}
+        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/feedback" element={<Feedback/>}></Route>
 
       </Routes>
       
