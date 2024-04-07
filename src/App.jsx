@@ -12,6 +12,8 @@ import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
+import TableReservationHome from './pages/table-res-management/TableReservationHome';
+
 
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
         
+
+        {/* Table Reservation */}
+        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
 
       </Routes>
       
