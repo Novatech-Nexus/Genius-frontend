@@ -10,6 +10,7 @@ import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
+import Homemenu from './pages/menu-management/menuItem';
 
 function App() {
   return (
@@ -26,6 +27,12 @@ function App() {
         <Route path="/reset" element={<Reset/>}></Route>
         <Route path="/recovery" element={<Recovery/>}></Route>
         <Route path="*" element={<PageNotFound/>}></Route>
+
+
+        {/* Menu Management */}
+
+        <Route path="/homemenu" element={<Homemenu/>}></Route>
+        
 
       </Routes>
       

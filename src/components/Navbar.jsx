@@ -11,7 +11,8 @@ export default function Navbar() {
             <li><Link to='/register'>Register</Link></li>
             <li><Link to='/username'>Login</Link></li>
             <li><Link to='/profile'>Profile</Link></li>
-            <li><Link to='/recovery'>Recovery</Link></li>   
+            <li><Link to='/recovery'>Recovery</Link></li>
+            <li><Link to='homemenu'>Menu</Link></li>  
         </nav>)}
     </div>
   )
