@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
+    // profile: '',
     firstname: '',
     lastname: '',
     email: '',
