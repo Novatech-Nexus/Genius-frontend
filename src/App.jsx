@@ -10,6 +10,11 @@ import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
+import Dashboard from './pages/inventory-management/dashboard';
+import AddItempage from './pages/inventory-management/addinventory';
+import TableReservationHome from './pages/table-res-management/TableReservationHome';
+
+
 
 function App() {
   return (
@@ -26,6 +31,15 @@ function App() {
         <Route path="/reset" element={<Reset/>}></Route>
         <Route path="/recovery" element={<Recovery/>}></Route>
         <Route path="*" element={<PageNotFound/>}></Route>
+
+
+        
+        <Route path="/dashboard" element={<Dashboard/>}></Route>
+        <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
+        
+
+        {/* Table Reservation */}
+        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
 
       </Routes>
       
