@@ -181,6 +181,75 @@
     margin-top: 80px;
   }
 
+  .feedback_form_page {
+    width: 100%;
+  }
+
+  .feedback_form_title {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .feedback-form-all {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+  }
+
+  .feedback-form {
+    width: 90%;
+  }
+
+  .feedback-form label {
+    font-weight: bold;
+  }
+
+  .feedback-form p {
+    font-style: italic;
+  }
+  .feedback-form h6 {
+    margin-left: 20px;
+  }
+
+  .feedback-checkbox{
+    margin-bottom: 30px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+  }
+
+  .servicerate {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .FillStar,
+  .OutlineStar {
+    color: orange;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .feedback-btns {
+    margin-Top:40px; 
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    margin-bottom: 70px;
+  }
+
+  .feedback-submit-btn{
+    width: 30%;
+    word-wrap: break-word;
+    margin-top: 10px;
+  }
+
   @media screen and (max-width: 768px) {
     .feedback-artical-body {
       flex-direction: column;

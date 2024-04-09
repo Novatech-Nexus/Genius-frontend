@@ -1,11 +1,13 @@
 import React from 'react';
 import feedbackPic from '../../assets/customer-care-images/feedback-pic.png';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import '../../styles/CustomerCare.css';
 
 export default function Feedback() {  
 
-return (
+  const navigate = useNavigate();
+  return (
     <div className='feedback-main-body'>
       <article className='feedback_page'>
         <header className='feedback_title'>
@@ -17,7 +19,7 @@ return (
             <h5>Would you like to give us feedback ?</h5>
             <p>We're committed to providing excellent service. Tell us how we're doing!</p>
             <div className='feedback-buttons'>
-              <Button className='get-btn'  variant='warning'>Give Feedback</Button>
+              <Button className='get-btn' onClick={() => navigate("addFeedback")} variant='warning'>Give Feedback</Button>
               <br />
               <Button className='get-btn'  variant='warning'>Feedback History</Button>
             </div>

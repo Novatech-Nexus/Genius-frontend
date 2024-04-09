@@ -15,6 +15,7 @@ import AddItempage from './pages/inventory-management/addinventory';
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 import Contact from './pages/customer-care-management/Contact';
 import Feedback from './pages/customer-care-management/Feedback';
+import Feedback_form from './pages/customer-care-management/Feedback_form';
 
 
 
@@ -46,6 +47,7 @@ function App() {
         {/* Customer-care */}
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/feedback" element={<Feedback/>}></Route>
+        <Route path='/feedback/addFeedback' element={<Feedback_form/>}></Route>
 
       </Routes>
       
