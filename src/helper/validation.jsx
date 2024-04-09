@@ -26,7 +26,9 @@ const Validation = {
       validationErrors.password = 'password should be at least 6 char';
     }
 
-    if (data.confirmPassword !== data.password) {
+    if (!data.confirmPassword.trim()) {
+      validationErrors.confirmPassword = 'password is required';
+    } else if (data.confirmPassword !== data.password) {
       validationErrors.confirmPassword = 'password not matched';
     }
 

@@ -10,7 +10,14 @@ import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
-import Homemenu from './pages/menu-management/menuItem';
+import Dashboard from './pages/inventory-management/dashboard';
+import AddItempage from './pages/inventory-management/addinventory';
+
+import TableReservationHome from './pages/table-res-management/TableReservationHome';
+
+
+import HomeMenu from './pages/menu-management/HomeMenu';
+import ItemMenu from './pages/menu-management/ItemMenu';
 
 function App() {
   return (
@@ -29,9 +36,17 @@ function App() {
         <Route path="*" element={<PageNotFound/>}></Route>
 
 
-        {/* Menu Management */}
+        
+        <Route path="/dashboard" element={<Dashboard/>}></Route>
+        <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
+        
 
-        <Route path="/homemenu" element={<Homemenu/>}></Route>
+        {/* Table Reservation */}
+        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+
+        {/* Menu Management */}
+        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
+        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
         
 
       </Routes>
