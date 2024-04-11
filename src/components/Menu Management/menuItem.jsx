@@ -9,11 +9,9 @@ function Itemme() {
 
     const handleItemPriceChange = (e) => {
         const price = e.target.value;
-        // Check if the entered value is a number
         if (!isNaN(price)) {
             setItemPrice(price);
         } else {
-            // Display an alert if a non-numeric value is entered
             alert("Please enter only numbers for Item Price.");
         }
     };
@@ -35,23 +33,7 @@ function Itemme() {
             return;
         }
 
-        const formData = new FormData();
-        formData.append("image", image);
 
-        // Send formData to your backend endpoint using fetch or axios
-        // Example using fetch:
-        fetch("YOUR_BACKEND_ENDPOINT", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => {
-            // Handle response
-            console.log(response);
-        })
-        .catch(error => {
-            // Handle error
-            console.error('Error:', error);
-        });
     };
 
     return (
@@ -75,12 +57,9 @@ function Itemme() {
                     <h1 style={{ color: "Black", fontWeight: "bold", fontSize: "40px", marginTop: "0px", marginBottom: "7px", textAlign: "center" }}>ADD NEW ITEMS</h1>
 
 
-                        <label htmlFor="Itemid" className="form-label">Item ID</label>
-                        <input type="text" className="form-control" id="itemid" required />
                     </div>
-
-                    <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
-                        <label htmlFor="ItemName" className="form-label">Item Name</label>
+                        <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
+                            <label htmlFor="ItemName" className="form-label">Item Name</label>
                         <input type="text" className="form-control" id="itemname" required />
                     </div>
 
@@ -96,12 +75,16 @@ function Itemme() {
                             {/* Add more options as needed */}
                         </select>
                     </div>
-
                     <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
                         <label htmlFor="ItemPrice" className="form-label">Item Price (Rs.)</label>
-                        <input type="text" className="form-control" id="itemprice" value={itemPrice} onChange={handleItemPriceChange} placeholder="Rupees" required />
-                    </div>
-
+                            <input type="text" className="form-control" id="itemprice" value={price}
+                                onChange={(e) => {
+                                    handleItemPriceChange(e);
+                                }}
+                                placeholder="Rupees"
+                                required
+                            />
+                        </div>
                     <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
                         <label htmlFor="ItemDescription" className="form-label" style={{ alignSelf: "flex-start", marginTop: "5px" }}>Item Description</label>
                         <textarea placeholder="Ingredients or any details" id="itemdescription" rows="4" required style={{ border: "1px solid black", width: "500px", borderRadius: "5px" }} />
@@ -112,8 +95,6 @@ function Itemme() {
                         <label htmlFor="ItemImage" className="form-label">Add Image</label>
                         <input type="file" accept="image/*" onChange={handleImageChange} />
                     </div>
-
-                    {/* Button */}
                     <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
                         <button type="button" className="btn btn-danger" onClick={handleUpload}>Upload</button>
                     </div>

@@ -15,7 +15,6 @@ import AddItempage from './pages/inventory-management/addinventory';
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 
-
 import HomeMenu from './pages/menu-management/HomeMenu';
 import ItemMenu from './pages/menu-management/ItemMenu';
 
