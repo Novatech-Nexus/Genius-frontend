@@ -20,6 +20,14 @@ export default function Feedback_history() {
         }
     };
 
+    const deleteFeedback = async (feedbackId) => {
+        try {
+            await axios.delete(`http://localhost:5050/api/feedback/deleteFeedback/${feedbackId}`);
+            window.location.reload();
+        } catch (error) {
+            console.error('Error deleting feedback:', error);
+        }
+    };
 
     const handleRatingChange = (rating) => {
         setUpdatedFeedback(prev => ({
@@ -63,6 +71,7 @@ export default function Feedback_history() {
                             </Button>
                             <Button 
                                 variant="danger"
+                                onClick={() => deleteFeedback(feedback._id)}
                                 className='feedback_update-button'>DELETE
                             </Button>
                         </div>
