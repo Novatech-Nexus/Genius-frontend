@@ -3,9 +3,14 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import '../../styles/CustomerCare.css'; 
+import UpdateFeedbackModal from '../../components/customer-care/FeedbackUpdate.jsx';
 
 export default function Feedback_history() {
     const [feedbackData, setFeedbackData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const handleCloseModal = () => setShowModal(false);
+    const handleShowModal = () => setShowModal(true);
+    const [updatedFeedback, setUpdatedFeedback] = useState({});
 
     useEffect(() => {
         fetchFeedbackData();
@@ -26,6 +31,29 @@ export default function Feedback_history() {
             window.location.reload();
         } catch (error) {
             console.error('Error deleting feedback:', error);
+        }
+    };
+
+    const updateFeedback = (feedback) => {
+        setUpdatedFeedback(feedback);
+        handleShowModal();
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUpdatedFeedback(prev => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const saveUpdatedFeedback = async () => {
+        try {
+            await axios.put(`http://localhost:5050/api/feedback/updateFeedback/${updatedFeedback._id}`, updatedFeedback);
+            handleCloseModal();
+            window.location.reload();
+        } catch (error) {
+            console.error('Error updating feedback:', error);
         }
     };
 
@@ -56,6 +84,16 @@ export default function Feedback_history() {
                 </header>
             </article>
 
+            <UpdateFeedbackModal
+                show={showModal}
+                handleClose={handleCloseModal}
+                updatedFeedback={updatedFeedback}
+                handleChange={handleChange}
+                handleRatingChange={handleRatingChange}
+                saveUpdatedFeedback={saveUpdatedFeedback}
+                renderStars={renderStars}
+            />
+
             <div className='feedback_update-container'>
                 {feedbackData.map((feedback) => (
                     <div key={feedback._id} className='feedback_update-item'>
@@ -67,6 +105,7 @@ export default function Feedback_history() {
                         <div className='button-container'>
                             <Button 
                                 variant="warning" 
+                                onClick={() => updateFeedback(feedback)}
                                 className='feedback_update-button'>UPDATE
                             </Button>
                             <Button 
