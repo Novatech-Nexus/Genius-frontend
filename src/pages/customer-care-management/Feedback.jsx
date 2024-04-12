@@ -21,7 +21,7 @@ export default function Feedback() {
             <div className='feedback-buttons'>
               <Button className='get-btn' onClick={() => navigate("addFeedback")} variant='warning'>Give Feedback</Button>
               <br />
-              <Button className='get-btn'  variant='warning'>Feedback History</Button>
+              <Button className='get-btn' onClick={() => navigate("getFeedback")} variant='warning'>Feedback History</Button>
             </div>
           </div>
           <div className='feedback-right'>

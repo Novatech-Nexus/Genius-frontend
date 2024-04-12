@@ -16,6 +16,7 @@ import TableReservationHome from './pages/table-res-management/TableReservationH
 import Contact from './pages/customer-care-management/Contact';
 import Feedback from './pages/customer-care-management/Feedback';
 import Feedback_form from './pages/customer-care-management/Feedback_form';
+import Feedback_history from './pages/customer-care-management/Feedback_history';
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path='/feedback/addFeedback' element={<Feedback_form/>}></Route>
+        <Route path='/feedback/getFeedback' element={<Feedback_history/>}></Route>
 
       </Routes>
       
