@@ -297,6 +297,82 @@
     width: 45%;
   }
 
+  .feedback-approval-body {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .feddback-approval-page {
+    padding: 10px;
+  }
+  
+  .feedback-approval-title {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .feedback-search {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 30%;
+  }
+  .report-btn{
+    margin-top: 20px;
+    width: 20%;
+  }
+  
+  .feedback-approval-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .feedback-approval-table th,
+  .feedback-approval-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .feedback-approval-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .feedback-approval-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .feedback-approval-table tr:hover {
+    background-color: #ddd;
+  }
+
+  .feedback-message {
+    max-width: 400px;
+  }
+  
+  .feedback-approval-actions {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 150px;
+  }
+  
+  .feedback-approval-actions > button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    word-wrap: break-word;
+  }
+
   @media screen and (max-width: 768px) {
     .feedback-artical-body {
       flex-direction: column;

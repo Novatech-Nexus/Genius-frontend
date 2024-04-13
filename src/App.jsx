@@ -17,6 +17,7 @@ import Contact from './pages/customer-care-management/Contact';
 import Feedback from './pages/customer-care-management/Feedback';
 import Feedback_form from './pages/customer-care-management/Feedback_form';
 import Feedback_history from './pages/customer-care-management/Feedback_history';
+import Feedback_approval from './pages/customer-care-management/Feedback_approval';
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path='/feedback/addFeedback' element={<Feedback_form/>}></Route>
         <Route path='/feedback/getFeedback' element={<Feedback_history/>}></Route>
+        <Route path='/feedbackApproval' element={<Feedback_approval/>}></Route>
 
       </Routes>
       

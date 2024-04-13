@@ -20,6 +20,7 @@ export default function Navbar() {
             <li><Link to='/reservation'>Table Reservation</Link></li>
             <li><Link to='/contact'>Contact</Link></li>
             <li><Link to='/feedback'>Feedback</Link></li>
+            <li><Link to='/feedbackApproval'>Approve Feedback</Link></li>
   
         </nav>)}
     </div>
