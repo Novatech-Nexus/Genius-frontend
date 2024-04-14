@@ -18,8 +18,8 @@ export default function Username() {
               </div> */}
 
               <div>
-                <input type='text' className={styles.textbox} placeholder='username' />
-                <input type='text' className={styles.textbox} placeholder='password' />
+                <input type='text' className={styles.textbox} placeholder='Email' />
+                <input type='text' className={styles.textbox} placeholder='Password' />
                 <button type='submit' className={styles.btn1}>Login</button>
               </div>
               <div>

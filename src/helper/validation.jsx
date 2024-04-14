@@ -23,7 +23,7 @@ const Validation = {
     if (!data.password.trim()) {
       validationErrors.password = 'password is required';
     } else if (data.password.length < 8) {
-      validationErrors.password = 'password should be at least 6 char';
+      validationErrors.password = 'password should be at least 8 characters';
     }
 
     if (!data.confirmPassword.trim()) {
