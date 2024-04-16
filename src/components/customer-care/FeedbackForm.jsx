@@ -3,6 +3,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import '../../styles/CustomerCare.css';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function FeedbackForm() {
     const [error, setError] = useState(null); 
@@ -107,6 +108,12 @@ export default function FeedbackForm() {
             setError(error.message || 'An error occurred.');
             setShowErrorModal(true); // Show error modal
         }
+        Swal.fire({
+            icon: "success",
+            title: "Feedback submitted successfully !",
+            showConfirmButton: false,
+            timer: 2000
+          });
     };
 
 

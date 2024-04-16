@@ -6,6 +6,7 @@ import '../../styles/CustomerCare.css';
 import UpdateFeedbackModal from '../../components/customer-care/FeedbackUpdate.jsx';
 import emptyfeedbackPic from '../../assets/customer-care-images/emptypic.png';
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 export default function Feedback_history() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -29,13 +30,35 @@ export default function Feedback_history() {
     };
 
     const deleteFeedback = async (feedbackId) => {
-        try {
-            await axios.delete(`http://localhost:5050/api/feedback/deleteFeedback/${feedbackId}`);
-            window.location.reload();
-        } catch (error) {
-            console.error('Error deleting feedback:', error);
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await axios.delete(`http://localhost:5050/api/feedback/deleteFeedback/${feedbackId}`);
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success",
+                        showConfirmButton: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error deleting feedback:', error);
+                }
+            }
+        });
     };
+    
 
     const updateFeedback = (feedback) => {
         if (feedback.status === 'approved') {
@@ -60,7 +83,15 @@ export default function Feedback_history() {
         try {
             await axios.put(`http://localhost:5050/api/feedback/updateFeedback/${updatedFeedback._id}`, updatedFeedback);
             handleCloseModal();
-            window.location.reload();
+            Swal.fire({
+                title: "Your updated feedback is saved !",
+                icon: "success",
+                showConfirmButton: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
         } catch (error) {
             console.error('Error updating feedback:', error);
         }

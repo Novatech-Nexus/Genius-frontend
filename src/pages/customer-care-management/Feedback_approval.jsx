@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
 import '../../styles/CustomerCare.css';
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 export default function FeedbackApproval() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -26,18 +27,44 @@ export default function FeedbackApproval() {
         try {
             const response = await axios.put(`http://localhost:5050/api/feedback/approveFeedback/${feedbackId}`);
             fetchFeedbackData(response.data);
+            Swal.fire({
+                title: "Feedback approved successfuly !",
+                icon: "success",
+                showConfirmButton: true
+            });
         } catch (error) {
             console.error('Error approving data:', error);
         }
     };
 
     const deleteFeedback = async (feedbackId) => {
-        try {
-            await axios.delete(`http://localhost:5050/api/feedback/deleteFeedback/${feedbackId}`);
-            window.location.reload();
-        } catch (error) {
-            console.error('Error deleting feedback:', error);
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, reject it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await axios.delete(`http://localhost:5050/api/feedback/deleteFeedback/${feedbackId}`);
+                    Swal.fire({
+                        title: "Rejected!",
+                        text: "Your file has been rejected.",
+                        icon: "success",
+                        showConfirmButton: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error deleting feedback:', error);
+                }
+            }
+        });
     };
 
     const handleSearchChange = (e) => {
