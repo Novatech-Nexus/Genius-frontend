@@ -270,6 +270,28 @@
     align-items: center;
     margin-bottom: 50px;
   }
+
+  .feedback-status {
+    padding: 5px 10px;
+    border: solid lightgray 1px;
+    border-radius: 8px;
+    font-size: 14px;
+    max-width: 100px;
+  }
+  
+  .feedback-status.approved {
+    color: green;
+    background-color: aquamarine;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .feedback-status.pending {
+    color: rgb(255, 153, 0);
+    background-color: rgb(255, 246, 127);
+    font-weight: 600;
+    font-style: italic;
+  }
   
   .feedback_update-item {
     margin-top: 20px;
@@ -285,6 +307,35 @@
     margin-right: 20px;
     margin-top: 20px;
   }
+
+  .empty-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 70px;
+    color: gray;
+  }
+  
+  .empty-feedback-pic {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .emptypic {
+    width: 60%;
+    height: auto;
+  }
+
+  .feedback-submit-btn-back{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+  }
   
   .button-container {
     display: flex;
@@ -298,12 +349,7 @@
   }
 
   .feedback-approval-body {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
   }
   
   .feddback-approval-page {
@@ -314,11 +360,13 @@
     padding: 10px;
     text-align: center;
   }
-  
-  .feedback-search {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    width: 30%;
+
+  .feedback-approval-cont{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .report-btn{
     margin-top: 20px;
@@ -326,7 +374,7 @@
   }
   
   .feedback-approval-table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
   }
   

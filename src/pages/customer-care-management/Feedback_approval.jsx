@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
 import '../../styles/CustomerCare.css';
+import { useNavigate } from "react-router-dom";
 
 export default function FeedbackApproval() {
     const [feedbackData, setFeedbackData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
     
     useEffect(() => {
         fetchFeedbackData();
@@ -55,21 +57,28 @@ export default function FeedbackApproval() {
                     <h2>Customer Feedback Approval</h2>
                 </header>
             </article>
-            
-            <div className='feedback-search'>
-                <Form className="d-flex">
-                    <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        className="me-2"
-                        aria-label="Search"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                    />
-                    <Button variant="outline-dark">Search</Button>
-                </Form>
+
+            <div className='feedback-approval-cont'>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: '80%' }}>
+                <Button style={{marginBottom:'30px', marginTop:'10px', width:'20%'}} variant="outline-dark" onClick={() => navigate(-1)}>BACK</Button>
+                <div style={{marginBottom:'30px', marginTop:'10px', width:'30%'}}>
+                    <Form className="d-flex">
+                        <Form.Control
+                            type="search"
+                            placeholder="Search"
+                            className="me-2"
+                            aria-label="Search"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                        />
+                    </Form>
+                </div>
             </div>
 
+
+            {filteredFeedbackData.length === 0 ? (
+                <div style={{ textAlign: 'center', marginTop: '20px', color: 'gray' }}>No results found</div>
+            ) : (
             <table className='feedback-approval-table' >
                 <thead>
                     <tr>
@@ -101,6 +110,8 @@ export default function FeedbackApproval() {
                     ))}
                 </tbody>
             </table>
+            )}
+            </div>
         </div>
     );
 }

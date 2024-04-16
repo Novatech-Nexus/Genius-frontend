@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import '../../styles/CustomerCare.css'; 
 import UpdateFeedbackModal from '../../components/customer-care/FeedbackUpdate.jsx';
+import emptyfeedbackPic from '../../assets/customer-care-images/emptypic.png';
+import { useNavigate } from "react-router-dom";
 
 export default function Feedback_history() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -11,6 +13,7 @@ export default function Feedback_history() {
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
     const [updatedFeedback, setUpdatedFeedback] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchFeedbackData();
@@ -35,7 +38,13 @@ export default function Feedback_history() {
     };
 
     const updateFeedback = (feedback) => {
-        setUpdatedFeedback(feedback);
+        if (feedback.status === 'approved') {
+            // If feedback is already approved, set status to pending
+            setUpdatedFeedback({ ...feedback, status: 'pending' });
+        } else {
+            // Otherwise, set the updated feedback as is
+            setUpdatedFeedback(feedback);
+        }
         handleShowModal();
     };
 
@@ -94,12 +103,31 @@ export default function Feedback_history() {
                 renderStars={renderStars}
             />
 
+            {feedbackData.length === 0 ? (
+                <div className="empty-feedback">
+                    <h4>You don't have any feedback yet.</h4>
+                    <div className='empty-feedback-pic'>
+                        <img src={emptyfeedbackPic} className='emptypic' alt='' />
+                    </div>
+                    <Button
+                        className='feedback-submit-btn-back'
+                        variant='warning'
+                        onClick={() => navigate(-1)}
+                        >BACK
+                    </Button>
+                </div>
+            ) : (
             <div className='feedback_update-container'>
                 {feedbackData.map((feedback) => (
                     <div key={feedback._id} className='feedback_update-item'>
+                        {feedback.status && (
+                            <div className={`feedback-status ${feedback.status}`}>
+                                {feedback.status.toUpperCase()}
+                            </div>
+                        )}
                         <div className='feedback_update-item-con'>
                             <h6>{feedback.name } - {feedback.email }</h6>
-                            <h6>{renderStars(feedback.rating, 'regular')}</h6>
+                            <h6>{renderStars(feedback.rating)}</h6>
                             <p>{feedback.message}</p>
                         </div>
                         <div className='button-container'>
@@ -117,6 +145,7 @@ export default function Feedback_history() {
                     </div>
                 ))}
             </div>
+            )}
         </div>
     );
 }

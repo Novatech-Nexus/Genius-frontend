@@ -63,7 +63,7 @@ export default function Contact() {
               />
             </Form.Group>
             <Button  className='get-btn' variant='warning'>
-              Give Feedback
+              SEND
             </Button>
           </Form>
         </div>
