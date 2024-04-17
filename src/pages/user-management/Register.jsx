@@ -36,7 +36,7 @@ export default function Register() {
         error : "Account creation failed"
       })
 
-      regsterPromise.then(function(){ navigate('/home') });
+      regsterPromise.then(function(){ navigate('/email') });
     },
   });
 
@@ -90,7 +90,7 @@ export default function Register() {
 
                 <input
                   {...formik.getFieldProps("phoneNumber")}
-                  type="text"
+                  type="tel"
                   name="phoneNumber"
                   className={styles.textbox}
                   placeholder="Phone number"

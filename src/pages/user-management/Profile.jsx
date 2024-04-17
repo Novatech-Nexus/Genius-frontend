@@ -6,9 +6,11 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import convertToBase64 from "../../helper/convert";
 import { profileValidate } from "../../helper/validate";
+// import useFetch from "../../hooks/fetch.hook";
 
 export default function Profile() {
   const [file, setFile] = useState();
+  // const [{isLoading, apiData, serverError}] = useFetch(`/api/user/${email}`)
 
   const formik = useFormik({
     initialValues: {
