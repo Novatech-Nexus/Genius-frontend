@@ -20,6 +20,7 @@ import Feedback_history from './pages/customer-care-management/Feedback_history'
 import Feedback_approval from './pages/customer-care-management/Feedback_approval';
 import Customer_care_manager from './pages/customer-care-management/Customer_care_manager';
 import Feedback_of_services from './pages/customer-care-management/Feedback_of_services';
+import FeedbackDataAnalysis from './pages/customer-care-management/FeedbackDataAnalysis';
 
 
 
@@ -56,6 +57,7 @@ function App() {
         <Route path='/manager' element={<Customer_care_manager/>}></Route>
         <Route path='/manager/feedbackApproval' element={<Feedback_approval/>}></Route>
         <Route path='/manager/servicesFeedback' element={<Feedback_of_services/>}></Route>
+        <Route path='/manager/feedbackAnalysis' element={<FeedbackDataAnalysis/>}></Route>
 
       </Routes>
       
