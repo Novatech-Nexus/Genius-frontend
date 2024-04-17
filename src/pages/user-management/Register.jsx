@@ -1,13 +1,16 @@
 import styles from "../../styles/Username.module.css";
 import avatar from "../../assets/avatar.png";
-import { Link } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { useFormik } from "formik";
 import convertToBase64 from "../../helper/convert";
 import { registerValidate } from "../../helper/validate";
+import { registerUser } from "../../helper/helper";
 
 export default function Register() {
+
+  const navigate = useNavigate();
   const [file, setFile] = useState();
 
   const formik = useFormik({
@@ -25,7 +28,15 @@ export default function Register() {
     validateOnChange: false,
     onSubmit: async (values) => {
       values = await Object.assign(values, { profile: file || '' });
-      console.log(values);
+      let regsterPromise =registerUser(values);
+
+      toast.promise(regsterPromise, {
+        loading: "Creating account...",
+        success : "Account created successfully",
+        error : "Account creation failed"
+      })
+
+      regsterPromise.then(function(){ navigate('/home') });
     },
   });
 

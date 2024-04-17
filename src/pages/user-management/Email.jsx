@@ -1,23 +1,26 @@
 import { useEffect } from "react";
 // import avatar from "../../assets/avatar.png";
-import { Link } from "react-router-dom";
-import { Toaster } from 'react-hot-toast';
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 import { useFormik } from 'formik';
 import { emailValidate } from '../../helper/validate';
 import { passwordValidate } from '../../helper/validate';
 import { useAuthStore} from '../../store/store';
+import { verifyPassword } from '../../helper/helper';
 
 import styles from "../../styles/Username.module.css";
 
 
 export default function Email() {
 
+  const navigate = useNavigate
+
   const setEmail = useAuthStore(state => state.setEmail);
   // const setPassword = useAuthStore(state => state.setPassword);
-  // const email = useAuthStore(state => state.auth.email);
+  const email = useAuthStore(state => state.auth.email);
 
   useEffect(() => {
-    console.log(Email);
+    console.log(email);
   })
 
   const formik = useFormik({
@@ -37,6 +40,19 @@ export default function Email() {
       // console.log(values);
       setEmail(values.email);
       // setPassword(values.password);
+
+      let loginPromise = verifyPassword({ email, password: values.password })
+      toast.promise(loginPromise, {
+        loading : 'Checking credentials...',
+        success : 'Login successful',
+        error : 'Password doesn\'t match',
+      });
+
+      loginPromise.then(res => {
+        let { token } = res.data;
+        localStorage.setItem('token', token);
+        navigate('/profile');
+      })
     }
   })
 
