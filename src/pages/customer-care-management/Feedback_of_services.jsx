@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import '../../styles/CustomerCare.css';
+import ApprovedFeedbackTable from '../../components/customer-care/ApprovedFeedbackTable';
+import PendingFeedbackTable from '../../components/customer-care/PendingFeedbackTable';
 
 export default function Feedback_of_services() {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -72,64 +74,10 @@ export default function Feedback_of_services() {
         </div>
       </div>
 
-
-      <div>
-        <h3 style={{ color: 'green', textAlign:'center',backgroundColor:'rgba(75, 192, 192, 0.2)'}}>Approved Feedback</h3>
-        <table className='feedback_services-table'>
-          <thead>
-            <tr>
-              <th style={{ width: '150px' }}>Name</th>
-              <th style={{ width: '250px' }}>Email</th>
-              <th>Feedback</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredApprovedFeedback.length === 0 ? (
-              <tr>
-                <td colSpan="3" style={{ color: 'gray' }}>No results found</td>
-              </tr>
-            ) : (
-              filteredApprovedFeedback.map(feedback => (
-                <tr key={feedback._id}>
-                  <td>{feedback.name}</td>
-                  <td>{feedback.email}</td>
-                  <td>{feedback.message}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+      <ApprovedFeedbackTable feedback={filteredApprovedFeedback} />
       <br /><br />
-
-      <div>
-        <h3 style={{ color: 'orange', textAlign:'center', backgroundColor:'rgba(255, 206, 86, 0.2)' }}>Pending Feedback</h3>
-        <table className='feedback_services-table'>
-          <thead>
-            <tr>
-              <th style={{ width: '150px' }}>Name</th>
-              <th style={{ width: '250px' }}>Email</th>
-              <th>Feedback</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredPendingFeedback.length === 0 ? (
-              <tr>
-                <td colSpan="3" style={{ color: 'gray' }}>No results found</td>
-              </tr>
-            ) : (
-              filteredPendingFeedback.map(feedback => (
-                <tr key={feedback._id}>
-                  <td>{feedback.name}</td>
-                  <td>{feedback.email}</td>
-                  <td>{feedback.message}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+      <PendingFeedbackTable feedback={filteredPendingFeedback} />
       </div>
-      </div> 
     </div>
   );
 }

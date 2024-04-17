@@ -7,6 +7,7 @@ import UpdateFeedbackModal from '../../components/customer-care/FeedbackUpdate.j
 import emptyfeedbackPic from '../../assets/customer-care-images/emptypic.png';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import FeedbackItem from '../../components/customer-care/FeedbackItem.jsx';
 
 export default function Feedback_history() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -150,30 +151,13 @@ export default function Feedback_history() {
             ) : (
             <div className='feedback_update-container'>
                 {feedbackData.map((feedback) => (
-                    <div key={feedback._id} className='feedback_update-item'>
-                        {feedback.status && (
-                            <div className={`feedback-status ${feedback.status}`}>
-                                {feedback.status.toUpperCase()}
-                            </div>
-                        )}
-                        <div className='feedback_update-item-con'>
-                            <h6>{feedback.name } - {feedback.email }</h6>
-                            <h6>{renderStars(feedback.rating)}</h6>
-                            <p>{feedback.message}</p>
-                        </div>
-                        <div className='button-container'>
-                            <Button 
-                                variant="warning" 
-                                onClick={() => updateFeedback(feedback)}
-                                className='feedback_update-button'>UPDATE
-                            </Button>
-                            <Button 
-                                variant="danger"
-                                onClick={() => deleteFeedback(feedback._id)}
-                                className='feedback_update-button'>DELETE
-                            </Button>
-                        </div>
-                    </div>
+                    <FeedbackItem
+                        key={feedback._id}
+                        feedback={feedback}
+                        updateFeedback={updateFeedback}
+                        deleteFeedback={deleteFeedback}
+                        renderStars={renderStars}
+                    />
                 ))}
             </div>
             )}
