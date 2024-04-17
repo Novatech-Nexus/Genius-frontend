@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom';
 
 /**Import all routes */
 import Home from './pages/Home';
-import Login from './pages/user-management/Login';
+import Email from './pages/user-management/Email';
 import Register from './pages/user-management/Register';
 import Profile from './pages/user-management/Profile';
 import Password from './pages/user-management/Password';
@@ -16,6 +16,7 @@ import TableReservationHome from './pages/table-res-management/TableReservationH
 
 
 
+
 function App() {
   return (
     <>
@@ -24,7 +25,7 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/password" element={<Password/>}></Route>

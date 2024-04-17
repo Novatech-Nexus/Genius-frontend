@@ -1,137 +1,123 @@
-import { useState } from "react";
-import Validation from "../../helper/validation";
 import styles from "../../styles/Username.module.css";
 import avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { useState } from "react";
+import { useFormik } from "formik";
+import convertToBase64 from "../../helper/convert";
+import { registerValidate } from "../../helper/validate";
 
-const Register = () => {
-  const [formData, setFormData] = useState({
-    // profile: '',
-    firstname: "",
-    lastname: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
+export default function Register() {
+  const [file, setFile] = useState();
+
+  const formik = useFormik({
+    initialValues: {
+      profile: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validate: registerValidate,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: async (values) => {
+      values = await Object.assign(values, { profile: file || '' });
+      console.log(values);
+    },
   });
 
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Perform validation using the Validation component
-    const validationErrors = Validation.validate(formData);
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
-      alert("Form Submitted successfully");
-    }
+  const onUpload = async (e) => {
+    const base64 = await convertToBase64(e.target.files[0]);
+    setFile(base64);
   };
 
   return (
     <div className="container mx-auto">
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
+
       <div className="d-flex h-screen justify-content-center align-items-center">
         <div className={styles.glassbox}>
           <div className="d-flex flex-column align-items-center">
-            <h4 className="fs-1 display-100 fw-bold">Create an account</h4>
+            <h4 className="fs-1 display-100 fw-bold">Register</h4>
 
-            <div>
-              <label htmlFor="profile">
-                <img src={avatar} className={styles.avatar} alt="avatar" />
-              </label>
+            <form className="py-1" onSubmit={formik.handleSubmit}>
+              <div className="profile d-flex justify-content-center py-4">
+                <label htmlFor="profile">
+                  <img src={file || avatar} className={styles.avatar} alt="avatar" />
+                </label>
 
-              <input type="file" id="profile" name="profile" />
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div>
+                <input onChange={onUpload} type="file" id="profile" name="profile" />
+              </div>
+
+              <div className="textbox d-flex flex-column align-items-center gap-6">
                 <input
-                  type="text"
+                  {...formik.getFieldProps("firstname")}
+                  type="text*"
                   name="firstname"
                   className={styles.textbox}
                   placeholder="First name"
-                  onClick={handleChange}
                 />
-                {errors.firstname && <span>{errors.firstname}</span>}
-              </div>
 
-              <div>
                 <input
-                  type="text"
+                  {...formik.getFieldProps("lastname")}
+                  type="text*"
                   name="lastname"
                   className={styles.textbox}
                   placeholder="Lastname"
-                  onClick={handleChange}
                 />
-                {errors.lastname && <span>{errors.lastname}</span>}
-              </div>
 
-              <div>
                 <input
+                  {...formik.getFieldProps("email")}
                   type="text"
                   name="email"
                   className={styles.textbox}
                   placeholder="Email"
-                  onClick={handleChange}
                 />
-                {errors.email && <span>{errors.email}</span>}
-              </div>
 
-              <div>
                 <input
+                  {...formik.getFieldProps("phoneNumber")}
                   type="text"
                   name="phoneNumber"
                   className={styles.textbox}
                   placeholder="Phone number"
-                  onClick={handleChange}
                 />
-                {errors.phoneNumber && <span>{errors.phoneNumber}</span>}
-              </div>
 
-              <div>
                 <input
+                  {...formik.getFieldProps("password")}
                   type="text"
                   name="password"
                   className={styles.textbox}
                   placeholder="Password"
-                  onClick={handleChange}
                 />
-                {errors.password && <span>{errors.password}</span>}
-              </div>
 
-              <div>
                 <input
+                  {...formik.getFieldProps("confirmPassword")}
                   type="text"
                   name="confirmPassword"
                   className={styles.textbox}
                   placeholder="Confirm password"
-                  onClick={handleChange}
                 />
-                {errors.confirmPassword && (
-                  <span>{errors.confirmPassword}</span>
-                )}
-              </div>
 
-              <button type="submit" className={styles.btn2}>
-                Register
-              </button>
+                <button className={styles.btn1} type="submit">
+                  Register
+                </button>
+              </div>
             </form>
-            <div>
-              <span>Already registered? </span>
-              <Link to="/username">Login</Link>
+
+            <div className="text-center py-4 d-flex flex-column">
+              <span className="">
+                Already a member?{" "}
+                <Link className="text-danger text-decoration-none" to="/email">
+                  Login
+                </Link>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default Register;
+}

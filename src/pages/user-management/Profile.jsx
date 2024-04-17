@@ -1,106 +1,79 @@
-// import { useState } from 'react';
-// import Validation from '../../helper/validation';
-import styles from '../../styles/Username.module.css';
-import avatar from '../../assets/avatar.png';
-// import { Link } from 'react-router-dom';
-
+import styles from "../../styles/Username.module.css";
+import avatar from "../../assets/avatar.png";
+import { Link } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { useState } from "react";
+import { useFormik } from "formik";
+import convertToBase64 from "../../helper/convert";
+import { profileValidate } from "../../helper/validate";
 
 export default function Profile() {
+  const [file, setFile] = useState();
 
-    // const [formData, setFormData] = useState({
-    //   firstname: '',
-    //   lastname: '',
-    //   email: '',
-    //   phoneNumber: '',
-    //   password: '',
-    //   confirmPassword: '',
-    // });
+  const formik = useFormik({
+    initialValues: {
+      profile: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      phoneNumber: "",
+    },
+    validate: profileValidate,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: async (values) => {
+      values = await Object.assign(values, { profile: file || '' });
+      console.log(values);
+    },
+  });
 
-    // const [errors, setErrors] = useState({});
+  const onUpload = async (e) => {
+    const base64 = await convertToBase64(e.target.files[0]);
+    setFile(base64);
+  };
 
-    // const handleChange = (e) => {
-    //   setFormData({
-    //     ...formData,
-    //     [e.target.name]: e.target.value,
-    //   });
-    // };
+  return (
+    <div className="container mx-auto">
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
 
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
+      <div className="d-flex h-screen justify-content-center align-items-center">
+        <div className={styles.glassbox}>
+          <div className="d-flex flex-column align-items-center">
+            <h4 className="fs-1 display-100 fw-bold">Profile</h4>
 
-    //   // Perform validation using the Validation component
-    //   const validationErrors = Validation.validate(formData);
-    //   setErrors(validationErrors);
+            <form className="py-1" onSubmit={formik.handleSubmit}>
+              <div className="profile d-flex justify-content-center py-4">
+                <label htmlFor="profile">
+                  <img src={file || avatar} className={styles.avatar} alt="avatar" />
+                </label>
 
-    //   if (Object.keys(validationErrors).length === 0) {
-    //     alert('Form Submitted successfully');
-    //   }
-    // };
+                <input onChange={onUpload} type="file" id="profile" name="profile" />
+              </div>
 
-    return (
-        <div className='container mx-auto'>
-            <div className='d-flex h-screen justify-content-center align-items-center'>
-                <div className={styles.glassbox}>
+              <div className="textbox d-flex flex-column align-items-center gap-6">
 
-                    <div className='d-flex flex-column align-items-center'>
-                        <h4 className='fs-1 display-100 fw-bold'>Profile Details</h4>
+                <input {...formik.getFieldProps("firstname")} type="text*" name="firstname" className={styles.textbox} placeholder="First name"/>
+                <input {...formik.getFieldProps("lastname")} type="text*" name="lastname" className={styles.textbox} placeholder="Lastname"/>
+                <input {...formik.getFieldProps("email")} type="text" name="email" className={styles.textbox} placeholder="Email"/>
+                <input {...formik.getFieldProps("phoneNumber")} type="text" name="phoneNumber" className={styles.textbox} placeholder="Phone number"/>
 
-                        <div>
-                            <label htmlFor='profile'>
-                                <img src={avatar} className={styles.avatar} alt='avatar' />
-                            </label>
-                        </div>
-                        {/* <form onSubmit={handleSubmit}> */}
+                <button className={styles.btn1} type="submit">
+                  Update
+                </button>
+              </div>
+            </form>
 
-                        <div className="textbox flex flex-col items-center gap-6">
-                            <div className="name flex w-3/4 gap-10">
-                                <input
-                                    type='text'
-                                    name='firstname'
-                                    className={styles.textbox}
-                                    placeholder='First name'
-                                />
-
-                                <input
-                                    type='text'
-                                    name='firstname'
-                                    className={styles.textbox}
-                                    placeholder='Last name'
-                                />
-                            </div>
-
-                            <div className="name flex w-3/4 gap-10">
-                                <input
-                                    type='text'
-                                    name='phoneNumber'
-                                    className={styles.textbox}
-                                    placeholder='Phone number'
-                                />
-
-                                <input
-                                    type='text'
-                                    name='address'
-                                    className={styles.textbox}
-                                    placeholder='address'
-                                />
-                            </div>
-
-                            <div>
-                                <button className={styles.btn2}>Orders</button>
-                                <button className={styles.btn2}>Loyalty Points</button>
-                                <button className={styles.btn2}>Manage Profile</button>
-                            </div>
-
-                        </div>
-
-                        {/* <button type='submit' className={styles.btn2}>Register</button> */}
-
-                        {/* </form> */}
-                        
-                    </div>
-
-                </div>
+            <div className="text-center py-4 d-flex flex-column">
+              <span className="">
+                Come back later?{" "}
+                <Link className="text-danger text-decoration-none" to="/email">
+                  Logout
+                </Link>
+              </span>
             </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
