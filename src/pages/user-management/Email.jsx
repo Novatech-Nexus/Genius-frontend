@@ -1,12 +1,24 @@
-import styles from "../../styles/Username.module.css";
-import avatar from "../../assets/avatar.png";
+import { useEffect } from "react";
+// import avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { useFormik } from 'formik';
 import { emailValidate } from '../../helper/validate';
 import { passwordValidate } from '../../helper/validate';
+import { useAuthStore} from '../../store/store';
+
+import styles from "../../styles/Username.module.css";
+
 
 export default function Email() {
+
+  const setEmail = useAuthStore(state => state.setEmail);
+  // const setPassword = useAuthStore(state => state.setPassword);
+  // const email = useAuthStore(state => state.auth.email);
+
+  useEffect(() => {
+    console.log(Email);
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -22,7 +34,9 @@ export default function Email() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async values => {
-      console.log(values);
+      // console.log(values);
+      setEmail(values.email);
+      // setPassword(values.password);
     }
   })
 
@@ -37,9 +51,9 @@ export default function Email() {
             <h4 className="fs-1 display-100 fw-bold">Hello Again!</h4>
 
             <form className='py-1' onSubmit={formik.handleSubmit}>
-              <div className='profile d-flex justify-content-center py-4'>
+              {/* <div className='profile d-flex justify-content-center py-4'>
                 <img src={avatar} alt="avatar" className={styles.avatar} />
-              </div>
+              </div> */}
 
               <div className="textbox d-flex flex-column align-items-center gap-6">
                 <input {...formik.getFieldProps('email')} className={styles.textbox} type="text" placeholder='Email' />

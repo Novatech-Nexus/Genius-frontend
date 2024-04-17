@@ -1,8 +1,8 @@
 import axios from 'axios';
-import process from 'process';
+// import process from 'process';
 
-const DOMAIN = process.env.REACT_APP_SERVER_DOMAIN;
-axios.defaults.baseURL = DOMAIN;
+// const DOMAIN = process.env.REACT_APP_SERVER_DOMAIN;
+// axios.defaults.baseURL = DOMAIN;
 
 /** Make API requests */
 
