@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 // import avatar from "../../assets/avatar.png";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
@@ -13,15 +13,15 @@ import styles from "../../styles/Username.module.css";
 
 export default function Email() {
 
-  const navigate = useNavigate
+  const navigate = useNavigate();
 
   const setEmail = useAuthStore(state => state.setEmail);
   // const setPassword = useAuthStore(state => state.setPassword);
   const email = useAuthStore(state => state.auth.email);
 
-  useEffect(() => {
-    console.log(email);
-  })
+  // useEffect(() => {
+  //   console.log(email);
+  // })
 
   const formik = useFormik({
     initialValues: {
@@ -49,8 +49,9 @@ export default function Email() {
       });
 
       loginPromise.then(res => {
-        let { token } = res.data;
+        let { token, email } = res.data;
         localStorage.setItem('token', token);
+        localStorage.setItem('email', email);
         navigate('/profile');
       })
     }

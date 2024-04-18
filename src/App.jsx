@@ -13,6 +13,10 @@ import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 
+import Navbar_new from '../src/components/navbar_new';
+
+/** Import middleware */
+import { AuthorizeUser } from '../middleware/auth';
 
 
 function App() {
@@ -21,11 +25,12 @@ function App() {
 
     <main>
     <Navbar/>
+    <Navbar_new/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
         <Route path="/reset" element={<Reset/>}></Route>
         <Route path="/recovery" element={<Recovery/>}></Route>
         <Route path="*" element={<PageNotFound/>}></Route>

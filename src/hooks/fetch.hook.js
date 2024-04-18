@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
+// import { getEmail } from "../helper/helper";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -9,15 +10,15 @@ export default function useFetch(query){
 
     useEffect(() => {
 
-        if(!query) return;
-
         const fetchData = async () => {
             try {
                 setData( prev => ( { ...prev, isLoading: true }));
                 
-                const { data, status } = await axios.get(`/api/${query}`);
+                // const { email } = !query ? await getEmail() : '' ;
+                const email = localStorage.getItem('email');
+                const {data, status} =  await axios.get(`api/user/${email}`);
 
-                if(status == 201){
+                if(data){
                     setData( prev => ( { ...prev, isLoading: false }));
                     setData( prev => ( { ...prev, apiData: data, status: status }));
                 }

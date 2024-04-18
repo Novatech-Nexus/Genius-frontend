@@ -1,11 +1,22 @@
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { useFormik } from 'formik';
 import { resetPasswordValidate } from '../../helper/validate';
+import { resetPassword } from '../../helper/helper';
+import { useAuthStore } from '../../store/store';
+import { useNavigate } from 'react-router-dom';
+// import useFetch from '../../hooks/fetch.hook'
 
 import styles from '../../styles/Username.module.css'
+// import { useEffect } from 'react';
 
 
 export default function Reset() {
+
+  const { email } = useAuthStore(state => state.auth.email)
+  const navigate = useNavigate();
+  // const [{ isLoading, apiData, serverError }] = useFetch('createResetSession')
+
+  // useEffect(() =>)
 
   const formik = useFormik({
     initialValues : {
@@ -16,9 +27,20 @@ export default function Reset() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit : async values => {
-      console.log(values);
+      
+      let resetPromise = resetPassword({ email, password: values.password })
+
+      toast.promise(resetPromise, {
+        loading: 'Updating password...',
+        success: 'Password updated successfully.',
+        error: 'Couldn\'t update password.'
+      });
+
+      resetPromise.then(function(){ navigate('/password') })
     }
   })
+
+  // if(isLoading)
 
   return (
     <div className='container mx-auto'>

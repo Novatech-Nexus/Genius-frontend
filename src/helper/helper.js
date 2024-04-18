@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {jwtDecode} from 'jwt-decode';
 
 const DOMAIN ="http://localhost:8080"; // Access REACT_APP_SERVER_DOMAIN from .env file
 axios.defaults.baseURL = DOMAIN;
@@ -7,6 +7,14 @@ axios.defaults.baseURL = DOMAIN;
 /** Make API requests */
 
 
+/** To get email from Token */
+export async function getEmail(){
+    const token = localStorage.getItem('token');
+    if(!token) return Promise.reject(" Cannot find Token ");
+    
+    let decode = jwtDecode(token);
+    return decode;
+}
 
 /** Authenticate function */
 export async function authenticate(email){

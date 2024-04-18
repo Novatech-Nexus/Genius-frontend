@@ -1,21 +1,28 @@
 import avatar from "../../assets/avatar.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import convertToBase64 from "../../helper/convert";
 import { profileValidate } from "../../helper/validate";
 import useFetch from "../../hooks/fetch.hook";
-import { useAuthStore } from "../../store/store";
+// import { useAuthStore } from "../../store/store";
 import { updateUser } from "../../helper/helper";
 
 import styles from "../../styles/Username.module.css";
 
 export default function Profile() {
   const [file, setFile] = useState();
+  const navigate = useNavigate();
 
-  const { email} = useAuthStore(state => state.auth)
-  const [{isLoading, apiData, serverError}] = useFetch(`user/${email}`)
+  useEffect(() => {
+  });
+
+  // const email = localStorage.getItem('email');
+  // const fetchData = useFetch();
+
+  
+  const [{isLoading, apiData, serverError}] = useFetch();
 
   const formik = useFormik({
     initialValues: {
@@ -29,7 +36,7 @@ export default function Profile() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      values = await Object.assign(values, { profile: file || '' });
+      values = await Object.assign(values, { profile: file || apiData?.Profile || '' });
       let updatePromise = updateUser(values);
 
       toast.promise(updatePromise, {
@@ -44,6 +51,13 @@ export default function Profile() {
     const base64 = await convertToBase64(e.target.files[0]);
     setFile(base64);
   };
+
+  //logout handler function
+  function userLogout() {
+    localStorage.removeItem('token');
+    navigate('/')
+  }
+
 
   if(isLoading) return <h1 className="fs-5 font-weight-bold">is Loading</h1>
   if(serverError) return <h1 className="fs-5 font-weight-bold">{serverError.message}</h1>
@@ -82,9 +96,9 @@ export default function Profile() {
             <div className="text-center py-4 d-flex flex-column">
               <span className="">
                 Come back later?{" "}
-                <Link className="text-danger text-decoration-none" to="/email">
+                <button onClick={userLogout} className="text-danger text-decoration-none" to="/email">
                   Logout
-                </Link>
+                </button>
               </span>
             </div>
           </div>
