@@ -110,7 +110,7 @@ export default function FeedbackForm() {
         }
         Swal.fire({
             icon: "success",
-            title: "Feedback submitted successfully !",
+            title: "Feedback submitted successfully. \n THANK YOU!",
             showConfirmButton: false,
             timer: 2000
           });

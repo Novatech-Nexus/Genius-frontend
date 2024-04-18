@@ -129,6 +129,7 @@
     text-align: center;
     font-weight: 500;
     color: gray;
+    font-style: italic;
   }
   
   .card-container {
@@ -178,7 +179,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 20px;
   }
 
   .feedback_form_page {
