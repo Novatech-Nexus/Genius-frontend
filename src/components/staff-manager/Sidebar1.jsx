@@ -17,7 +17,7 @@ function Sidebar1() {
           </Link>
         </li>
         <li class="nav-item">
-        <Link to=""className="active home-a">
+        <Link to="/attendance"className="active home-a">
         <a class="nav-link active" aria-current="page" href="#">mark attendence</a>
         </Link>
         </li>
