@@ -18,8 +18,17 @@ export default function Navbar() {
             <li><Link to='/recovery'>Recovery</Link></li>
             <li><Link to='/dashboard'>Iventory</Link></li>  
             <li><Link to='/reservation'>Table Reservation</Link></li>
-  
-        </nav>)}
+            <li><Link to='/sm_dashboard'>staff manager dashboard</Link></li>
+            <li><Link to='/addemployee'>staff member adding page</Link></li>
+            <li><Link to='/editemployee'>member editing page</Link></li>
+            <li><Link to='/staffdetails'>staff member datails</Link></li>
+            <li><Link to='/staffmember'>staff member page</Link></li>
+            
+            
+            
+            
+            
+                  </nav>)}
     </div>
   );
 }
