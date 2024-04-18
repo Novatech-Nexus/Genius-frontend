@@ -1,31 +1,42 @@
-import styles from "../../styles/Username.module.css";
 import avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { useFormik } from "formik";
 import convertToBase64 from "../../helper/convert";
 import { profileValidate } from "../../helper/validate";
-// import useFetch from "../../hooks/fetch.hook";
+import useFetch from "../../hooks/fetch.hook";
+import { useAuthStore } from "../../store/store";
+import { updateUser } from "../../helper/helper";
+
+import styles from "../../styles/Username.module.css";
 
 export default function Profile() {
   const [file, setFile] = useState();
-  // const [{isLoading, apiData, serverError}] = useFetch(`/api/user/${email}`)
+
+  const { email} = useAuthStore(state => state.auth)
+  const [{isLoading, apiData, serverError}] = useFetch(`user/${email}`)
 
   const formik = useFormik({
     initialValues: {
-      profile: "",
-      firstname: "",
-      lastname: "",
-      email: "",
-      phoneNumber: "",
+      firstname: apiData?.firstname || '',
+      lastname: apiData?.lastname || '',
+      email: apiData?.email || '',
+      phoneNumber: apiData?.phoneNumber || '',
     },
+    enableReinitialize: true,
     validate: profileValidate,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
       values = await Object.assign(values, { profile: file || '' });
-      console.log(values);
+      let updatePromise = updateUser(values);
+
+      toast.promise(updatePromise, {
+        loading: "Updating...",
+        success: "Updated successfully",
+        error: "Failed to update", 
+      })
     },
   });
 
@@ -33,6 +44,9 @@ export default function Profile() {
     const base64 = await convertToBase64(e.target.files[0]);
     setFile(base64);
   };
+
+  if(isLoading) return <h1 className="fs-5 font-weight-bold">is Loading</h1>
+  if(serverError) return <h1 className="fs-5 font-weight-bold">{serverError.message}</h1>
 
   return (
     <div className="container mx-auto">
@@ -46,7 +60,7 @@ export default function Profile() {
             <form className="py-1" onSubmit={formik.handleSubmit}>
               <div className="profile d-flex justify-content-center py-4">
                 <label htmlFor="profile">
-                  <img src={file || avatar} className={styles.avatar} alt="avatar" />
+                  <img src={apiData?.profile || file || avatar} className={styles.avatar} alt="avatar" />
                 </label>
 
                 <input onChange={onUpload} type="file" id="profile" name="profile" />
