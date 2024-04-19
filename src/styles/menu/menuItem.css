@@ -1,0 +1,40 @@
+body {
+
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 550px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 15px;
+}
+
+.form-label {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+.form-control {
+    border: 1px solid black;
+    width: 500px;
+    height: 40px;
+}
+
+
+.form-select {
+    border: 1px solid black;
+    width: 500px;
+    height: 40px;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    width: 130px;
+    border-radius: 10px;
+}
