@@ -2,16 +2,16 @@ import {Routes, Route} from 'react-router-dom';
 
 /**Import all routes */
 import Home from './pages/Home';
-import Username from './pages/user-management/Username';
+import Email from './pages/user-management/Email';
 import Register from './pages/user-management/Register';
 import Profile from './pages/user-management/Profile';
-import Password from './pages/user-management/Password';
 import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
+
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 import Contact from './pages/customer-care-management/Contact';
 import Feedback from './pages/customer-care-management/Feedback';
@@ -23,6 +23,12 @@ import Feedback_of_services from './pages/customer-care-management/Feedback_of_s
 import FeedbackDataAnalysis from './pages/customer-care-management/FeedbackDataAnalysis';
 
 
+/** Import middleware */
+import { AuthorizeUser } from '../middleware/auth';
+
+import HomeMenu from './pages/menu-management/HomeMenu';
+import ItemMenu from './pages/menu-management/ItemMenu';
+import TableMenu from './pages/menu-management/tableMenu';
 
 function App() {
   return (
@@ -32,10 +38,9 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/username" element={<Username/>}></Route>
+        <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
-        <Route path="/password" element={<Password/>}></Route>
+        <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
         <Route path="/reset" element={<Reset/>}></Route>
         <Route path="/recovery" element={<Recovery/>}></Route>
         <Route path="*" element={<PageNotFound/>}></Route>
@@ -58,6 +63,12 @@ function App() {
         <Route path='/manager/feedbackApproval' element={<Feedback_approval/>}></Route>
         <Route path='/manager/servicesFeedback' element={<Feedback_of_services/>}></Route>
         <Route path='/manager/feedbackAnalysis' element={<FeedbackDataAnalysis/>}></Route>
+
+        {/* Menu Management */}
+        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
+        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
+        <Route path='/tableMenu' element={<TableMenu/>}></Route>
+        
 
       </Routes>
       

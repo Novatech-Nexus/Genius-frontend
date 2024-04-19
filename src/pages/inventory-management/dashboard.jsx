@@ -10,7 +10,7 @@ function Dashboard() {
   return (
     <div style={{backgroundColor:"whitesmoke"}}>
       <Header/>
-      <Navbar/>
+      {/* <Navbar/> */}
       <HomeImg1/>
       <HomeImg2/>
       <FooterHome/>
