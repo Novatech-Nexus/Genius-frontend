@@ -19,7 +19,7 @@ function Clock() {
     fontFamily: 'Arial, sans-serif', 
     textAlign: 'center', 
     fontSize: '24px', 
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', 
+    backgroundColor: '#f1f1f1',
     padding: '10px 20px', 
     borderRadius: '10px', 
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)', 
@@ -35,7 +35,7 @@ function Clock() {
     <div style={{ position: 'relative' }}>
       <div style={clockStyle}>
         <h4>{dateTime.toLocaleTimeString('en-US', { hour12: false })}</h4>
-        <h5 style={dateStyle}>{dateTime.toLocaleDateString()}</h5>
+        <h5 style={dateStyle}>{dateTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</h5>
       </div>
     </div>
   );

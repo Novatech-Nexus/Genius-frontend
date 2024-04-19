@@ -15,8 +15,10 @@ import AddItempage from './pages/inventory-management/addinventory';
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 
+
 import HomeMenu from './pages/menu-management/HomeMenu';
 import ItemMenu from './pages/menu-management/ItemMenu';
+import TableMenu from './pages/menu-management/tableMenu';
 
 function App() {
   return (
@@ -46,6 +48,7 @@ function App() {
         {/* Menu Management */}
         <Route path="/homeMenu" element={<HomeMenu/>}></Route>
         <Route path="/itemMenu" element={<ItemMenu/>}></Route>
+        <Route path='/tableMenu' element={<TableMenu/>}></Route>
         
 
       </Routes>
