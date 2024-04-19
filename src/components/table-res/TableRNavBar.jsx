@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const TableRNavBar = () => {
 
     const linkStyle = {
@@ -17,10 +18,10 @@ const TableRNavBar = () => {
 
                         
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
+                            <Link to = "/reservation" className="nav-link">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/booking">Booking</a>
+                            <Link to = "/booking" className="nav-link">Booking</Link>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/">Change</a>

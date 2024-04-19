@@ -13,8 +13,7 @@ import Navbar from './components/Navbar';
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
-
-
+import BookingTable from './pages/table-res-management/BookingTable'
 
 function App() {
   return (
@@ -40,6 +39,7 @@ function App() {
 
         {/* Table Reservation */}
         <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+        <Route path="/booking" element = {<BookingTable/>} ></Route>
 
 
 
