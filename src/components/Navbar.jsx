@@ -15,10 +15,14 @@ export default function Navbar() {
             <li><Link to='/register'>Register</Link></li>
             <li><Link to='/email'>Login</Link></li>
             <li><Link to='/profile'>Profile</Link></li>
-            <li><Link to='/recovery'>Recovery</Link></li>
+            <li><Link to='/recovery'>Recovery</Link></li> 
+
             <li><Link to='/dashboard'>Iventory</Link></li>  
             <li><Link to='/reservation'>Table Reservation</Link></li>
-  
+
+            <li><Link to='/homemenu'>Menu</Link></li>  
+
+            
         </nav>)}
     </div>
   );
