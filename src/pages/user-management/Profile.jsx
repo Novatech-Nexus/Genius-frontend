@@ -8,6 +8,7 @@ import { profileValidate } from "../../helper/validate";
 import useFetch from "../../hooks/fetch.hook";
 // import { useAuthStore } from "../../store/store";
 import { updateUser } from "../../helper/helper";
+import { deleteUser } from "../../helper/helper";
 
 import styles from "../../styles/Username.module.css";
 
@@ -31,12 +32,13 @@ export default function Profile() {
       email: apiData?.email || '',
       phoneNumber: apiData?.phoneNumber || '',
     },
-    enableReinitialize: true,
+    enableReinitialize: true,  
     validate: profileValidate,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
       values = await Object.assign(values, { profile: file || apiData?.Profile || '' });
+      console.log(values);
       let updatePromise = updateUser(values);
 
       toast.promise(updatePromise, {
@@ -55,9 +57,33 @@ export default function Profile() {
   //logout handler function
   function userLogout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('email');
     navigate('/')
   }
 
+  //user delete handler function
+  function deleteCurrentUser() {
+    let deletePromise = deleteUser();
+
+    toast.promise(deletePromise, {
+      loading: "Deleting...",
+      success: "Deleted successfully",
+      error: "Failed to delete", 
+    })
+
+    return deletePromise;
+    // userLogout();
+  }
+
+  // handle deleter
+  async function handleDelete() {
+    let deletePromise = await deleteCurrentUser();
+
+    if(deletePromise.status === 200){
+      userLogout();
+    }
+  }
 
   if(isLoading) return <h1 className="fs-5 font-weight-bold">is Loading</h1>
   if(serverError) return <h1 className="fs-5 font-weight-bold">{serverError.message}</h1>
@@ -88,7 +114,10 @@ export default function Profile() {
                 <input {...formik.getFieldProps("phoneNumber")} type="text" name="phoneNumber" className={styles.textbox} placeholder="Phone number"/>
 
                 <button className={styles.btn1} type="submit">
-                  Update
+                  Update details
+                </button>
+                <button className={styles.btn2} type="button" onClick={handleDelete}>
+                  Delete account
                 </button>
               </div>
             </form>

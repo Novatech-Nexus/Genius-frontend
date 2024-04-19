@@ -22,6 +22,7 @@ export default function Register() {
       phoneNumber: "",
       password: "",
       confirmPassword: "",
+      role: "customer",
     },
     validate: registerValidate,
     validateOnBlur: false,

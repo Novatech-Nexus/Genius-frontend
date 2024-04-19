@@ -49,9 +49,10 @@ export default function Email() {
       });
 
       loginPromise.then(res => {
-        let { token, email } = res.data;
+        let { token, email, id } = res.data;
         localStorage.setItem('token', token);
         localStorage.setItem('email', email);
+        localStorage.setItem('id', id);
         navigate('/profile');
       })
     }

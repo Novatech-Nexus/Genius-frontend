@@ -11,6 +11,8 @@ import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
+import AllUser from './pages/user-management/allUser';
+
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 
@@ -29,27 +31,27 @@ function App() {
     <main>
     <Navbar/>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<AuthorizeUser><Home/></AuthorizeUser>}></Route>
         <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
-        <Route path="/reset" element={<Reset/>}></Route>
-        <Route path="/recovery" element={<Recovery/>}></Route>
+        <Route path="/reset" element={<AuthorizeUser><Reset/></AuthorizeUser>}></Route>
+        <Route path="/recovery" element={<AuthorizeUser><Recovery/></AuthorizeUser>}></Route>
         <Route path="*" element={<PageNotFound/>}></Route>
-
+        <Route path="/alluser" element={<AuthorizeUser><AllUser/></AuthorizeUser>}></Route>
 
         
-        <Route path="/dashboard" element={<Dashboard/>}></Route>
-        <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
+        <Route path="/dashboard" element={<AuthorizeUser><Dashboard/></AuthorizeUser>}></Route>
+        <Route path="/dashboard/additem" element={<AuthorizeUser><AddItempage/></AuthorizeUser>}></Route>
         
 
         {/* Table Reservation */}
-        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+        <Route path="/reservation" element = {<AuthorizeUser><TableReservationHome/></AuthorizeUser>} ></Route>
 
         {/* Menu Management */}
-        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
-        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
-        <Route path='/tableMenu' element={<TableMenu/>}></Route>
+        <Route path="/homeMenu" element={<AuthorizeUser><HomeMenu/></AuthorizeUser>}></Route>
+        <Route path="/itemMenu" element={<AuthorizeUser><ItemMenu/></AuthorizeUser>}></Route>
+        <Route path='/tableMenu' element={<AuthorizeUser><TableMenu/></AuthorizeUser>}></Route>
         
 
       </Routes>

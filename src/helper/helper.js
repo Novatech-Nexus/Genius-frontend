@@ -47,8 +47,8 @@ export async function registerUser(credentials){
 
         /** Send Email */
         // if(status === 201){
-        //     await axios.post('/api/registerMail', { userEmail : email, text : msg })
-        // }
+        //      await axios.post('/api/registerMail', { userEmail : email, text : msg })
+        //  }
 
         return Promise.resolve(msg);
 
@@ -70,14 +70,28 @@ export async function verifyPassword({ email, password }){
 }
 
 /** Update user profile function */
-export async function updateUser(response){
+export async function updateUser(req){
     try {
         const token = await localStorage.getItem('token');
-        const data = await axios.put('/api/updateUser', response, { headers : { "Authorization" : `Bearer ${token}` } });
+        const userID = await localStorage.getItem('id');
+        console.log(token);
+        const data = await axios.put('/api/updateUser', req, { headers : { "Authorization" : `Bearer ${token}`, "id" : userID } });
 
         return Promise.resolve({ data });
     } catch (error) {
         return Promise.reject({ error : "Couldn't update profile" });   
+    }
+}
+
+/** Delete user function */
+export async function deleteUser(){
+    try {
+        const token = await localStorage.getItem('token');
+        const userID = await localStorage.getItem('id');
+        const { data, status } = await axios.delete('/api/deleteUser', { headers : { "Authorization" : `Bearer ${token}`, "id" : userID } });
+        return Promise.resolve({ data, status });
+    } catch (error) {
+        return Promise.reject({ error : "Couldn't delete profile" });
     }
 }
 
