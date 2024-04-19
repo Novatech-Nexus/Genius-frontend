@@ -13,7 +13,7 @@ export default function Navbar() {
     <div>
         {((location.pathname == "/profile")|| (location.pathname == "/recovery") ||(location.pathname == "/") ||(location.pathname == "dashboard") )&&(<nav>
             <li><Link to='/register'>Register</Link></li>
-            <li><Link to='/username'>Login</Link></li>
+            <li><Link to='/email'>Login</Link></li>
             <li><Link to='/profile'>Profile</Link></li>
             <li><Link to='/recovery'>Recovery</Link></li> 
 

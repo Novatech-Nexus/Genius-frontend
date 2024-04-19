@@ -67,3 +67,7 @@
     width: 100%;
     border-radius: 10px;
 }
+
+input[type = 'file']{
+    display: none;
+}

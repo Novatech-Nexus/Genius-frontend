@@ -2,10 +2,9 @@ import {Routes, Route} from 'react-router-dom';
 
 /**Import all routes */
 import Home from './pages/Home';
-import Username from './pages/user-management/Username';
+import Email from './pages/user-management/Email';
 import Register from './pages/user-management/Register';
 import Profile from './pages/user-management/Profile';
-import Password from './pages/user-management/Password';
 import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
@@ -15,6 +14,10 @@ import AddItempage from './pages/inventory-management/addinventory';
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 
+import Navbar_new from '../src/components/navbar_new';
+
+/** Import middleware */
+import { AuthorizeUser } from '../middleware/auth';
 
 import HomeMenu from './pages/menu-management/HomeMenu';
 import ItemMenu from './pages/menu-management/ItemMenu';
@@ -26,12 +29,12 @@ function App() {
 
     <main>
     <Navbar/>
+    <Navbar_new/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/username" element={<Username/>}></Route>
+        <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
-        <Route path="/password" element={<Password/>}></Route>
+        <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
         <Route path="/reset" element={<Reset/>}></Route>
         <Route path="/recovery" element={<Recovery/>}></Route>
         <Route path="*" element={<PageNotFound/>}></Route>
