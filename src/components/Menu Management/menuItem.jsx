@@ -109,21 +109,21 @@ function Itemme() {
         }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", marginTop: "15px" }}>
                 <form onSubmit={sendData}>
-                    <div className="form" style={{ flex: 1, marginLeft: "20px", marginRight: "20px", boxShadow: '0 0 10px rgba(0, 0, 0, 0.4)', marginBottom: "15px" }}>
+                    <div className="MMMform" style={{ flex: 1, marginLeft: "20px", marginRight: "20px", boxShadow: '0 0 10px rgba(0, 0, 0, 0.4)', marginBottom: "15px" }}>
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px", marginTop: "15px" }}>
                             <h1 style={{ color: "Black", fontWeight: "bold", fontSize: "40px", marginTop: "0px", marginBottom: "7px", textAlign: "center" }}>ADD NEW ITEMS</h1>
-                            <label htmlFor="itemid" className="form-label">Item Code</label>
-                            <input type="text" className="form-control" id="itemid" value={itemId} onChange={handleItemIdChange} required />
+                            <label htmlFor="itemid" className="MMMform-label">Item Code</label>
+                            <input type="text" className="MMMform-control" id="itemid" value={itemId} onChange={handleItemIdChange} required />
                             {itemIdError && <p style={{ color: "red" }}>{itemIdError}</p>}
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
-                            <label htmlFor="ItemName" className="form-label">Item Name</label>
-                            <input type="text" className="form-control" id="itemname" value={itemName} onChange={handleItemNameChange} required />
+                            <label htmlFor="ItemName" className="MMMform-label">Item Name</label>
+                            <input type="text" className="MMMform-control" id="itemname" value={itemName} onChange={handleItemNameChange} required />
                             {itemNameError && <p style={{ color: "red" }}>{itemNameError}</p>}
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
-                            <label htmlFor="Category" className="form-label">Category</label>
-                            <select className="form-select" id="category" value={category} required onChange={(e) => setCategory(e.target.value)}>
+                            <label htmlFor="Category" className="MMMform-label">Category</label>
+                            <select className="MMMform-select" id="category" value={category} required onChange={(e) => setCategory(e.target.value)}>
                                 <option value="">Select Category</option>
                                 <option value="Beverage">Beverage</option>
                                 <option value="Food">Food</option>
@@ -133,8 +133,8 @@ function Itemme() {
                             </select>
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
-                            <label htmlFor="ItemPrice" className="form-label">Item Price (Rs.)</label>
-                            <input type="text" className="form-control" id="itemprice" value={price}
+                            <label htmlFor="ItemPrice" className="MMMform-label">Item Price (Rs.)</label>
+                            <input type="text" className="MMMform-control" id="itemprice" value={price}
                                 onChange={(e) => {
                                     handleItemPriceChange(e);
                                 }}
@@ -144,21 +144,21 @@ function Itemme() {
                             {priceError && <p style={{ color: "red" }}>{priceError}</p>}
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
-                            <label htmlFor="ItemDescription" className="form-label" style={{ alignSelf: "flex-start", marginTop: "5px" }}>Item Description</label>
+                            <label htmlFor="ItemDescription" className="MMMform-label" style={{ alignSelf: "flex-start", marginTop: "5px" }}>Item Description</label>
                             <textarea placeholder="Ingredients or any details" id="itemdescription" rows="4" value={description} 
                                 style={{ border: "1px solid black", width: "500px", borderRadius: "5px" }}
                                 onChange={(e) => { setItemDescription(e.target.value); }}
                             />
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
-                            <label htmlFor="ItemImage" className="form-label">Add Image</label>
+                            <label htmlFor="ItemImage" className="MMMform-label">Add Image</label>
                             <input type="file" accept="image/*" onChange={handleImageChange} />
                             {imagePreview && (
                                 <img src={imagePreview} alt="Item Preview" style={{ marginTop: "10px", maxWidth: "300px" }} />
                             )}
                         </div>
                         <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
-                            <button type="submit" className="btn btn-danger">Upload</button>
+                            <button type="submit" className="MMMbtn btn-danger">Upload</button>
                         </div>
                     </div>
                 </form>
