@@ -14,7 +14,6 @@ import AddItempage from './pages/inventory-management/addinventory';
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 
-import Navbar_new from '../src/components/navbar_new';
 
 /** Import middleware */
 import { AuthorizeUser } from '../middleware/auth';
@@ -29,7 +28,6 @@ function App() {
 
     <main>
     <Navbar/>
-    <Navbar_new/>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/email" element={<Email/>}></Route>
