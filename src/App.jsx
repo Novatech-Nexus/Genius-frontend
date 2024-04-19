@@ -11,6 +11,7 @@ import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
+
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 
 import Navbar_new from '../src/components/navbar_new';
@@ -18,6 +19,9 @@ import Navbar_new from '../src/components/navbar_new';
 /** Import middleware */
 import { AuthorizeUser } from '../middleware/auth';
 
+import HomeMenu from './pages/menu-management/HomeMenu';
+import ItemMenu from './pages/menu-management/ItemMenu';
+import TableMenu from './pages/menu-management/tableMenu';
 
 function App() {
   return (
@@ -43,6 +47,12 @@ function App() {
 
         {/* Table Reservation */}
         <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+
+        {/* Menu Management */}
+        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
+        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
+        <Route path='/tableMenu' element={<TableMenu/>}></Route>
+        
 
       </Routes>
       
