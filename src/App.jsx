@@ -13,6 +13,14 @@ import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
+import Contact from './pages/customer-care-management/Contact';
+import Feedback from './pages/customer-care-management/Feedback';
+import Feedback_form from './pages/customer-care-management/Feedback_form';
+import Feedback_history from './pages/customer-care-management/Feedback_history';
+import Feedback_approval from './pages/customer-care-management/Feedback_approval';
+import Customer_care_manager from './pages/customer-care-management/Customer_care_manager';
+import Feedback_of_services from './pages/customer-care-management/Feedback_of_services';
+import FeedbackDataAnalysis from './pages/customer-care-management/FeedbackDataAnalysis';
 
 
 /** Import middleware */
@@ -45,6 +53,16 @@ function App() {
 
         {/* Table Reservation */}
         <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+
+        {/* Customer-care */}
+        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/feedback" element={<Feedback/>}></Route>
+        <Route path='/feedback/addFeedback' element={<Feedback_form/>}></Route>
+        <Route path='/feedback/getFeedback' element={<Feedback_history/>}></Route>
+        <Route path='/manager' element={<Customer_care_manager/>}></Route>
+        <Route path='/manager/feedbackApproval' element={<Feedback_approval/>}></Route>
+        <Route path='/manager/servicesFeedback' element={<Feedback_of_services/>}></Route>
+        <Route path='/manager/feedbackAnalysis' element={<FeedbackDataAnalysis/>}></Route>
 
         {/* Menu Management */}
         <Route path="/homeMenu" element={<HomeMenu/>}></Route>
