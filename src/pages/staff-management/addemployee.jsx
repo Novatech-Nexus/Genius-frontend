@@ -1,41 +1,41 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Header from '../../components/inventory/header';
 import Sidebar from '../../components/staff-manager/Sidebar';
-import { useNavigate } from "react-router";
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddEmployee() {
-    const navigate = useNavigate();
-    const [inputs, setInputs] = useState({
-        employeeID: "",
-        firstname: "",
-        lastname: "",
-        gender: "",
-        nic: "",
-        email: "",
-        jobtype: "",
-        mobile: "",
-        address: "",
-        city: "",
-    });
+  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({
+    employeeID: "",
+    firstname: "",
+    lastname: "",
+    gender: "",
+    nic: "",
+    email: "",
+    jobtype: "",
+    mobile: "",
+    address: "",
+    city: "",
+  });
 
-    const handleChange = (e) => {
-        setInputs((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }));
-    };
+  const handleChange = (e) => {
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(inputs);
-        sendRequest().then(() => history('/sm_dashboard'));
-    };
-
-    const sendRequest = async () => {
-        const response = await axios.post("http://localhost:8080/employee/add", inputs);
-        return response.data;
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8080/employee/add", inputs);
+      console.log(response.data);
+      navigate('/staffdetails');
+    } catch (error) {
+      console.error("Error adding employee:", error.message);
+    }
+  };
 
     return (
         <div>
