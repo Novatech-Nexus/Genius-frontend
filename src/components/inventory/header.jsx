@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import logo from '../../assets/inventory-images/geniuslogo.png'
 import { NavLink } from "react-router-dom";
 
