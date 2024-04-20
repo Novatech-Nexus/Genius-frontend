@@ -26,6 +26,8 @@ export default function Navbar() {
 
             <li><Link to='/homemenu'>Menu</Link></li>  
 
+            <li><Link to='/catMain'>Catering</Link></li>
+  
         </nav>)}
     </div>
   );
