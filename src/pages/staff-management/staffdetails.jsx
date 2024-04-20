@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../../components/inventory/header';
 import Sidebar from '../../components/staff-manager/Sidebar';
 import { Modal } from 'react-bootstrap';
+import '../../styles/staff/staffmanager.css'
 
 function StaffDetails() {
   const [users, setUsers] = useState([]);
@@ -19,18 +20,34 @@ function StaffDetails() {
   const [updateaddress, setUpdateAddress] = useState('');
   const [updatecity, setUpdateCity] = useState('');
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/employee");
-        setUsers(response.data);
-      } catch (error) {
-        console.error("Error fetching items:", error.message);
-      }
-    };
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-    fetchItems();
-  }, []);
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    const filtered = users.filter((user) =>
+      //  user.employeeId.toLowerCase().includes(term.toLowerCase()) ||
+        user.firstname.toLowerCase().includes(term.toLowerCase())
+    );
+   
+    setFilteredUsers(filtered);
+    };
+
+
+
+useEffect(() => {
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/employee');
+      setUsers(response.data);
+      setFilteredUsers(response.data); // Update filteredUsers initially with all users
+    } catch (error) {
+      console.error('Error fetching items:', error.message);
+    }
+  };
+
+  fetchItems();
+}, []);
 
   const loadModel = async (id) => {
     try {
@@ -68,6 +85,18 @@ function StaffDetails() {
       };
   
       await axios.put(`http://localhost:8080/employee/update/${selectedID}`, updatedUser);
+      
+      Swal.fire({
+        
+        position: "center",
+        icon: "success",
+        title: "Successfully updated",
+        showConfirmButton: false,
+        timer: 1500
+        
+      });
+     
+
       // After updating, fetch the updated list of users
       const response = await axios.get("http://localhost:8080/employee");
       setUsers(response.data);
@@ -81,6 +110,13 @@ function StaffDetails() {
   const deleteHandler = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/employee/delete/${id}`);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successfully deleted",
+        showConfirmButton: false,
+        timer: 1500
+      });
       // Remove the deleted user from the users state
       setUsers(users.filter(user => user._id !== id));
     } catch (error) {
@@ -90,11 +126,36 @@ function StaffDetails() {
   
 
   return (
+    <div className='background-staff-image'>
     <div>
       <Header />
       <Sidebar />
-      {users.map(user => (
+      <div style={{marginLeft:"600px",marginTop:"20px"}}>
+      <div className="Msearch-container" style={{position:"center"}}>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    style={{
+                       
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'calc(100% - 10px) center', // Adjusted position
+                        backgroundSize: '30px', // Adjusted size
+                        paddingLeft: '40px',
+                        height: '50px',
+                        border: '1px solid #ccc', // Add border
+                        borderRadius: '40px',// Add border radius
+                    }}
+                />
+            </div>
+  </div>
+  </div>
+<div className="row row-cols-2">
+  {filteredUsers.map(user => (
+     <div className="col" key={user._id}>
         <EmployeeDetails key={user._id} user={user} loadModel={loadModel} deleteHandler={deleteHandler} />
+        </div>
       ))}
       <Modal show={modelState} onHide={() => setModelState(false)}>
         <Modal.Header closeButton>
@@ -160,6 +221,7 @@ function StaffDetails() {
 
       </Modal>
     </div>
+    </div>
   );
 }
 
@@ -167,11 +229,13 @@ function EmployeeDetails({ user, loadModel, deleteHandler }) {
   const { employeeID, firstname, lastname, gender, nic, email, jobtype, mobile, address, city } = user;
 
   return (
-    <div className="card mb-3">
-      <div className="card-header">
-        <h5 className="card-title">Employee Details - {firstname} {lastname}</h5>
+    <div className="col-md-5 mb-3" style={{marginLeft:"200px",marginTop:"30px"}}>
+      <div className="card border"style={{ backgroundColor: "#f0f0f0" }}>
+      <div className="card-header" style={{ backgroundColor: "lightblue" }}>
+        <h5 className="card-title">{firstname} {lastname}</h5>
       </div>
       <div className="card-body">
+        
         <p className="card-text"><strong>ID:</strong> {employeeID}</p>
         <p className="card-text"><strong>First Name:</strong> {firstname}</p>
         <p className="card-text"><strong>Last Name:</strong> {lastname}</p>
@@ -183,10 +247,14 @@ function EmployeeDetails({ user, loadModel, deleteHandler }) {
         <p className="card-text"><strong>Address:</strong> {address}</p>
         <p className="card-text"><strong>City:</strong> {city}</p>
       </div>
-      <div className="card-footer">
-        <button className="btn btn-danger" onClick={() => loadModel(user._id)}>Update</button>
+      <div className="card-footer d-flex justify-content-between"style={{ backgroundColor: "lightblue" }}>
+      <div className="card-footer d-flex justify-content-between">
+      <button className="btn btn-success" onClick={() => loadModel(user._id)}>Update</button>
+        <div style={{ marginRight: '60px' }}></div>
         <button className="btn btn-danger" onClick={() => deleteHandler(user._id)}>Delete</button>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

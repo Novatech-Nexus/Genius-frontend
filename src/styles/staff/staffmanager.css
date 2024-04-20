@@ -1,0 +1,27 @@
+.background-staff-image{
+  background-image: url('../../assets/staff-images/staffdetailsimg.jpg'); 
+    background-size:cover;
+    background-position: center;
+    align-items: center;
+    /* display: flex; */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+.background-add-staff{
+  background-image: url('../../assets/staff-images/staffaddimg.jpg'); 
+  background-size:cover;
+  background-position: center;
+  align-items: center;
+  /* display: flex; */
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.background-add-staff1 {
+  background-image: url('../../assets/staff-images/staffimg1.jpg');
+  background-size: cover; /* Cover the entire background */
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  
+   
+}

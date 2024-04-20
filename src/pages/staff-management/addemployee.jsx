@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../../components/inventory/header';
 import Sidebar from '../../components/staff-manager/Sidebar';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/staff/staffmanager.css'
 
 function AddEmployee() {
   const navigate = useNavigate();
@@ -30,21 +31,32 @@ function AddEmployee() {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:8080/employee/add", inputs);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successfully added employee",
+        showConfirmButton: false,
+        timer: 1500
+      });
       console.log(response.data);
       navigate('/staffdetails');
     } catch (error) {
       console.error("Error adding employee:", error.message);
+      
     }
   };
 
     return (
-        <div>
+        <div className="background-add-staff1">
             <Header />
             <Sidebar/>
-            <div className="container mt-5">
-                <h2 className="text-center mb-4 form-title">Update Employee Information</h2>
+            <div className="container mt-5" style={{marginBottom:"50px"}}>
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <div className="container form-container" style={{ backgroundColor: "white", paddingTop: "30px",paddingRight:"1px",paddingBottom:"50px", borderRadius: "10px",marginTop:"30px",marginBottom:"100px" }}>
+                <h2 className="text-center mb-4 form-title">Add Employee Information</h2>
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className="col-md-9">
                         <form onSubmit={handleSubmit} action="#" method="POST" id="employeeForm">
                             <div className="mb-3">
                                 <label htmlFor="employeeID" className="form-label">Employee ID</label>
@@ -92,12 +104,15 @@ function AddEmployee() {
                                 <input type="text" id="city" name="city" onChange={handleChange} value={inputs.city} className="form-control" required />
                             </div>
                             <div className="d-grid gap-2">
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn btn-primary">Add</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
+        </div>
         </div>
     );
 }
