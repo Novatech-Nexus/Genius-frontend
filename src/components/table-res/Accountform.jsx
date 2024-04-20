@@ -62,20 +62,31 @@ const AccountForm = () => {
         axios.post(`http://localhost:5050/Reservation/add`, newReservation)
             .then(() => {
                 alert("Reservation added");
-                // Reset form fields after successful submission
-                setUserName("");
-                setContactNo("");
-                setDate("");
-                setTime("");
-                setCategory("");
-                setTableNumber("");
-                setNoOfGuest("");
-                setError("");
+                resetForm();
             })
-            .catch((err) => {
-                alert(err);
-            });
-    };
+
+                
+                // Reset form fields after successful submission
+                .catch((err) => {
+                    if (err.response && err.response.data && err.response.data.message) {
+                        alert(err.response.data.message); // Display backend error message
+                    } else {
+                        alert("Reservation failed. Please try again."); // Generic error message
+                    }
+                });
+        };
+    
+        const resetForm = () => {
+            setUserName('');
+            setContactNo('');
+            setDate('');
+            setTime('');
+            setCategory('');
+            setTableNumber('');
+            setNoOfGuest('');
+            setError(null);
+        };
+    
 
     return (
         <Grid
