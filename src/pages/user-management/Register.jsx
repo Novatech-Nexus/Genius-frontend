@@ -28,8 +28,8 @@ export default function Register() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      values = await Object.assign(values, { profile: file || '' });
-      let regsterPromise =registerUser(values);
+      let value = await Object.assign(values, { profile: file || '' });
+      let regsterPromise =registerUser(value);
 
       toast.promise(regsterPromise, {
         loading: "Creating account...",

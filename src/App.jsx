@@ -24,12 +24,18 @@ import HomeMenu from './pages/menu-management/HomeMenu';
 import ItemMenu from './pages/menu-management/ItemMenu';
 import TableMenu from './pages/menu-management/tableMenu';
 
+// import navbars 
+import UMnavbar from './components/user-management/UMnavbar';
+
+
 function App() {
   return (
     <>
 
     <main>
     <Navbar/>
+    <UMnavbar/>
+    
       <Routes>
         <Route path="/" element={<AuthorizeUser><Home/></AuthorizeUser>}></Route>
         <Route path="/email" element={<Email/>}></Route>
@@ -38,7 +44,7 @@ function App() {
         <Route path="/reset" element={<AuthorizeUser><Reset/></AuthorizeUser>}></Route>
         <Route path="/recovery" element={<AuthorizeUser><Recovery/></AuthorizeUser>}></Route>
         <Route path="*" element={<PageNotFound/>}></Route>
-        <Route path="/alluser" element={<AuthorizeUser><AllUser/></AuthorizeUser>}></Route>
+        <Route path="/alluser" element={<AllUser/>}></Route>
 
         
         <Route path="/dashboard" element={<AuthorizeUser><Dashboard/></AuthorizeUser>}></Route>

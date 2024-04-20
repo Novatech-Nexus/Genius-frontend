@@ -59,7 +59,7 @@ export default function Profile() {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     localStorage.removeItem('email');
-    navigate('/')
+    navigate('/email')
   }
 
   //user delete handler function

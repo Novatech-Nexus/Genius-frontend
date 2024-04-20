@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
 
-const DOMAIN ="http://localhost:8080"; // Access REACT_APP_SERVER_DOMAIN from .env file
+const DOMAIN ="http://localhost:5050"; // Access REACT_APP_SERVER_DOMAIN from .env file
 axios.defaults.baseURL = DOMAIN;
 
 /** Make API requests */
