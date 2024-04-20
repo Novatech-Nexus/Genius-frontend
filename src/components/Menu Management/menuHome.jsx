@@ -28,7 +28,7 @@ function MenHome() {
         <div className="MMtext2">
           <h1>Orders</h1>
           <p>Viewing online orders and catering orders on a single platform streamlines operational efficiency, enabling businesses to plan effectively and provide exceptional customer service, enhancing productivity and satisfaction.</p>
-          <Link to="/orders" className="MMbtn MMbtn-danger">Orders</Link>
+          <Link to="/orderMenu" className="MMbtn MMbtn-danger">Orders</Link>
         </div>
 
         <div className="MMtext3">

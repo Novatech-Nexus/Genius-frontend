@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/menu/menuTable.css";
-import { NavLink } from 'react-router-dom'; // Import NavLink instead of Link
+import { Modal } from "react-bootstrap";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import Swal from 'sweetalert2';
 import searchMenu from '../../assets/MenuM/searchMenu.png';
-import { Modal } from "react-bootstrap";
-
+import logoMe from '../../assets/MenuM/logoMe.png';
 
 const MenTable = ({ items }) => {
 
@@ -23,6 +24,7 @@ const MenTable = ({ items }) => {
     const [updateDescription, setupdateDescription] = useState("");
 
 
+    //data fetching 
     useEffect(() => {
         const fetchItems = async () => {
             try {
@@ -37,39 +39,94 @@ const MenTable = ({ items }) => {
         fetchItems();
     }, []);
 
+
+    //search
     const handleSearch = (term) => {
         setSearchTerm(term);
         const filtered = allItems.filter((item) =>
-          //  item.itemId.toLowerCase().includes(term.toLowerCase()) ||
             item.itemName.toLowerCase().includes(term.toLowerCase())
         );
         setFilteredItems(filtered);
     };
 
-    const handleClick = async (id) => {
-        console.log("Delete button clicked for item ID:", id); // Add this log statement
-        try {
-            const response = await axios.delete(`http://localhost:5050/item/delete/${id}`);
-
-            if (response.status === 200) {
-                // Update the state after successful deletion
-                setAllItems(allItems.filter(item => item._id !== id));
-                setFilteredItems(filteredItems.filter(item => item._id !== id));
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
+    // Function to handle deletion with confirmation
+    const handleDelete = async (id) => {
+        // Trigger SweetAlert2 confirmation dialog
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel",
+            reverseButtons: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await axios.delete(`http://localhost:5050/item/delete/${id}`);
+                    if (response.status === 200) {
+                        // Update the state after successful deletion
+                        setAllItems(allItems.filter(item => item._id !== id));
+                        setFilteredItems(filteredItems.filter(item => item._id !== id));
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                } catch (error) {
+                    Swal.fire({
+                        title: "Error!",
+                        text: `Error deleting item: ${error.message}`,
+                        icon: "error"
+                    });
+                }
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                // Do nothing if canceled
             }
-        } catch (error) {
-            Swal.fire({
-                title: "Error!",
-                text: `Error deleting item: ${error.message}`,
-                icon: "error"
-            });
-        }
+        });
     };
 
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor("black");
+
+        const imgData = logoMe;
+        const imgWidth = 30;
+        const imgHeight = 30;
+        const imgX = (doc.internal.pageSize.getWidth() - imgWidth) / 2;
+        const imgY = 20; // Assuming the image is at the top of the page
+        doc.addImage(imgData, 'PNG', imgX, imgY, imgWidth, imgHeight);
+
+        const text = "Restaurant Menus";
+        const textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize();
+        const textX = (doc.internal.pageSize.getWidth() - textWidth) / 2;
+
+        const textHeight = doc.internal.getLineHeight();
+        const totalHeight = imgHeight + textHeight; // Total height of image and text
+        const textY = imgY + imgHeight + (totalHeight / 2); // Center vertically
+
+        doc.text(text, textX, textY);
+
+        const tableData = filteredItems.map(item => [item.itemId, item.itemName, item.category, item.price, item.description]);
+
+        doc.setFontSize(14);
+        doc.autoTable({
+            head: [['Item Code', 'Item Name', 'Category', 'Price(Rs.)', 'Description']],
+            body: tableData,
+            startY: textY + 10
+        });
+
+        // Save PDF
+        doc.save('table-pdf');
+    }
+
+
+
+    //get method
     const loadModel = async (id) => {
         try {
             const response = await axios.get(`http://localhost:5050/item/get/${id}`);
@@ -87,7 +144,7 @@ const MenTable = ({ items }) => {
         }
     };
 
-
+    //Update function
     const updateItem = async (selectedItemId) => {
         try {
             const response = await axios.put(`http://localhost:5050/item/update/${selectedItemId}`, {
@@ -98,7 +155,7 @@ const MenTable = ({ items }) => {
                 description: updateDescription
             });
             console.log("Item updated successfully:", response.data);
-    
+
             // Update the state with the new data
             const updatedItems = allItems.map(item => {
                 if (item._id === selectedItemId) {
@@ -114,16 +171,16 @@ const MenTable = ({ items }) => {
                     return item;
                 }
             });
-    
+
             setAllItems(updatedItems);
             setFilteredItems(updatedItems); // Update filteredItems as well if needed
-            setModelState(false); 
+            setModelState(false);
         } catch (error) {
             console.error("Error updating item:", error.message);
             // Handle error as needed
         }
     }
-    
+
 
 
     return (
@@ -156,7 +213,7 @@ const MenTable = ({ items }) => {
                             <th style={{ textAlign: "center" }}>Item Code</th>
                             <th style={{ textAlign: "center" }}>Item Name</th>
                             <th style={{ textAlign: "center" }}>Category</th>
-                            <th style={{ textAlign: "center" }}>Price</th>
+                            <th style={{ textAlign: "center" }}>Price(Rs.)</th>
                             <th style={{ textAlign: "center" }}>Description</th>
                             <th style={{ textAlign: "center" }}>Status</th>
                         </tr>
@@ -167,18 +224,22 @@ const MenTable = ({ items }) => {
                                 <td>{item.itemId}</td>
                                 <td>{item.itemName}</td>
                                 <td>{item.category}</td>
-                                <td>{item.price}</td>
+                                <td>{item.price.toFixed(2)}</td>
+
                                 <td>{item.description}</td>
                                 <td className="Mtd-status">
                                     <div className="Mbutton-container">
                                         <button className="Mbtn2 update-btn" onClick={() => loadModel(item._id)}>Update</button>
-                                        <button className="Mbtn1 delete-btn" onClick={() => handleClick(item._id)}>Delete</button>
+                                        <button className="Mbtn1 delete-btn" onClick={() => handleDelete(item._id)}>Delete</button>
                                     </div>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+                <div>
+                    <button className="Mbtn3 delete-btn" onClick={downloadPDF}>Generate Report</button>
+                </div>
             </div>
 
             <Modal show={modelState} onHide={() => setModelState(false)}>

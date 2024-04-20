@@ -22,7 +22,7 @@ function Navbar() {
                             <NavLink className="nav-link" activeClassName="active" to="/tableMenu">Items</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/orders">Orders</NavLink>
+                            <NavLink className="nav-link" activeClassName="active" to="/orderMenu">Orders</NavLink>
                         </li>
                     </ul>
                 </div>

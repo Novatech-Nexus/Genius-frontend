@@ -49,16 +49,12 @@ function Itemme() {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setImage(file);
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreview(reader.result);
-            };
-            reader.readAsDataURL(file);
+            setImage(file.name); // Storing only the file name
         } else {
             console.error("No file selected.");
         }
     };
+    
 
     const sendData = (e) => {
         e.preventDefault();
@@ -150,13 +146,14 @@ function Itemme() {
                                 onChange={(e) => { setItemDescription(e.target.value); }}
                             />
                         </div>
-                        <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
+                        {/* <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
                             <label htmlFor="ItemImage" className="MMMform-label">Add Image</label>
                             <input type="file" accept="image/*" onChange={handleImageChange} />
                             {imagePreview && (
                                 <img src={imagePreview} alt="Item Preview" style={{ marginTop: "10px", maxWidth: "300px" }} />
                             )}
-                        </div>
+                        </div> */}
+
                         <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
                             <button type="submit" className="MMMbtn btn-danger">Upload</button>
                         </div>
