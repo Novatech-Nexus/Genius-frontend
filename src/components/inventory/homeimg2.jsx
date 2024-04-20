@@ -6,7 +6,7 @@ function HomeImg2(){
         <div style={{ display: "flex", alignItems: "center", justifyContent:"center",flexWrap:"wrap" }}>
 
             <div style={{ marginLeft: "200px" ,marginTop:"75px"}}>
-                <button type="button" class="btn btn-danger">+ Add supplier</button>
+                <button type="button" class="btn btn-danger ">Add supplier</button>
             </div>
 
             <div style={{ marginLeft: "150px",marginTop:"10px" }}>
