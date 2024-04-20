@@ -8,7 +8,7 @@ function AddItempage() {
     return (
       <div>
         <Header/>
-        <Navbar/>
+        {/* <Navbar/> */}
         <AddItem/>  
       </div>
     );

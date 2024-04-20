@@ -1,0 +1,109 @@
+.MMhome-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MMprofile-container {
+  margin-right: 30px;
+}
+
+.MMprofile-container img {
+  width: 75px;
+  height: 75px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.MMtext-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.MMtext-section {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.MMtext-section .MMtext1,
+.MMtext-section .MMtext2,
+.MMtext-section .MMtext3 {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.MMtext-section h1 {
+  font-family: sans-serif; 
+  text-align: center;
+}
+
+.MMtext-section p {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Noto Sans', sans-serif;
+  margin-top: 20px;
+}
+
+.MMbtn {
+  display: block;
+  margin: 0 auto;
+}
+
+.MMbtn-danger {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  width: 35%;
+  transition: background-color 0.3s ease; /* Added transition for smooth effect */
+}
+
+.MMbtn-danger:hover {
+  background-color: darkred; /* Change background color on hover */
+}
+
+
+.MMitem-container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #e7e7e7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MMform-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.MMform {
+  flex: 1;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  margin-bottom: 15px;
+}
+
+.MMform-title {
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 7px;
+  text-align: center;
+}

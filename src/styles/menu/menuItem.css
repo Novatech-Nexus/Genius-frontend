@@ -1,0 +1,51 @@
+.MMMbody {
+    margin: 0;
+    padding: 0;
+}
+
+.MMMform {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 550px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 15px;
+}
+
+.MMMform-label {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+.MMMform-control {
+    border: 1px solid black;
+    width: 500px;
+    height: 40px;
+    border-radius: 5px; 
+}
+
+.MMMform-select {
+    border: 1px solid black;
+    width: 500px;
+    height: 40px;
+    border-radius: 5px; 
+}
+
+.MMMbtn {
+    height: 40px; 
+    background-color: red; 
+    border: none; 
+    color: white; 
+    padding: 8px 30px; 
+    cursor: pointer;
+    border-radius: 10px; 
+    transition: background-color 0.3s; 
+    display: inline-block; 
+    text-decoration: none; 
+  }
+  
+  .MMMbtn:hover {
+    background-color: darkred;
+  
+  }
