@@ -18,6 +18,7 @@ export default function Navbar() {
             <li><Link to='/recovery'>Recovery</Link></li>
             <li><Link to='/dashboard'>Iventory</Link></li>  
             <li><Link to='/reservation'>Table Reservation</Link></li>
+            <li><Link to='/catMain'>Catering</Link></li>
   
         </nav>)}
     </div>
