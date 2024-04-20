@@ -99,7 +99,7 @@ export default function Register() {
 
                 <input
                   {...formik.getFieldProps("password")}
-                  type="text"
+                  type="password"
                   name="password"
                   className={styles.textbox}
                   placeholder="Password"
@@ -107,7 +107,7 @@ export default function Register() {
 
                 <input
                   {...formik.getFieldProps("confirmPassword")}
-                  type="text"
+                  type="password"
                   name="confirmPassword"
                   className={styles.textbox}
                   placeholder="Confirm password"
