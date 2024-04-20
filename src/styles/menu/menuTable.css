@@ -1,4 +1,4 @@
-.Mmen-table-background {
+/* .men-table-background {
     background-image: url('../../assets/MenuM/item3.jpg'); 
     background-size: cover;
     background-position: center;
@@ -77,18 +77,18 @@
     right: 10px;
     transform: translateY(-50%);
     color: #aaa;
-}
+} */
 
 /* button */
-.Mbutton-container {
+/* .button-container {
     display: flex; 
     justify-content: center; 
     gap: 10px; 
-}
-
-.Mbutton-container {
-    display: flex;
-}
+  }
+  .button-container {
+    display: flex; */
+    /* justify-content: space-between;  */
+/* }
 
 .Mbtn1 {
     background-color: red; 
@@ -121,3 +121,10 @@
 .Mbtn2:hover {
     background-color: #997404; 
 }
+
+
+
+
+
+  
+ */

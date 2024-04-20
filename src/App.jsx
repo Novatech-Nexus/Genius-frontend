@@ -51,6 +51,14 @@ import Weddings from './pages/catering-management/Weedings';
 import UpdateCat from './pages/catering-management/UpdateCat';
 import CelebOcc from './pages/catering-management/CellbOcc';
 
+import Cart from './components/order/cart.jsx';
+import CreatePost from './components/order/CreatePost.jsx';
+import Posts from './pages/order-management/Post.jsx';
+import DummyPaymentGateway from './components/order/Payment.jsx';
+//import OrderReport from './components/order/'
+import OrderHome from './pages/order-management/OrderHome.jsx';
+
+
 function App() {
   return (
     <>
@@ -91,6 +99,17 @@ function App() {
         <Route path="/homeMenu" element={<AuthorizeUser><HomeMenu/></AuthorizeUser>}></Route>
         <Route path="/itemMenu" element={<AuthorizeUser><ItemMenu/></AuthorizeUser>}></Route>
         <Route path='/tableMenu' element={<AuthorizeUser><TableMenu/></AuthorizeUser>}></Route>
+        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
+        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
+        <Route path='/tableMenu' element={<TableMenu/>}></Route>
+
+        {/* Order Management */}
+        <Route path='/orderMenu' element={<OrderHome/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/orderMenu/create' element={<CreatePost/>}/>  
+        <Route path='/orderMenu/create/posts' element={<Posts/>}/>  
+        <Route path='/orderMenu/create/posts/payment' element={<DummyPaymentGateway/>}/>  
+        {/* <Route path='/reports' element={<OrderReport/>} />  */}
         
 
 
