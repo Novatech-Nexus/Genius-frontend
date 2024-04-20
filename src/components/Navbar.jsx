@@ -21,6 +21,8 @@ export default function Navbar() {
             <li><Link to='/reservation'>Table Reservation</Link></li>
 
             <li><Link to='/homemenu'>Menu</Link></li>  
+            
+            <li><Link to='/orderMenu'>Order</Link></li>
 
             
         </nav>)}

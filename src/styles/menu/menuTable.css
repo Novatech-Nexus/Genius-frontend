@@ -1,4 +1,4 @@
-.men-table-background {
+/* .men-table-background {
     background-image: url('../../assets/MenuM/item3.jpg'); 
     background-size: cover;
     background-position: center;
@@ -80,18 +80,18 @@
     right: 10px;
     transform: translateY(-50%);
     color: #aaa;
-}
+} */
 
 /* button */
-.button-container {
+/* .button-container {
     display: flex; 
     justify-content: center; 
     gap: 10px; 
   }
   .button-container {
-    display: flex;
+    display: flex; */
     /* justify-content: space-between;  */
-}
+/* }
 
 .btn1 {
     background-color: red; 
@@ -130,4 +130,4 @@
 
 
   
-
+ */
