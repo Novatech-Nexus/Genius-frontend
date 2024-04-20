@@ -20,11 +20,16 @@ export default function Navbar() {
             <li><Link to='/dashboard'>Iventory</Link></li>  
             <li><Link to='/reservation'>Table Reservation</Link></li>
 
+            <li><Link to='/contact'>Contact</Link></li>
+            <li><Link to='/feedback'>Feedback</Link></li>
+            <li><Link to='/manager'>Customer care manager</Link></li>
+
             <li><Link to='/homemenu'>Menu</Link></li>  
             
             <li><Link to='/orderMenu'>Order</Link></li>
 
-            
+            <li><Link to='/catMain'>Catering</Link></li>
+  
         </nav>)}
     </div>
   );
