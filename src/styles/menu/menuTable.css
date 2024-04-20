@@ -1,0 +1,133 @@
+.men-table-background {
+    background-image: url('../../assets/MenuM/item3.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+  }
+  
+
+  .topic-text {
+    color: red; 
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 25px;
+    font-family: 'Poppins', sans-serif; 
+}
+
+
+.men-table-container {
+    display: grid;
+    place-items: center;
+   
+}
+
+.men-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.men-table th, .men-table td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 8px;
+}
+
+.men-table th, .men-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+    background-color: #ffffff; 
+}
+
+.men-table tr {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+}
+
+@media (max-width: 600px) {
+    .men-table th, .men-table td {
+        padding: 4px; 
+    }
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    padding: 10px 40px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    width: 350px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-container i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+
+.button-containerM {
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+  }
+  .button-containerM {
+    display: flex;
+    
+}
+
+.btn1 {
+    background-color: red; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px; 
+    transition: background-color 0.3s; 
+    display: flex;
+    align-items: center;
+}
+
+.btn1:hover {
+    background-color: darkred; 
+}
+
+.btn2 {
+    background-color: #e6ae06; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px; 
+    transition: background-color 0.3s; 
+    display: flex;
+    align-items: center;
+}
+
+.btn2:hover {
+    background-color: #997404; 
+}
+
+
+
+
+
+  
+
