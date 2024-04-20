@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 // import { getEmail } from "../helper/helper";
 
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "http://localhost:5050";
 
 //custom hook
 export default function useFetch(query){
