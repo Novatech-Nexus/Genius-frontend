@@ -1,0 +1,68 @@
+.payment-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .payment-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .payment-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .payment-form-label {
+    font-weight: bold;
+  }
+  
+  .payment-form-input {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .payment-form-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .expiry-input {
+    width: calc(50% - 10px);
+  }
+  
+  .cvv-input {
+    width: calc(62% - 10px);
+  }
+  
+  .pay-btn {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .pay-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .payment-success {
+    color: green;
+    margin-top: 15px;
+  }
+  
+  .payment-failure {
+    color: red;
+    margin-top: 15px;
+  }

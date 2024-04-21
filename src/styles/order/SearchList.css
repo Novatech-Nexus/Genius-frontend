@@ -1,0 +1,22 @@
+.order-search-container {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .order-search-container input[type="text"] {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .order-search-container .row {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .order-search-container .col-md-4 {
+    margin-bottom: 20px;
+  }
+
+  
