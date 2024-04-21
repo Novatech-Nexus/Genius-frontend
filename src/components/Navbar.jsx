@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 // import logo from '../assets/logo.jpg';
 import '../components/Navbar.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '../components/Footer.jsx';
 
 export default function Navbar() {
 
@@ -29,6 +30,7 @@ export default function Navbar() {
             <li><Link to='/catMain'>Catering</Link></li>
   
         </nav>)}
+        <Footer/>
     </div>
   );
 }
