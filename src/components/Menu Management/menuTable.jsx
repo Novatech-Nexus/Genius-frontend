@@ -25,19 +25,24 @@ const MenTable = ({ items }) => {
 
 
     //data fetching 
-    useEffect(() => {
-        const fetchItems = async () => {
-            try {
-                const response = await axios.get("http://localhost:5050/item");
-                setAllItems(response.data);
-                setFilteredItems(response.data); // Initialize filteredItems with all items
-            } catch (error) {
-                console.error("Error fetching items:", error.message);
-            }
-        };
+        useEffect(() => {
+            const fetchItems = async () => {
+                try {
+                    const response = await axios.get("http://localhost:5050/item");
+                    const formattedItems = response.data.map(item => ({
+                        ...item,
+                        price: parseFloat(item.price).toFixed(2) // Convert price to float and set it to fixed 2 decimal places
+                    }));
+                    setAllItems(formattedItems);
+                    setFilteredItems(formattedItems); // Initialize filteredItems with all items
+                } catch (error) {
+                    console.error("Error fetching items:", error.message);
+                }
+            };
 
-        fetchItems();
-    }, []);
+            fetchItems();
+        }, []);
+
 
 
     //search
@@ -155,6 +160,13 @@ const MenTable = ({ items }) => {
                 description: updateDescription
             });
             console.log("Item updated successfully:", response.data);
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Item Updated",
+                showConfirmButton: false,
+                timer: 1500
+              });
 
             // Update the state with the new data
             const updatedItems = allItems.map(item => {
@@ -224,7 +236,7 @@ const MenTable = ({ items }) => {
                                 <td>{item.itemId}</td>
                                 <td>{item.itemName}</td>
                                 <td>{item.category}</td>
-                                <td>{item.price.toFixed(2)}</td>
+                                <td>{item.price}</td>
 
                                 <td>{item.description}</td>
                                 <td className="Mtd-status">
