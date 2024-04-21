@@ -6,9 +6,12 @@ import { generateOTP } from '../../helper/helper';
 import { verifyOTP } from '../../helper/helper';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import UMnavbar from '../../components/user-management/um-navbar';
 
 import styles from '../../styles/Username.module.css'
 import { useState } from 'react';
+
+import Footer from '../../components/Footer';
 
 export default function Recovery() {
 
@@ -56,7 +59,9 @@ export default function Recovery() {
   }
 
   return (
-    <div className='container mx-auto'>
+    <div>
+      <UMnavbar />
+      <div className='container mx-auto'>
       <div className='d-flex h-screen justify-content-center align-items-center'>
         <div className={styles.glassbox}>
 
@@ -81,5 +86,8 @@ export default function Recovery() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </div>
+    
   )
 }

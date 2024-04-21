@@ -7,6 +7,8 @@ import { useFormik } from "formik";
 import convertToBase64 from "../../helper/convert";
 import { registerValidate } from "../../helper/validate";
 import { registerUser } from "../../helper/helper";
+import UMnavbar from "../../components/user-management/um-navbar";
+import Footer from "../../components/Footer";
 
 export default function Register() {
 
@@ -47,7 +49,9 @@ export default function Register() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div>
+      <UMnavbar />
+      <div className="container mx-auto">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="d-flex h-screen justify-content-center align-items-center">
@@ -131,5 +135,8 @@ export default function Register() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </div>
+    
   );
 }

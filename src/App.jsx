@@ -21,7 +21,7 @@ import Feedback_form from './pages/customer-care-management/Feedback_form';
 import Feedback_history from './pages/customer-care-management/Feedback_history';
 import Feedback_approval from './pages/customer-care-management/Feedback_approval';
 import Customer_care_manager from './pages/customer-care-management/Customer_care_manager';
-import Feedback_of_services from './pages/customer-care-management/Feedback_of_services';
+// import Feedback_of_services from './pages/customer-care-management/Feedback_of_services';
 import FeedbackDataAnalysis from './pages/customer-care-management/FeedbackDataAnalysis';
 
 
@@ -31,9 +31,6 @@ import { AuthorizeUser } from '../middleware/auth';
 import HomeMenu from './pages/menu-management/HomeMenu';
 import ItemMenu from './pages/menu-management/ItemMenu';
 import TableMenu from './pages/menu-management/tableMenu';
-
-// import navbars 
-import UMnavbar from './components/user-management/UMnavbar';
 
 
 import CatMain from './pages/catering-management/CatMain'; 
@@ -57,10 +54,9 @@ function App() {
 
     <main>
     <Navbar/>
-    <UMnavbar/>
     
       <Routes>
-        <Route path="/" element={<AuthorizeUser><Home/></AuthorizeUser>}></Route>
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
@@ -78,14 +74,14 @@ function App() {
         <Route path="/reservation" element = {<AuthorizeUser><TableReservationHome/></AuthorizeUser>} ></Route>
 
         {/* Customer-care */}
-        <Route path="/contact" element={<Contact/>}></Route>
-        <Route path="/feedback" element={<Feedback/>}></Route>
-        <Route path='/feedback/addFeedback' element={<Feedback_form/>}></Route>
-        <Route path='/feedback/getFeedback' element={<Feedback_history/>}></Route>
-        <Route path='/manager' element={<Customer_care_manager/>}></Route>
-        <Route path='/manager/feedbackApproval' element={<Feedback_approval/>}></Route>
-        <Route path='/manager/servicesFeedback' element={<Feedback_of_services/>}></Route>
-        <Route path='/manager/feedbackAnalysis' element={<FeedbackDataAnalysis/>}></Route>
+        <Route path="/contact" element={<AuthorizeUser><Contact/></AuthorizeUser>}></Route>
+        <Route path="/feedback" element={<AuthorizeUser><Feedback/></AuthorizeUser>}></Route>
+        <Route path='/feedback/addFeedback' element={<AuthorizeUser><Feedback_form/></AuthorizeUser>}></Route>
+        <Route path='/feedback/getFeedback' element={<AuthorizeUser><Feedback_history/></AuthorizeUser>}></Route>
+        <Route path='/manager' element={<AuthorizeUser><Customer_care_manager/></AuthorizeUser>}></Route>
+        <Route path='/manager/feedbackApproval' element={<AuthorizeUser><Feedback_approval/></AuthorizeUser>}></Route>
+        <Route path='/manager/servicesFeedback' element={<AuthorizeUser></AuthorizeUser>}></Route>
+        <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis/></AuthorizeUser>}></Route>
 
         {/* Menu Management */}
         <Route path="/homeMenu" element={<AuthorizeUser><HomeMenu/></AuthorizeUser>}></Route>
@@ -95,23 +91,23 @@ function App() {
 
 
         {/* Catering Management */}
-        <Route path="/catMain" element={<CatMain/>}></Route>
-        <Route path="/ordercat" element={<OrderCat/>}></Route>
-        <Route path="/ordercus" element={<OrderCus/>}></Route>
-        <Route path="/orderplace" element={<OrderPlace/>}></Route>
-        <Route path="/celOccMenu" element={<CelOccMenu/>}></Route>
-        <Route path="/kidMenus" element={<KidMenus/>}></Route>
-        <Route path="/orderDetail" element={<OrderDetail/>}></Route>
-        <Route path="/seacelMenu" element={<SeacelMenu/>}></Route>
-        <Route path="/kidsParty" element={<KidsParty/>}></Route>
-        <Route path="/seationCeleb" element={<SeationCeleb/>}></Route>
-        <Route path="/wedsMenu" element={<WedsMenu/>}></Route>
-        <Route path="/weddings" element={<Weddings/>}></Route>
-        <Route path="/updateCat" element={<UpdateCat/>}></Route>
-        <Route path="/celebOcc" element={<CelebOcc/>}></Route>
+        <Route path="/catMain" element={<AuthorizeUser><CatMain/></AuthorizeUser>}></Route>
+        <Route path="/ordercat" element={<AuthorizeUser><OrderCat/></AuthorizeUser>}></Route>
+        <Route path="/ordercus" element={<AuthorizeUser><OrderCus/></AuthorizeUser>}></Route>
+        <Route path="/orderplace" element={<AuthorizeUser><OrderPlace/></AuthorizeUser>}></Route>
+        <Route path="/celOccMenu" element={<AuthorizeUser><CelOccMenu/></AuthorizeUser>}></Route>
+        <Route path="/kidMenus" element={<AuthorizeUser><KidMenus/></AuthorizeUser>}></Route>
+        <Route path="/orderDetail" element={<AuthorizeUser><OrderDetail/></AuthorizeUser>}></Route>
+        <Route path="/seacelMenu" element={<AuthorizeUser><SeacelMenu/></AuthorizeUser>}></Route>
+        <Route path="/kidsParty" element={<AuthorizeUser><KidsParty/></AuthorizeUser>}></Route>
+        <Route path="/seationCeleb" element={<AuthorizeUser><SeationCeleb/></AuthorizeUser>}></Route>
+        <Route path="/wedsMenu" element={<AuthorizeUser><WedsMenu/></AuthorizeUser>}></Route>
+        <Route path="/weddings" element={<AuthorizeUser><Weddings/></AuthorizeUser>}></Route>
+        <Route path="/updateCat" element={<AuthorizeUser><UpdateCat/></AuthorizeUser>}></Route>
+        <Route path="/celebOcc" element={<AuthorizeUser><CelebOcc/></AuthorizeUser>}></Route>
   </Routes>
-      
-    </main></> 
+    </main>
+</>
   );
 }
 

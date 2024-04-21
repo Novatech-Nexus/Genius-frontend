@@ -41,14 +41,12 @@ export async function registerUser(credentials){
         const { data : { msg } } = await axios.post(`/api/register`, credentials);
 
         /** Email ek send wenna haduwt psse danna */
-        // const { data : { msg }, status } = await axios.post(`/api/register`, credentials);
-
-        // let { email } = credentials;
+        let { email } = credentials;
 
         /** Send Email */
-        // if(status === 201){
-        //      await axios.post('/api/registerMail', { userEmail : email, text : msg })
-        //  }
+        if(status === 201){
+             await axios.post('/api/registerMail', { userEmail : email, text : msg })
+         }
 
         return Promise.resolve(msg);
 
