@@ -60,6 +60,7 @@ import DummyPaymentGateway from './components/order/Payment.jsx';
 //import OrderReport from './components/order/'
 import OrderHome from './pages/order-management/OrderHome.jsx';
 
+import BookingTable from './pages/table-res-management/BookingTable'
 
 function App() {
   return (
@@ -88,7 +89,10 @@ function App() {
         {/* -------------------------------------------------------------------------- */}
 
         {/* Table Reservation */}
-        <Route path="/reservation" element = {<AuthorizeUser><TableReservationHome/></AuthorizeUser>} ></Route>
+        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+        <Route path="/booking" element = {<BookingTable/>} ></Route>
+
+
 
         {/* Customer-care */}
         <Route path="/contact" element={<Contact/>}></Route>
