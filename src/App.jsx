@@ -9,6 +9,8 @@ import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
+
+// inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
 import AllUser from './pages/user-management/allUser';
@@ -78,10 +80,13 @@ function App() {
         <Route path="*" element={<PageNotFound/>}></Route>
         <Route path="/alluser" element={<AllUser/>}></Route>
 
-        
-        <Route path="/dashboard" element={<AuthorizeUser><Dashboard/></AuthorizeUser>}></Route>
-        <Route path="/dashboard/additem" element={<AuthorizeUser><AddItempage/></AuthorizeUser>}></Route>
-        
+        {/* inventory management */}
+        <Route path="/dashboard" element={<Dashboard/>}></Route>
+        <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
+        <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
+        <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
+
+        {/* -------------------------------------------------------------------------- */}
 
         {/* Table Reservation */}
         <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
