@@ -46,6 +46,8 @@ const AccountForm = () => {
         setTableNumber('');
     };
 
+    const numberOfGuestsOptions = Array.from({ length: 15 }, (_, index) => index + 1);
+
     const sendData = (e) => {
         e.preventDefault();
 
@@ -59,7 +61,7 @@ const AccountForm = () => {
             nGuest
         };
 
-        axios.post(`http://localhost:5050/Reservation/add`, newReservation)
+        axios.post(`http://localhost:5050/Reservation/addtr`, newReservation)
             .then(() => {
                 alert("Reservation added");
                 resetForm();
@@ -126,10 +128,18 @@ const AccountForm = () => {
                             variant="outlined"
                             fullWidth
                             value={contactNo}
-                            onChange={(e) => setContactNo(e.target.value)}
+                            onChange={(e) => {
+                                // Restrict input to maximum of 10 characters
+                                const inputContactNo = e.target.value.replace(/\D/g, ''); // Remove non-digit characters
+                                if (inputContactNo.length <= 10) {
+                                    setContactNo(inputContactNo); // Update state if within limit
+                                }
+                            }}
                             required
                             margin="normal"
+                            inputProps={{ maxLength: 10 }} // Set maximum length to 10 characters
                         />
+
                         <TextField
                             label="Date"
                             variant="outlined"
@@ -195,12 +205,18 @@ const AccountForm = () => {
                             label="No Of Guests"
                             variant="outlined"
                             fullWidth
-                            type="number"
+                            select
                             value={nGuest}
                             onChange={(e) => setNoOfGuest(e.target.value)}
                             required
                             margin="normal"
-                        />
+                        >
+                            {numberOfGuestsOptions.map((guests) => (
+                                <MenuItem key={guests} value={guests}>
+                                    {guests}
+                                </MenuItem>
+                            ))}
+                        </TextField>
                         <Button
                             variant="contained"
                             color="primary"

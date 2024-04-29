@@ -43,6 +43,8 @@ const ReservationDetails = () => {
         'Business Meeting': ['B1', 'B2', 'B3', 'B4', 'B5']
     };
 
+
+
     const handleCategoryChange = (e) => {
         const selectedCategory = e.target.value;
         setUpdateCategory(selectedCategory);
@@ -54,7 +56,7 @@ const ReservationDetails = () => {
     useEffect(() => {
         const fetchReservations = async () => {
             try {
-                const response = await axios.get("http://localhost:5050/Reservation");
+                const response = await axios.get("http://localhost:5050/Reservation/tr");
                 
                     setAllReservations(response.data);
                     setFilteredReservations(response.data);
@@ -87,7 +89,7 @@ const ReservationDetails = () => {
     const handleClick = async (id) => {
         console.log("Delete button clicked for reservation ID :", id);
         try {
-            const response = await axios.delete(`http://localhost:5050/Reservation/delete/${id}`);
+            const response = await axios.delete(`http://localhost:5050/Reservation/deletetr/${id}`);
             const updatedReservations = allReservations.filter(reservation => reservation._id !== id);
             setAllReservations(updatedReservations);
             setFilteredReservations(updatedReservations);
@@ -100,7 +102,7 @@ const ReservationDetails = () => {
 
     const loadModel = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:5050/Reservation/get/${id}`);
+            const response = await axios.get(`http://localhost:5050/Reservation/gettr/${id}`);
             console.log("Item retrieved successfully:", response.data);
             setModelState(true);
             setSelectedReservationId(id);
@@ -119,7 +121,7 @@ const ReservationDetails = () => {
 
     const updateReservation = async (selectedReservationId) => {
         try {
-            const response = await axios.put(`http://localhost:5050/Reservation/update/${selectedReservationId}`, {
+            const response = await axios.put(`http://localhost:5050/Reservation/updatetr/${selectedReservationId}`, {
                 userName: updateUserName,
                 contactNo: updateContactNo,
                 date: updateDate,
@@ -264,8 +266,19 @@ const ReservationDetails = () => {
                             </div>
                             <div className="form-group">
                                 <label>Contact No:</label>
-                                <input type="text" className="form-control" value={updateContactNo} onChange={e => setUpdateContactNo(e.target.value)} />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={updateContactNo}
+                                    onChange={(e) => {
+                                        const inputContactNo = e.target.value.replace(/\D/g, ''); // Remove non-digit characters
+                                        if (inputContactNo.length <= 10) {
+                                            setUpdateContactNo(inputContactNo); // Update state if within limit
+                                        }
+                                    }}
+                                />
                             </div>
+
                             <div className="form-group">
                                 <label>Date:</label>
                                 <input type="date" className="form-control" value={updateDate} onChange={e => setUpdateDate(e.target.value)} />

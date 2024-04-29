@@ -1,6 +1,6 @@
 
 import Accountform from '../../components/table-res/Accountform';
-import TableResHeader from'../../components/table-res/TableResHeader';
+// import TableResHeader from'../../components/table-res/TableResHeader';
 import TableRNavBar from '../../components/table-res/TableRNavBar';
 
 
@@ -10,7 +10,7 @@ function TableReservationHome() {
 
     return (
       <div>
-        <TableResHeader/>
+        {/* <TableResHeader/> */}
         <TableRNavBar/>
         <Accountform/>  
       </div>

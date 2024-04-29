@@ -23,9 +23,7 @@ const TableRNavBar = () => {
                         <li className="nav-item">
                             <Link to = "/booking" className="nav-link">Booking</Link>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">Change</a>
-                        </li>
+                        
 
                         
                     </ul>
