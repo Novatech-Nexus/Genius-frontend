@@ -33,7 +33,7 @@ import ItemMenu from './pages/menu-management/ItemMenu';
 import TableMenu from './pages/menu-management/tableMenu';
 
 // import navbars 
-import UMnavbar from './components/user-management/UMnavbar';
+
 
 
 import CatMain from './pages/catering-management/CatMain'; 
@@ -61,9 +61,9 @@ import Sm_dashboard from './pages/staff-management/sm_dashboard';
 import Addemployee from './pages/staff-management/addemployee';
 import Staffdetails from './pages/staff-management/staffdetails';
 import Salaryassign from './pages/staff-management/salaryassign';
-
+import SalaryDetails from './pages/staff-management/salarydetails.jsx';
 import Staffmember from './pages/staff-management/staffmember';
-//import Attendance from './pages/staff-management/attendance';
+import AttendanceQRCode from './pages/staff-management/attendance'; 
 
 
 
@@ -77,7 +77,7 @@ function App() {
 
     <main>
     <Navbar/>
-    <UMnavbar/>
+  
     
       <Routes>
         <Route path="/" element={<AuthorizeUser><Home/></AuthorizeUser>}></Route>
@@ -103,9 +103,10 @@ function App() {
         {/* <Route path="/editemployee/:id" element={<Editemployee/>}></Route> */}
         <Route path="/staffdetails" element={<Staffdetails/>}></Route>
         <Route path="/salaryassign" element={<Salaryassign/>}></Route>
+        <Route path="/salarydetails" element={<SalaryDetails/>}></Route>
         <Route path="/staffmember" element={<Staffmember/>}></Route>
-        
-        {/* <Route path="/attendence" element={<Attendance/>}></Route> */}
+        <Route path="/attendance" element={<AttendanceQRCode />} />
+       
         
         
 

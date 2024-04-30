@@ -10,7 +10,7 @@ import Employeecard from '../../components/staff-manager/Employeecard';
 function sm_dashboard () {
   return (
     <div>
-      <Header/>
+      
       <Sidebar/>
       <Employeecard/>
      

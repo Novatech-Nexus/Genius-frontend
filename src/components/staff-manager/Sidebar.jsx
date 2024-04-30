@@ -1,42 +1,56 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import logo from '../../assets/inventory-images/geniuslogo.png'
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Staff management system</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div className="sticky-top bg-body-tertiary" style={{ zIndex: 1000 }}>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div className="container">
+            <a className="navbar-brand d-flex align-items-center" href="/">
+                <img src={logo} className="d-inline-block align-text-top" alt="Logo" style={{ height: "75px",width:"75px", marginRight: "10px" }} />
+                <div className="ms-4" style={{fontSize:"30px",color:"white",fontFamily:"inherit",fontWeight:"bold"}}>GENIUS RESTUARANT</div>
+            </a>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ms-auto">
+                <li class="nav-item">
+          
+          <a class="nav-link" aria-current="page" href="/sm_dashboard">Home</a>
+          
+          </li>
         <li class="nav-item">
-          <Link to="/sm_dashboard"className="active home-a">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </Link>
+        
+        <a class="nav-link"  href="/addemployee">Add Employee</a>
+        
         </li>
         <li class="nav-item">
-        <Link to="/addemployee"className="active home-a">
-        <a class="nav-link active" aria-current="page" href="#">Add Employee</a>
-        </Link>
+        
+        <a class="nav-link"  href="/staffdetails">staff details</a>
+        
         </li>
-        <li class="nav-item">
-        <Link to="/staffdetails"className="active home-a">
-        <a class="nav-link active" aria-current="page" href="#">staff details</a>
-        </Link>
+        <li className="nav-item">
+        
+        <a class="nav-link"  href="/salaryassign">Assign salary</a>
+        
         </li>
-        <li class="nav-item">
-        <Link to="/salaryassign"className="active home-a">
-        <a class="nav-link active" aria-current="page" href="#">Assign salary</a>
-        </Link>
+        <li className="nav-item">
+        
+        <a class="nav-link"  href="/salarydetails">salary details</a>
+        
         </li>
-      </ul>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
     </div>
-  </div>
-</nav>
-   
+
+
+
 
   
 
@@ -45,4 +59,6 @@ const Sidebar = () => {
    
 }
 
-export default Sidebar
+export default Sidebar;
+
+
