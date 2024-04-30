@@ -1,43 +1,59 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import logo from '../../assets/inventory-images/geniuslogo.png'
+import { Link } from "react-router-dom";
 
-function Sidebar1() {
+const Sidebar = () => {
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Staff member</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div className="sticky-top bg-body-tertiary" style={{ zIndex: 1000 }}>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div className="container">
+            <a className="navbar-brand d-flex align-items-center" href="/">
+                <img src={logo} className="d-inline-block align-text-top" alt="Logo" style={{ height: "75px",width:"75px", marginRight: "10px" }} />
+                <div className="ms-4" style={{fontSize:"30px",color:"white",fontFamily:"inherit",fontWeight:"bold"}}>GENIUS RESTUARANT</div>
+            </a>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ms-auto">
+                <li class="nav-item">
+          
+          <a class="nav-link" aria-current="page" href="/sm_dashboard">Home</a>
+          
+          </li>
         <li class="nav-item">
-          <Link to=""className="active home-a">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </Link>
+        
+        <a class="nav-link"  href="/attendance">mark attendance</a>
+        
         </li>
-        <li class="nav-item">
-        <Link to="/attendance"className="active home-a">
-        <a class="nav-link active" aria-current="page" href="#">mark attendence</a>
-        </Link>
+        <li className="nav-item">
+        
+        <a class="nav-link"  href="">salary details</a>
+        
         </li>
-        <li class="nav-item">
-        <Link to=""className="active home-a">
-        <a class="nav-link active" aria-current="page" href="#">salary details</a>
-        </Link>
+        <li className="nav-item">
+        
+        <a class="nav-link"  href="">profile</a>
+        
         </li>
-        <li class="nav-item">
-        <Link to=""className="active home-a">
-        <a class="nav-link active" aria-current="page" href="#">profile</a>
-        </Link>
-        </li>
-       
-      </ul>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
     </div>
-  </div>
-</nav>
-   
+
+
+
+
+  
+
   )
+    
+   
 }
 
-export default Sidebar1
+export default Sidebar;
+
+
