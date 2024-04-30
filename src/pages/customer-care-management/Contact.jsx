@@ -5,6 +5,17 @@ import contactPic from '../../assets/customer-care-images/Contact-pic.png';
 import { Button, Form, Modal } from 'react-bootstrap';
 import '../../styles/CustomerCare.css';
 import Swal from 'sweetalert2';
+import axios from 'axios';
+
+// Function to create notification
+const createNotification = async (notificationData) => {
+  try {
+    await axios.post('http://localhost:5050/api/contact/notifications', notificationData);
+  } catch (error) {
+    console.error('Error creating notification:', error);
+    throw error;
+  }
+};
 
 export default function Contact() {
   const [from_name, setName] = useState('');
@@ -40,6 +51,14 @@ export default function Contact() {
     try {
       await emailjs.sendForm('service_4syt5bv', 'template_1aid423', e.target, 'GwDWnb2_44Wv-Hxg1');
 
+      // Create notification after successful form submission
+      await createNotification({
+        subject: `Contact about ${from_subject}`,
+        name: `New message from ${from_name}`,
+        email: `Email : ${from_email}`,
+        message: `Message : ${message}`
+      });
+      
       console.log('SUCCESS!');
       Swal.fire({
         icon: "success",

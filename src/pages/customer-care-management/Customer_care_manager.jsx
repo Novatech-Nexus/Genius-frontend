@@ -1,12 +1,28 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Button, Badge } from 'react-bootstrap'; // Import Badge component
 import { useNavigate } from "react-router-dom";
 import approveFeedbackImage from '../../assets/customer-care-images/approveFeedback.png';
 import servicesFeedbackImage from '../../assets/customer-care-images/servicesFeedback.png';
 import feedbackAnalysisImage from '../../assets/customer-care-images/feedbackAnalysis.png';
+import axios from 'axios';
 
 export default function Customer_care_manager() {
     const navigate = useNavigate();
+    const [unreadNotifications, setUnreadNotifications] = useState([]);
+
+    useEffect(() => {
+        fetchUnreadNotifications();
+    }, []);
+
+    const fetchUnreadNotifications = async () => {
+        try {
+            const response = await axios.get('http://localhost:5050/api/contact/notifications/unread');
+            setUnreadNotifications(response.data || []);
+        } catch (error) {
+            console.error('Error fetching unread notifications:', error);
+            setUnreadNotifications([]);
+        }
+    };
     
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -18,7 +34,13 @@ export default function Customer_care_manager() {
             </div>
             <div style={{ marginTop: "100px", display: "flex", justifyContent: "space-between", width: "70%" }}>
                 <Button variant="outline-dark" onClick={() => navigate(-1)}>BACK</Button>
-                <Button variant="outline-dark">Notifications</Button>
+                {/* Display notifications button with badge */}
+                <Button variant="outline-dark" onClick={() => navigate("notifications")} className="d-flex align-items-center">
+                    <div>Notifications</div>
+                    <div style={{marginLeft:'10px'}}>
+                        <Badge bg="danger">{unreadNotifications.length}</Badge>
+                    </div>
+                </Button>
             </div>
         </div>
     );
