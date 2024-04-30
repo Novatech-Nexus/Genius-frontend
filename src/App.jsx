@@ -9,6 +9,8 @@ import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
+
+// inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
 import AllUser from './pages/user-management/allUser';
@@ -48,6 +50,15 @@ import Weddings from './pages/catering-management/Weedings';
 import UpdateCat from './pages/catering-management/UpdateCat';
 import CelebOcc from './pages/catering-management/CellbOcc';
 
+import Cart from './components/order/cart.jsx';
+import CreatePost from './components/order/CreatePost.jsx';
+import Posts from './pages/order-management/Post.jsx';
+import DummyPaymentGateway from './components/order/Payment.jsx';
+//import OrderReport from './components/order/'
+import OrderHome from './pages/order-management/OrderHome.jsx';
+
+import BookingTable from './pages/table-res-management/BookingTable'
+
 function App() {
   return (
     <>
@@ -65,13 +76,19 @@ function App() {
         <Route path="*" element={<PageNotFound/>}></Route>
         <Route path="/alluser" element={<AllUser/>}></Route>
 
-        
-        <Route path="/dashboard" element={<AuthorizeUser><Dashboard/></AuthorizeUser>}></Route>
-        <Route path="/dashboard/additem" element={<AuthorizeUser><AddItempage/></AuthorizeUser>}></Route>
-        
+        {/* inventory management */}
+        <Route path="/dashboard" element={<Dashboard/>}></Route>
+        <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
+        <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
+        <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
+
+        {/* -------------------------------------------------------------------------- */}
 
         {/* Table Reservation */}
-        <Route path="/reservation" element = {<AuthorizeUser><TableReservationHome/></AuthorizeUser>} ></Route>
+        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+        <Route path="/booking" element = {<BookingTable/>} ></Route>
+
+
 
         {/* Customer-care */}
         <Route path="/contact" element={<AuthorizeUser><Contact/></AuthorizeUser>}></Route>
@@ -87,6 +104,17 @@ function App() {
         <Route path="/homeMenu" element={<AuthorizeUser><HomeMenu/></AuthorizeUser>}></Route>
         <Route path="/itemMenu" element={<AuthorizeUser><ItemMenu/></AuthorizeUser>}></Route>
         <Route path='/tableMenu' element={<AuthorizeUser><TableMenu/></AuthorizeUser>}></Route>
+        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
+        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
+        <Route path='/tableMenu' element={<TableMenu/>}></Route>
+
+        {/* Order Management */}
+        <Route path='/orderMenu' element={<OrderHome/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/orderMenu/create' element={<CreatePost/>}/>  
+        <Route path='/orderMenu/create/posts' element={<Posts/>}/>  
+        <Route path='/orderMenu/create/posts/payment' element={<DummyPaymentGateway/>}/>  
+        {/* <Route path='/reports' element={<OrderReport/>} />  */}
         
 
 

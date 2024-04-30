@@ -18,8 +18,8 @@ function HomeImg1 (){
                     Update Details
                 </h2>
             </div>
-            <div style={{ marginLeft: "200px" }}>
-                <button type="button" class="btn btn-danger" onClick={() => navigate("/dashboard/additem")}>+ Add item</button>
+            <div style={{ marginLeft: "100px" }}>
+                <button type="button" class="btn btn-success" onClick={() => navigate("/dashboard/additem")}>Add item</button>
             </div>
         </div>
 

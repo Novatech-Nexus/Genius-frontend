@@ -1,12 +1,13 @@
-.Mmen-table-background {
+.men-table-background {
     background-image: url('../../assets/MenuM/item3.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh; 
-}
+  }
+  
 
-.Mtopic-text {
+  .topic-text {
     color: red; 
     font-weight: bold;
     font-size: 50px;
@@ -16,12 +17,14 @@
     font-family: 'Poppins', sans-serif; 
 }
 
-.Mmen-table-container {
+
+.men-table-container {
     display: grid;
     place-items: center;
+   
 }
 
-.Mmen-table {
+.men-table {
     border-collapse: collapse;
     width: 100%;
     max-width: 1000px;
@@ -32,38 +35,38 @@
     text-align: center;
 }
 
-.Mmen-table th, .Mmen-table td {
+.men-table th, .men-table td {
     border: 1px solid #ffffff;
     text-align: left;
     padding: 8px;
 }
 
-.Mmen-table th, .Mmen-table td {
+.men-table th, .men-table td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 10px;
     background-color: #ffffff; 
 }
 
-.Mmen-table tr {
+.men-table tr {
     background-color: #ffffff;
     border-bottom: 1px solid #dddddd;
 }
 
 @media (max-width: 600px) {
-    .Mmen-table th, .Mmen-table td {
+    .men-table th, .men-table td {
         padding: 4px; 
     }
 }
 
-.Msearch-container {
+.search-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.Msearch-container input {
+.search-container input {
     padding: 10px 40px;
     border-radius: 50px;
     border: 1px solid #ccc;
@@ -71,7 +74,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.Msearch-container i {
+.search-container i {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -79,18 +82,18 @@
     color: #aaa;
 }
 
-/* button */
-.Mbutton-container {
+
+.button-containerM {
     display: flex; 
     justify-content: center; 
     gap: 10px; 
-}
-
-.Mbutton-container {
+  }
+  .button-containerM {
     display: flex;
+    
 }
 
-.Mbtn1 {
+.btn1 {
     background-color: red; 
     color: white;
     border: none;
@@ -102,11 +105,11 @@
     align-items: center;
 }
 
-.Mbtn1:hover {
+.btn1:hover {
     background-color: darkred; 
 }
 
-.Mbtn2 {
+.btn2 {
     background-color: #e6ae06; 
     color: white;
     border: none;
@@ -118,6 +121,13 @@
     align-items: center;
 }
 
-.Mbtn2:hover {
+.btn2:hover {
     background-color: #997404; 
 }
+
+
+
+
+
+  
+
