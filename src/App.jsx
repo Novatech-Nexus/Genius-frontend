@@ -79,8 +79,8 @@ function App() {
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
-        <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
-        <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
+        {/* <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route> */}
+        {/* <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route> */}
 
         {/* -------------------------------------------------------------------------- */}
 
