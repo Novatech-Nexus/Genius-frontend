@@ -39,9 +39,7 @@ export default function Email() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async values => {
-      // console.log(values);
       setEmail(values.email);
-      // setPassword(values.password);
 
       let loginPromise = verifyPassword({ email, password: values.password })
       toast.promise(loginPromise, {
@@ -50,11 +48,11 @@ export default function Email() {
         error: 'Password doesn\'t match',
       });
 
-      loginPromise.then(res => {
-        let { token, email, id } = res.data;
-        localStorage.setItem('token', token);
-        localStorage.setItem('email', email);
-        localStorage.setItem('id', id);
+      loginPromise.then(async res => {
+        let data = await res.data;
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('id', data.id);
         navigate('/profile');
       })
     }
@@ -95,7 +93,7 @@ export default function Email() {
               </form>
 
               <div className="text-center py-4 d-flex flex-column">
-                <span className=''>Forgot Password? <Link className='text-danger text-decoration-none' to="/recovery">Reset Password</Link></span>
+                <span className=''>Forgot Password? <Link className='text-danger text-decoration-none' to="/recoveryemail">Reset Password</Link></span>
                 <span className=''>Not a member? <Link className='text-danger text-decoration-none' to="/register">Register Now</Link></span>
                 <span className=''>Employee Sign in <Link className='text-danger text-decoration-none' to="/alluser">Sign in</Link></span>
               </div>

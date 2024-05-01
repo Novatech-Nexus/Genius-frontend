@@ -1,13 +1,16 @@
 import {Routes, Route} from 'react-router-dom';
 
 /**Import all routes */
+
+//User management system
 import Home from './pages/Home';
 import Email from './pages/user-management/Email';
 import Register from './pages/user-management/Register';
 import Profile from './pages/user-management/Profile';
 import Reset from './pages/user-management/Reset';
-import Recovery from './pages/user-management/Recovery';
+import RecoveryEmail from './pages/user-management/RecoveryEmail';
 import PageNotFound from './pages/user-management/PageNotFound';
+import NewPassword from './pages/user-management/NewPassword.jsx';
 import Navbar from './components/Navbar';
 
 // inventory---------------------------------------------------
@@ -71,8 +74,10 @@ function App() {
         <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
-        <Route path="/reset" element={<AuthorizeUser><Reset/></AuthorizeUser>}></Route>
-        <Route path="/recovery" element={<AuthorizeUser><Recovery/></AuthorizeUser>}></Route>
+        <Route path="/reset" element={<Reset/>}></Route>
+        <Route path="/recoveryemail" element={<RecoveryEmail/>}></Route>
+        <Route path="/newpassword/:token" element={<NewPassword/>}></Route>
+
         <Route path="*" element={<PageNotFound/>}></Route>
         <Route path="/alluser" element={<AllUser/>}></Route>
 
@@ -97,7 +102,7 @@ function App() {
         <Route path='/feedback/getFeedback' element={<AuthorizeUser><Feedback_history/></AuthorizeUser>}></Route>
         <Route path='/manager' element={<AuthorizeUser><Customer_care_manager/></AuthorizeUser>}></Route>
         <Route path='/manager/feedbackApproval' element={<AuthorizeUser><Feedback_approval/></AuthorizeUser>}></Route>
-        <Route path='/manager/servicesFeedback' element={<AuthorizeUser></AuthorizeUser>}></Route>
+        {/* <Route path='/manager/servicesFeedback' element={<AuthorizeUser></AuthorizeUser>}></Route> */}
         <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis/></AuthorizeUser>}></Route>
 
         {/* Menu Management */}
