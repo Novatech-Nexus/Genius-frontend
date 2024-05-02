@@ -1,8 +1,8 @@
-import React from 'react';
+// import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="text-center text-lg-start text-white" style={{ backgroundColor: '#45526e' }}>
+    <footer className="text-center text-lg-start text-white bg-dark">
       <div className="container p-4 pb-0">
         <section>
           <div className="row">
@@ -48,7 +48,6 @@ const Footer = () => {
               <p><i className="fas fa-home mr-3"></i> 173/1/B Kandy Rd, Mudungoda</p>
               <p><i className="fas fa-envelope mr-3"></i> geniusrestaurant3@gmail.com</p>
               <p><i className="fas fa-phone mr-3"></i> +94 123456789</p>
-              {/* Add more contact information if needed */}
             </div>
           </div>
         </section>

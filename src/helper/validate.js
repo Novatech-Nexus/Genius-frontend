@@ -84,9 +84,9 @@ function passwordVerify(errors = {}, values){
     else if(values.password.includes(" ")){
         errors.password = toast.error("Password cannot contain spaces");
     }
-    // else if(values.password.length < 8){
-    //     errors.password = toast.error("Password must be at least 8 characters");
-    // }
+    else if(values.password.length < 8){
+        errors.password = toast.error("Password must be at least 8 characters");
+    }
     
     return errors;
 }
