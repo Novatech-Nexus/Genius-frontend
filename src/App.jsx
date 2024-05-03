@@ -35,7 +35,7 @@ import TableMenu from './pages/menu-management/tableMenu';
 // import navbars 
 import UMnavbar from './components/user-management/UMnavbar';
 
-
+//catering 
 import CatMain from './pages/catering-management/CatMain'; 
 import CelOccMenu from './pages/catering-management/CelOccMenu';
 import KidMenus from './pages/catering-management/kidMenu';

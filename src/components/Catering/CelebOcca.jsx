@@ -33,15 +33,15 @@ function CelebOcca() {
     };
 
     const h1Style = {
-        backgroundColor: '#2D5A27',
         fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
-        color: 'white',
+        color: '#2D5A27',
+        fontSize:'60px',
         padding: '10px',
         textAlign:'center'
     };
 
     const customButtonStyle = {
-        backgroundColor: '#760203',
+        backgroundColor: '#FF0000',
         border: 'none',
         color: 'white',
         fontWeight: 'bold',
@@ -58,10 +58,12 @@ function CelebOcca() {
     };
 
     const h2Style = {
-        backgroundColor: '#FFD300',
+        backgroundColor: '#BEC3C6',
         padding: '5px',
         maxWidth: '1400px',
+        fontSize: '30px',
         marginTop: '20px',
+        fontWeight:'bold',
         fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
         color: 'black',
         textAlign:'center'

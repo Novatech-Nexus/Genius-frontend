@@ -9,7 +9,7 @@ import img7 from '../../assets/catering/img7.jpg';
 function Main() {
     const tableStyle = {
         borderCollapse: 'collapse',
-        width: '100%',
+        width: '99%',
         marginTop: '50px',
      //   marginBottom: '50px'
     };
@@ -39,15 +39,16 @@ function Main() {
     };
 
     const h1Style = {
-        backgroundColor: '#2D5A27',
         fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
-        color: 'white',
+        fontSize:'60px',
+        color: '#AB7D00',
         padding: '10px',
+        fontWeight: 'bold',
         textAlign:'center'
     };
 
     const customButtonStyle = {
-        backgroundColor: '#760203',
+        backgroundColor: '#FF0000',
         border: 'none',
         color: 'white',
         fontWeight: 'bold',
@@ -71,7 +72,7 @@ function Main() {
                 <tbody>
                     <tr>
                         <td style={tdStyle}><Link to="/weddings"><button type="button" className="custom-button" style={customButtonStyle}>Weddings</button></Link></td>
-                        <td style={tdStyle}><img src={img1} style={imgStyle} alt="Wedding Catering"/></td>
+                        <td style={tdStyle}><img src={img1} style={{ maxWidth: '230px' }} alt="Wedding Catering"/></td>
                         <td style={tdStyle}><p style={pStyle}>Wedding catering services, where culinary excellence meets matrimonial bliss! At Genius Restaurant, we understand that your wedding day is one of the most important moments of your life, and we are dedicated to making it truly unforgettable. From lavish receptions to intimate gatherings, our team is committed to crafting a dining experience that reflects your unique love story. With exquisite menus tailored to your preferences, impeccable service, and attention to every detail, let us elevate your celebration with flavors that delight and memories that last a lifetime. Cheers to love, laughter, and happily ever after!</p></td>
                     </tr>
                     <tr>
