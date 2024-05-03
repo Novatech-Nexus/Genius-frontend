@@ -119,11 +119,11 @@ export default function Feedback_history() {
 
     return (
         <div className='feedback_update-body'>
-            <article className='feedback_update_page'>
+            
                 <header className='feedback_update_title'>
                 <h2>Your Feedback History</h2>
                 </header>
-            </article>
+            
 
             <UpdateFeedbackModal
                 show={showModal}

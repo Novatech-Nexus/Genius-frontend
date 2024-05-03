@@ -76,11 +76,11 @@ export default function Contact() {
 
   return (
     <div className='contact-main-body'>
-      <article className='contact_page'>
+
         <header className='contact_title'>
           <h2>Contact Us</h2>
-          <br />
         </header>
+
         <div className="contact-artical-body">
           <div className='contact-left'>
             <h5>Welcome! We're excited that you want to reach out to us.</h5> 
@@ -104,6 +104,7 @@ export default function Contact() {
             <img src={contactPic} className='contactPic' alt='' />
           </div>
         </div>
+
         <div className='contact-form'>
           <h5>Feel free to contact us anytime. We're looking forward to hearing from you!</h5><br />
           <Form style={{ width: '50%' }} onSubmit={onSubmit}>
@@ -145,13 +146,14 @@ export default function Contact() {
           </Form>
         </div>
         <br /><br/>
+        
         <h5 style={{marginLeft:'5%'}}>Visit Genius Restaurant Today!</h5>
         <div className='contact-map'>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.4832668996246!2d80.01130931076688!3d7.06983051654369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fd2959ac2c39%3A0x1c79f2f4eed59b98!2sGenius%20Restaurant!5e0!3m2!1sen!2slk!4v1710430605828!5m2!1sen!2slk" 
             width="90%" height="600" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
-      </article>
+
       <Modal show={showErrorModal} onHide={() => setShowErrorModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Error</Modal.Title>

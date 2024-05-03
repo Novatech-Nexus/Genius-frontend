@@ -26,7 +26,7 @@ import Feedback_form from './pages/customer-care-management/Feedback_form';
 import Feedback_history from './pages/customer-care-management/Feedback_history';
 import Feedback_approval from './pages/customer-care-management/Feedback_approval';
 import Customer_care_manager from './pages/customer-care-management/Customer_care_manager';
-// import Feedback_of_services from './pages/customer-care-management/Feedback_of_services';
+import Feedback_of_services from './pages/customer-care-management/Feedback_of_services';
 import FeedbackDataAnalysis from './pages/customer-care-management/FeedbackDataAnalysis';
 import Notifications from './pages/customer-care-management/Notifications';
 
@@ -97,14 +97,14 @@ function App() {
 
 
         {/* Customer-care */}
-        <Route path="/contact" element={<AuthorizeUser><Contact/></AuthorizeUser>}></Route>
-        <Route path="/feedback" element={<AuthorizeUser><Feedback/></AuthorizeUser>}></Route>
-        <Route path='/feedback/addFeedback' element={<AuthorizeUser><Feedback_form/></AuthorizeUser>}></Route>
-        <Route path='/feedback/getFeedback' element={<AuthorizeUser><Feedback_history/></AuthorizeUser>}></Route>
-        <Route path='/manager' element={<AuthorizeUser><Customer_care_manager/></AuthorizeUser>}></Route>
-        <Route path='/manager/feedbackApproval' element={<AuthorizeUser><Feedback_approval/></AuthorizeUser>}></Route>
-        {/* <Route path='/manager/servicesFeedback' element={<AuthorizeUser></AuthorizeUser>}></Route> */}
-        <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis/></AuthorizeUser>}></Route>
+        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/feedback" element={<Feedback/>}></Route>
+        <Route path='/feedback/addFeedback' element={<Feedback_form/>}></Route>
+        <Route path='/feedback/getFeedback' element={<Feedback_history/>}></Route>
+        <Route path='/manager' element={<Customer_care_manager/>}></Route>
+        <Route path='/manager/feedbackApproval' element={<Feedback_approval/>}></Route>
+        <Route path='/manager/servicesFeedback' element={<Feedback_of_services/>}></Route>
+        <Route path='/manager/feedbackAnalysis' element={<FeedbackDataAnalysis/>}></Route>
         <Route path='/manager/notifications' element={<Notifications/>}></Route>
 
         {/* Menu Management */}

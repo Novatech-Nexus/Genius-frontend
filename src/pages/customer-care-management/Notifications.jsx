@@ -33,10 +33,9 @@ export default function () {
 
     return (
         <div className='contact-main-body'>
-            <article className='contact_page'>
+            
                 <header className='contact_title'>
                     <h2>Unread Notifications</h2>
-                    <br />
                 </header>
                 <div className="contact-artical-body">
                     <div className='feedback-container' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -64,7 +63,7 @@ export default function () {
                         </a>
                     </div>
                 </div>
-            </article>
+            
         </div>
     )
 }

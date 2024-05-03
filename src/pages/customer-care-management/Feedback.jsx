@@ -36,7 +36,7 @@ export default function Feedback() {
   
   return (
     <div className='feedback-main-body'>
-      <article className='feedback_page'>
+      
         <header className='feedback_title'>
           <h2>Meet our customers</h2>
         </header>
@@ -67,7 +67,7 @@ export default function Feedback() {
           ))}
 
         </div>
-      </article>
+      
     </div>
   );
 }

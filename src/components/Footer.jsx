@@ -14,32 +14,32 @@ const Footer = () => {
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>
               <p>
-                <a className="text-white">Menu</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">Menu</a>
               </p>
               <p>
-                <a className="text-white">Reservations</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">Reservations</a>
               </p>
               <p>
-                <a className="text-white">Specials</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">Specials</a>
               </p>
               <p>
-                <a className="text-white">Events</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">Events</a>
               </p>
             </div>
             <hr className="w-100 clearfix d-md-none" />
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold">Useful links</h6>
               <p>
-                <a className="text-white">About Us</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">About Us</a>
               </p>
               <p>
-                <a className="text-white">Contact Us</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">Contact Us</a>
               </p>
               <p>
-                <a className="text-white">Privacy Policy</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">Privacy Policy</a>
               </p>
               <p>
-                <a className="text-white">Terms & Conditions</a>
+                <a style={{ textDecoration: 'none' }} className="text-white">Terms & Conditions</a>
               </p>
             </div>
             <hr className="w-100 clearfix d-md-none" />

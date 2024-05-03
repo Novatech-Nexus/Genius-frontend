@@ -74,11 +74,11 @@ export default function FeedbackApproval() {
 
     return (
         <div className="feedback-approval-body">
-            <article className="feedback-approval-page">
+            
                 <header className="feedback-approval-title">
                     <h2>Customer Feedback Approval</h2>
                 </header>
-            </article>
+            
 
             <div className='feedback-approval-cont'>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: '80%' }}>

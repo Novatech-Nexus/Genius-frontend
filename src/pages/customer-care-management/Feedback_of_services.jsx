@@ -52,11 +52,11 @@ export default function Feedback_of_services() {
 
   return (
     <div className='feedback-services-body'>
-      <article className='feedback-services-page'>
+      
         <header className='feedback-services-title'>
           <h2>Customer Feedback Approve & Pending List</h2>
         </header>
-      </article>
+      
 
       <div className='feedback-services-cont'>   
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: '100%' }}>

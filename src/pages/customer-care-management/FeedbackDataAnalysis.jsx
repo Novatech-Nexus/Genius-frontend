@@ -76,12 +76,12 @@ export default function FeedbackDataAnalysis() {
 
     return (
         <div className='feedback-services-body'>
-            <article className='feedback-services-page' style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom:"20px"}}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom:"20px"}}>
                 <div className='d-flex' style={{ justifyContent: "space-between", width: '80%' }}>
                     <Button className='report-btn' variant="outline-dark" onClick={handleDownload}>Generate report</Button>
                     <Button className='report-btn' style={{width:'20%'}} variant="outline-dark" onClick={() => navigate(-1)}>BACK</Button>
                 </div>
-            </article>
+            </div>
 
             <div ref={componentsRef}>
                 <header className='feedback-services-title'>
