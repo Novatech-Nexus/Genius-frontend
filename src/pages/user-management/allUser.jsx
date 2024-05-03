@@ -58,7 +58,7 @@ export default function Profile() {
   };
   
   return (
-    <div>
+    <div className={styles.background2}>
       <UMnavbar1/>
       <div className="container mx-auto" style={{ maxWidth: '600px' }}>
       <div className="my-4">

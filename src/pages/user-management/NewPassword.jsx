@@ -55,7 +55,7 @@ export default function NewPassword() {
     return (
         <div>
             <UMnavbar />
-            <div className="container mx-auto">
+            <div className={styles.background}>
                 <Toaster position="top-center" reverseOrder={false}></Toaster>
 
                 <div className="d-flex h-screen justify-content-center align-items-center">
@@ -64,9 +64,6 @@ export default function NewPassword() {
                             <h4 className="fs-1 display-100 fw-bold">Reset Password</h4>
 
                             <form className="py-1" onSubmit={formik.handleSubmit}>
-                                {/* <div className='profile d-flex justify-content-center py-4'>
-                <img src={avatar} alt="avatar" className={styles.avatar} />
-              </div> */}
 
                                 <div className="textbox d-flex flex-column align-items-center gap-6">
                                     <input
