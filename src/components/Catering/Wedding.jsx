@@ -14,20 +14,23 @@ function Wedding() {
         margin: '0 auto', 
         padding: '5px', 
     };
+
     const h1Style = {
-        backgroundColor: '#2D5A27', 
         fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
-        color: 'white',
+        color: '#2D5A27',
+        fontSize:'60px',
         padding: '10px',
-        textAlign:'center' 
+        textAlign:'center'
     };
+
     const pStyle = {
         textAlign: 'justify',
         fontSize: '18px',
         fontWeight: 'bold',
     };
+
     const customButtonStyle = {
-        backgroundColor: '#760203', 
+        backgroundColor: '#D6001C',
         border: 'none',
         color: 'white',
         fontWeight: 'bold',
@@ -42,22 +45,30 @@ function Wedding() {
         width: '250px',
         fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
     };
+
     const tableStyle = {
-        width: '100%',
         borderCollapse: 'collapse',
-        marginTop: '50px',
-        marginBottom: '50px',
+        width: '40%',
+    };
+
+
+    const tableContainerStyle = {
+        display: 'flex',
+        justifyContent: 'center',
     };
     
     const h2Style = {
-        backgroundColor: '#FFD300', 
+        backgroundColor: '#BEC3C6',
         padding: '5px',
         maxWidth: '1400px',
+        fontSize: '30px',
         marginTop: '20px',
+        fontWeight:'bold',
         fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
         color: 'black',
         textAlign:'center'
     };
+
     const ulStyle = {
         textAlign: 'left',
         fontWeight: 'bold',
@@ -75,7 +86,8 @@ function Wedding() {
             <h1 style={h1Style}>Wedding Function</h1>
             <p style={{...pStyle, marginTop: '20px'}}>Welcome to Genius Restaurant, where culinary excellence meets unforgettable moments! We are thrilled to extend our expertise to ensure your special day is nothing short of extraordinary. At Genius Wedding Catering, we blend artistry with flavor, crafting bespoke menus that reflect your unique love story. From elegant hors d'oeuvres to decadent desserts, our team of culinary geniuses is dedicated to tantalizing your taste buds and exceeding your every expectation. Let us transform your wedding into an unforgettable gastronomic experience, where every bite is a celebration of love and togetherness. Cheers to a lifetime of happiness, and let Genius Wedding Catering be the perfect ingredient to your happily ever after.</p>           
             <h2 style={h2Style}>Menu</h2>
-            <table style={{...tableStyle, marginTop: '20px'}}>
+            <div style={tableContainerStyle}>
+            <table style={tableStyle}>
                 <tr>
                     <td><Link to="/wedsMenu"><button type="button" style={customButtonStyle}>Morning Functions</button></Link></td>
                     <td><Link to="/wedsMenu"><button type="button" style={customButtonStyle}>Afternoon Functions</button></Link></td>
@@ -83,7 +95,7 @@ function Wedding() {
                     <td><Link to="/wedsMenu"><button type="button" style={customButtonStyle}>Night Functions</button></Link></td>
                 </tr>
             </table>
-
+            </div>
             <p style={pStyle}>At Genius Catering, our wedding catering special services go beyond just providing delicious food. We pride ourselves on creating an unforgettable culinary experience tailored to each couple's unique tastes and preferences. Our special services include:</p>
             <ul style={ulStyle}>
                 <li style={liStyle}>Customized Menus: We work closely with the couple to design a menu that reflects their personal style, dietary restrictions, and cultural preferences.</li>
@@ -96,12 +108,15 @@ function Wedding() {
             </ul>
             <p style={pStyle}>Overall, our wedding catering special services are designed to exceed expectations and create memories that will last a lifetime.</p>     
 
-            <table style={{...tableStyle, marginTop: '20px'}}>
+        <div style={tableContainerStyle}>
+          <table style={tableStyle}>
                 <tr>
                     <td><Link to="/orderplace"><button type="button" style={customButtonStyle}>Place Order</button></Link></td>
                     <td><Link to="/ordercus"><button type="button" style={customButtonStyle}>Customized Order</button></Link></td>
                 </tr>
             </table>
+
+            </div>
         </div>
     );
 }

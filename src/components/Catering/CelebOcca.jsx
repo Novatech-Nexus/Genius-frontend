@@ -41,7 +41,7 @@ function CelebOcca() {
     };
 
     const customButtonStyle = {
-        backgroundColor: '#FF0000',
+        backgroundColor: '#D6001C',
         border: 'none',
         color: 'white',
         fontWeight: 'bold',
