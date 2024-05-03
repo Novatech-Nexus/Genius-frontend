@@ -5,6 +5,7 @@ import reserve1 from '../../assets/table-manage/reserve1.jpg';
 import { NavLink } from 'react-router-dom';
 import search1 from '../../assets/table-manage/search1.jpg'
 import { useReactToPrint } from 'react-to-print';
+import Swal from 'sweetalert2';
 
 
 
@@ -18,6 +19,7 @@ const ReservationDetails = () => {
     const [selectedReservationId, setSelectedReservationId] = useState(null);
     const [updateUserName, setUpdateUserName] = useState("");
     const [updateContactNo, setUpdateContactNo] = useState("");
+    const [updateemail, setUpdateEmail] = useState("");
     const [updateDate, setUpdateDate] = useState("");
     const [updateTime, setUpdateTime] = useState("");
     const [updateCategory, setUpdateCategory] = useState("");
@@ -38,8 +40,8 @@ const ReservationDetails = () => {
     ];
 
     const tableNumberOptions = {
-        'Couple': ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8'],
-        'Family/Friends': ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8'],
+        'Couple': ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8','C9' ,'C10'],
+        'Family/Friends': ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8','F9' , 'F10'],
         'Business Meeting': ['B1', 'B2', 'B3', 'B4', 'B5']
     };
 
@@ -57,7 +59,6 @@ const ReservationDetails = () => {
         const fetchReservations = async () => {
             try {
                 const response = await axios.get("http://localhost:5050/Reservation/tr");
-                
                     setAllReservations(response.data);
                     setFilteredReservations(response.data);
         
@@ -68,6 +69,8 @@ const ReservationDetails = () => {
         fetchReservations();
     }, []);
 
+    //Search function
+
     const handleSearch = (term) => {
         setSearchTerm(term);
         const filtered = allReservations.filter((reservation) =>
@@ -76,16 +79,25 @@ const ReservationDetails = () => {
         );
         setFilteredReservations(filtered);
     };
-    
 
-        const componentsRef = useRef();
-        const handlePrint = useReactToPrint({
-            content: () => componentsRef.current,
-            documentTitle:"Table Reservation Report",
-            onAfterPrint:() => alert ("User report successfully Download"),
+
+    //Report download
+    const componentsRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentsRef.current,
+        documentTitle:"Table Reservation Report",
+        onAfterPrint: () => {
+            // setReportDownloaded(true); // Set report downloaded to true after printing
+            Swal.fire({
+                icon: 'success',
+                title: 'Report Downloaded',
+                text: 'Your report has been downloaded successfully!',
+                });
+            },
         })
 
-           
+        
+    //Delete        
     const handleClick = async (id) => {
         console.log("Delete button clicked for reservation ID :", id);
         try {
@@ -93,10 +105,18 @@ const ReservationDetails = () => {
             const updatedReservations = allReservations.filter(reservation => reservation._id !== id);
             setAllReservations(updatedReservations);
             setFilteredReservations(updatedReservations);
-            alert("Reservation deleted successfully");
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Reservation deleted successfully',
+            });
         } catch (error) {
             console.error("Error deleting reservation:", error.message);
-            alert("Failed to delete reservation");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Failed to delete reservation',
+            });
         }
     };
 
@@ -108,6 +128,7 @@ const ReservationDetails = () => {
             setSelectedReservationId(id);
             setUpdateUserName(response.data.userName);
             setUpdateContactNo(response.data.contactNo);
+            setUpdateEmail(response.data.email);
             setUpdateDate(response.data.date);
             setUpdateTime(response.data.time);
             setUpdateCategory(response.data.category);
@@ -124,6 +145,7 @@ const ReservationDetails = () => {
             const response = await axios.put(`http://localhost:5050/Reservation/updatetr/${selectedReservationId}`, {
                 userName: updateUserName,
                 contactNo: updateContactNo,
+                email:updateemail,
                 date: updateDate,
                 time: updateTime,
                 category: updateCategory,
@@ -137,8 +159,10 @@ const ReservationDetails = () => {
                 if (reservation._id === selectedReservationId) {
                     return {
                         ...reservation,
+                        
                         userName: updateUserName,
                         contactNo: updateContactNo,
+                        email:updateemail,
                         date: updateDate,
                         time: updateTime,
                         category: updateCategory,
@@ -153,10 +177,18 @@ const ReservationDetails = () => {
             setAllReservations(updatedReservations);
             setFilteredReservations(updatedReservations);
             setModelState(false);
-            alert("Reservation updated successfully");
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Reservation updated successfully',
+            });
         } catch (error) {
             console.error("Error updating reservation:", error.message);
-            alert("Failed to update reservation");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Failed to update reservation',
+            });
         }
     };
     
@@ -164,6 +196,7 @@ const ReservationDetails = () => {
 
         
         <div className="reservation-details"  style={{ 
+            // backgroundImage: `url(${reserve1})`,
             backgroundImage: `url(${reserve1})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -193,9 +226,9 @@ const ReservationDetails = () => {
             </div>
 
             <div ref={componentsRef}>
-            <h3 style={{ textAlign: 'center', marginBottom: '20px', color: 'black' , fontWeight: 'bold', backgroundColor: 'rgba(255, 255, 255, 0.8)', fontSize: '30px'}}>Reservation Details</h3>
+            <h3 style={{ textAlign: 'center', marginBottom: '20px', color: 'black' , fontWeight: 'bold', backgroundColor: 'rgba(255, 255, 255, 0.8)', fontSize: '40px',fontFamily: 'CustomFont'}}>Reservation Details</h3>
             <div className='reservation-details-container'>
-                <table className="reservation-details-table" style={{ 
+                <table className="reservation-details-table" ref={componentsRef} style={{ 
                     width: '100%', 
                     borderCollapse: 'collapse',
                     backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent white background
@@ -206,10 +239,11 @@ const ReservationDetails = () => {
                 
 
                     <thead>
-                        <tr style={{ backgroundColor: 'darkblue', color: '#fff' , textAlign: 'center'}}>
+                        <tr style={{ backgroundColor: 'darkblue', color: '#fff' , textAlign: 'center' ,fontFamily: 'CustomFont'}}>
                             <th>User Name</th>
                             <th>Contact No</th>
                             <th>Date</th>
+                            <th>Email</th>
                             <th>Time</th>
                             <th>Category</th>
                             <th>Table Number</th>
@@ -223,23 +257,25 @@ const ReservationDetails = () => {
                                 <td>{reservation.userName}</td>
                                 <td>{reservation.contactNo}</td>
                                 <td>{reservation.date}</td>
+                                <td>{reservation.email}</td>
                                 <td>{reservation.time}</td>
                                 <td>{reservation.category}</td>
                                 <td>{reservation.tNumber}</td>
                                 <td>{reservation.nGuest}</td>
                                 <td>
+                                    
                                     <div className="button-container">
                                         <button
                                             className="btn update-btn"
                                             onClick={() => loadModel(reservation._id)}
-                                            style={{ backgroundColor: 'yellow', color: 'black', marginRight: '5px' }} // Green update button
+                                            style={{ backgroundColor: 'yellow', color: 'black', marginRight: '5px' ,fontFamily: 'CustomFont' ,fontWeight: 'bold' }} // Green update button
                                         >
                                             Update
                                         </button>
                                         <button
                                             className="btn delete-btn"
                                             onClick={() => handleClick(reservation._id)}
-                                            style={{ backgroundColor: 'red', color: 'black' }} // Red delete button
+                                            style={{ backgroundColor: 'red', color: 'black' , fontFamily: 'CustomFont' , fontWeight: 'bold'}} // Red delete button
                                         >
                                             Delete
                                         </button>
@@ -247,12 +283,29 @@ const ReservationDetails = () => {
                                 </td>
                             </tr>
                         ))}
-                        <button onClick={handlePrint} style={{backgroundColor:'orange',border: 'none',padding: '10px 20px',
-                            marginBottom: '8px', marginLeft:'20px'}}> Download </button>
+                        
                     </tbody>
                 </table>
+                
             </div>
+            
             </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <button
+                        onClick={handlePrint}
+                        style={{
+                        backgroundColor: 'darkblue',
+                        color:'white',
+                        fontSize:'20px',
+                        border: 'none',
+                        padding: '15px 25px',
+                        marginTop: '30px'
+                        }}
+                    >
+                        Download
+                    </button>
+                    </div>
         
         
 
@@ -277,6 +330,11 @@ const ReservationDetails = () => {
                                         }
                                     }}
                                 />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Email:</label>
+                                <input type="text" className="form-control" value={updateemail} onChange={e => setUpdateEmail(e.target.value)} />
                             </div>
 
                             <div className="form-group">

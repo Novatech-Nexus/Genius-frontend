@@ -16,7 +16,6 @@ import AddItempage from './pages/inventory-management/addinventory';
 import AllUser from './pages/user-management/allUser';
 
 
-import TableReservationHome from './pages/table-res-management/TableReservationHome';
 import Contact from './pages/customer-care-management/Contact';
 import Feedback from './pages/customer-care-management/Feedback';
 import Feedback_form from './pages/customer-care-management/Feedback_form';
@@ -60,7 +59,11 @@ import DummyPaymentGateway from './components/order/Payment.jsx';
 //import OrderReport from './components/order/'
 import OrderHome from './pages/order-management/OrderHome.jsx';
 
-import BookingTable from './pages/table-res-management/BookingTable'
+
+//table reservation
+import ArchTabble from './pages/table-res-management/ArchTabble.jsx';
+import TableReservationHome from './pages/table-res-management/TableReservationHome';
+import BookingTable from './pages/table-res-management/BookingTable';
 
 function App() {
   return (
@@ -83,13 +86,14 @@ function App() {
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
-        <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
-        <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
+        {/* <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
+        <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route> */}
 
         {/* -------------------------------------------------------------------------- */}
 
         {/* Table Reservation */}
-        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+        <Route path="/reservation" element = {<ArchTabble/>} ></Route>
+        <Route path="/arch" element = {<TableReservationHome/>} ></Route>
         <Route path="/booking" element = {<BookingTable/>} ></Route>
 
 

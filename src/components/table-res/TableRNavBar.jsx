@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const TableRNavBar = () => {
 
     const linkStyle = {
@@ -14,14 +14,17 @@ const TableRNavBar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav" style={{fontWeight: 'bold' , fontFamily: 'CustomFont' , color: 'darkblack' , fontSize: '20px'}}>
 
+                        <li className="nav-item">
+                            <NavLink exact to="/reservation" className="nav-link" activeStyle={{ fontWeight: 'bold', color: 'black' }}>Home</NavLink>
+                        </li>
                         
                         <li className="nav-item">
-                            <Link to = "/reservation" className="nav-link">Home</Link>
+                            <NavLink exact to="/arch" className="nav-link" activeStyle={{ fontWeight: 'bold', color: 'black' }}>Booking</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to = "/booking" className="nav-link">Booking</Link>
+                        <NavLink exact to="/booking" className="nav-link" activeStyle={{ fontWeight: 'bold', color: 'black' }}>Reservations</NavLink>
                         </li>
                         
 
