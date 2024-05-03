@@ -26,7 +26,6 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-chartjs-2": "^5.2.0",
-    "react-chartjs-2": "^5.2.0",
     "react-date-picker": "^10.6.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
@@ -36,7 +35,6 @@
     "react-to-print": "^2.15.1",
     "reactstrap": "^9.2.2",
     "sweetalert2": "^11.10.8",
-    "zustand": "^4.5.2"
     "zustand": "^4.5.2"
   },
   "devDependencies": {
