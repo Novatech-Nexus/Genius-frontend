@@ -64,6 +64,7 @@ import Salaryassign from './pages/staff-management/salaryassign';
 import SalaryDetails from './pages/staff-management/salarydetails.jsx';
 import Staffmember from './pages/staff-management/staffmember';
 import AttendanceQRCode from './pages/staff-management/attendance'; 
+import StaffProfile from './pages/staff-management/staffprofile.jsx';
 
 
 
@@ -106,6 +107,8 @@ function App() {
         <Route path="/salarydetails" element={<SalaryDetails/>}></Route>
         <Route path="/staffmember" element={<Staffmember/>}></Route>
         <Route path="/attendance" element={<AttendanceQRCode />} />
+        <Route path="/staffprofile" element={<StaffProfile />} />
+        
        
         
         

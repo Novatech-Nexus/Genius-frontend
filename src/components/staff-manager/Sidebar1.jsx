@@ -19,7 +19,7 @@ const Sidebar = () => {
                 <ul className="navbar-nav ms-auto">
                 <li class="nav-item">
           
-          <a class="nav-link" aria-current="page" href="/sm_dashboard">Home</a>
+          <a class="nav-link" aria-current="page" href="/staffmember">Home</a>
           
           </li>
         <li class="nav-item">
@@ -27,14 +27,10 @@ const Sidebar = () => {
         <a class="nav-link"  href="/attendance">mark attendance</a>
         
         </li>
+        
         <li className="nav-item">
         
-        <a class="nav-link"  href="">salary details</a>
-        
-        </li>
-        <li className="nav-item">
-        
-        <a class="nav-link"  href="">profile</a>
+        <a class="nav-link"  href="/staffprofile">profile</a>
         
         </li>
                    

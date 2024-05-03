@@ -7,7 +7,7 @@ function staffmemberimg() {
     <div>
        <div style={{ display: "flex", alignItems: "center",justifyContent:"center",flexWrap:"wrap" }}>
             <div style={{marginLeft:"200px",marginTop:"100px"}}>
-                <img src={staffmember} alt="Genius" width="500px" height="500px"/>
+                <img src={staffmember} alt="Genius" width="800px" height="500px"/>
             </div>
             
             <div style={{ marginLeft: "100px" }}>

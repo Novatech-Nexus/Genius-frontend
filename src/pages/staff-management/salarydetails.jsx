@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import { useReactToPrint } from 'react-to-print'; // Import only once
 import '../../styles/staff/staffmanager.css';
 import Sidebar from '../../components/staff-manager/Sidebar';
 
-function salarydetails() {
+function SalaryDetails() {
   const [salaries, setSalaries] = useState([]);
   const [modelState, setModelState] = useState(false);
   const [selectedSalary, setSelectedSalary] = useState({});
-
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredSalaries, setFilteredSalaries] = useState([]);
 
@@ -25,6 +25,13 @@ function salarydetails() {
     }
     fetchSalaries();
   }, []);
+
+  const componentRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    onAfterPrint: () => alert("Users Report Successfully download")
+  });
 
   const handleSearch = (term) => {
     setSearchTerm(term);
@@ -70,29 +77,58 @@ function salarydetails() {
   return (
     <div className='background-staff-image'>
       <Sidebar />
-      <div style={{ marginLeft: "600px", marginTop: "20px" }}>
-        <div className="Msearch-container">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => handleSearch(e.target.value)}
-            style={{
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'calc(100% - 10px) center',
-              backgroundSize: '30px',
-              paddingLeft: '40px',
-              height: '50px',
-              border: '1px solid #ccc',
-              borderRadius: '40px',
-            }}
-          />
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-12">
+            <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+              <div className="Msearch-container">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  style={{
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    backgroundSize: '30px',
+                    paddingLeft: '40px',
+                    height: '50px',
+                    border: '1px solid #ccc',
+                    borderRadius: '40px',
+                  }}
+                />
+              </div>
+            </div>
+            <div ref={componentRef}>
+              <table className="table table-bordered text-center" style={{ marginBottom: "20px" }}>
+                <thead>
+                  <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Month</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredSalaries.map(salary => (
+                    <tr key={salary._id}>
+                      <td>{salary.employeeID}</td>
+                      <td>{salary.name}</td>
+                      <td>{salary.month}</td>
+                      <td>{salary.amount}</td>
+                      <td>
+                        <button  style={{ marginRight: '15px' }} className="btn btn-success mr-2" onClick={() => handleModelOpen(salary)}>Update</button>
+                        <button className="btn btn-danger" onClick={() => deleteHandler(salary._id)}>Delete</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <button type="button" class="btn btn-warning" onClick={handlePrint}>Download Report</button>
+          </div>
         </div>
-      </div>
-      <div className="row row-cols-2">
-        {filteredSalaries.map(salary => (
-          <SalaryDetailsCard key={salary._id} salary={salary} handleModelOpen={handleModelOpen} deleteHandler={deleteHandler} />
-        ))}
       </div>
       <Modal show={modelState} onHide={() => setModelState(false)}>
         <Modal.Header closeButton>
@@ -127,25 +163,4 @@ function salarydetails() {
   );
 }
 
-function SalaryDetailsCard({ salary, handleModelOpen, deleteHandler }) {
-  return (
-    <div className="col-md-3 mb-3" style={{ marginTop: "30px", marginLeft: "100px" }}>
-      <div className="card border" style={{ backgroundColor: "#f0f0f0" }}>
-        <div className="card-header" style={{ backgroundColor: "lightblue" }}>
-          <h5 className="card-title">{salary.name}</h5>
-        </div>
-        <div className="card-body">
-          {Object.entries(salary).map(([key, value]) => (
-            !['_id', '__v'].includes(key) && <p className="card-text" key={key}><strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}</p>
-          ))}
-        </div>
-        <div className="card-footer d-flex justify-content-between">
-          <button className="btn btn-success" onClick={() => handleModelOpen(salary)}>Update</button>
-          <button className="btn btn-danger" onClick={() => deleteHandler(salary._id)}>Delete</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default salarydetails;
+export default SalaryDetails;

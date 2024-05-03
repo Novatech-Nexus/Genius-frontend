@@ -16,7 +16,7 @@ const AttendanceQRCode = () => {
       <h2 style={{ textAlign: 'center',marginTop: "70px" }}>Scan the code and Mark your Attendance </h2>
      
       {attendanceData && (
-        <QRCode value={attendanceData} style={{ marginLeft:"760px",width:"300px",height:"300px",marginTop:"120px"}} />
+        <QRCode value={attendanceData} style={{ marginLeft:"620px",width:"300px",height:"300px",marginTop:"120px"}} />
       )}
     </div>
   );
