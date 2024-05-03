@@ -68,6 +68,38 @@
     border-radius: 10px;
 }
 
+.btn3 {
+    background-color:#FFC720;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
 input[type = 'file']{
     display: none;
+}
+
+.loginButton{
+    background-color: #FFC720;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.background {
+    margin: auto;
+    background-image: url(../assets/user-management/backgroundImg3.jpg);
+}
+
+.background2 {
+    margin: auto;
+    background-image: url(../assets/user-management/backgroundImg3.jpg);
 }

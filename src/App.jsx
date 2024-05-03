@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 
 //User management system
 import Home from './pages/Home';
+import Homepage from './pages/user-management/Homepage.jsx'
 import Email from './pages/user-management/Email';
 import Register from './pages/user-management/Register';
 import Profile from './pages/user-management/Profile';
@@ -62,6 +63,7 @@ import OrderHome from './pages/order-management/OrderHome.jsx';
 
 import BookingTable from './pages/table-res-management/BookingTable'
 
+
 function App() {
   return (
     <>
@@ -71,6 +73,7 @@ function App() {
     
       <Routes>
         <Route path="/" element={<Home/>}></Route>
+        <Route path="/homepage" element={<Homepage/>}></Route>
         <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
@@ -106,12 +109,10 @@ function App() {
         <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis/></AuthorizeUser>}></Route>
 
         {/* Menu Management */}
-        <Route path="/homeMenu" element={<AuthorizeUser><HomeMenu/></AuthorizeUser>}></Route>
-        <Route path="/itemMenu" element={<AuthorizeUser><ItemMenu/></AuthorizeUser>}></Route>
-        <Route path='/tableMenu' element={<AuthorizeUser><TableMenu/></AuthorizeUser>}></Route>
         <Route path="/homeMenu" element={<HomeMenu/>}></Route>
         <Route path="/itemMenu" element={<ItemMenu/>}></Route>
         <Route path='/tableMenu' element={<TableMenu/>}></Route>
+    
 
         {/* Order Management */}
         <Route path='/orderMenu' element={<OrderHome/>}/>

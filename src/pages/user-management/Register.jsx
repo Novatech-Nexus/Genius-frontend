@@ -51,7 +51,7 @@ export default function Register() {
   return (
     <div>
       <UMnavbar />
-      <div className="container mx-auto">
+      <div className={styles.background}>
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="d-flex h-screen justify-content-center align-items-center">
