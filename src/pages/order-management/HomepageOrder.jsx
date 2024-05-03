@@ -1,19 +1,28 @@
-//import React from 'react';
-import Food from '../components/Food';
-import foods from '../data';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
+import list from "../../components/order/data.jsx";
+import Cards from "../../components/order/Food.jsx";
+import SearchList from '../../components/order/SearchList.jsx'
 
-export default function HomepageOrder() {
+
+const Amazon = ({ handleClick }) => {
   return (
+    
     <div>
+      <SearchList />
       <div className="row">
-        {foods.map((food, index) => (
-          <div key={index} className="col-md-4">
-            <div>
-              <Food food={food} />
-            </div>
+      {list.map((item) => (
+        <div key={item.id} className="col-md-4">
+          <div>
+            <Cards item={item} handleClick={handleClick} />
           </div>
-        ))}
+        </div>
+      ))}
+
       </div>
     </div>
   );
-}
+};
+
+export default Amazon;

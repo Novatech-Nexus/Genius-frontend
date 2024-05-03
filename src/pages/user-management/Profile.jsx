@@ -9,8 +9,10 @@ import useFetch from "../../hooks/fetch.hook";
 // import { useAuthStore } from "../../store/store";
 import { updateUser } from "../../helper/helper";
 import { deleteUser } from "../../helper/helper";
+import UMnavbar from "../../components/user-management/um-navbar";
 
 import styles from "../../styles/Username.module.css";
+import Footer from "../../components/Footer";
 
 export default function Profile() {
   const [file, setFile] = useState();
@@ -89,6 +91,8 @@ export default function Profile() {
   if(serverError) return <h1 className="fs-5 font-weight-bold">{serverError.message}</h1>
 
   return (
+    <div>
+      <UMnavbar />
     <div className="container mx-auto">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
@@ -134,5 +138,8 @@ export default function Profile() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </div>
+    
   );
 }
