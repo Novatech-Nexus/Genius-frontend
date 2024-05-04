@@ -131,11 +131,11 @@ function App() {
         <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
 
         {/* Order Management */}
-        <Route path='/orderMenu' element={<OrderHome/>}/>
+        <Route path='/orderMenuHome' element={<OrderHome/>}/>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/orderMenu/create' element={<CreatePost/>}/>  
-        <Route path='/orderMenu/create/posts' element={<Posts/>}/>  
-        <Route path='/orderMenu/create/posts/payment' element={<PaymentReceipt/>}/>  
+        <Route path='/orderMenuHome/create' element={<CreatePost/>}/>  
+        <Route path='/orderMenuHome/create/posts' element={<Posts/>}/>  
+        <Route path='/orderMenuHome/create/posts/payment' element={<PaymentReceipt/>}/>  
         <Route path='/orderDetails' element={<OrderCartDisplay/>}/>
         <Route path='/orderManager/reports' element={<Statistics/>} />
         <Route path='/orderManager/orderUserDetails' element={<OrderDetails/>} />
