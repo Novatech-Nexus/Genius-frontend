@@ -37,13 +37,25 @@ function AddEmployee() {
       }
   
       // Validation for mobile number
+      if (!/^EM\d+$/.test(inputs.employeeID)) {
+        alert('Employee ID should start with "EM" followed by numbers.');
+        return;
+      }
       if (!/^\d{10}$/.test(inputs.mobile)) {
         alert('Mobile number must be 10 digits.');
         return;
       }
+      if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(inputs.firstname)) {
+        alert('Please enter a valid first name.');
+        return;
+      }
+      if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(inputs.lastname)) {
+        alert('Please enter a valid last name.');
+        return;
+      }
   
       try {
-        const response = await axios.post("http://localhost:8080/employee/add", inputs);
+        const response = await axios.post("http://localhost:5050/employee/addemployee", inputs);
         Swal.fire({
           position: "center",
           icon: "success",

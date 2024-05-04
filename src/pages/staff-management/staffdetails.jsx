@@ -16,7 +16,7 @@ function StaffDetails() {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const response = await axios.get('http://localhost:8080/employee');
+        const response = await axios.get('http://localhost:5050/employee/getemployee/');
         setUsers(response.data);
         setFilteredUsers(response.data);
       } catch (error) {
@@ -44,7 +44,23 @@ function StaffDetails() {
 
   const updateHandler = async () => {
     try {
-      await axios.put(`http://localhost:8080/employee/update/${selectedUser._id}`, selectedUser);
+      if (!/^EM\d+$/.test(selectedUser.employeeID)) {
+        Swal.fire("Error!", "Employee ID should start with 'EM' followed by numbers.", "error");
+        return;
+      }
+  
+      // Validation for first name
+      if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(selectedUser.firstname)) {
+        Swal.fire("Error!", "Please enter a valid first name.", "error");
+        return;
+      }
+  
+      // Validation for last name
+      if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(selectedUser.lastname)) {
+        Swal.fire("Error!", "Please enter a valid last name.", "error");
+        return;
+      }
+      await axios.put(`http://localhost:5050/employee/updateemployee/${selectedUser._id}`, selectedUser);
       const updatedUsers = users.map(user => user._id === selectedUser._id ? selectedUser : user);
       setUsers(updatedUsers);
       setFilteredUsers(updatedUsers);
@@ -57,7 +73,7 @@ function StaffDetails() {
 
   const deleteHandler = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/employee/delete/${id}`);
+      await axios.delete(`http://localhost:5050/employee/deleteemployee/${id}`);
       const updatedUsers = users.filter(user => user._id !== id);
       setUsers(updatedUsers);
       setFilteredUsers(updatedUsers);

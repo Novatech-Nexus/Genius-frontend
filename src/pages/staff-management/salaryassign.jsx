@@ -17,22 +17,29 @@ function SalaryAssign() {
     });
 
     const handleChange = (e) => {
-        setInputs((prevState) => ({
+        const { name, value } = e.target;
+        // Perform auto-calculation when updating basicamount, othours, or amountperhour
+        let amount = calculateAmount(value, name);
+        setInputs(prevState => ({
             ...prevState,
-            [e.target.name]: e.target.value,
+            [name]: value,
+            amount: isNaN(amount) ? '' : amount.toFixed(2)
         }));
+    };
+
+    const calculateAmount = (value, name) => {
+        const { basicamount, othours, amountperhour } = inputs;
+        if (name === 'basicamount' || name === 'othours' || name === 'amountperhour') {
+            return parseFloat(basicamount) + (parseFloat(othours) * parseFloat(amountperhour));
+        }
+        return parseFloat(value);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!inputs.employeeID || !inputs.name || !inputs.basicamount || !inputs.othours || !inputs.amountperhour || !inputs.month || !inputs.amount) {
-            alert('Please fill in all fields.');
-            return;
-        }
-
         try {
-            const response = await axios.post("http://localhost:8080/salary/addsalary", inputs);
+            const response = await axios.post("http://localhost:5050/salary/addsalary", inputs);
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -57,31 +64,31 @@ function SalaryAssign() {
                         <form onSubmit={handleSubmit} id="salaryForm">
                             <div className="mb-3">
                                 <label htmlFor="employeeID" className="form-label">Employee ID</label>
-                                <input type="text" id="employeeID" name="employeeID" onChange={handleChange} value={inputs.employeeID} className="form-control" required />
+                                <input type="text" id="employeeID" name="employeeID" onChange={handleChange} value={inputs.employeeID} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label">Name</label>
-                                <input type="text" id="name" name="name" onChange={handleChange} value={inputs.name} className="form-control" required />
+                                <input type="text" id="name" name="name" onChange={handleChange} value={inputs.name} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="basicamount" className="form-label">Basic Amount</label>
-                                <input type="text" id="basicamount" name="basicamount" onChange={handleChange} value={inputs.basicamount} className="form-control" required />
+                                <input type="text" id="basicamount" name="basicamount" onChange={handleChange} value={inputs.basicamount} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="othours" className="form-label">OT Hours</label>
-                                <input type="text" id="othours" name="othours" onChange={handleChange} value={inputs.othours} className="form-control" required />
+                                <input type="text" id="othours" name="othours" onChange={handleChange} value={inputs.othours} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="amountperhour" className="form-label">Amount per OT Hour</label>
-                                <input type="text" id="amountperhour" name="amountperhour" onChange={handleChange} value={inputs.amountperhour} className="form-control" required />
+                                <input type="text" id="amountperhour" name="amountperhour" onChange={handleChange} value={inputs.amountperhour} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="month" className="form-label">Month</label>
-                                <input type="text" id="month" name="month" onChange={handleChange} value={inputs.month} className="form-control" required />
+                                <input type="text" id="month" name="month" onChange={handleChange} value={inputs.month} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="amount" className="form-label">Amount</label>
-                                <input type="text" id="amount" name="amount" onChange={handleChange} value={inputs.amount} className="form-control" required />
+                                <input type="text" id="amount" name="amount" onChange={handleChange} value={inputs.amount} className="form-control" />
                             </div>
                             <div className="d-grid gap-2">
                                 <button type="submit" className="btn btn-primary">Assign</button>

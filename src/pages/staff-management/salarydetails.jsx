@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-import { useReactToPrint } from 'react-to-print'; // Import only once
-import '../../styles/staff/staffmanager.css';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import Sidebar from '../../components/staff-manager/Sidebar';
+import '../../styles/staff/staffmanager.css';
 
 function SalaryDetails() {
   const [salaries, setSalaries] = useState([]);
@@ -16,7 +17,7 @@ function SalaryDetails() {
   useEffect(() => {
     async function fetchSalaries() {
       try {
-        const response = await axios.get('http://localhost:8080/salary/getsal/');
+        const response = await axios.get('http://localhost:5050/salary/getsal/');
         setSalaries(response.data);
         setFilteredSalaries(response.data);
       } catch (error) {
@@ -25,13 +26,6 @@ function SalaryDetails() {
     }
     fetchSalaries();
   }, []);
-
-  const componentRef = useRef();
-
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    onAfterPrint: () => alert("Users Report Successfully download")
-  });
 
   const handleSearch = (term) => {
     setSearchTerm(term);
@@ -51,7 +45,7 @@ function SalaryDetails() {
 
   const updateHandler = async () => {
     try {
-      await axios.put(`http://localhost:8080/salary/updatesal/${selectedSalary._id}`, selectedSalary);
+      await axios.put(`http://localhost:5050/salary/updatesal/${selectedSalary._id}`, selectedSalary);
       const updatedSalaries = salaries.map(salary => salary._id === selectedSalary._id ? selectedSalary : salary);
       setSalaries(updatedSalaries);
       setFilteredSalaries(updatedSalaries);
@@ -64,7 +58,7 @@ function SalaryDetails() {
 
   const deleteHandler = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/salary/deletesalary/${id}`);
+      await axios.delete(`http://localhost:5050/salary/deletesalary/${id}`);
       const updatedSalaries = salaries.filter(salary => salary._id !== id);
       setSalaries(updatedSalaries);
       setFilteredSalaries(updatedSalaries);
@@ -72,6 +66,20 @@ function SalaryDetails() {
     } catch (error) {
       console.error("Error deleting salary details:", error.message);
     }
+  };
+
+  const handlePrint = () => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(14);
+    doc.text('Salary Report', 14, 15);
+    doc.autoTable({
+      head: [['Employee ID', 'Name', 'Month', 'Amount']],
+      body: filteredSalaries.map(salary => [salary.employeeID, salary.name, salary.month, salary.amount]),
+      startY: 20
+    });
+
+    doc.save('SalaryReport.pdf');
   };
 
   return (
@@ -99,7 +107,7 @@ function SalaryDetails() {
                 />
               </div>
             </div>
-            <div ref={componentRef}>
+            <div>
               <table className="table table-bordered text-center" style={{ marginBottom: "20px" }}>
                 <thead>
                   <tr>
@@ -118,7 +126,7 @@ function SalaryDetails() {
                       <td>{salary.month}</td>
                       <td>{salary.amount}</td>
                       <td>
-                        <button  style={{ marginRight: '15px' }} className="btn btn-success mr-2" onClick={() => handleModelOpen(salary)}>Update</button>
+                        <button style={{ marginRight: '15px' }} className="btn btn-success mr-2" onClick={() => handleModelOpen(salary)}>Update</button>
                         <button className="btn btn-danger" onClick={() => deleteHandler(salary._id)}>Delete</button>
                       </td>
                     </tr>
@@ -126,7 +134,7 @@ function SalaryDetails() {
                 </tbody>
               </table>
             </div>
-            <button type="button" class="btn btn-warning" onClick={handlePrint}>Download Report</button>
+            <button type="button" className="btn btn-warning" onClick={handlePrint}>Download Report</button>
           </div>
         </div>
       </div>

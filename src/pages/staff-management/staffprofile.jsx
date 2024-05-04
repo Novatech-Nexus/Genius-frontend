@@ -10,11 +10,11 @@ function StaffProfile({ employeeId }) {
     async function fetchData() {
       try {
         // Fetch employee details
-        const employeeResponse = await axios.get(`http://localhost:8080/get/${employeeId}`);
+        const employeeResponse = await axios.get(`http://localhost:5050/get/${employeeId}`);
         setEmployeeDetails(employeeResponse.data);
 
         // Fetch salary details
-        const salaryResponse = await axios.get(`http://localhost:8080/getsalary/${employeeId}`);
+        const salaryResponse = await axios.get(`http://localhost:5050/getsalary/${employeeId}`);
         setSalaryDetails(salaryResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error.message);
