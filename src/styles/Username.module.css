@@ -69,7 +69,7 @@
 }
 
 .btn3 {
-    background-color:#FFC720;
+    background-color: #FF0000;
     color: white;
     padding: 8px 20px;
     margin: 8px 0;
@@ -77,11 +77,8 @@
     cursor: pointer;
     border-radius: 10px;
     text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-/* input[type = 'file']{
-    display: none;
-} */
 
 .loginButton{
     background-color: #FFC720;
