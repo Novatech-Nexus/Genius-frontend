@@ -8,9 +8,7 @@ const Navbar = ({ setShow, size }) => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-white rounded">
-        <a className="navbar-brand" style={{ color: 'black'}} href="/">
-          Genius
-        </a>
+        
         <button
           className="navbar-toggler"
           type="button"
@@ -21,18 +19,10 @@ const Navbar = ({ setShow, size }) => {
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            
-            <li className="nav-item">
-              <a className="nav-link" style={{ color: 'black'}} href="/orderMenu">
-                HomePage
-              </a>
-            </li>
-
-
-
+          
           <li className="nav-item">
               <a className="nav-link" style={{ color: 'black'}} href="/orderDetails">
-                Order
+                MyOrders
               </a>
             </li>
 
