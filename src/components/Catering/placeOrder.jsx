@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import img6 from "../../assets/catering/img6.jpeg";
-
+import Swal from 'sweetalert2';
 
 function PlaceOrder() {
   const [functionType, setFunctionType] = useState('');
@@ -61,11 +61,19 @@ function PlaceOrder() {
 
     axios.post("http://localhost:8099/CatOrdering/add", newCatOrder)
       .then(response => {
-        alert("Order Added Successfully");
+        Swal.fire({
+          title: "Order Added Successfully!",
+          icon: "success"
+        });
         window.location.replace('orderDetail');
       })
       .catch(err => {
-        alert(err);
+        console.error(err);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to add order. Please try again later.",
+          icon: "error"
+        });
       });
   }
 
@@ -166,7 +174,6 @@ function PlaceOrder() {
 
         h2 {
           text-align: center;
-          background-color: #CC9966;
         }
 
         div {

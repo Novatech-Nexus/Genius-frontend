@@ -5,6 +5,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import img5 from '../../assets/catering/img6.jpeg';
 import bill from '../../assets/catering/bill.jpg';
+import Swal from 'sweetalert2';
 
 function OrderDet() {
     const [data, setData] = useState({});
@@ -27,16 +28,29 @@ function OrderDet() {
     }, []);
 
     const handleDelete = (id) => {
-        const confirmDelete = window.confirm("Would You Like to Delete the Order?");
-        if (confirmDelete) {
-            axios.delete(`http://localhost:8099/CatOrdering/delete/` + id)
-                .then(() => {
-                    alert('Order Deleted Successfully');
-                    navigate('/catMain');
-                })
-                .catch(err => console.log(err));
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Would you like to delete the order?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:8099/CatOrdering/delete/` + id)
+                    .then(() => {
+                        Swal.fire({
+                            title: 'Order Deleted Successfully!',
+                            icon: 'success'
+                        });
+                        navigate('/catMain');
+                    })
+                    .catch(err => console.log(err));
+            }
+        });
     }
+    
 
     
     const downloadPDF = () => {
@@ -195,7 +209,6 @@ function OrderDet() {
     
     h2{
         text-align: center;
-        background-color: #CC9966;
     }
     .custom-button {
         background-color: #ac7339; 

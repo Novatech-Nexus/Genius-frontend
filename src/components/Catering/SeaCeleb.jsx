@@ -33,7 +33,7 @@ function SeaCeleb() {
         p: {
             textAlign: 'justify',
             fontSize: '18px',
-            fontWeight: 'bold',
+            width:'99%'
         },
         imgOne: {
             width: '230px',
@@ -80,7 +80,6 @@ function SeaCeleb() {
         },
         ul: {
             textAlign: 'left',
-            fontWeight: 'bold',
             listStyleType: 'circle',
         },
         li: {

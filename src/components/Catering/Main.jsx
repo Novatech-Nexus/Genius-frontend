@@ -14,12 +14,12 @@ function Main() {
         borderCollapse: 'collapse',
         width: '99%',
         marginTop: '50px',
-     //   marginBottom: '50px'
     };
 
     const tdStyle = {
         verticalAlign: 'top',
         textAlign: 'justify',
+        marginTop: '100px'
     };
 
     const imgStyle = {
@@ -30,8 +30,8 @@ function Main() {
 
     const pStyle = {
         textAlign: 'justify',
-        fontSize: '18px',
-        fontWeight: 'bold',
+        fontSize: '17px',
+        width: '99%'
     };
 
     const backgroundStyle = {

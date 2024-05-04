@@ -32,7 +32,7 @@ function CelebOcca() {
     const pStyle = {
         textAlign: 'justify',
         fontSize: '18px',
-        fontWeight: 'bold',
+        width: '99%'
     };
 
     const h1Style = {

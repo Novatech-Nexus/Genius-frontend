@@ -31,7 +31,7 @@ function KidsParties() {
     const pStyle = {
         textAlign: 'justify',
         fontSize: '18px',
-        fontWeight: 'bold'
+        width: '99%'
     };
 
     const customButtonStyle = {
@@ -81,7 +81,6 @@ function KidsParties() {
 
     const ulStyle = {
         textAlign: 'left',
-        fontWeight: 'bold',
         listStyleType: 'circle'
     };
 
@@ -139,7 +138,7 @@ function KidsParties() {
                 </tr>
             </table>
             </div>
-            <p style={{...pStyle, fontWeight: 'bold'}}>Kids Parties Catering with Genius Catering Services offers a unique and exceptional experience for children's events. Our special services focus on creating a fun and memorable atmosphere while ensuring delicious and nutritious food options. Here's a brief explanation of what sets us apart:</p>
+            <p style={{...pStyle}}>Kids Parties Catering with Genius Catering Services offers a unique and exceptional experience for children's events. Our special services focus on creating a fun and memorable atmosphere while ensuring delicious and nutritious food options. Here's a brief explanation of what sets us apart:</p>
             <ul style={ulStyle}>
                 <li style={liStyle}>Creative Menu: Our catering services provide a menu specifically designed for kids, featuring a variety of colorful and tasty dishes that appeal to young taste buds. From playful finger foods to themed desserts, we prioritize both nutrition and enjoyment.</li>
                 <li style={liStyle}>Themed Decor: We understand the importance of creating a visually appealing setting for kids' parties. Our catering includes themed decor to match the party's motif, transforming the venue into a magical and exciting space that complements the overall experience.</li>
@@ -149,7 +148,7 @@ function KidsParties() {
                 <li style={liStyle}>Entertainment Packages: In addition to catering, we offer optional entertainment packages such as face painting, balloon artists, or themed character appearances. These add-ons enhance the overall party experience and keep the children engaged throughout the event.</li>
                 <li style={liStyle}>Effortless Planning: Genius Catering Services takes the stress out of party planning for parents. We work closely with clients to understand their preferences and customize catering packages, allowing them to focus on enjoying the celebration rather than worrying about the details.</li>
             </ul>
-            <p style={{...pStyle, fontWeight: 'bold'}}>Overall, our Kids Parties Catering with Genius Catering Services aims to deliver not just delicious food but an immersive and delightful experience that makes every child's celebration truly special.</p>     
+            <p style={{...pStyle}}>Overall, our Kids Parties Catering with Genius Catering Services aims to deliver not just delicious food but an immersive and delightful experience that makes every child's celebration truly special.</p>     
 
             <div style={tableContainerStyle}>
                 <table style={tableStyle}>

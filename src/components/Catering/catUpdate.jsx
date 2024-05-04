@@ -1,9 +1,8 @@
-// CatUpdate.js
-
 import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import img5 from '../../assets/catering/img6.jpeg';
+import Swal from 'sweetalert2';
 
 function CatUpdate() {
   const [formData, setFormData] = useState({
@@ -113,11 +112,18 @@ function CatUpdate() {
 
     axios.put(`http://localhost:8099/CatOrdering/update/${data._id}`, formData)
       .then(response => {
-        alert("Order Updated Successfully");
+        Swal.fire({
+          title: "Order Updated Successfully!",
+          icon: "success"
+        });
         navigate('/orderDetail');
       })
       .catch(err => {
-        alert("Error updating order");
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to add order. Please try again later.",
+          icon: "error"
+        });
         console.error("Error:", err);
       });
   }
@@ -232,7 +238,6 @@ function CatUpdate() {
     
     h2{
       text-align: center;
-      background-color: #CC9966;
     }
 
     .dropdown-container {

@@ -29,7 +29,7 @@ function Wedding() {
     const pStyle = {
         textAlign: 'justify',
         fontSize: '18px',
-        fontWeight: 'bold',
+        width:'99%'
     };
 
     const customButtonStyle = {
@@ -74,7 +74,6 @@ function Wedding() {
 
     const ulStyle = {
         textAlign: 'left',
-        fontWeight: 'bold',
         listStyleType: 'circle',
     };
     const liStyle = {
