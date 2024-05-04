@@ -23,15 +23,15 @@ function TableDesign() {
 
             <div className="table-architecture" >
                 <div className="image-container" >
-                    <div className="image-with-text" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2px'}}>
+                    <div className="image-with-text" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2px',fontFamily: 'CustomFont',fontWeight: 'bold'}}>
                         <img src={book3} alt="Book 3" className="book-image" />
                         <p className="image-caption">Couple</p>
                     </div>
-                    <div className="image-with-text" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2px'}}>
+                    <div className="image-with-text" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2px' ,fontFamily: 'CustomFont',fontWeight: 'bold'}}>
                         <img src={book4} alt="Book 4" className="book-image" />
                         <p className="image-caption">Family/Friends</p>
                     </div>
-                    <div className="image-with-text" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2px'}}>
+                    <div className="image-with-text" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2px' , fontFamily: 'CustomFont',fontWeight: 'bold'}}>
                         <img src={book5} alt="Book 5" className="book-image" />
                         <p className="image-caption">Business Meeting</p>
                     </div>

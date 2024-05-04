@@ -74,6 +74,7 @@ const ReservationDetails = () => {
         }
     };
 
+    //category changed
     const handleCategoryChange = (e) => {
         const selectedCategory = e.target.value;
         setUpdateCategory(selectedCategory);
@@ -189,6 +190,7 @@ const ReservationDetails = () => {
     };
     
 
+    //update
     const updateReservation = async (selectedReservationId) => {
         // Show confirmation dialog before updating
         Swal.fire({

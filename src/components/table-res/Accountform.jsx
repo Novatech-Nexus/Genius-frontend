@@ -41,12 +41,14 @@ const AccountForm = ({history}) => {
         'Business Meeting': ['B1', 'B2', 'B3', 'B4', 'B5']
     };
 
+    //email validation
     const numberOfGuestsOptions = Array.from({ length: 15 }, (_, index) => index + 1);
     const isValidEmail = (email) => {
         // Regular expression for basic email validation
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
 
+    //didn't wort pass date
     const getCurrentDate = () => {
         const today = new Date();
         const year = today.getFullYear();
