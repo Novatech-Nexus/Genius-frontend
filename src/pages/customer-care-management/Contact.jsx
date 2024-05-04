@@ -6,6 +6,8 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import '../../styles/CustomerCare.css';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import Footer from '../../components/Footer.jsx';
+import UMnavbar from '../../components/user-management/UMnavbar.jsx';
 
 // Function to create notification
 const createNotification = async (notificationData) => {
@@ -77,6 +79,7 @@ export default function Contact() {
   return (
     <div className='contact-main-body'>
 
+      <UMnavbar/>
         <header className='contact_title'>
           <h2>Contact Us</h2>
         </header>
@@ -165,6 +168,10 @@ export default function Contact() {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <br/>
+      <Footer/>
+
     </div>
   );
 }

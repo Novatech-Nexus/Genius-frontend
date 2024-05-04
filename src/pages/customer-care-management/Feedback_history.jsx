@@ -8,6 +8,8 @@ import emptyfeedbackPic from '../../assets/customer-care-images/emptypic.png';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import FeedbackItem from '../../components/customer-care/FeedbackItem.jsx';
+import Footer from '../../components/Footer.jsx';
+import UMnavbar from '../../components/user-management/UMnavbar.jsx';
 
 export default function Feedback_history() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -120,6 +122,7 @@ export default function Feedback_history() {
     return (
         <div className='feedback_update-body'>
             
+            <UMnavbar/>
                 <header className='feedback_update_title'>
                 <h2>Your Feedback History</h2>
                 </header>
@@ -161,6 +164,8 @@ export default function Feedback_history() {
                 ))}
             </div>
             )}
+            <br/>
+            <Footer/>
         </div>
     );
 }

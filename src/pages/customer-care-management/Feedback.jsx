@@ -5,6 +5,8 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import '../../styles/CustomerCare.css';
+import Footer from '../../components/Footer';
+import UMnavbar from '../../components/user-management/UMnavbar';
 
 export default function Feedback() {  
 
@@ -37,6 +39,7 @@ export default function Feedback() {
   return (
     <div className='feedback-main-body'>
       
+      <UMnavbar/>
         <header className='feedback_title'>
           <h2>Meet our customers</h2>
         </header>
@@ -68,6 +71,8 @@ export default function Feedback() {
 
         </div>
       
+      <br/>
+      <Footer/>
     </div>
   );
 }
