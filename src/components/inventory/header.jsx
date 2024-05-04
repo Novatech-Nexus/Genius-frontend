@@ -24,7 +24,7 @@ function Header(){
                             <NavLink className="nav-link" activeClassName="active" to="/dashboard/allitem">Inventory</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="">Suppliers</NavLink>
+                            <NavLink className="nav-link" activeClassName="active" to="/dashboard/allsupplier">Suppliers</NavLink>
                         </li>
                     </ul>
                 </div>
