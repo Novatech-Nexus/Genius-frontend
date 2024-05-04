@@ -67,6 +67,18 @@ export async function verifyPassword({ email, password }) {
   }
 }
 
+/** Employee Login function */
+export async function employeeLogin({ employeeID, email }) {
+  try {
+    if (employeeID) {
+      const { data } = await axios.post("/api/empLogin", { employeeID, email });
+      return Promise.resolve({ data });
+    }
+  } catch (error) {
+    return Promise.reject({ error: "User Authentication error" });
+  }
+}
+
 /** Update user profile function */
 export async function updateUser(req) {
   try {
