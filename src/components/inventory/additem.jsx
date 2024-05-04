@@ -132,7 +132,7 @@ function AddItem(){
    
                 <div classNameName="container" 
                 style={{ width: "600px",margin:"auto",backdropFilter: "blur(10px)",padding:"50px",borderRadius:"10px",
-                marginTop:"20px",boxShadow:"0 2px 4px rgba(0, 0, 0, 0.2)",background:"#c9c9c8"}}>
+                marginTop:"40px",marginBottom:"40px",boxShadow:"0 2px 4px rgba(0, 0, 0, 0.2)",background:"#c9c9c8"}}>
                     <div className="col-12 text-center ">
                         <div>
                             <img src={addlogo} alt="Logo" width="75" height="75"/>
