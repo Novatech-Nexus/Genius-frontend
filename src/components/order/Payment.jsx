@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import '../../styles/order/DummyPaymentGateway.css'; // Import CSS for styling
+import image from "../../assets/order-images/form_bg.png";
 
 const DummyPaymentGateway = () => {
   const [cardNumber, setCardNumber] = useState('');
@@ -46,8 +47,9 @@ const DummyPaymentGateway = () => {
   };
 
   return (
+    <div style={{height: "100vh", backgroundImage: `url(${image})`, backgroundSize: "cover", display: "flex",justifyContent: "center",alignItems: "center", }}>
     <div className="payment-container" style={{ boxShadow: "0 4px 10px 0 rgba(0,0,0,0.2)", transition: "0.3s", padding: "20px",marginTop: "3rem"}} >
-      <h2 className="payment-title">Payment Gateway</h2>
+      <h2 className="payment-title">Payment</h2>
       <form onSubmit={handlePayment} className="payment-form">
         <div className="payment-form-group">
           <label className="payment-form-label">Card Number:</label>
@@ -99,6 +101,7 @@ const DummyPaymentGateway = () => {
       </form>
       {paymentStatus === 'success' && <p className="payment-success">Payment successful!</p>}
       {/* {paymentStatus === 'failure' && <p className="payment-failure">Payment failed. Please try again.</p>} */}
+    </div>
     </div>
   );
 };

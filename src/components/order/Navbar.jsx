@@ -23,15 +23,19 @@ const Navbar = ({ setShow, size }) => {
           <ul className="navbar-nav ms-auto">
             
             <li className="nav-item">
-              <a className="nav-link" style={{ color: 'black'}} href="/">
+              <a className="nav-link" style={{ color: 'black'}} href="/orderMenu">
                 HomePage
               </a>
             </li>
 
-            <li className="nav-item">
-            <a className="nav-link" style={{ color: 'black'}} href="/reports">Reports</a>
-          </li>
-            
+
+
+          <li className="nav-item">
+              <a className="nav-link" style={{ color: 'black'}} href="/orderDetails">
+                Order
+              </a>
+            </li>
+
             <li className="nav-item">
               <a className="nav-link" style={{ color: 'black'}} onClick={() => setShow(false)}>
                 Cart

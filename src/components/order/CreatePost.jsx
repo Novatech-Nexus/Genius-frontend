@@ -2,6 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import image from "../../assets/order-images/form_bg.png";
 
 function CreatePost() {
   const navigate = useNavigate();
@@ -52,8 +53,9 @@ function CreatePost() {
   };
 
   return (
-    <div style={{ width: "50%", margin: "auto auto", textAlign: "center",  }}>
-      <div style={{ boxShadow: "0 4px 10px 0 rgba(0,0,0,0.2)", transition: "0.3s", padding: "20px",marginTop: "3rem", backgroundColor:'lightgray' }}>
+    <div style={{height: "100vh", backgroundImage: `url(${image})`, backgroundSize: "cover", display: "flex",justifyContent: "center",alignItems: "center", }}>
+    <div style={{ width: "50%", margin: "auto auto", textAlign: "center"}}>
+      <div style={{ boxShadow: "0 4px 10px 0 rgba(0,0,0,0.2)", transition: "0.3s", padding: "20px",marginTop: "3rem", backgroundColor:'lightgray',marginBottom: "3rem" }}>
       <h3 style={{ marginTop: "1rem",marginBottom: "2rem" }}>Order Details</h3>
       <Form>
         <Form.Group>
@@ -127,6 +129,7 @@ function CreatePost() {
         Back
       </Button>
       </div>
+    </div>
     </div>
   );
 }
