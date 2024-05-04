@@ -14,6 +14,9 @@ import PageNotFound from './pages/user-management/PageNotFound';
 import NewPassword from './pages/user-management/NewPassword.jsx';
 import Navbar from './components/Navbar';
 
+import EmployeeLogin from './pages/Employee-login/EmployeeLogin.jsx';
+import EmployeeDashboard from './pages/Employee-login/EmployeeDashboard.jsx';
+
 // inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
@@ -37,6 +40,9 @@ import { AuthorizeUser } from '../middleware/auth';
 import HomeMenu from './pages/menu-management/HomeMenu';
 import ItemMenu from './pages/menu-management/ItemMenu';
 import TableMenu from './pages/menu-management/tableMenu';
+import OrderMenu from './pages/menu-management/OrderMenu.jsx';
+import Orders2Menu from './pages/menu-management/Orders2Menu.jsx';
+import InventoryMenu from './pages/menu-management/InventoryMenu.jsx';
 
 
 import CatMain from './pages/catering-management/CatMain'; 
@@ -84,6 +90,9 @@ function App() {
         <Route path="*" element={<PageNotFound/>}></Route>
         <Route path="/alluser" element={<AllUser/>}></Route>
 
+        <Route path="/employeelogin" element={<EmployeeLogin/>}></Route>
+        <Route path="/employeedashboard" element={<EmployeeDashboard/>}></Route>
+
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
@@ -112,7 +121,9 @@ function App() {
         <Route path="/homeMenu" element={<HomeMenu/>}></Route>
         <Route path="/itemMenu" element={<ItemMenu/>}></Route>
         <Route path='/tableMenu' element={<TableMenu/>}></Route>
-    
+        <Route path='/orderMenu' element={<OrderMenu/>}></Route> 
+        <Route path='/orders2Menu' element={<Orders2Menu/>}></Route> 
+        <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
 
         {/* Order Management */}
         <Route path='/orderMenu' element={<OrderHome/>}/>
