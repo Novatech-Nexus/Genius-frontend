@@ -19,7 +19,7 @@ const ReservationDetails = () => {
     const [selectedReservationId, setSelectedReservationId] = useState(null);
     const [updateUserName, setUpdateUserName] = useState("");
     const [updateContactNo, setUpdateContactNo] = useState("");
-    const [updateemail, setUpdateEmail] = useState("");
+    const [updateEmail, setUpdateEmail] = useState("");
     const [updateDate, setUpdateDate] = useState("");
     const [updateTime, setUpdateTime] = useState("");
     const [updateCategory, setUpdateCategory] = useState("");
@@ -134,25 +134,40 @@ const ReservationDetails = () => {
     //Delete        
     const handleClick = async (id) => {
         console.log("Delete button clicked for reservation ID :", id);
-        try {
-            const response = await axios.delete(`http://localhost:5050/Reservation/deletetr/${id}`);
-            const updatedReservations = allReservations.filter(reservation => reservation._id !== id);
-            setAllReservations(updatedReservations);
-            setFilteredReservations(updatedReservations);
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Reservation deleted successfully',
-            });
-        } catch (error) {
-            console.error("Error deleting reservation:", error.message);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Failed to delete reservation',
-            });
-        }
+        // Show confirmation dialog
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to delete this reservation? You will get an email when you delete the reservation ',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await axios.delete(`http://localhost:5050/Reservation/deletetr/${id}`);
+                    const updatedReservations = allReservations.filter(reservation => reservation._id !== id);
+                    setAllReservations(updatedReservations);
+                    setFilteredReservations(updatedReservations);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Reservation deleted successfully',
+                    });
+                }catch (error) {
+                    console.error("Error deleting reservation:", error.message);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Failed to delete reservation',
+                    });
+                }
+            }
+        });
     };
+    
 
     const loadModel = async (id) => {
         try {
@@ -175,55 +190,68 @@ const ReservationDetails = () => {
     
 
     const updateReservation = async (selectedReservationId) => {
-        try {
-            const response = await axios.put(`http://localhost:5050/Reservation/updatetr/${selectedReservationId}`, {
-                userName: updateUserName,
-                contactNo: updateContactNo,
-                email:updateemail,
-                date: updateDate,
-                time: updateTime,
-                category: updateCategory,
-                tNumber: updateTableNumber,
-                nGuest: updateNGuest
-            });
-    
-            console.log("Reservation updated successfully:", response.data);
-    
-            const updatedReservations = allReservations.map(reservation => {
-                if (reservation._id === selectedReservationId) {
-                    return {
-                        ...reservation,
-                        
+        // Show confirmation dialog before updating
+        Swal.fire({
+            title: 'Do you want to update this reservation?',
+            text: 'Are you sure you want to proceed with the update? You will get an email when you update the reservation',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!',
+            cancelButtonText: 'No',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await axios.put(`http://localhost:5050/Reservation/updatetr/${selectedReservationId}`, {
                         userName: updateUserName,
                         contactNo: updateContactNo,
-                        email:updateemail,
+                        email: updateEmail,
                         date: updateDate,
                         time: updateTime,
                         category: updateCategory,
                         tNumber: updateTableNumber,
                         nGuest: updateNGuest
-                    };
-                } else {
-                    return reservation;
+                    });
+
+                    console.log("Reservation updated successfully:", response.data);
+
+                    const updatedReservations = allReservations.map(reservation => {
+                        if (reservation._id === selectedReservationId) {
+                            return {
+                                ...reservation,
+                                userName: updateUserName,
+                                contactNo: updateContactNo,
+                                email: updateEmail,
+                                date: updateDate,
+                                time: updateTime,
+                                category: updateCategory,
+                                tNumber: updateTableNumber,
+                                nGuest: updateNGuest
+                            };
+                        } else {
+                            return reservation;
+                        }
+                    });
+
+                    setAllReservations(updatedReservations);
+                    setFilteredReservations(updatedReservations);
+                    setModelState(false);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Reservation updated successfully',
+                    });
+                } catch (error) {
+                    console.error("Error updating reservation:", error.message);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Failed to update reservation',
+                    });
                 }
-            });
-    
-            setAllReservations(updatedReservations);
-            setFilteredReservations(updatedReservations);
-            setModelState(false);
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Reservation updated successfully',
-            });
-        } catch (error) {
-            console.error("Error updating reservation:", error.message);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Failed to update reservation',
-            });
-        }
+            }
+        });
     };
     
     return (
@@ -368,7 +396,7 @@ const ReservationDetails = () => {
 
                             <div className="form-group">
                                 <label>Email:</label>
-                                <input type="text" className="form-control" value={updateemail} onChange={e => setUpdateEmail(e.target.value)} />
+                                <input type="text" className="form-control" value={updateEmail} onChange={e => setUpdateEmail(e.target.value)} />
                             </div>
 
                             <div className="form-group">

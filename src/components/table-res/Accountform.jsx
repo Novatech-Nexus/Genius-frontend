@@ -82,9 +82,7 @@ const AccountForm = ({history}) => {
                     showConfirmButton: false
                     
                 });
-                resetForm();
-                // Navigate to customer details page
-                history.push('/arch/customerdetails');
+                
             })
             .catch((err) => {
                 let errorMessage = "Reservation failed. Please try again.";

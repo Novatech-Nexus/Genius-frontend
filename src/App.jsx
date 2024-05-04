@@ -70,7 +70,6 @@ import OrderHome from './pages/order-management/OrderHome.jsx';
 //table reservation
 import ArchTabble from './pages/table-res-management/ArchTabble.jsx';
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
-// import CustomerDetailsPage from './pages/table-res-management/CustomerDetailsPage.jsx'
 import BookingTable from './pages/table-res-management/BookingTable';
 
 
@@ -108,7 +107,6 @@ function App() {
         {/* Table Reservation */}
         <Route path="/reservation" element = {<ArchTabble/>} ></Route>
         <Route path="/arch" element = {<TableReservationHome/>} ></Route>
-        {/* <Route path="/customerdetails" element = {<CustomerDetailsPage/>} ></Route> */}
         <Route path="/booking" element = {<BookingTable/>} ></Route>
 
 
