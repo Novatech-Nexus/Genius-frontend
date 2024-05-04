@@ -79,9 +79,9 @@
     text-decoration: none;
 }
 
-input[type = 'file']{
+/* input[type = 'file']{
     display: none;
-}
+} */
 
 .loginButton{
     background-color: #FFC720;
