@@ -1,9 +1,9 @@
-import avatar from "../../assets/avatar.png";
+// import avatar from "../../assets/avatar.png";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useFormik } from "formik";
-import convertToBase64 from "../../helper/convert";
+// import convertToBase64 from "../../helper/convert";
 import { profileValidate } from "../../helper/validate";
 import useFetch from "../../hooks/fetch.hook";
 // import { useAuthStore } from "../../store/store";
@@ -15,11 +15,11 @@ import styles from "../../styles/Username.module.css";
 import Footer from "../../components/Footer";
 
 export default function Profile() {
-  const [file, setFile] = useState();
+  // const [file, setFile] = useState();
   const navigate = useNavigate();
 
-  useEffect(() => {
-  });
+  // useEffect(() => {
+  // });
   
   const [{isLoading, apiData, serverError}] = useFetch();
 
@@ -35,7 +35,7 @@ export default function Profile() {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      values = await Object.assign(values, { profile: file || apiData?.Profile || '' });
+      values = await Object.assign(values); //, { profile: file || apiData?.Profile || '' }
       console.log(values);
       let updatePromise = updateUser(values);
 
@@ -47,10 +47,10 @@ export default function Profile() {
     },
   });
 
-  const onUpload = async (e) => {
-    const base64 = await convertToBase64(e.target.files[0]);
-    setFile(base64);
-  };
+  // const onUpload = async (e) => {
+  //   const base64 = await convertToBase64(e.target.files[0]);
+  //   setFile(base64);
+  // };
 
   //logout handler function
   function userLogout() {
@@ -97,13 +97,13 @@ export default function Profile() {
             <h4 className="fs-1 display-100 fw-bold">Profile</h4>
 
             <form className="py-1" onSubmit={formik.handleSubmit}>
-              <div className="profile d-flex justify-content-center py-4">
+              {/* <div className="profile d-flex justify-content-center py-4">
                 <label htmlFor="profile">
                   <img src={apiData?.profile || file || avatar} className={styles.avatar} alt="avatar" />
                 </label>
 
                 <input onChange={onUpload} type="file" id="profile" name="profile" />
-              </div>
+              </div> */}
 
               <div className="textbox d-flex flex-column align-items-center gap-6">
 
@@ -124,7 +124,7 @@ export default function Profile() {
             <div className="text-center py-4 d-flex flex-column">
               <span className="">
                 Come back later?{" "}
-                <button onClick={userLogout} className="text-danger text-decoration-none" to="/email">
+                <button onClick={userLogout} className="text-danger text-decoration-none border-0 bg-transparent" to="/email">
                   Logout
                 </button>
               </span>

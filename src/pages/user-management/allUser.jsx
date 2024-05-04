@@ -7,7 +7,7 @@ import 'jspdf-autotable';
 
 import styles from "../../styles/Username.module.css";
 import Footer from "../../components/Footer";
-import UMnavbar1 from "../../components/user-management/um-navbar1";
+import UMnavbar2 from "../../components/user-management/UMnavbar2";
 import Swal from 'sweetalert2';
 
 
@@ -59,7 +59,7 @@ export default function Profile() {
 
   const handleClick = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5050/api/users/${id}`);
+      const response = await axios.delete(`http://localhost:5050/api/deleteAnUser/${id}`);
 
     if (response.status === 200) {
       
@@ -85,7 +85,7 @@ export default function Profile() {
   
   return (
     <div className={styles.background}>
-      <UMnavbar1 />
+      <UMnavbar2 />
       <div className="container mx-auto" style={{ maxWidth: '600px' }}>
         <div className="my-4">
           <input

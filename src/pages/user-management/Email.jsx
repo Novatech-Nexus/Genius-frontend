@@ -92,7 +92,7 @@ export default function Email() {
               <div className="text-center py-4 d-flex flex-column">
                 <span className=''>Forgot Password? <Link className='text-danger text-decoration-none' to="/recoveryemail">Reset Password</Link></span>
                 <span className=''>Not a member? <Link className='text-danger text-decoration-none' to="/register">Register Now</Link></span>
-                <span className=''>Employee Sign in <Link className='text-danger text-decoration-none' to="/employeedashboard">Sign in</Link></span>
+                <span className=''>Employee Sign in <Link className='text-danger text-decoration-none' to="/employeelogin">Sign in</Link></span>
               </div>
 
             </div>
