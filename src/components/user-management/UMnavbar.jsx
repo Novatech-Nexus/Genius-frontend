@@ -20,6 +20,9 @@ function UMnavbar() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
+                                <a style={{ marginRight: '20px'}} ><Link style={{ textDecoration: 'none', color: 'white' }} to='/'>Menu</Link></a>
+                                <a style={{ marginRight: '20px'}} ><Link style={{ textDecoration: 'none', color: 'white' }} to='/contact'>Contact Us</Link></a>
+                                <a style={{ marginRight: '20px'}} ><Link style={{ textDecoration: 'none', color: 'white' }} to='/feedback'>Feedback</Link></a>
                                 <a className={styles.loginButton} style={{ textDecoration: 'none' }}><Link style={{ textDecoration: 'none', color: 'white' }} to='/email'>Login</Link></a>
                             </li>
                         </ul>

@@ -33,7 +33,7 @@ const Footer = () => {
                 <a style={{ textDecoration: 'none' }} className="text-white">About Us</a>
               </p>
               <p>
-                <a style={{ textDecoration: 'none' }} className="text-white">Contact Us</a>
+                <a style={{ textDecoration: 'none' }} className="text-white" href="/contact">Contact Us</a>
               </p>
               <p>
                 <a style={{ textDecoration: 'none' }} className="text-white">Privacy Policy</a>
