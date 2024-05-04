@@ -174,7 +174,7 @@ const MenTable = ({ items }) => {
                 title: "Item Updated",
                 showConfirmButton: false,
                 timer: 1500
-              });
+ });
 
             // Update the state with the new data
             const updatedItems = allItems.map(item => {
