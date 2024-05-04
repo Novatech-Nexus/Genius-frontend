@@ -4,6 +4,7 @@ import { Modal } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import '../../styles/staff/staffmanager.css';
 import Sidebar from '../../components/staff-manager/Sidebar';
+import Footer from '../../components/Footer';
 
 function StaffDetails() {
   const [users, setUsers] = useState([]);
@@ -84,9 +85,10 @@ function StaffDetails() {
   };
 
   return (
+    
     <div className='background-staff-image'>
       <Sidebar />
-      <div style={{ marginLeft: "600px", marginTop: "20px" }}>
+      <div style={{ marginLeft: "500px", marginTop: "20px" , marginRight: "500px"}}>
         <div className="Msearch-container">
           <input
             type="text"
@@ -139,7 +141,7 @@ function StaffDetails() {
         <button className="btn btn-primary" onClick={updateHandler}>Update</button>
     </Modal.Footer>
 </Modal>
-
+<Footer/>
     </div>
   );
 }
@@ -148,7 +150,7 @@ function EmployeeDetails({ user, handleModelOpen, deleteHandler }) {
   return (
     <div className="col-md-3 mb-3" style={{marginTop:"30px",marginLeft:"100px"}}>
       <div className="card border" style={{ backgroundColor: "#f0f0f0" }}>
-        <div className="card-header" style={{ backgroundColor: "lightblue" }}>
+        <div className="card-header" style={{ backgroundColor: "#B0CBA6" }}>
           <h5 className="card-title">{user.firstname} {user.lastname}</h5>
         </div>
         <div className="card-body">
@@ -161,7 +163,10 @@ function EmployeeDetails({ user, handleModelOpen, deleteHandler }) {
           <button className="btn btn-danger" onClick={() => deleteHandler(user._id)}>Delete</button>
         </div>
       </div>
+     
     </div>
+    
+    
   );
 }
 

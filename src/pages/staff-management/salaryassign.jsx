@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Assuming you're using react-r
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Sidebar from '../../components/staff-manager/Sidebar';
+import Footer from '../../components/Footer';
 
 function SalaryAssign() {
     const navigate = useNavigate();
@@ -57,7 +58,7 @@ function SalaryAssign() {
     return (
         <div>
             <Sidebar />
-            <div className="container mt-5">
+            <div className="container mt-5" style={{ paddingBottom: '50px' }}>
                 <h2 className="text-center mb-4 form-title">Assign Salary</h2>
                 <div className="row justify-content-center">
                     <div className="col-md-8">
@@ -97,6 +98,7 @@ function SalaryAssign() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

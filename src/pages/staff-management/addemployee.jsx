@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/Footer';
 
 import Sidebar from '../../components/staff-manager/Sidebar';
 
@@ -36,7 +37,7 @@ function AddEmployee() {
         return;
       }
   
-      // Validation for mobile number
+     
       if (!/^EM\d+$/.test(inputs.employeeID)) {
         alert('Employee ID should start with "EM" followed by numbers.');
         return;
@@ -144,7 +145,9 @@ function AddEmployee() {
               </div>
               </div>
               </div>
+              <Footer/>
               </div>
+             
     );
 }
 

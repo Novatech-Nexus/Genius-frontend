@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import Footer from '../../components/Footer';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import Sidebar from '../../components/staff-manager/Sidebar';
@@ -83,6 +84,7 @@ function SalaryDetails() {
   };
 
   return (
+   
     <div className='background-staff-image'>
       <Sidebar />
       <div className="container">
@@ -137,6 +139,7 @@ function SalaryDetails() {
             <button type="button" className="btn btn-warning" onClick={handlePrint}>Download Report</button>
           </div>
         </div>
+        
       </div>
       <Modal show={modelState} onHide={() => setModelState(false)}>
         <Modal.Header closeButton>
@@ -167,7 +170,10 @@ function SalaryDetails() {
           <button className="btn btn-primary" onClick={updateHandler}>Update</button>
         </Modal.Footer>
       </Modal>
+      <Footer/>
     </div>
+    
+    
   );
 }
 
