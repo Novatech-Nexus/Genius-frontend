@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 /**Import all routes */
 
@@ -45,7 +45,7 @@ import Orders2Menu from './pages/menu-management/Orders2Menu.jsx';
 import InventoryMenu from './pages/menu-management/InventoryMenu.jsx';
 
 
-import CatMain from './pages/catering-management/CatMain'; 
+import CatMain from './pages/catering-management/CatMain';
 import CelOccMenu from './pages/catering-management/CelOccMenu';
 import KidMenus from './pages/catering-management/kidMenu';
 import KidsParty from './pages/catering-management/KidsParty';
@@ -74,7 +74,7 @@ import Staffdetails from './pages/staff-management/staffdetails';
 import Salaryassign from './pages/staff-management/salaryassign';
 import SalaryDetails from './pages/staff-management/salarydetails.jsx';
 import Staffmember from './pages/staff-management/staffmember';
-import AttendanceQRCode from './pages/staff-management/attendance'; 
+import AttendanceQRCode from './pages/staff-management/attendance';
 import StaffProfile from './pages/staff-management/staffprofile.jsx';
 
 
@@ -87,109 +87,97 @@ function App() {
   return (
     <>
 
-    <main>
-    <Navbar/>
-  
-    
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/homepage" element={<Homepage/>}></Route>
-        <Route path="/email" element={<Email/>}></Route>
-        <Route path="/register" element={<Register/>}></Route>
-        <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
-        <Route path="/reset" element={<Reset/>}></Route>
-        <Route path="/recoveryemail" element={<RecoveryEmail/>}></Route>
-        <Route path="/newpassword/:token" element={<NewPassword/>}></Route>
-
-        <Route path="*" element={<PageNotFound/>}></Route>
-        <Route path="/alluser" element={<AllUser/>}></Route>
-
-        <Route path="/employeelogin" element={<EmployeeLogin/>}></Route>
-        <Route path="/employeedashboard" element={<EmployeeDashboard/>}></Route>
-
-        {/* inventory management */}
-        <Route path="/dashboard" element={<Dashboard/>}></Route>
-        <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
-        {/* <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route> */}
-        {/* <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route> */}
-
-        {/* -------------------------------------------------------------------------- */}
-
-        {/* Table Reservation */}
-        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
-        <Route path="/booking" element = {<BookingTable/>} ></Route>
+      <main>
+        <Navbar />
 
 
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/homepage" element={<Homepage />}></Route>
+          <Route path="/email" element={<Email />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/profile" element={<AuthorizeUser><Profile /></AuthorizeUser>}></Route>
+          <Route path="/reset" element={<Reset />}></Route>
+          <Route path="/recoveryemail" element={<RecoveryEmail />}></Route>
+          <Route path="/newpassword/:token" element={<NewPassword />}></Route>
 
-        {/* Customer-care */}
-        <Route path="/contact" element={<AuthorizeUser><Contact/></AuthorizeUser>}></Route>
-        <Route path="/feedback" element={<AuthorizeUser><Feedback/></AuthorizeUser>}></Route>
-        <Route path='/feedback/addFeedback' element={<AuthorizeUser><Feedback_form/></AuthorizeUser>}></Route>
-        <Route path='/feedback/getFeedback' element={<AuthorizeUser><Feedback_history/></AuthorizeUser>}></Route>
-        <Route path='/manager' element={<AuthorizeUser><Customer_care_manager/></AuthorizeUser>}></Route>
-        <Route path='/manager/feedbackApproval' element={<AuthorizeUser><Feedback_approval/></AuthorizeUser>}></Route>
-        {/* <Route path='/manager/servicesFeedback' element={<AuthorizeUser></AuthorizeUser>}></Route> */}
-        <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis/></AuthorizeUser>}></Route>
+          <Route path="*" element={<PageNotFound />}></Route>
+          <Route path="/alluser" element={<AllUser />}></Route>
 
-        {/* Menu Management */}
-        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
-        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
-        <Route path='/tableMenu' element={<TableMenu/>}></Route>
-        <Route path='/orderMenu' element={<OrderMenu/>}></Route> 
-        <Route path='/orders2Menu' element={<Orders2Menu/>}></Route> 
-        <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
+          <Route path="/employeelogin" element={<EmployeeLogin />}></Route>
+          <Route path="/employeedashboard" element={<EmployeeDashboard />}></Route>
 
-        {/* Order Management */}
-        <Route path='/orderMenu' element={<OrderHome/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/orderMenu/create' element={<CreatePost/>}/>  
-        <Route path='/orderMenu/create/posts' element={<Posts/>}/>  
-        <Route path='/orderMenu/create/posts/payment' element={<DummyPaymentGateway/>}/>  
-        {/* <Route path='/reports' element={<OrderReport/>} />  */}
-        
+          {/* staff management */}
+          <Route path="/sm_dashboard" element={<Sm_dashboard />}></Route>
+          <Route path="/addemployee" element={<Addemployee />}></Route>
+          {/* <Route path="/editemployee/:id" element={<Editemployee/>}></Route> */}
+          <Route path="/staffdetails" element={<Staffdetails />}></Route>
+          <Route path="/salaryassign" element={<Salaryassign />}></Route>
+          <Route path="/salarydetails" element={<SalaryDetails />}></Route>
+          <Route path="/staffmember" element={<Staffmember />}></Route>
+          <Route path="/attendance" element={<AttendanceQRCode />} />
+          <Route path="/staffprofile" element={<StaffProfile />} />
+
+          {/* inventory management */}
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/dashboard/additem" element={<AddItempage />}></Route>
+          {/* <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route> */}
+          {/* <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route> */}
+
+          {/* -------------------------------------------------------------------------- */}
+
+          {/* Table Reservation */}
+          <Route path="/reservation" element={<TableReservationHome />} ></Route>
+          <Route path="/booking" element={<BookingTable />} ></Route>
 
 
-        {/* Catering Management */}
-        <Route path="/catMain" element={<AuthorizeUser><CatMain/></AuthorizeUser>}></Route>
-        <Route path="/ordercat" element={<AuthorizeUser><OrderCat/></AuthorizeUser>}></Route>
-        <Route path="/ordercus" element={<AuthorizeUser><OrderCus/></AuthorizeUser>}></Route>
-        <Route path="/orderplace" element={<AuthorizeUser><OrderPlace/></AuthorizeUser>}></Route>
-        <Route path="/celOccMenu" element={<AuthorizeUser><CelOccMenu/></AuthorizeUser>}></Route>
-        <Route path="/kidMenus" element={<AuthorizeUser><KidMenus/></AuthorizeUser>}></Route>
-        <Route path="/orderDetail" element={<AuthorizeUser><OrderDetail/></AuthorizeUser>}></Route>
-        <Route path="/seacelMenu" element={<AuthorizeUser><SeacelMenu/></AuthorizeUser>}></Route>
-        <Route path="/kidsParty" element={<AuthorizeUser><KidsParty/></AuthorizeUser>}></Route>
-        <Route path="/seationCeleb" element={<AuthorizeUser><SeationCeleb/></AuthorizeUser>}></Route>
-        <Route path="/wedsMenu" element={<AuthorizeUser><WedsMenu/></AuthorizeUser>}></Route>
-        <Route path="/weddings" element={<AuthorizeUser><Weddings/></AuthorizeUser>}></Route>
-        <Route path="/updateCat" element={<AuthorizeUser><UpdateCat/></AuthorizeUser>}></Route>
-        <Route path="/celebOcc" element={<AuthorizeUser><CelebOcc/></AuthorizeUser>}></Route>
-  </Routes>
-    </main>
-</>
-        {/* staff management */}
-        <Route path="/sm_dashboard" element={<Sm_dashboard/>}></Route>
-        <Route path="/addemployee" element={<Addemployee/>}></Route> 
-        {/* <Route path="/editemployee/:id" element={<Editemployee/>}></Route> */}
-        <Route path="/staffdetails" element={<Staffdetails/>}></Route>
-        <Route path="/salaryassign" element={<Salaryassign/>}></Route>
-        <Route path="/salarydetails" element={<SalaryDetails/>}></Route>
-        <Route path="/staffmember" element={<Staffmember/>}></Route>
-        <Route path="/attendance" element={<AttendanceQRCode />} />
-        <Route path="/staffprofile" element={<StaffProfile />} />
-        
-       
-        
-        
 
-       
-        
-        
-       
+          {/* Customer-care */}
+          <Route path="/contact" element={<AuthorizeUser><Contact /></AuthorizeUser>}></Route>
+          <Route path="/feedback" element={<AuthorizeUser><Feedback /></AuthorizeUser>}></Route>
+          <Route path='/feedback/addFeedback' element={<AuthorizeUser><Feedback_form /></AuthorizeUser>}></Route>
+          <Route path='/feedback/getFeedback' element={<AuthorizeUser><Feedback_history /></AuthorizeUser>}></Route>
+          <Route path='/manager' element={<AuthorizeUser><Customer_care_manager /></AuthorizeUser>}></Route>
+          <Route path='/manager/feedbackApproval' element={<AuthorizeUser><Feedback_approval /></AuthorizeUser>}></Route>
+          {/* <Route path='/manager/servicesFeedback' element={<AuthorizeUser></AuthorizeUser>}></Route> */}
+          <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis /></AuthorizeUser>}></Route>
 
-      </Routes>
-      
-    </main></> 
+          {/* Menu Management */}
+          <Route path="/homeMenu" element={<HomeMenu />}></Route>
+          <Route path="/itemMenu" element={<ItemMenu />}></Route>
+          <Route path='/tableMenu' element={<TableMenu />}></Route>
+          <Route path='/orderMenu' element={<OrderMenu />}></Route>
+          <Route path='/orders2Menu' element={<Orders2Menu />}></Route>
+          <Route path='/invenMenu' element={<InventoryMenu />}></Route>
+
+          {/* Order Management */}
+          <Route path='/orderMenu' element={<OrderHome />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/orderMenu/create' element={<CreatePost />} />
+          <Route path='/orderMenu/create/posts' element={<Posts />} />
+          <Route path='/orderMenu/create/posts/payment' element={<DummyPaymentGateway />} />
+          {/* <Route path='/reports' element={<OrderReport/>} />  */}
+
+
+
+          {/* Catering Management */}
+          <Route path="/catMain" element={<AuthorizeUser><CatMain /></AuthorizeUser>}></Route>
+          <Route path="/ordercat" element={<AuthorizeUser><OrderCat /></AuthorizeUser>}></Route>
+          <Route path="/ordercus" element={<AuthorizeUser><OrderCus /></AuthorizeUser>}></Route>
+          <Route path="/orderplace" element={<AuthorizeUser><OrderPlace /></AuthorizeUser>}></Route>
+          <Route path="/celOccMenu" element={<AuthorizeUser><CelOccMenu /></AuthorizeUser>}></Route>
+          <Route path="/kidMenus" element={<AuthorizeUser><KidMenus /></AuthorizeUser>}></Route>
+          <Route path="/orderDetail" element={<AuthorizeUser><OrderDetail /></AuthorizeUser>}></Route>
+          <Route path="/seacelMenu" element={<AuthorizeUser><SeacelMenu /></AuthorizeUser>}></Route>
+          <Route path="/kidsParty" element={<AuthorizeUser><KidsParty /></AuthorizeUser>}></Route>
+          <Route path="/seationCeleb" element={<AuthorizeUser><SeationCeleb /></AuthorizeUser>}></Route>
+          <Route path="/wedsMenu" element={<AuthorizeUser><WedsMenu /></AuthorizeUser>}></Route>
+          <Route path="/weddings" element={<AuthorizeUser><Weddings /></AuthorizeUser>}></Route>
+          <Route path="/updateCat" element={<AuthorizeUser><UpdateCat /></AuthorizeUser>}></Route>
+          <Route path="/celebOcc" element={<AuthorizeUser><CelebOcc /></AuthorizeUser>}></Route>
+        </Routes>
+      </main>
+    </>
   );
 }
 
