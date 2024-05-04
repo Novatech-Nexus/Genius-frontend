@@ -198,10 +198,10 @@ const MenTable = ({ items }) => {
 
 
     return (
-        <div className="men-table-background">
-            <h1 className="topic-text">ITEMS TABLE</h1>
+        <div className="Mmen-table-background">
+            <h1 className="Mtopic-text">ITEMS TABLE</h1>
 
-            <div className="search-container">
+            <div className="Msearch-container">
                 <input
                     type="text"
                     placeholder="Search by Item ID or Item Name"
@@ -220,8 +220,8 @@ const MenTable = ({ items }) => {
                 />
             </div>
 
-            <div className="men-table-container">
-                <table className="men-table">
+            <div className="Mmen-table-container">
+                <table className="Mmen-table">
                     <thead>
                         <tr>
                             <th style={{ textAlign: "center" }}>Item Code</th>
@@ -241,9 +241,9 @@ const MenTable = ({ items }) => {
                                 <td>{item.price}</td>
 
                                 <td>{item.description}</td>
-                                <td className="td-status">
-                                    <div className="button-containerM">
-                                        <button className="btn2 update-btn" onClick={() => loadModel(item._id)}>Update</button>
+                                <td className="Mtd-status">
+                                    <div className="Mbutton-container">
+                                        <button className="Mbtn2 update-btn" onClick={() => loadModel(item._id)}>Update</button>
                                         <button className="Mbtn1 delete-btn" onClick={() => handleDelete(item._id)}>Delete</button>
                                     </div>
                                 </td>
@@ -304,8 +304,8 @@ const MenTable = ({ items }) => {
                             </div>
 
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <button type="button" className="btn2 update-btn" style={{ marginRight: '10px' }} onClick={() => updateItem(selectedItemId)}>Save</button>
-                                <button className="btn1 delete-btn" onClick={() => setModelState(false)}>Close</button>
+                                <button type="button" className="Mbtn2 update-btn" style={{ marginRight: '10px' }} onClick={() => updateItem(selectedItemId)}>Save</button>
+                                <button className="Mbtn1 delete-btn" onClick={() => setModelState(false)}>Close</button>
                             </div>
                         </form>
                     </div>

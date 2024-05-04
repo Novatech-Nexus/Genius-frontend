@@ -1,13 +1,12 @@
-.men-table-background {
+.Mmen-table-background {
     background-image: url('../../assets/MenuM/item3.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh; 
-  }
-  
+}
 
-  .topic-text {
+.Mtopic-text {
     color: red; 
     font-weight: bold;
     font-size: 50px;
@@ -17,14 +16,12 @@
     font-family: 'Poppins', sans-serif; 
 }
 
-
-.men-table-container {
+.Mmen-table-container {
     display: grid;
     place-items: center;
-   
 }
 
-.men-table {
+.Mmen-table {
     border-collapse: collapse;
     width: 100%;
     max-width: 1000px;
@@ -35,38 +32,38 @@
     text-align: center;
 }
 
-.men-table th, .men-table td {
+.Mmen-table th, .Mmen-table td {
     border: 1px solid #ffffff;
     text-align: left;
     padding: 8px;
 }
 
-.men-table th, .men-table td {
+.Mmen-table th, .Mmen-table td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 10px;
     background-color: #ffffff; 
 }
 
-.men-table tr {
+.Mmen-table tr {
     background-color: #ffffff;
     border-bottom: 1px solid #dddddd;
 }
 
 @media (max-width: 600px) {
-    .men-table th, .men-table td {
+    .Mmen-table th, .Mmen-table td {
         padding: 4px; 
     }
 }
 
-.search-container {
+.Msearch-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.search-container input {
+.Msearch-container input {
     padding: 10px 40px;
     border-radius: 50px;
     border: 1px solid #ccc;
@@ -74,7 +71,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.search-container i {
+.Msearch-container i {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -82,18 +79,18 @@
     color: #aaa;
 }
 
-
-.button-containerM {
+/* button */
+.Mbutton-container {
     display: flex; 
     justify-content: center; 
     gap: 10px; 
-  }
-  .button-containerM {
-    display: flex;
-    
 }
 
-.btn1 {
+.Mbutton-container {
+    display: flex;
+}
+
+.Mbtn1 {
     background-color: red; 
     color: white;
     border: none;
@@ -105,11 +102,11 @@
     align-items: center;
 }
 
-.btn1:hover {
+.Mbtn1:hover {
     background-color: darkred; 
 }
 
-.btn2 {
+.Mbtn2 {
     background-color: #e6ae06; 
     color: white;
     border: none;
@@ -121,7 +118,7 @@
     align-items: center;
 }
 
-.btn2:hover {
+.Mbtn2:hover {
     background-color: #997404; 
 }
 
@@ -182,6 +179,7 @@
         padding: 4px; 
     }
 }
+
 
 .Mcustom-datepicker {
     width: 250px;
