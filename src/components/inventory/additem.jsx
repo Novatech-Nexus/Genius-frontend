@@ -1,9 +1,7 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import axios from "axios";
 import '../../styles/inventory/inventory-items.css'
 import addlogo from '../../assets/inventory-images/addicon.png'
-
-
 
 import Swal from 'sweetalert2';
 
@@ -18,8 +16,37 @@ function AddItem(){
     const [inputDate,setDate] = useState("");
     const [inputDiscription,setDiscription] = useState("");
 
+    const [existingItem, setExistingItem] = useState(false);
+
+    useEffect(() => {
+        async function getItems() {
+            try {
+                const res = await axios.get("http://localhost:5050/inventoryItem/getinventory");
+                res.data.forEach(element => {
+                    if (inputCode === element.code) {
+                        setExistingItem(true);
+                    }
+                });
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+        getItems();
+    }, [inputCode]);
+
     function sendData(e){
         e.preventDefault();
+
+        if (existingItem) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Item ID already exists!',
+                text: 'Please choose a different Item ID',
+            }).then(() => {
+                window.location.reload(); // Reload the page
+            });
+            return;
+        }
 
         const newItem = {
             inputCode,
@@ -57,6 +84,15 @@ function AddItem(){
             return; 
         }
 
+        if(document.getElementById('inputQuentity').value < 0){
+            Swal.fire({
+                title: "Error",
+                text: "can't enter negetive values",
+                icon: "error"
+            });
+            return;
+        }
+
 
         console.log(newItem);
         axios.post("http://localhost:5050/inventoryItem/addinventory",newItem).then(()=>{
@@ -67,13 +103,6 @@ function AddItem(){
                 showConfirmButton: false,
                 timer: 1500
               });
-              if(!codevalid){
-                Swal.fire({
-                    title: "The Internet?",
-                    text: "That thing is still around?",
-                    icon: "question"
-                  });
-              }
 
 
             setCode("");
@@ -144,7 +173,7 @@ function AddItem(){
                                 onChange={(e)=>{setIgroup(e.target.value);}}>
                                     <option ></option>
                                     <option value="Vegetable" >Vegetable</option>
-                                    <option value="Meet" >Meat</option>
+                                    <option value="Meat" >Meat</option>
                                     <option value="Fish" >Fish</option>
                                     <option value="Rice" >Rice</option>
                                     <option value="Spices" >Spices</option>
@@ -159,7 +188,7 @@ function AddItem(){
                         <div className="mb-3 row align-items-center">
                             <label for="inputQuentity" className="col-sm-5 col-form-label" style={{fontWeight:"bold", marginBottom: "0"}}>Initial Quantity</label>
                             <div className="col-sm-8" >
-                                <input type="number" className="form-control me-2" id="inputQuentity" style={{width:"300px"}}
+                                <input type="number" className="form-control me-2" id="inputQuentity" style={{width:"300px"}} 
                                     value={inputQuentity}
                                     onChange={(e)=>{
                                     setQuentity(e.target.value);
