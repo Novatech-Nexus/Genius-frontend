@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 
 //User management system
 import Home from './pages/Home';
+import Homepage from './pages/user-management/Homepage.jsx'
 import Email from './pages/user-management/Email';
 import Register from './pages/user-management/Register';
 import Profile from './pages/user-management/Profile';
@@ -12,6 +13,9 @@ import RecoveryEmail from './pages/user-management/RecoveryEmail';
 import PageNotFound from './pages/user-management/PageNotFound';
 import NewPassword from './pages/user-management/NewPassword.jsx';
 import Navbar from './components/Navbar';
+
+import EmployeeLogin from './pages/Employee-login/EmployeeLogin.jsx';
+import EmployeeDashboard from './pages/Employee-login/EmployeeDashboard.jsx';
 
 // inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
@@ -35,6 +39,9 @@ import { AuthorizeUser } from '../middleware/auth';
 import HomeMenu from './pages/menu-management/HomeMenu';
 import ItemMenu from './pages/menu-management/ItemMenu';
 import TableMenu from './pages/menu-management/tableMenu';
+import OrderMenu from './pages/menu-management/OrderMenu.jsx';
+import Orders2Menu from './pages/menu-management/Orders2Menu.jsx';
+import InventoryMenu from './pages/menu-management/InventoryMenu.jsx';
 
 
 import CatMain from './pages/catering-management/CatMain'; 
@@ -66,6 +73,7 @@ import TableReservationHome from './pages/table-res-management/TableReservationH
 // import CustomerDetailsPage from './pages/table-res-management/CustomerDetailsPage.jsx'
 import BookingTable from './pages/table-res-management/BookingTable';
 
+
 function App() {
   return (
     <>
@@ -75,6 +83,7 @@ function App() {
     
       <Routes>
         <Route path="/" element={<Home/>}></Route>
+        <Route path="/homepage" element={<Homepage/>}></Route>
         <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
@@ -84,6 +93,9 @@ function App() {
 
         <Route path="*" element={<PageNotFound/>}></Route>
         <Route path="/alluser" element={<AllUser/>}></Route>
+
+        <Route path="/employeelogin" element={<EmployeeLogin/>}></Route>
+        <Route path="/employeedashboard" element={<EmployeeDashboard/>}></Route>
 
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
@@ -112,12 +124,12 @@ function App() {
         <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis/></AuthorizeUser>}></Route>
 
         {/* Menu Management */}
-        <Route path="/homeMenu" element={<AuthorizeUser><HomeMenu/></AuthorizeUser>}></Route>
-        <Route path="/itemMenu" element={<AuthorizeUser><ItemMenu/></AuthorizeUser>}></Route>
-        <Route path='/tableMenu' element={<AuthorizeUser><TableMenu/></AuthorizeUser>}></Route>
         <Route path="/homeMenu" element={<HomeMenu/>}></Route>
         <Route path="/itemMenu" element={<ItemMenu/>}></Route>
         <Route path='/tableMenu' element={<TableMenu/>}></Route>
+        <Route path='/orderMenu' element={<OrderMenu/>}></Route> 
+        <Route path='/orders2Menu' element={<Orders2Menu/>}></Route> 
+        <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
 
         {/* Order Management */}
         <Route path='/orderMenu' element={<OrderHome/>}/>

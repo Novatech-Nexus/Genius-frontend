@@ -53,7 +53,7 @@ export default function Email() {
         localStorage.setItem('token', data.token);
         localStorage.setItem('email', data.email);
         localStorage.setItem('id', data.id);
-        navigate('/profile');
+        navigate('/homepage');
       })
     }
   })
@@ -61,7 +61,7 @@ export default function Email() {
   return (
     <div>
       <UMnavbar/>
-      <div className="container mx-auto">
+      <div className={styles.background}>
         
 
         <Toaster position="top-center" reverseOrder={false}></Toaster>

@@ -1,0 +1,16 @@
+.pageContainer {
+    margin: 0 auto; 
+    max-width: 1200px; 
+    padding: 0 20px;
+  }
+
+.gridcontainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px; 
+  }
+  
+  .gridcontainer > * {
+    width: 100%; 
+  }

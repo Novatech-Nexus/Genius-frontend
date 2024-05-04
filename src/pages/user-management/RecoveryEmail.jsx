@@ -63,7 +63,7 @@ export default function Email() {
   return (
     <div>
       <UMnavbar/>
-      <div className="container mx-auto">
+      <div className={styles.background}>
         
 
         <Toaster position="top-center" reverseOrder={false}></Toaster>

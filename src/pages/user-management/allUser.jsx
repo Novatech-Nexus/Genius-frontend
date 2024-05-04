@@ -9,7 +9,6 @@ import styles from "../../styles/Username.module.css";
 import Footer from "../../components/Footer";
 import UMnavbar1 from "../../components/user-management/um-navbar1";
 
-// import { Modal } from 'bootstrap';
 
 export default function Profile() {
   const [users, setUsers] = useState([]);
@@ -58,7 +57,7 @@ export default function Profile() {
   };
   
   return (
-    <div>
+    <div className={styles.background2}>
       <UMnavbar1/>
       <div className="container mx-auto" style={{ maxWidth: '600px' }}>
       <div className="my-4">
@@ -89,7 +88,6 @@ export default function Profile() {
                   <td>{user.lastname}</td>
                   <td>{user.email}</td>
                   <td>{user.phoneNumber || '-'}</td>
-                  <td><button className={styles.btn1}>Update</button></td>
                   <td><button className={styles.btn2}>Delete</button></td>
                 </tr>
               ))}
