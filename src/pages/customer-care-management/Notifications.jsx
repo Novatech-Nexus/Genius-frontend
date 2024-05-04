@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import Footer from '../../components/Footer';
 
 export default function () {
     const navigate = useNavigate();
@@ -64,6 +65,8 @@ export default function () {
                     </div>
                 </div>
             
+                <br/>
+        <Footer/>
         </div>
     )
 }

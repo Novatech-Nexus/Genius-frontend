@@ -9,6 +9,7 @@ import '../../styles/CustomerCare.css';
 import { prepareBarChartData, preparePieChartData} from '../../components/customer-care/ChartData.jsx';
 import DataFeedbackTable from '../../components/customer-care/DataFeedbackTable.jsx';
 import DataAverageRatingsTable from '../../components/customer-care/DataAverageRatingsTable.jsx';
+import Footer from '../../components/Footer.jsx';
 
 export default function FeedbackDataAnalysis() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -108,6 +109,8 @@ export default function FeedbackDataAnalysis() {
                     <Pie ref={pieChartRef} data={pieChartData} options={pieChartOptions} />
                 </div>
             </div>
+            <br/>
+        <Footer/>
         </div>
     );
 }

@@ -5,6 +5,7 @@ import '../../styles/CustomerCare.css';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import FeedbackApprovalTable from '../../components/customer-care/FeedbackApprovalTable';
+import Footer from '../../components/Footer';
 
 export default function FeedbackApproval() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -105,6 +106,8 @@ export default function FeedbackApproval() {
             />
 
             </div>
+        <br/>
+        <Footer/>
         </div>
     );
 }

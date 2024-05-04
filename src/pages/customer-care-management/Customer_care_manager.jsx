@@ -5,6 +5,7 @@ import approveFeedbackImage from '../../assets/customer-care-images/approveFeedb
 import servicesFeedbackImage from '../../assets/customer-care-images/servicesFeedback.png';
 import feedbackAnalysisImage from '../../assets/customer-care-images/feedbackAnalysis.png';
 import axios from 'axios';
+import Footer from '../../components/Footer';
 
 export default function Customer_care_manager() {
     const navigate = useNavigate();
@@ -25,8 +26,9 @@ export default function Customer_care_manager() {
     };
     
     return (
+        <div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <h1>Manager Home Page</h1>
+            <h1 style={{ marginTop: "20px"}}>Customer-care Management Dashboard</h1>
             <div style={{ marginTop: "50px", display: "flex", justifyContent: "space-between", width: "70%" }}>
                 <ImageButton image={approveFeedbackImage} label="Feedback Approve" onClick={() => navigate("feedbackApproval")} />
                 <ImageButton image={servicesFeedbackImage} label="Feedback Approve & Pending List" onClick={() => navigate("servicesFeedback")} />
@@ -42,6 +44,9 @@ export default function Customer_care_manager() {
                     </div>
                 </Button>
             </div>
+        </div>
+        <br/>
+        <Footer/>
         </div>
     );
 }
