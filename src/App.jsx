@@ -14,6 +14,9 @@ import PageNotFound from './pages/user-management/PageNotFound';
 import NewPassword from './pages/user-management/NewPassword.jsx';
 import Navbar from './components/Navbar';
 
+import EmployeeLogin from './pages/Employee-login/EmployeeLogin.jsx';
+import EmployeeDashboard from './pages/Employee-login/EmployeeDashboard.jsx';
+
 // inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
@@ -83,6 +86,9 @@ function App() {
 
         <Route path="*" element={<PageNotFound/>}></Route>
         <Route path="/alluser" element={<AllUser/>}></Route>
+
+        <Route path="/employeelogin" element={<EmployeeLogin/>}></Route>
+        <Route path="/employeedashboard" element={<EmployeeDashboard/>}></Route>
 
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
