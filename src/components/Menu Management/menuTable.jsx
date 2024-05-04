@@ -54,7 +54,7 @@ const MenTable = ({ items }) => {
         setFilteredItems(filtered);
     };
 
-    // Function to handle deletion with confirmation
+    // deletion with confirmation(delete Function)
     const handleDelete = async (id) => {
         // Trigger SweetAlert2 confirmation dialog
         Swal.fire({
@@ -92,6 +92,8 @@ const MenTable = ({ items }) => {
         });
     };
 
+
+    //downloading PDF
     const downloadPDF = () => {
         const doc = new jsPDF();
 
@@ -253,7 +255,8 @@ const MenTable = ({ items }) => {
                     <button className="Mbtn3 delete-btn" onClick={downloadPDF}>Generate Report</button>
                 </div>
             </div>
-
+{/* --------------------------------------------------------------------------------------------------------------- */}
+/          {/* Update Mode*/}
             <Modal show={modelState} onHide={() => setModelState(false)}>
                 <Modal.Body style={{ backgroundColor: '#f1f1f1', borderRadius: '15px' }}>
                     <div className="p-4">
@@ -308,6 +311,7 @@ const MenTable = ({ items }) => {
                     </div>
                 </Modal.Body>
             </Modal>
+{/* --------------------------------------------------------------------------------------------------------------------*/}
         </div>
     );
 };

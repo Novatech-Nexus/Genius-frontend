@@ -10,15 +10,16 @@ function Itemme() {
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
     const [description, setItemDescription] = useState("");
-    const [image, setImage] = useState(null);
-    const [imagePreview, setImagePreview] = useState(null);
+ //   const [image, setImage] = useState(null);
+  //  const [imagePreview, setImagePreview] = useState(null);
     const [itemIdError, setItemIdError] = useState("");
     const [itemNameError, setItemNameError] = useState("");
     const [priceError, setPriceError] = useState("");
 
+    //validation for ItemId
     const handleItemIdChange = (e) => {
         const value = e.target.value;
-        if (/^[a-zA-Z0-9_]*$/.test(value)) {
+        if (/^[a-zA-Z0-9_]*$/.test(value)) { 
             setItemId(value);
             setItemIdError("");
         } else {
@@ -26,9 +27,10 @@ function Itemme() {
         }
     };
 
+    //validation for ItemName
     const handleItemNameChange = (e) => {
         const value = e.target.value;
-        if (/^[a-zA-Z0-9_ ]*$/.test(value)) {
+        if (/^[a-zA-Z0-9_ ]*$/.test(value)) { 
             setItemName(value);
             setItemNameError("");
         } else {
@@ -36,6 +38,7 @@ function Itemme() {
         }
     };
 
+    //validation for only enter Number
     const handleItemPriceChange = (e) => {
         const price = e.target.value;
         if (!isNaN(price)) {
@@ -46,16 +49,16 @@ function Itemme() {
         }
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setImage(file.name); // Storing only the file name
-        } else {
-            console.error("No file selected.");
-        }
-    };
+    // const handleImageChange = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         setImage(file.name); // Storing only the file name
+    //     } else {
+    //         console.error("No file selected.");
+    //     }
+    // };
     
-
+    //data adding function
     const sendData = (e) => {
         e.preventDefault();
 
@@ -87,8 +90,8 @@ function Itemme() {
                 if (error.response.status === 400 && error.response.data.error.includes("Item ID already exists")) {
                     setItemIdError("Item Code already exists. Please choose a unique Code.");
                 } else {
-                    setItemIdError("");
-                    setPriceError("Error adding item.");
+                    setItemIdError("Item Code already exists. Please choose a unique Code.");
+                //    setPriceError("Error adding item.");
                 }
             });
     };
@@ -120,12 +123,15 @@ function Itemme() {
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>
                             <label htmlFor="Category" className="MMMform-label">Category</label>
                             <select className="MMMform-select" id="category" value={category} required onChange={(e) => setCategory(e.target.value)}>
+
                                 <option value="">Select Category</option>
                                 <option value="Beverage">Beverage</option>
                                 <option value="Food">Food</option>
                                 <option value="Set Menu">Set Menu</option>
                                 <option value="Catering Menu">Catering Menu</option>
-                                <option value="Offers">Offers</option>
+                                <option value="Desserts">Desserts</option>
+                                <option value="Offers">Offers</option>Desserts
+                               
                             </select>
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", marginBottom: "15px" }}>

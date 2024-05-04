@@ -138,3 +138,55 @@
 .Mbtn3:hover {
     background-color: darkred; 
 }
+
+
+.Mmen-table2-container {
+    display: grid;
+    place-items: center;
+}
+
+.Mmen-table2 {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Mmen-table2 th, .Mmen-table2 td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 8px;
+}
+
+.Mmen-table2 th, .Mmen-table2 td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+    background-color: #ffffff; 
+}
+
+.Mmen-table2 tr {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+}
+
+@media (max-width: 700px) {
+    .Mmen-table2 th, .Mmen-table2 td {
+        padding: 4px; 
+    }
+}
+
+.Mcustom-datepicker {
+    width: 250px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box; 
+
+}
+
