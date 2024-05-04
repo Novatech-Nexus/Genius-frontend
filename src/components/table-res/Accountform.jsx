@@ -21,7 +21,8 @@ const AccountForm = ({history}) => {
     const [tNumber, setTableNumber] = useState('');
     const [nGuest, setNoOfGuest] = useState('');
     const [error, setError] = useState(null);
-
+ 
+    //time optins
     const timeOptions = [
         { value: '6.30am - 10.30am', label: '6.30am - 10.30am' },
         { value: '12.00pm - 3.30pm', label: '12.00pm - 3.30pm' },
@@ -29,12 +30,14 @@ const AccountForm = ({history}) => {
         { value: '7.30pm - 11.30pm', label: '7.30pm - 11.30pm' }
     ];
 
+    //category optin
     const categoryOptions = [
         { value: 'Couple', label: 'Couple' },
         { value: 'Family/Friends', label: 'Family/Friends' },
         { value: 'Business Meeting', label: 'Business Meeting' }
     ];
 
+    //table number oftion
     const tableNumberOptions = {
         'Couple': ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8','C9' ,'C10'],
         'Family/Friends': ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8','F9' , 'F10'],
