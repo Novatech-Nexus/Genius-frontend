@@ -16,11 +16,17 @@ import Navbar from './components/Navbar';
 
 import EmployeeLogin from './pages/Employee-login/EmployeeLogin.jsx';
 import EmployeeDashboard from './pages/Employee-login/EmployeeDashboard.jsx';
+import AllUser from './pages/user-management/allUser';
 
 // inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
-import AllUser from './pages/user-management/allUser';
+import AllitemPage from './pages/inventory-management/allitems.jsx';
+import AllSupplierPage from './pages/inventory-management/allSupplier.jsx';
+import ReportPage from './pages/inventory-management/reportgenerate.jsx';
+import RecordPage from './pages/inventory-management/inventoryRecods.jsx';
+import AddSupplierpage from './pages/inventory-management/addSupplier.jsx';
+
 
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
@@ -101,8 +107,11 @@ function App() {
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
-        {/* <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route> */}
-        {/* <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route> */}
+        <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
+        <Route path="/dashboard/allsupplier" element={<AllSupplierPage/>}></Route>
+        <Route path="/dashboard/addsupplier" element={<AddSupplierpage/>}></Route>
+        <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
+        <Route path='/dashboard/allitem/record/:id' element={<RecordPage/>}></Route>
 
         {/* -------------------------------------------------------------------------- */}
 

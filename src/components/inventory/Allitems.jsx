@@ -5,7 +5,8 @@ import { Modal } from "react-bootstrap";
 import Swal from 'sweetalert2';
 import logo from '../../assets/inventory-images/geniuslogo.png'
 import searchIcon from '../../assets/inventory-images/serch.png'
-import { useReactToPrint } from "react-to-print";
+import arrow from '../../assets/inventory-images/redarrow.png'
+
 
 
 function Allitems(){
@@ -26,13 +27,16 @@ function Allitems(){
     const [updatequantity, setupdatequantity] = useState('');
     const [updateKg, setupdateKg] = useState('');
     const [updateCost, setupdateCost] = useState('');
-    const [updateDate, setupdateDate] = useState('');
+    
+    const [Recordquantity, setRecordquantity] = useState('');
 
     const [isIncomeSelected, setIsIncomeSelected] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isOutgoingSelected, setIsOutgoingSelected] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
     
     const modalQuantity = updatequantity;
     const modelCost = updateCost;
+    
 
 
     useEffect(()=>{
@@ -53,9 +57,12 @@ function Allitems(){
 
             const incomeCheckbox = document.getElementById('income');
             const outgoingCheckbox = document.getElementById('outgoing');
+        
+
             if (incomeCheckbox && outgoingCheckbox) {
                 incomeCheckbox.checked = false;
                 outgoingCheckbox.checked = false;
+               
                 document.getElementById('additionalInput').value ='';
                 
             }
@@ -75,7 +82,7 @@ function Allitems(){
         setupdatequantity(updateItem.data.quantity);       
         setupdateKg(updateItem.data.kg);
         setupdateCost(updateItem.data.cost);
-        setupdateCost(updateItem.data.addDate);
+        
 
         // if(updateKg == 'kg'){
         //     document.getElementById('kg').checked = true;
@@ -116,6 +123,8 @@ function Allitems(){
             });
             return; 
         }
+        const newDate = document.getElementById('date').value;
+        
 
         try{ 
             const updateRec =parseFloat(document.getElementById('updateinventory').value);
@@ -152,7 +161,7 @@ function Allitems(){
 
 
             await axios.put("http://localhost:5050/inventoryItem/updateinventory/"+selectedID,{
-                code:updateCode,name:updateName,igroup:updateIgroup,quantity:updatedQuantity,kg:updateKg,cost:updatedCost,addDate:updateDate
+                code:updateCode,name:updateName,igroup:updateIgroup,quantity:updatedQuantity,kg:updateKg,cost:updatedCost,addDate:newDate
 
             });
             Swal.fire({
@@ -167,23 +176,34 @@ function Allitems(){
             setItems(updateItems.data);
             console.log(updateCost);
             
-
-
-       
-
             document.getElementById('income').checked = false;
             document.getElementById('outgoing').checked = false;
 
             setmodelState(false);
-            
-    
         }catch(e){
             console.log(e);
         }
 
+        const newRecord = {
+            updateCode,
+            Recordquantity,
+            updateKg, 
+            isIncomeSelected,          
+            isOutgoingSelected,
+            updateCost,
+            newDate
+        }
+
+        console.log("new record",newDate);
+        axios.post("http://localhost:5050/inventoryItem/addrecord",newRecord).then(()=>{
+
+        }).catch((err)=>{
+            alert(err)
+        })
+
 
     }
-    console.log(updateCost);
+    console.log("upadate"+Recordquantity);
 
     const deleteInventory = async(id)=>{
 
@@ -229,6 +249,11 @@ function Allitems(){
     // })
 
 
+
+
+    
+
+
     return(
 
         <div className="container">
@@ -269,12 +294,12 @@ function Allitems(){
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Item code</th>
-                            <th>Name</th>
-                            <th>Item Group</th>
-                            <th>Quantity</th>
-                            <th>Action</th>
-                            <th></th>
+                            <th style={{textAlign:"center"}}>Item code</th>
+                            <th style={{textAlign:"center"}}>Name</th>
+                            <th style={{textAlign:"center"}}>Item Group</th>
+                            <th style={{textAlign:"center"}}>On Hand</th>
+                            <th style={{textAlign:"center"}}>Action</th>
+                            <th style={{textAlign:"center"}}></th>
                             {/* Add more table headers as per your item data structure */}
                         </tr>
                     </thead>
@@ -283,19 +308,28 @@ function Allitems(){
                             return search.toLowerCase() === ''? item : item.name.toLowerCase().includes(search);
                         }).map(item => (
                             <tr key={item.id}>
-                                <td>{item.code}</td>
-                                <td>{item.name}</td>
-                                <td>{item.igroup}</td>
-                                <td id="table-quantity" className={parseFloat(item.quantity) <= 10 ? 'text-danger' : ''}>{item.quantity}{item.kg}                          </td>
-                                <td>
+                                <td style={{textAlign:"center"}}>{item.code}</td>
+                                <td style={{textAlign:"center"}}>{item.name}</td>
+                                <td style={{textAlign:"center"}}>{item.igroup}</td>
+                                <td style={{textAlign:"center"}} id="table-quantity" className={parseFloat(item.quantity) <= 10 ? 'text-danger' : ''}>{item.quantity}{item.kg}                          </td>
+                                <td style={{textAlign:"center"}}>
                                     <div>
                                         <button type="button" class="btn btn-warning" onClick={()=>loadModel(item._id)}>Update</button>
-                                        <button type="button" class="btn btn-danger" style={{marginLeft:"5px"}} onClick={()=>deleteInventory(item._id)}>Delete</button>
+                                        <button type="button" class="btn btn-danger" 
+                                            style={{marginLeft:"5px"}} onClick={()=>deleteInventory(item._id)}>Delete
+                                        </button>
+                                        <button type="button" class="btn btn-primary" 
+                                            style={{marginLeft:"5px"}}
+                                            onClick={() => navigate("/dashboard/allitem/record/"+item._id)}
+                                            >Records                                           
+                                        </button>
+
                                     </div>
                                 </td>
                                 <td>
-                                    <div className={parseFloat(item.quantity) <= 10 ? "spinner-grow text-danger": ''} role="status">
-                                        <span className={parseFloat(item.quantity) <= 10 ? "visually-hidden": ''}></span>
+                                    <div>
+                                        {parseFloat(item.quantity) <= 10 && 
+                                        <img src={arrow} alt="Arrow" style={{ height: "20px", width: "auto", marginLeft: "5px" }} />}
                                     </div>
                                 </td>
                                 {/* Add more table cells for other item details */}
@@ -318,14 +352,14 @@ function Allitems(){
                         <hr></hr>
                         <div style={{marginBottom:"10px"}}>
                             <label for="inputCode" style={{fontWeight:"bold"}}>Item Code</label>
-                            <input type="text" defaultValue={updateCode}
+                            <input type="text" defaultValue={updateCode} id="code" readOnly="true"
                             onChange={(e)=> setupdateCode(e.target.value)}
                             className="form-control "></input>
                         </div>
            
                         <div style={{marginBottom:"10px"}}>
                             <label for="inputCode" style={{fontWeight:"bold"}}>Item Name</label>
-                            <input type="text" defaultValue={updateName} 
+                            <input type="text" defaultValue={updateName} id="name"
                             onChange={(e)=> setupdateName(e.target.value)}
                             className="form-control "></input>
                         </div>
@@ -336,7 +370,7 @@ function Allitems(){
                             onChange={(e)=>setupdateIgroup(e.target.value)}>
                                 <option ></option>
                                 <option value="Vegetable" >Vegetable</option>
-                                <option value="Meet" >Meat</option>
+                                <option value="Meat" >Meat</option>
                                 <option value="Fish" >Fish</option>
                                 <option value="Rice" >Rice</option>
                                 <option value="Spices" >Spices</option>
@@ -359,7 +393,6 @@ function Allitems(){
                                     checked={updateKg === 'kg'}
                                     onChange={(e)=>setupdateKg(e.target.checked ? 'kg' : '')}/>
                                     <label class="form-check-labe1" for="kg" style={{marginLeft:"5px",fontWeight:"bold"}}>kg</label>
-
                                 </div>
                             </div>
 
@@ -368,19 +401,21 @@ function Allitems(){
                         <div>
                             <label for="inputCode" style={{fontWeight:"bold",marginRight: "5px"}}>Update Quantity</label>
                             <div style={{ display: "flex", alignItems: "center" }}>
-                                <input type="number" className="form-control " id="updateinventory" style={{ marginRight: "5px" }}></input>
+                                <input type="number" className="form-control " id="updateinventory" style={{ marginRight: "5px" }}
+                                onChange={(e)=>setRecordquantity(e.target.value)}
+                                ></input>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="income" value="income"
-                                    onChange={() => setIsIncomeSelected(true)} // Set isIncomeSelected to true when "Income" is selected
+                                    onChange={() => {setIsIncomeSelected(true);setIsOutgoingSelected(false);}} // Set isIncomeSelected to true when "Income" is selected
                                     checked={isIncomeSelected} />
-                                    <label class="form-check-label" style={{fontWeight:"bold"}}>Income</label>
+                                    <label class="form-check-label" style={{fontWeight:"bold"}}>Restock</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="outgoing" value="outgoing"
-                                    onChange={() => setIsIncomeSelected(false)} // Set isIncomeSelected to true when "Income" is selected
-                                    checked={!isIncomeSelected}/>
-                                    <label class="form-check-label" style={{fontWeight:"bold"}}>Outgoing</label>
+                                    onChange={() => {setIsIncomeSelected(false);setIsOutgoingSelected(true);}} // Set isIncomeSelected to true when "Income" is selected
+                                    checked={isOutgoingSelected}/>
+                                    <label class="form-check-label" style={{fontWeight:"bold"}}>Remove</label>
                                 </div>
                                 {/* Conditionally render the additional input field if "Income" is selected */}
 
