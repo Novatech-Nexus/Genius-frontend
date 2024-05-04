@@ -1,5 +1,7 @@
 import ReservationDetails from '../../components/table-res/ReservationDetails'
 import TableRNavBar from '../../components/table-res/TableRNavBar';
+import Footer from '../../../src/components/Footer'
+
 
 function BookingTable() {
 
@@ -10,6 +12,7 @@ function BookingTable() {
         {/* <TableResHeader/> */}
         <TableRNavBar/>
         <ReservationDetails/>
+        <Footer/>
          
       </div>
     );
