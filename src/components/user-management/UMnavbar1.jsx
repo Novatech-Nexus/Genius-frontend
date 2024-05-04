@@ -1,5 +1,3 @@
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../assets/inventory-images/geniuslogo.png';
 
@@ -20,21 +18,11 @@ function UMnavbar1(){
                             <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="#">Menu</a>
                             </li>
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Services
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">Service 1</a></li>
-                                    <li><a className="dropdown-item" href="#">Service 2</a></li>
-                                    <li><a className="dropdown-item" href="#">Service 3</a></li>
-                                </ul>
-                            </li> */}
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Contact us</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">Profile</a>
+                                <a className="nav-link" href='/profile'>Profile</a>
                             </li>
                         </ul>
                     </div>
