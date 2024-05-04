@@ -9,8 +9,10 @@ import useFetch from "../../hooks/fetch.hook";
 // import { useAuthStore } from "../../store/store";
 import { updateUser } from "../../helper/helper";
 import { deleteUser } from "../../helper/helper";
+import UMnavbar from "../../components/user-management/um-navbar";
 
 import styles from "../../styles/Username.module.css";
+import Footer from "../../components/Footer";
 
 export default function Profile() {
   const [file, setFile] = useState();
@@ -18,10 +20,6 @@ export default function Profile() {
 
   useEffect(() => {
   });
-
-  // const email = localStorage.getItem('email');
-  // const fetchData = useFetch();
-
   
   const [{isLoading, apiData, serverError}] = useFetch();
 
@@ -89,7 +87,9 @@ export default function Profile() {
   if(serverError) return <h1 className="fs-5 font-weight-bold">{serverError.message}</h1>
 
   return (
-    <div className="container mx-auto">
+    <div>
+      <UMnavbar />
+    <div className={styles.background}>
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="d-flex h-screen justify-content-center align-items-center">
@@ -134,5 +134,8 @@ export default function Profile() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </div>
+    
   );
 }

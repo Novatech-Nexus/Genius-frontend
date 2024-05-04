@@ -1,37 +1,42 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import offer1 from '../../assets/common-images/offer1.jpg';
-import offer2 from '../../assets/common-images/offer1.jpg';
-import offer3 from '../../assets/common-images/offer1.jpg';
+// import { Link } from 'react'
+import Carousel from 'react-bootstrap/Carousel';
+import carousal1 from '../../assets/common-images/carousal1.jpg'
+import carousal2 from '../../assets/common-images/carousal2.jpg'
+import carousal3 from '../../assets/common-images/carousal3.jpg'
+import styles from '../../styles/Username.module.css'
 
-function Carousal(){
-    return(
-        <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={offer1} className="d-block w-100" alt="..."/>
-          </div>
-          <div className="carousel-item">
-            <img src={offer2} className="d-block w-100" alt="..."/>
-          </div>
-          <div className="carousel-item">
-            <img src={offer3} className="d-block w-100" alt="..."/>
-          </div>
-        </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
-    );
+export const Carousal = () => {
+  return (
+    <div>
+        <Carousel>
+      <Carousel.Item>
+        <img className='d-block' src={carousal1} alt="" style={{ height: '600px', objectFit: 'cover' }}/>
+        <Carousel.Caption>
+          <h3>Savor Every Bite: Order Our Delectable Delights Now!</h3>
+          {/* <button className={styles.btn3}>Order now</button> */}
+          {/* <Link className={styles.btn3} to='/profile'>Order now</Link> */}
+          <a className={styles.btn3} href="/profile">Order now</a>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className='d-block width-100' src={carousal2} alt="" style={{ maxHeight: '600px', objectFit: 'cover' }}/>
+        <Carousel.Caption>
+          <h3>Secure Your Spot: Reserve Your Table for an Unforgettable Dining Experience!</h3>
+          {/* <button className={styles.btn3}>Reserve a table</button> */}
+          {/* <Link className={styles.btn3} to='/profile'>Reserve a table</Link> */}
+          <a className={styles.btn3} href="/profile">Reserve a table</a>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className='d-block width-100' src={carousal3} alt="" style={{ maxHeight: '600px', objectFit: 'cover' }}/>
+        <Carousel.Caption>
+        <h3>Indulge Your Guests: Book Our Catering Service for Culinary Excellence!</h3>
+          {/* <button className={styles.btn3}>Catering service</button> */}
+          {/* <Link className={styles.btn3} to='/profile'>Catering service</Link> */}
+          <a className={styles.btn3} href="/profile">Catering service</a>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+    </div>
+  )
 }
-
-export default Carousal;

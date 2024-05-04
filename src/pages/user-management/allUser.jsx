@@ -6,10 +6,14 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 import styles from "../../styles/Username.module.css";
+import Footer from "../../components/Footer";
+import UMnavbar1 from "../../components/user-management/um-navbar1";
+
 
 export default function Profile() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,6 +27,7 @@ export default function Profile() {
 
     fetchUsers();
   }, []);
+
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -38,11 +43,9 @@ export default function Profile() {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-
     doc.setFontSize(18);
     doc.text('User Profiles', 14, 20);
 
-  
     const tableData = filteredUsers.map((user) => [user.firstname, user.lastname, user.email, user.phoneNumber || '-']);
     doc.autoTable({
       head: [['First Name', 'Last Name', 'Email', 'Phone Number']],
@@ -50,12 +53,13 @@ export default function Profile() {
       startY: 30,
     });
 
-    // Save PDF
     doc.save('user_profiles.pdf');
   };
-
+  
   return (
-    <div className="container mx-auto" style={{ maxWidth: '600px' }}>
+    <div className={styles.background2}>
+      <UMnavbar1/>
+      <div className="container mx-auto" style={{ maxWidth: '600px' }}>
       <div className="my-4">
         <input
           type="text"
@@ -84,7 +88,6 @@ export default function Profile() {
                   <td>{user.lastname}</td>
                   <td>{user.email}</td>
                   <td>{user.phoneNumber || '-'}</td>
-                  <td><button className={styles.btn1}>Update</button></td>
                   <td><button className={styles.btn2}>Delete</button></td>
                 </tr>
               ))}
@@ -96,5 +99,8 @@ export default function Profile() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </div>
+    
   );
 }

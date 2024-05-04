@@ -60,6 +60,23 @@ export async function profileValidate(values){
 }
 
 
+/** Validate employee login page employeeID */
+export async function employeeIDvalidate(values){
+    const errors = employeeIDVerify({}, values);
+
+    if(values.employeeID){
+
+        //check for the user existance
+        const { status } = await authenticate(values.employeeID);
+
+        if(status !== 200){
+            errors.exist = toast.error("Employee ID doesn't exist");
+        }
+    }
+
+    return errors;
+}
+
 
 /** ********************************************************** */
 
@@ -84,9 +101,9 @@ function passwordVerify(errors = {}, values){
     else if(values.password.includes(" ")){
         errors.password = toast.error("Password cannot contain spaces");
     }
-    // else if(values.password.length < 8){
-    //     errors.password = toast.error("Password must be at least 8 characters");
-    // }
+    else if(values.password.length < 8){
+        errors.password = toast.error("Password must be at least 8 characters");
+    }
     
     return errors;
 }
@@ -160,3 +177,14 @@ function confirmPassword(error = {}, values){
 //     error.password = toast.error('password should be at least 8 characters');
 //   }
 
+
+
+//validate employeeID
+/** Validate email */
+function employeeIDVerify(error = {}, values){
+    if(!values.employeeID){
+        error.employeeID = toast.error('Employee ID is required');
+    }
+
+    return error;
+}
