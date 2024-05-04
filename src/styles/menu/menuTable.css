@@ -1,4 +1,4 @@
-/* .men-table-background {
+.Mmen-table-background {
     background-image: url('../../assets/MenuM/item3.jpg'); 
     background-size: cover;
     background-position: center;
@@ -77,18 +77,18 @@
     right: 10px;
     transform: translateY(-50%);
     color: #aaa;
-} */
+}
 
 /* button */
-/* .button-container {
+.Mbutton-container {
     display: flex; 
     justify-content: center; 
     gap: 10px; 
-  }
-  .button-container {
-    display: flex; */
-    /* justify-content: space-between;  */
-/* }
+}
+
+.Mbutton-container {
+    display: flex;
+}
 
 .Mbtn1 {
     background-color: red; 
@@ -122,9 +122,72 @@
     background-color: #997404; 
 }
 
+.Mbtn3 {
+    background-color: red; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 10px; 
+    transition: background-color 0.3s; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.Mbtn3:hover {
+    background-color: darkred; 
+}
 
 
+.Mmen-table2-container {
+    display: grid;
+    place-items: center;
+}
+
+.Mmen-table2 {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Mmen-table2 th, .Mmen-table2 td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 8px;
+}
+
+.Mmen-table2 th, .Mmen-table2 td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+    background-color: #ffffff; 
+}
+
+.Mmen-table2 tr {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+}
+
+@media (max-width: 700px) {
+    .Mmen-table2 th, .Mmen-table2 td {
+        padding: 4px; 
+    }
+}
 
 
-  
- */
+.Mcustom-datepicker {
+    width: 250px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box; 
+
+}
+
