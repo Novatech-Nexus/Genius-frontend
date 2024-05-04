@@ -7,6 +7,8 @@ import { useFormik } from "formik";
 import convertToBase64 from "../../helper/convert";
 import { registerValidate } from "../../helper/validate";
 import { registerUser } from "../../helper/helper";
+import UMnavbar from "../../components/user-management/um-navbar";
+import Footer from "../../components/Footer";
 
 export default function Register() {
 
@@ -22,13 +24,14 @@ export default function Register() {
       phoneNumber: "",
       password: "",
       confirmPassword: "",
+      role: "customer",
     },
     validate: registerValidate,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      values = await Object.assign(values, { profile: file || '' });
-      let regsterPromise =registerUser(values);
+      let value = await Object.assign(values, { profile: file || '' });
+      let regsterPromise =registerUser(value);
 
       toast.promise(regsterPromise, {
         loading: "Creating account...",
@@ -46,7 +49,9 @@ export default function Register() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div>
+      <UMnavbar />
+      <div className={styles.background}>
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="d-flex h-screen justify-content-center align-items-center">
@@ -98,7 +103,7 @@ export default function Register() {
 
                 <input
                   {...formik.getFieldProps("password")}
-                  type="text"
+                  type="password"
                   name="password"
                   className={styles.textbox}
                   placeholder="Password"
@@ -106,7 +111,7 @@ export default function Register() {
 
                 <input
                   {...formik.getFieldProps("confirmPassword")}
-                  type="text"
+                  type="password"
                   name="confirmPassword"
                   className={styles.textbox}
                   placeholder="Confirm password"
@@ -130,5 +135,8 @@ export default function Register() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </div>
+    
   );
 }
