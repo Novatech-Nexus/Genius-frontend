@@ -20,10 +20,6 @@ export default function Profile() {
 
   useEffect(() => {
   });
-
-  // const email = localStorage.getItem('email');
-  // const fetchData = useFetch();
-
   
   const [{isLoading, apiData, serverError}] = useFetch();
 
@@ -93,7 +89,7 @@ export default function Profile() {
   return (
     <div>
       <UMnavbar />
-    <div className="container mx-auto">
+    <div className={styles.background}>
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="d-flex h-screen justify-content-center align-items-center">

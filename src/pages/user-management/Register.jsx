@@ -51,7 +51,7 @@ export default function Register() {
   return (
     <div>
       <UMnavbar />
-      <div className="container mx-auto">
+      <div className={styles.background}>
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <div className="d-flex h-screen justify-content-center align-items-center">
@@ -65,7 +65,7 @@ export default function Register() {
                   <img src={file || avatar} className={styles.avatar} alt="avatar" />
                 </label>
 
-                <input onChange={onUpload} type="file" id="profile" name="profile" />
+                <input className="d-none" onChange={onUpload} type="file" id="profile1" name="profile" />
               </div>
 
               <div className="textbox d-flex flex-column align-items-center gap-6">
