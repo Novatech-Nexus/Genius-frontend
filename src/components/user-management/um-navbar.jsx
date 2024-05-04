@@ -14,7 +14,7 @@ function UMnavbar(){
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
+                    {/* <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="#">Menu</a>
                         </li>
@@ -24,7 +24,7 @@ function UMnavbar(){
                         <li className="nav-item">
                             <a className="nav-link" href="#">Contact us</a>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         </nav>
