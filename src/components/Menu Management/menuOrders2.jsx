@@ -25,11 +25,13 @@ function MenuOnOrder() {
       .catch((err) => console.log(err));
   }, []);
 
+  //calculate amount
   const calculateTotalAmount = (orderList) => {
     const amountSum = orderList.reduce((total, cart) => total + cart.netTotal, 0);
     setTotalAmount(amountSum);
   };
 
+  //date filter
   const handleDateChange = (date) => {
     setSelectedDate(date);
 
@@ -55,30 +57,25 @@ function MenuOnOrder() {
       const imgY = 0;
       doc.addImage(pdfBG, 'JPEG', imgX, imgY, imgWidth, imgHeight);
 
-      // Set up the PDF content
       doc.setFontSize(20);
       doc.setFont("helvetica", "bold");
       doc.setTextColor("black");
 
-      // Add title text
       const titleText = "Online Orders";
       const titleTextWidth = doc.getStringUnitWidth(titleText) * doc.internal.getFontSize();
       const titleTextX = (doc.internal.pageSize.getWidth() - titleTextWidth) / 2;
       const titleTextY = imgY + imgHeight + 10;
       doc.text(titleText, titleTextX, titleTextY);
 
-      // Prepare table data from orderCarts
       const tableData = orderCarts.map((cart) => ({
         itemNames: cart.items.map((item) => `${item.name} - ${item.amount} x ${item.price} = ${item.totalPrice}`).join("\n"),
         netTotal: cart.netTotal,
         createdAt: new Date(cart.createdAt).toLocaleDateString(),
-        time: new Date(cart.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // Format time
-        // You may adjust the data keys and formatting based on your needs
+        time: new Date(cart.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), 
       }));
 
       const startY = titleTextY + 10;
 
-      // Add autoTable
       doc.autoTable({
         head: [['Item Names', 'Net Total', 'Date', 'Time']],
         body: tableData.map(({ itemNames, netTotal, createdAt, time }) => [itemNames, netTotal, createdAt, time]),
@@ -89,7 +86,6 @@ function MenuOnOrder() {
       doc.save('Online Orders.pdf');
     } catch (error) {
       console.error("Error generating PDF:", error);
-      // Optionally show an error message to the user
       alert(`Error generating PDF: ${error.message}`);
     }
   };
