@@ -71,7 +71,6 @@ export default function Profile() {
     })
 
     return deletePromise;
-    // userLogout();
   }
 
   // handle deleter

@@ -49,7 +49,7 @@ const MenTable = ({ items }) => {
     const handleClick = async (id) => {
         console.log("Delete button clicked for item ID:", id); // Add this log statement
         try {
-            const response = await axios.delete(`http://localhost:5050/item/delete/${id}`);
+            const response = await axios.delete(`http://localhost:5050/item/deleteAuser/${id}`);
 
             if (response.status === 200) {
                 // Update the state after successful deletion

@@ -10,7 +10,7 @@ import { verifyPassword } from '../../helper/helper';
 
 import styles from "../../styles/Username.module.css";
 import Footer from "../../components/Footer";
-import UMnavbar from "../../components/user-management/um-navbar";
+import UMnavbar2 from "../../components/user-management/UMnavbar2";
 
 
 export default function Email() {
@@ -60,7 +60,7 @@ export default function Email() {
 
   return (
     <div>
-      <UMnavbar/>
+      <UMnavbar2/>
       <div className={styles.background}>
         
 
@@ -72,9 +72,6 @@ export default function Email() {
               <h4 className="fs-1 display-100 fw-bold">Hello Again!</h4>
 
               <form className='py-1' onSubmit={formik.handleSubmit}>
-                {/* <div className='profile d-flex justify-content-center py-4'>
-                <img src={avatar} alt="avatar" className={styles.avatar} />
-              </div> */}
 
                 <div className="textbox d-flex flex-column align-items-center gap-6">
                   <input {...formik.getFieldProps('email')} className={styles.textbox} type="text" placeholder='Email' />
@@ -95,7 +92,7 @@ export default function Email() {
               <div className="text-center py-4 d-flex flex-column">
                 <span className=''>Forgot Password? <Link className='text-danger text-decoration-none' to="/recoveryemail">Reset Password</Link></span>
                 <span className=''>Not a member? <Link className='text-danger text-decoration-none' to="/register">Register Now</Link></span>
-                <span className=''>Employee Sign in <Link className='text-danger text-decoration-none' to="/alluser">Sign in</Link></span>
+                <span className=''>Employee Sign in <Link className='text-danger text-decoration-none' to="/employeedashboard">Sign in</Link></span>
               </div>
 
             </div>
