@@ -5,6 +5,10 @@ import { Modal } from 'react-bootstrap';
 import item3 from "../../assets/MenuM/item3.jpg";
 import searchMenu from '../../assets/MenuM/searchMenu.png';
 import "../../styles/menu/menuTable.css";
+import pdfBG from '../../assets/MenuM/pdfBG.jpg';
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
+
 
 function MenOrder() {
     const [orders, setOrders] = useState([]);
@@ -127,8 +131,72 @@ function MenOrder() {
     };
 
     
-
+    const generatePDF = () => {
+        const doc = new jsPDF();
     
+        try {
+            // Add image at the top
+            const imgWidth = 220;
+            const imgHeight = 50;
+            const imgX = (doc.internal.pageSize.getWidth() - imgWidth) / 2;
+            const imgY = 0;
+            doc.addImage(pdfBG, 'JPEG', imgX, imgY, imgWidth, imgHeight);
+    
+            // Set up the PDF content
+            doc.setFontSize(20);
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor("black");
+    
+            // Add title text
+            const titleText = "Catering Orders";
+            const titleTextWidth = doc.getStringUnitWidth(titleText) * doc.internal.getFontSize();
+            const titleTextX = (doc.internal.pageSize.getWidth() - titleTextWidth) / 2;
+            const titleTextY = imgY + imgHeight + 10;
+            doc.text(titleText, titleTextX, titleTextY);
+    
+            // Add table content with index numbers
+            const tableData = orders.map((order, index) => [
+                index + 1, // Index number
+                order.functionType,
+                order.noOfPer,
+                order.fName,
+                order.conNum1,
+                formatDate(order.date),
+                order.totalPrice
+            ]);
+    
+            const startY = titleTextY + 10;
+    
+            // Configure table columns
+            const tableColumns = [
+                'Index', // Index column
+                'Function Type',
+                'Quantity',
+                'Name of Customer',
+                'Contact Number',
+                'Date',
+                'Total Price (Rs.)'
+            ];
+    
+            // Add autoTable
+            doc.autoTable({
+                head: [tableColumns],
+                body: tableData,
+                startY: startY
+            });
+    
+            // Save PDF
+            doc.save('Catering Orders.pdf');
+        } catch (error) {
+            console.error("Error generating PDF:", error);
+            // Optionally show an error message to the user
+            Swal.fire({
+                title: "Error!",
+                text: `Error generating PDF: ${error.message}`,
+                icon: "error"
+            });
+        }
+    };
 
     return (
         <div style={{
@@ -221,7 +289,7 @@ function MenOrder() {
 
                 </table>
                 <div>
-                    <button className="Mbtn3 delete-btn">Generate Report</button>
+                <button className="Mbtn3 delete-btn" onClick={generatePDF}>Generate Report</button>
                 </div>
             </div>
 

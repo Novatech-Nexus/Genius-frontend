@@ -6,7 +6,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import Swal from 'sweetalert2';
 import searchMenu from '../../assets/MenuM/searchMenu.png';
-import logoMe from '../../assets/MenuM/logoMe.png';
+import pdfBG from '../../assets/MenuM/pdfBG.jpg';
 
 const MenTable = ({ items }) => {
 
@@ -96,40 +96,46 @@ const MenTable = ({ items }) => {
     //downloading PDF
     const downloadPDF = () => {
         const doc = new jsPDF();
-
+    
         doc.setFontSize(20);
         doc.setFont("helvetica", "bold");
         doc.setTextColor("black");
-
-        const imgData = logoMe;
-        const imgWidth = 30;
-        const imgHeight = 30;
+    
+        const imgData = pdfBG;
+        const imgWidth = 220;
+        const imgHeight = 50;
         const imgX = (doc.internal.pageSize.getWidth() - imgWidth) / 2;
-        const imgY = 20; // Assuming the image is at the top of the page
+        const imgY = 0; // Increase top margin for the image
+    
+        // Add image at the top
         doc.addImage(imgData, 'PNG', imgX, imgY, imgWidth, imgHeight);
-
+    
         const text = "Restaurant Menus";
         const textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize();
         const textX = (doc.internal.pageSize.getWidth() - textWidth) / 2;
-
-        const textHeight = doc.internal.getLineHeight();
-        const totalHeight = imgHeight + textHeight; // Total height of image and text
-        const textY = imgY + imgHeight + (totalHeight / 2); // Center vertically
-
+    
+        // Position text below the image with reduced gap
+        const textY = imgY + imgHeight + 10; // Adjust the gap between image and text
+    
         doc.text(text, textX, textY);
-
+    
         const tableData = filteredItems.map(item => [item.itemId, item.itemName, item.category, item.price, item.description]);
-
+    
         doc.setFontSize(14);
+    
+        // Calculate startY for autoTable to position below the text
+        const startY = textY + 10; // Adjust the vertical gap between text and table
+    
         doc.autoTable({
             head: [['Item Code', 'Item Name', 'Category', 'Price(Rs.)', 'Description']],
             body: tableData,
-            startY: textY + 10
+            startY: startY
         });
-
+    
         // Save PDF
-        doc.save('table-pdf');
+        doc.save('Menus');
     }
+    
 
 
 
@@ -168,7 +174,7 @@ const MenTable = ({ items }) => {
                 title: "Item Updated",
                 showConfirmButton: false,
                 timer: 1500
-              });
+              });
 
             // Update the state with the new data
             const updatedItems = allItems.map(item => {
