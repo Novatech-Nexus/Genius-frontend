@@ -45,7 +45,34 @@ const ReservationDetails = () => {
         'Business Meeting': ['B1', 'B2', 'B3', 'B4', 'B5']
     };
 
+    const handleExpiredReservations = async () => {
+        const twoHoursAgo = new Date();
+        twoHoursAgo.setHours(twoHoursAgo.getHours() - 2); // Calculate date 2 hours ago
 
+        try {
+            const updatedReservations = allReservations.filter(reservation => {
+                const reservationDateTime = new Date(`${reservation.date}T${reservation.time}`);
+                return reservationDateTime > twoHoursAgo;
+            });
+
+            // Delete expired reservations from the server
+            const expiredReservations = allReservations.filter(reservation => {
+                const reservationDateTime = new Date(`${reservation.date}T${reservation.time}`);
+                return reservationDateTime <= twoHoursAgo;
+            });
+
+            if (expiredReservations.length > 0) {
+                await Promise.all(expiredReservations.map(async reservation => {
+                    await axios.delete(`http://localhost:5050/Reservation/deletetr/${reservation._id}`);
+                }));
+            }
+
+            setAllReservations(updatedReservations);
+            setFilteredReservations(updatedReservations);
+        } catch (error) {
+            console.error("Error handling expired reservations:", error.message);
+        }
+    };
 
     const handleCategoryChange = (e) => {
         const selectedCategory = e.target.value;
@@ -62,6 +89,13 @@ const ReservationDetails = () => {
                     setAllReservations(response.data);
                     setFilteredReservations(response.data);
         
+                    const cleanupInterval = setInterval(() => {
+                        handleExpiredReservations();
+                    }, 600000); // 10 minutes interval
+    
+                    // Cleanup interval when component unmounts
+                    return () => clearInterval(cleanupInterval);
+                    
             } catch (error) {
                 console.error("Error fetching reservations:", error.message);
             }

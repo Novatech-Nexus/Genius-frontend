@@ -11,7 +11,7 @@ import axios from "axios";
 import book6 from '../../assets/table-manage/book6.jpg';
 import Swal from "sweetalert2";
 
-const AccountForm = () => {
+const AccountForm = ({history}) => {
     const [userName, setUserName] = useState('');
     const [contactNo, setContactNo] = useState('');
     const [email, setEmail] = useState('');
@@ -83,6 +83,8 @@ const AccountForm = () => {
                     
                 });
                 resetForm();
+                // Navigate to customer details page
+                history.push('/arch/customerdetails');
             })
             .catch((err) => {
                 let errorMessage = "Reservation failed. Please try again.";

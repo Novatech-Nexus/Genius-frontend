@@ -63,6 +63,7 @@ import OrderHome from './pages/order-management/OrderHome.jsx';
 //table reservation
 import ArchTabble from './pages/table-res-management/ArchTabble.jsx';
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
+// import CustomerDetailsPage from './pages/table-res-management/CustomerDetailsPage.jsx'
 import BookingTable from './pages/table-res-management/BookingTable';
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
         {/* Table Reservation */}
         <Route path="/reservation" element = {<ArchTabble/>} ></Route>
         <Route path="/arch" element = {<TableReservationHome/>} ></Route>
+        {/* <Route path="/customerdetails" element = {<CustomerDetailsPage/>} ></Route> */}
         <Route path="/booking" element = {<BookingTable/>} ></Route>
 
 
@@ -128,20 +130,20 @@ function App() {
 
 
         {/* Catering Management */}
-        <Route path="/catMain" element={<AuthorizeUser><CatMain/></AuthorizeUser>}></Route>
-        <Route path="/ordercat" element={<AuthorizeUser><OrderCat/></AuthorizeUser>}></Route>
-        <Route path="/ordercus" element={<AuthorizeUser><OrderCus/></AuthorizeUser>}></Route>
-        <Route path="/orderplace" element={<AuthorizeUser><OrderPlace/></AuthorizeUser>}></Route>
-        <Route path="/celOccMenu" element={<AuthorizeUser><CelOccMenu/></AuthorizeUser>}></Route>
-        <Route path="/kidMenus" element={<AuthorizeUser><KidMenus/></AuthorizeUser>}></Route>
-        <Route path="/orderDetail" element={<AuthorizeUser><OrderDetail/></AuthorizeUser>}></Route>
-        <Route path="/seacelMenu" element={<AuthorizeUser><SeacelMenu/></AuthorizeUser>}></Route>
-        <Route path="/kidsParty" element={<AuthorizeUser><KidsParty/></AuthorizeUser>}></Route>
-        <Route path="/seationCeleb" element={<AuthorizeUser><SeationCeleb/></AuthorizeUser>}></Route>
-        <Route path="/wedsMenu" element={<AuthorizeUser><WedsMenu/></AuthorizeUser>}></Route>
-        <Route path="/weddings" element={<AuthorizeUser><Weddings/></AuthorizeUser>}></Route>
-        <Route path="/updateCat" element={<AuthorizeUser><UpdateCat/></AuthorizeUser>}></Route>
-        <Route path="/celebOcc" element={<AuthorizeUser><CelebOcc/></AuthorizeUser>}></Route>
+        <Route path="/catMain" element={<CatMain/>}></Route>
+        <Route path="/ordercat" element={<OrderCat/>}></Route>
+        <Route path="/ordercus" element={<OrderCus/>}></Route>
+        <Route path="/orderplace" element={<OrderPlace/>}></Route>
+        <Route path="/celOccMenu" element={<CelOccMenu/>}></Route>
+        <Route path="/kidMenus" element={<KidMenus/>}></Route>
+        <Route path="/orderDetail" element={<OrderDetail/>}></Route>
+        <Route path="/seacelMenu" element={<SeacelMenu/>}></Route>
+        <Route path="/kidsParty" element={<KidsParty/>}></Route>
+        <Route path="/seationCeleb" element={<SeationCeleb/>}></Route>
+        <Route path="/wedsMenu" element={<WedsMenu/>}></Route>
+        <Route path="/weddings" element={<Weddings/>}></Route>
+        <Route path="/updateCat" element={<UpdateCat/>}></Route>
+        <Route path="/celebOcc" element={<CelebOcc/>}></Route>
   </Routes>
     </main>
 </>
