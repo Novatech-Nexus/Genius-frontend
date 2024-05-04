@@ -9,11 +9,17 @@ import Reset from './pages/user-management/Reset';
 import Recovery from './pages/user-management/Recovery';
 import PageNotFound from './pages/user-management/PageNotFound';
 import Navbar from './components/Navbar';
+import AllUser from './pages/user-management/allUser';
 
 // inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
-import AllUser from './pages/user-management/allUser';
+import AllitemPage from './pages/inventory-management/allitems.jsx';
+import AllSupplierPage from './pages/inventory-management/allSupplier.jsx';
+import ReportPage from './pages/inventory-management/reportgenerate.jsx';
+import RecordPage from './pages/inventory-management/inventoryRecods.jsx';
+import AddSupplierpage from './pages/inventory-management/addSupplier.jsx';
+
 
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
@@ -35,7 +41,7 @@ import ItemMenu from './pages/menu-management/ItemMenu';
 import TableMenu from './pages/menu-management/tableMenu';
 
 // import navbars 
-import UMnavbar from './components/user-management/UMnavbar';
+
 
 
 import CatMain from './pages/catering-management/CatMain'; 
@@ -61,13 +67,14 @@ import DummyPaymentGateway from './components/order/Payment.jsx';
 import OrderHome from './pages/order-management/OrderHome.jsx';
 
 
+
 function App() {
   return (
     <>
 
     <main>
     <Navbar/>
-    <UMnavbar/>
+    
     
       <Routes>
         <Route path="/" element={<AuthorizeUser><Home/></AuthorizeUser>}></Route>
@@ -83,7 +90,10 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
         <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
+        <Route path="/dashboard/allsupplier" element={<AllSupplierPage/>}></Route>
+        <Route path="/dashboard/addsupplier" element={<AddSupplierpage/>}></Route>
         <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
+        <Route path='/dashboard/allitem/record/:id' element={<RecordPage/>}></Route>
 
         {/* -------------------------------------------------------------------------- */}
 
