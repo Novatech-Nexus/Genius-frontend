@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import reportImage from '../../assets/order-images/orderRep.png';
 import cusDetailsImage from '../../assets/order-images/cusDetails.png';
 import image from '../../assets/order-images/bg.png';
-import NavbarManager from '../../components/user-management/UMnavbar1.jsx';
+import NavbarManager from '../../components/order/orderManagerNavbar.jsx';
 import Footer from '../../components/Footer.jsx';
 
 export default function OrderManager() {
@@ -15,7 +15,7 @@ export default function OrderManager() {
   return (
     <><NavbarManager />
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
-          <h1 style={{ fontSize: '32px', marginBottom: '30px' }}>Manager Home Page</h1>
+          <h1 style={{ fontSize: '32px', marginBottom: '30px' }}>Welcome to Order Management</h1>
           <div style={{ display: 'flex', justifyContent: 'space-around', width: '80%' }}>
               <ImageButton image={reportImage} label="Reports" onClick={() => navigate('reports')} />
               <ImageButton image={cusDetailsImage} label="Customer Details" onClick={() => navigate('orderUserDetails')} />
@@ -52,4 +52,8 @@ function ImageButton({ image, label, onClick }) {
       </div>
     );
   }
+
+
+
+  
   

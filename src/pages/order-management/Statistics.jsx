@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import Chart from 'chart.js/auto';
 import { jsPDF } from 'jspdf';
+import NavbarManager from '../../components/order/orderManagerNavbar.jsx';
+import Footer from '../../components/Footer.jsx';
 
 const Statistics = () => {
   const [statistics, setStatistics] = useState(null);
@@ -85,45 +87,45 @@ const Statistics = () => {
   }
 
   return (
-    <div style={{ 
+    <><NavbarManager /><div style={{
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'column',
       marginTop: '20px',
-      minHeight: '100vh' 
+      minHeight: '100vh'
     }}>
-      <div style={{ 
-        width: '80%', 
+      <div style={{
+        width: '80%',
         textAlign: 'center',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         borderRadius: '8px',
         backgroundColor: '#ffffff',
         padding: '20px',
-        marginBottom: '40px'  // Increased margin bottom for more spacing
+        marginBottom: '40px' // Increased margin bottom for more spacing
       }}>
         <h1>Order Management Report</h1>
-        <table style={{ 
-          width: '100%', 
+        <table style={{
+          width: '100%',
           borderCollapse: 'collapse',
-          marginTop: '20px' 
+          marginTop: '20px'
         }}>
           <thead>
             <tr>
-              <th style={{ 
-                padding: '12px', 
-                backgroundColor: '#f0f0f0', 
-                border: '1px solid #ddd' 
+              <th style={{
+                padding: '12px',
+                backgroundColor: '#f0f0f0',
+                border: '1px solid #ddd'
               }}>Food Item</th>
-              <th style={{ 
-                padding: '12px', 
-                backgroundColor: '#f0f0f0', 
-                border: '1px solid #ddd' 
+              <th style={{
+                padding: '12px',
+                backgroundColor: '#f0f0f0',
+                border: '1px solid #ddd'
               }}>Total Quantity Sold</th>
-              <th style={{ 
-                padding: '12px', 
-                backgroundColor: '#f0f0f0', 
-                border: '1px solid #ddd' 
+              <th style={{
+                padding: '12px',
+                backgroundColor: '#f0f0f0',
+                border: '1px solid #ddd'
               }}>Income (Rs)</th>
             </tr>
           </thead>
@@ -139,31 +141,37 @@ const Statistics = () => {
               </tr>
             ))}
             <tr>
-              <td colSpan="2" style={{ 
-                padding: '12px', 
-                backgroundColor: '#f0f0f0', 
-                border: '1px solid #ddd', 
-                textAlign: 'right' 
+              <td colSpan="2" style={{
+                padding: '12px',
+                backgroundColor: '#f0f0f0',
+                border: '1px solid #ddd',
+                textAlign: 'right'
               }}><strong>Total Income</strong></td>
-              <td style={{ 
-                padding: '12px', 
-                backgroundColor: '#f0f0f0', 
-                border: '1px solid #ddd' 
+              <td style={{
+                padding: '12px',
+                backgroundColor: '#f0f0f0',
+                border: '1px solid #ddd'
               }}><strong>{statistics.totalIncome[0].totalIncome}</strong></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div style={{ 
-        width: '80%', 
-        maxWidth: '600px', 
+      <div style={{
+        width: '80%',
+        maxWidth: '600px',
         marginBottom: '100px', // Increased margin bottom for more spacing
         marginTop: '30px',
       }}>
         <canvas ref={chartRef}></canvas>
       </div>
-      <button onClick={downloadReport} style={{ marginTop: '20px', marginBottom: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#007bff', color: '#ffffff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Download Report</button>
+      <button 
+        onClick={downloadReport} 
+        style={{ marginTop: '10px', marginBottom: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#007bff', color: '#ffffff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+          Download Report
+      </button>
     </div>
+    <Footer/>
+    </>
   );
 };
 
