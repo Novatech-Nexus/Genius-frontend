@@ -18,6 +18,7 @@ function MenHome() {
         <h6>Kitchen Manager</h6>
       </div>
 
+      {/* Add Menu */}
       <div className="MMtext-section">
         <div className="MMtext1">
           <h1>Add Menu</h1>
@@ -25,16 +26,18 @@ function MenHome() {
           <Link to="/itemMenu" className="MMbtn MMbtn-danger">Add Items</Link>
         </div>
 
+      {/* Orders */}
         <div className="MMtext2">
           <h1>Orders</h1>
           <p>Viewing online orders and catering orders on a single platform streamlines operational efficiency, enabling businesses to plan effectively and provide exceptional customer service, enhancing productivity and satisfaction.</p>
-          <Link to="/orders" className="MMbtn MMbtn-danger">Orders</Link>
+          <Link to="/orderMenu" className="MMbtn MMbtn-danger">Orders</Link>
         </div>
 
+      {/* Inventory */}
         <div className="MMtext3">
           <h1>Inventory Details</h1>
           <p>By providing real-time updates on inventory levels, this feature enables users to make informed decisions, optimize stock management, and ensure timely fulfillment, ultimately enhancing overall operational efficiency and customer satisfaction.</p>
-          <Link to="/inventory" className="MMbtn MMbtn-danger">Inventory</Link>
+          <Link to="/invenMenu" className="MMbtn MMbtn-danger">Inventory</Link>
         </div>
       </div>
     </div>

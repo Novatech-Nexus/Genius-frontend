@@ -5,6 +5,7 @@ import { resetPassword } from '../../helper/helper';
 import { useAuthStore } from '../../store/store';
 import { useNavigate } from 'react-router-dom';
 // import useFetch from '../../hooks/fetch.hook'
+import UMnavbar from '../../components/user-management/um-navbar';
 
 import styles from '../../styles/Username.module.css'
 // import { useEffect } from 'react';
@@ -43,7 +44,9 @@ export default function Reset() {
   // if(isLoading)
 
   return (
-    <div className='container mx-auto'>
+    <div>
+      <UMnavbar />
+      <div className={styles.background}>
       
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
@@ -66,5 +69,7 @@ export default function Reset() {
         </div>
       </div>
     </div>
+    </div>
+    
   )
 }
