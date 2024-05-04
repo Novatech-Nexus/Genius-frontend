@@ -6,6 +6,7 @@ import HomeImg2 from '../../components/inventory/homeimg2';
 import FooterHome from '../../components/inventory/footerhome';
 import Clock from '../../components/inventory/clockI';
 import TotalCost from '../../components/inventory/totalCost';
+import LowQuantity from '../../components/inventory/lowquantity';
 
 
 function Dashboard() {
@@ -14,9 +15,11 @@ function Dashboard() {
       <Header/>
       {/* <Navbar/> */}
       <Clock/>
+      <LowQuantity/>
       <HomeImg1/>
    
       <HomeImg2/>
+
       <FooterHome/>
   
     </div>
