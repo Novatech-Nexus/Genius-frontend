@@ -20,17 +20,17 @@ const Cards = ({ item, handleClick }) => {
             className="img-fluid"
             src={item.imageUrl}
             alt={item.name}
-            style={{ height: '200px', width: '200px', margin: 'auto' }}
+            style={{ height: '300px', width: '300px', margin: 'auto' }}
           />
         </div>
 
 
         <div className="order-flex-container">
-          <div className='m-1 w-100'>
+          <div className='m-1 w-50'>
             <h1 className='mt-1' style={{ fontSize: '20px' }}>Price: {item.prices} Rs/-</h1>
           </div>
 
-          <div className='m-1 w-100'>
+          <div className='m-1 w-50 text-center'>
             <button className="btn" style={{ backgroundColor: 'red', color: 'white' }} onClick={() => handleClick(item)}>ADD TO CART</button>
           </div>
         </div>
