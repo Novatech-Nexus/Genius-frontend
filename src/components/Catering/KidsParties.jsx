@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import img7 from '../../assets/catering/img7.jpg';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
+import logoMe from '../../assets/catering/logoMe.png';
 
 function KidsParties() {
 
@@ -90,6 +93,38 @@ function KidsParties() {
 
 
     return (
+        <>
+         <Navbar bg="dark" variant="dark" expand="lg" sticky="top" style={{ backgroundColor: '#343a40', height: '100px' }}>
+                <Navbar.Brand style={{ color: '#fff', fontWeight: 'bold' }}>
+                    <img src={logoMe} alt="Logo" style={{ height: '70px', marginRight: '10px', marginLeft: '20px' }} />
+                    GENIUS RESTAURANT
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <LinkContainer to="/" exact>
+                            <Nav.Link style={{ color: '#fff', fontWeight: 'normal' }}>Home</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/catMain" exact>
+                            <Nav.Link style={{ color: '#fff', fontWeight: 'normal' }}>Catering</Nav.Link>
+                        </LinkContainer>
+                        <NavDropdown title="Functions" id="basic-nav-dropdown" style={{ color: '#fff', fontWeight: 'normal' }}>
+                            <LinkContainer to="/weddings">
+                                <NavDropdown.Item >Wedding</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/kidsParty">
+                                <NavDropdown.Item>Kids Parties</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/seationCeleb">
+                                <NavDropdown.Item>Seasonal Celebration</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/CelebOcc">
+                                <NavDropdown.Item>Celebrations & Occasions</NavDropdown.Item>
+                            </LinkContainer>
+                        </NavDropdown>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         <div style={{...backgroundStyle, ...divStyle}}>
             <h1 style={h1Style}>Kids Parties</h1>
             <p style={{...pStyle, marginTop: '20px'}}>Welcome to Genius Restaurant's Kids Parties Catering Service, where every celebration becomes a masterpiece! At Genius Restaurant, we sprinkle a touch of magic into every dish to make your child's special day truly unforgettable. From colorful cupcakes to delightful mini sandwiches, our menu is bursting with tasty treats that will dazzle taste buds and bring smiles to little faces. With our dedicated team of chefs and party planners, we turn dreams into reality, ensuring every detail is just as special as your little one imagines. So sit back, relax, and let Genius Restaurant's Kids Parties Catering Service turn your child's party into a masterpiece of fun and flavor!</p>           
@@ -125,6 +160,7 @@ function KidsParties() {
             </table>
            </div> 
         </div>
+        </>
     );
 }
 

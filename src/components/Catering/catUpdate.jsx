@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import img5 from '../../assets/catering/img5.jpeg';
+import img5 from '../../assets/catering/img6.jpeg';
 
 function CatUpdate() {
   const [formData, setFormData] = useState({
@@ -199,7 +199,6 @@ function CatUpdate() {
 
     /* Body styles */
     body {
-      font-family: Arial, sans-serif;
       background-color: #f8f8f8;
     }
 

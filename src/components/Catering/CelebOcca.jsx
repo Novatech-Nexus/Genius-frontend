@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import img7 from '../../assets/catering/img7.jpg';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
+import logoMe from '../../assets/catering/logoMe.png';
 
 function CelebOcca() {
 
@@ -70,6 +73,38 @@ function CelebOcca() {
     };
 
     return (
+        <>
+        <Navbar bg="dark" variant="dark" expand="lg" sticky="top" style={{ backgroundColor: '#343a40', height: '100px' }}>
+               <Navbar.Brand style={{ color: '#fff', fontWeight: 'bold' }}>
+                   <img src={logoMe} alt="Logo" style={{ height: '70px', marginRight: '10px', marginLeft: '20px' }} />
+                   GENIUS RESTAURANT
+               </Navbar.Brand>
+               <Navbar.Toggle aria-controls="basic-navbar-nav" />
+               <Navbar.Collapse id="basic-navbar-nav">
+                   <Nav className="mr-auto">
+                       <LinkContainer to="/" exact>
+                           <Nav.Link style={{ color: '#fff', fontWeight: 'normal' }}>Home</Nav.Link>
+                       </LinkContainer>
+                       <LinkContainer to="/catMain" exact>
+                           <Nav.Link style={{ color: '#fff', fontWeight: 'normal' }}>Catering</Nav.Link>
+                       </LinkContainer>
+                       <NavDropdown title="Functions" id="basic-nav-dropdown" style={{ color: '#fff', fontWeight: 'normal' }}>
+                           <LinkContainer to="/weddings">
+                               <NavDropdown.Item >Wedding</NavDropdown.Item>
+                           </LinkContainer>
+                           <LinkContainer to="/kidsParty">
+                               <NavDropdown.Item>Kids Parties</NavDropdown.Item>
+                           </LinkContainer>
+                           <LinkContainer to="/seationCeleb">
+                               <NavDropdown.Item>Seasonal Celebration</NavDropdown.Item>
+                           </LinkContainer>
+                           <LinkContainer to="/CelebOcc">
+                               <NavDropdown.Item>Celebrations & Occasions</NavDropdown.Item>
+                           </LinkContainer>
+                       </NavDropdown>
+                   </Nav>
+               </Navbar.Collapse>
+           </Navbar>
         <div style={backgroundStyle}>
             <h1 style={h1Style}>Celebrations & Occasions</h1>
             <p style={{...pStyle, marginTop: '20px'}}>Welcome to Celebrations & Occasions, where every moment is an opportunity to savor the extraordinary. Nestled within the vibrant ambiance of Genius Restaurant, we specialize in crafting unforgettable experiences for your special events. From intimate gatherings to grand celebrations, our dedicated team of culinary artisans and event planners ensures that every detail is meticulously curated to surpass your expectations. With a fusion of exquisite flavors, impeccable service, and a touch of innovation, we transform your occasions into cherished memories. Indulge in a symphony of culinary delights as we embark on a journey of celebration together.</p>           
@@ -103,6 +138,7 @@ function CelebOcca() {
                 </table>
             </div>
         </div>
+        </>
     );
 }
 

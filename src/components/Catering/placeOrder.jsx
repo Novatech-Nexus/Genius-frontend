@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import img9 from '../../assets/catering/img9.jpeg';
+import img6 from "../../assets/catering/img6.jpeg";
+
 
 function PlaceOrder() {
   const [functionType, setFunctionType] = useState('');
@@ -92,7 +93,7 @@ function PlaceOrder() {
   }
 
   return (
-    <div style={{backgroundImage: `url(${img9})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh'}}>
+    <div style={{backgroundImage: `url(${img6})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh'}}>
       <style>{`
         .Jcheckbox-container {
           display: flex;

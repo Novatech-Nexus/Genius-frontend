@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import img9 from '../../assets/catering/img9.jpeg';
+import img6 from '../../assets/catering/img6.jpeg';
 
 function CusOrder() {
   const [firstName, setFirstName] = useState('');
@@ -26,7 +26,7 @@ function CusOrder() {
   }
 
   const backgroundStyle = {
-    backgroundImage: `url(${img9})`,
+    backgroundImage: `url(${img6})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     minHeight: '100vh',

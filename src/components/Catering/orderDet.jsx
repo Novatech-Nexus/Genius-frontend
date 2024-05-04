@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import img5 from '../../assets/catering/img5.jpeg';
+import img5 from '../../assets/catering/img6.jpeg';
 import bill from '../../assets/catering/bill.jpg';
 
 function OrderDet() {
@@ -161,7 +161,6 @@ function OrderDet() {
 
     /* Body styles */
     body {
-        font-family: Arial, sans-serif;
         background-color: #f8f8f8;
     }
 
@@ -199,7 +198,7 @@ function OrderDet() {
         background-color: #CC9966;
     }
     .custom-button {
-        background-color: #760203; 
+        background-color: #ac7339; 
         border: none;
         color: white;
         font-weight: bold;
