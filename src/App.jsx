@@ -101,7 +101,7 @@ function App() {
         <Route path="*" element={<PageNotFound/>}></Route>
         <Route path="/alluser" element={<AuthorizeUser><AllUser/></AuthorizeUser>}></Route>
 
-        <Route path="/employeelogin" element={<AuthorizeUser><EmployeeLogin/></AuthorizeUser>}></Route>
+        <Route path="/employeelogin" element={<EmployeeLogin/>}></Route>
         <Route path="/employeedashboard" element={<AuthorizeUser><EmployeeDashboard/></AuthorizeUser>}></Route>
 
         {/* inventory management */}
