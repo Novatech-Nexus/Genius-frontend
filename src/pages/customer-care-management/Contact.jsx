@@ -7,7 +7,7 @@ import '../../styles/CustomerCare.css';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Footer from '../../components/Footer.jsx';
-import UMnavbar from '../../components/user-management/UMnavbar.jsx';
+import UMnavbar from '../../components/customer-care/customer-navbar.jsx';
 
 // Function to create notification
 const createNotification = async (notificationData) => {

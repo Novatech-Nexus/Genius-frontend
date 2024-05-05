@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import FeedbackItem from '../../components/customer-care/FeedbackItem.jsx';
 import Footer from '../../components/Footer.jsx';
-import UMnavbar from '../../components/user-management/UMnavbar.jsx';
+import UMnavbar from '../../components/customer-care/customer-navbar.jsx';
 
 export default function Feedback_history() {
     const [feedbackData, setFeedbackData] = useState([]);
