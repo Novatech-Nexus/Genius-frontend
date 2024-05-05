@@ -26,7 +26,8 @@ export default function Navbar() {
 
             <li><Link to='/homemenu'>Menu</Link></li>  
             
-            <li><Link to='/orderMenu'>Order</Link></li>
+            <li><Link to='/orderMenuHome'>Order</Link></li>
+            <li><Link to='/orderManager'>Order Manager</Link></li>
 
             <li><Link to='/catMain'>Catering</Link></li>
   
