@@ -51,7 +51,7 @@ const DummyPaymentGateway = () => {
   };
 
   const handleGoBack = () => {
-    navigate('/orderMenuHome'); 
+    navigate('/homepage'); 
   };
 
   return (
