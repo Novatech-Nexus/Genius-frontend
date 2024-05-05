@@ -18,12 +18,6 @@ function RestaurantNavbar(){
                             <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="/attendance">Attendance</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Link 2</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link">Link 3</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

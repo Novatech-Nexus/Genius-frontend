@@ -14,7 +14,7 @@ const AttendanceQRCode = () => {
     <div>
       <Sidebar1/>
 
-      <h4 style={{ textAlign: 'center',marginTop: "40px" }}>Certainly! scan the code and mark your attendance? Thank you!</h4>
+      <h4 style={{ textAlign: 'center',marginTop: "40px" }}>Scan the code and mark your attendance? Thank you!</h4>
      
       {attendanceData && (
         <QRCode value={attendanceData} style={{ marginLeft:"620px",width:"300px",height:"300px",marginTop:"20px",marginBottom:"80px"}} />
