@@ -43,7 +43,7 @@ const CusOrder = () => {
     }
 
     emailjs
-      .sendForm('service_ulafty9', 'template_iga8nd8', form.current, {
+      .sendForm('service_o0ewuay', 'template_iga8nd8', form.current, {
         publicKey: 's-5sGyd8lWJxphAC3',
       })
       .then(
