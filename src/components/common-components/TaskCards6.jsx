@@ -8,7 +8,7 @@ function TasksCards6() {
             <Card.Img variant="top" src={FM} />
             <Card.Body>
                 <Card.Title>Customer care Management</Card.Title>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary" href='/manager'>Go somewhere</Button>
             </Card.Body>
         </Card>
     );

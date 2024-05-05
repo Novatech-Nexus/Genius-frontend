@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom'; 
 import img7 from '../../assets/catering/img7.jpg';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
+import logoMe from '../../assets/catering/logoMe.png';
 
 function SeaCeleb() {
 
@@ -21,16 +24,16 @@ function SeaCeleb() {
             margin: 'auto',
         },
         h1: {
-            backgroundColor: '#2D5A27',
             fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
-            color: 'white',
+            color: '#2D5A27',
+            fontSize:'60px',
             padding: '10px',
             textAlign:'center'
         },
         p: {
             textAlign: 'justify',
             fontSize: '18px',
-            fontWeight: 'bold',
+            width:'99%'
         },
         imgOne: {
             width: '230px',
@@ -38,7 +41,7 @@ function SeaCeleb() {
             marginRight: '20px',
         },
         customButton: {
-            backgroundColor: '#760203',
+            backgroundColor: '#D6001C',
             border: 'none',
             color: 'white',
             fontWeight: 'bold',
@@ -54,26 +57,29 @@ function SeaCeleb() {
             fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
         },
         table: {
-            width: '100%',
             borderCollapse: 'collapse',
-            marginTop: '50px',
-            marginBottom: '50px',
-        },
-        td: {
+            width: '40%',
+            margin: 'auto', // This will center the table horizontally
+            display: 'block', // Change display to block to use margin
+          },
+          td: {
             verticalAlign: 'top',
-        },
+            textAlign: 'justify',
+          },
+        
         h2: {
-            backgroundColor: '#FFD300',
+            backgroundColor: '#BEC3C6',
             padding: '5px',
             maxWidth: '1400px',
+            fontSize: '30px',
             marginTop: '20px',
+            fontWeight:'bold',
             fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
             color: 'black',
             textAlign:'center'
         },
         ul: {
             textAlign: 'left',
-            fontWeight: 'bold',
             listStyleType: 'circle',
         },
         li: {
@@ -88,11 +94,43 @@ function SeaCeleb() {
     };
 
     return (
+        <>
+            <Navbar bg="dark" variant="dark" expand="lg" sticky="top" style={{ backgroundColor: '#343a40', height: '100px' }}>
+                <Navbar.Brand style={{ color: '#fff', fontWeight: 'bold' }}>
+                    <img src={logoMe} alt="Logo" style={{ height: '70px', marginRight: '10px', marginLeft: '20px' }} />
+                    GENIUS RESTAURANT
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <LinkContainer to="/" exact>
+                            <Nav.Link style={{ color: '#fff', fontWeight: 'normal' }}>Home</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/catMain" exact>
+                            <Nav.Link style={{ color: '#fff', fontWeight: 'normal' }}>Catering</Nav.Link>
+                        </LinkContainer>
+                        <NavDropdown title="Functions" id="basic-nav-dropdown" style={{ color: '#fff', fontWeight: 'normal' }}>
+                            <LinkContainer to="/weddings">
+                                <NavDropdown.Item >Wedding</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/kidsParty">
+                                <NavDropdown.Item>Kids Parties</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/seationCeleb">
+                                <NavDropdown.Item>Seasonal Celebration</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/CelebOcc">
+                                <NavDropdown.Item>Celebrations & Occasions</NavDropdown.Item>
+                            </LinkContainer>
+                        </NavDropdown>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         <div style={{ ...backgroundStyle, ...inlineStyles.div }}>
             <h1 style={inlineStyles.h1}>Seasonal Celebration</h1>
             <p style={{ ...inlineStyles.p, marginTop: '20px' }}>Welcome to Genius Restaurant's Seasonal Celebration Catering Service! At Genius, we believe in crafting unforgettable culinary experiences tailored to the essence of each season. Our passion for exquisite flavors, combined with the freshest seasonal ingredients, ensures that every event we cater is a masterpiece of taste and refinement. Whether you're planning a cozy winter gathering, a vibrant spring soirée, a sun-kissed summer affair, or a rich autumn feast, our seasoned team is dedicated to elevating your celebration to new heights. From elegant corporate functions to intimate family gatherings, let Genius Restaurant's Seasonal Celebration Catering Service transform your event into an unforgettable culinary journey.</p>
             <h2 style={inlineStyles.h2}>Menu</h2>
-            <table style={{ ...inlineStyles.table, marginTop: '20px' }}>
+            <table style={{ ...inlineStyles.table, marginLeft:'130px'}}>
                 <tr>
                     <td><Link to="/seacelMenu/#morning"><button type="button" style={inlineStyles.customButton}>Morning Functions</button></Link></td>
                     <td><Link to="/seacelMenu/#afternoon"><button type="button" style={inlineStyles.customButton}>Afternoon Functions</button></Link></td>
@@ -118,6 +156,7 @@ function SeaCeleb() {
                 </tr>
             </table>
         </div>
+        </>
     );
 }
 

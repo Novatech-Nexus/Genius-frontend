@@ -1,12 +1,7 @@
 .feedback-main-body {
     width: 100%;
-    padding-bottom: 70px;
   }
   
-  .feddback_page {
-    padding: 10px;
-    
-  }
   .feedback-subtitle{
     padding-left: 10%;
   }
@@ -103,7 +98,6 @@
 
   .contact-main-body {
     width: 100%;
-    padding-bottom: 40px;
   }
   
   .contact_title {
@@ -255,9 +249,6 @@
     width: 100%;
   }
   
-  .feddback_update_page {
-    padding: 10px;
-  }
   
   .feedback_update_title {
     padding: 20px;
@@ -269,7 +260,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
   }
 
   .feedback-status {
@@ -299,7 +289,7 @@
     border: solid lightgray 1px;
     border-radius: 8px;
     width: 90%;
-    max-width: 700px;
+    max-width: 850px;
     word-wrap: break-word;
   }
   
@@ -353,9 +343,6 @@
     width: 100%;
   }
   
-  .feddback-approval-page {
-    padding: 10px;
-  }
   
   .feedback-approval-title {
     padding: 20px;
@@ -424,14 +411,10 @@
 
   .feedback-services-body {
     width: 100%;
-    padding-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
   }
   
-  .feddback-services-page {
-    padding: 10px;
-  }
   
   .feedback-services-title {
     padding: 20px;
