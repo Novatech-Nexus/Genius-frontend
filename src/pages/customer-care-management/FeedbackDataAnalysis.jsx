@@ -10,6 +10,7 @@ import { prepareBarChartData, preparePieChartData} from '../../components/custom
 import DataFeedbackTable from '../../components/customer-care/DataFeedbackTable.jsx';
 import DataAverageRatingsTable from '../../components/customer-care/DataAverageRatingsTable.jsx';
 import Footer from '../../components/Footer.jsx';
+import NavbarManager from '../../components/customer-care/customer-care-navbar.jsx';
 
 export default function FeedbackDataAnalysis() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -77,6 +78,7 @@ export default function FeedbackDataAnalysis() {
 
     return (
         <div className='feedback-services-body'>
+            <NavbarManager/>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom:"20px"}}>
                 <div className='d-flex' style={{ justifyContent: "space-between", width: '80%' }}>
                     <Button className='report-btn' variant="outline-dark" onClick={handleDownload}>Generate report</Button>

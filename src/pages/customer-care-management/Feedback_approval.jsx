@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import FeedbackApprovalTable from '../../components/customer-care/FeedbackApprovalTable';
 import Footer from '../../components/Footer';
+import NavbarManager from '../../components/customer-care/customer-care-navbar.jsx'
 
 export default function FeedbackApproval() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -75,7 +76,7 @@ export default function FeedbackApproval() {
 
     return (
         <div className="feedback-approval-body">
-            
+            <NavbarManager/>
                 <header className="feedback-approval-title">
                     <h2>Customer Feedback Approval</h2>
                 </header>

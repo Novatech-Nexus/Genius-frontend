@@ -6,6 +6,7 @@ import servicesFeedbackImage from '../../assets/customer-care-images/servicesFee
 import feedbackAnalysisImage from '../../assets/customer-care-images/feedbackAnalysis.png';
 import axios from 'axios';
 import Footer from '../../components/Footer';
+import NavbarManager from '../../components/customer-care/customer-care-navbar.jsx';
 
 export default function Customer_care_manager() {
     const navigate = useNavigate();
@@ -27,6 +28,7 @@ export default function Customer_care_manager() {
     
     return (
         <div>
+        <NavbarManager/>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h1 style={{ marginTop: "20px"}}>Customer-care Management Dashboard</h1>
             <div style={{ marginTop: "50px", display: "flex", justifyContent: "space-between", width: "70%" }}>

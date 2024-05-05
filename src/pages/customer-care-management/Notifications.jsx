@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import Footer from '../../components/Footer';
+import NavbarManager from '../../components/customer-care/customer-care-navbar.jsx';
 
 export default function () {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function () {
 
     return (
         <div className='contact-main-body'>
-            
+            <NavbarManager/>
                 <header className='contact_title'>
                     <h2>Unread Notifications</h2>
                 </header>
