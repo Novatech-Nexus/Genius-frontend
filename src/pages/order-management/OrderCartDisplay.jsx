@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import image from "../../assets/order-images/woodbg.png";
-import Navbarnew from "../../components/user-management/UMnavbar.jsx";
+import Navbarnew from "../../components/order/orderCusNavbar.jsx";
 import Footer from '../../components/Footer.jsx';
 
 

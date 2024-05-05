@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import image from "../../assets/order-images/form_bg.png";
-import Navbarnew from "../../components/user-management/UMnavbar.jsx";
+import Navbarnew from "../../components/order/orderCusNavbar.jsx";
 import Footer from '../../components/Footer.jsx';
 
 function CreatePost() {

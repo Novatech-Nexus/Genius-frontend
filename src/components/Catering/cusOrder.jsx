@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import img9 from '../../assets/catering/img9.jpeg';
+import React, { useState, useRef } from 'react';
+import img6 from '../../assets/catering/img6.jpeg';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
-function CusOrder() {
+function getCurrentDate() {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+  const yyyy = today.getFullYear();
+
+  return yyyy + '-' + mm + '-' + dd;
+}
+
+const backgroundStyle = {
+  backgroundImage: `url(${img6})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  minHeight: '100vh',
+};
+
+const CusOrder = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,17 +28,48 @@ function CusOrder() {
   const [dateOfEvent, setDateOfEvent] = useState('');
   const [timeOfEvent, setTimeOfEvent] = useState('');
   const [address, setAddress] = useState('');
+  const form = useRef();
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    // You can handle form submission here, like sending data to a server
-  };
 
-  const backgroundStyle = {
-    backgroundImage: `url(${img9})`, 
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    minHeight: '100vh',
+    // Check if all required fields are filled
+    if (!firstName || !lastName || !email || !contactNumber1 || !contactNumber2 || !dateOfEvent || !timeOfEvent || !address) {
+      Swal.fire({
+        title: "Please fill in all required fields!",
+        icon: "error"
+      });
+      return;
+    }
+
+    emailjs
+      .sendForm('service_o0ewuay', 'template_iga8nd8', form.current, {
+        publicKey: 's-5sGyd8lWJxphAC3',
+      })
+      .then(
+        () => {
+          // Display success message after submitting the form
+          Swal.fire({
+            title: "Successfully Book The Meeting!",
+            text: "We will send meeting link to your Gmail as soon as possible.",
+            icon: "success"
+          });
+          window.location.replace('/catMain');
+          // Reset form fields after successful submission
+          form.current.reset();
+          setFirstName('');
+          setLastName('');
+          setEmail('');
+          setContactNumber1('');
+          setContactNumber2('');
+          setDateOfEvent('');
+          setTimeOfEvent('');
+          setAddress('');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        }
+      );
   };
 
   return (
@@ -33,19 +81,18 @@ function CusOrder() {
           /* Add provided CSS here */
           .form-container {
             max-width: 650px; /* Increased width */
-            margin: 0 auto; 
+            margin: 0 auto;
             padding: 20px;
             background-color: white;
             border-radius: 12px; /* Added border radius */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          } 
+          }
 
           table {
-            width:40%; /* Changed width to 100% */
+            width: 40%; /* Changed width to 100% */
             border-collapse: collapse;
             margin-bottom: 20px;
             margin: 0 auto;
-            
           }
 
           th, td {
@@ -56,7 +103,7 @@ function CusOrder() {
           th {
             background-color: #CC9966;
             border-bottom: 2px solid #CC9966;
-          } 
+          }
 
           input[type="number"],
           input[type="text"],
@@ -71,7 +118,7 @@ function CusOrder() {
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
-          } 
+          }
 
           button[type="submit"] {
             background-color: #6B4423;
@@ -81,37 +128,54 @@ function CusOrder() {
 
           button[type="submit"]:hover {
             background-color: #6B4423;
-          } 
+          }
 
           @media only screen and (max-width: 600px) {
             .form-container {
               padding: 10px;
             }
-          } 
+          }
 
           .Jcheckbox-container {
-            display: flex; 
-            align-items: center; 
+            display: flex;
+            align-items: center;
             gap: 30px;
           }
 
           .Jcheckbox-container input[type="checkbox"] {
-            margin-right: 5px; 
+            margin-right: 5px;
           }
 
           .Jcheckbox-container input[type="checkbox"] + span {
-            margin-left: 3px; 
-          } 
+            margin-left: 3px;
+          }
 
-          h2{
+          h2 {
             text-align: center;
-            background-color: #CC9966;
-          } 
+          }
 
-          /* Paste the CSS provided above this line */
+          button {
+            padding: 10px 20px; /* Adjust padding as needed */
+            background-color: #6B4423; /* Change to desired background color */
+            color: #fff; /* Change to desired text color */
+            border: none;
+            border-radius: 5px; /* Adjust border radius as needed */
+            cursor: pointer;
+            text-decoration: none; /* Ensure no underline */
+            width: 100%;
+          }
+
+          button:hover {
+            background-color: #6B4423; /* Change to desired color on hover */
+          }
+
+          button:active {
+            background-color: #6B4423; /* Change to desired color when button is clicked */
+          }
+
         `}
       </style>
-      <form onSubmit={handleSubmit}>
+      <form ref={form} onSubmit={sendEmail}>
         <table border={0} style={{ background: 'white' }}>
           <tbody>
             <tr>
@@ -121,31 +185,31 @@ function CusOrder() {
               <th colSpan={2}>Customer Details</th>
             </tr>
             <tr>
-              <td>First Name:<input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required /></td>
-              <td>Last Name:<input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required /></td>
+              <td>First Name:<input type="text" id="firstName" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value.replace(/[^A-Za-z]/ig, ''))} required /></td>
+              <td>Last Name:<input type="text" id="lastName" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value.replace(/[^A-Za-z]/ig, ''))} required /></td>
             </tr>
             <tr>
-              <td colSpan={2}>Email Address:<input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></td>
+              <td colSpan={2}>Email Address:<input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></td>
             </tr>
             <tr>
-              <td>Contact Number 1:<input type="tel" id="contactNumber1" value={contactNumber1} onChange={(e) => setContactNumber1(e.target.value)} required /></td>
-              <td>Contact Number 2:<input type="tel" id="contactNumber2" value={contactNumber2} onChange={(e) => setContactNumber2(e.target.value)} required /></td>
+              <td>Contact Number 1:<input type="tel" id="contactNumber1" name="contactNumber1" maxLength={10} value={contactNumber1} onChange={(e) => setContactNumber1(e.target.value.replace(/\D/, ''))} required /></td>
+              <td>Contact Number 2:<input type="tel" id="contactNumber2" name="contactNumber2" maxLength={10} value={contactNumber2} onChange={(e) => setContactNumber2(e.target.value.replace(/\D/, ''))} required /></td>
             </tr>
             <tr>
-              <td>Date Of Event:<input type="date" id="dateOfEvent" value={dateOfEvent} onChange={(e) => setDateOfEvent(e.target.value)} required /></td>
-              <td>Time Of Event:<input type="time" id="timeOfEvent" value={timeOfEvent} onChange={(e) => setTimeOfEvent(e.target.value)} required /></td>
+              <td>Date Of Event:<input type="date" id="dateOfEvent" name="dateOfEvent" value={dateOfEvent} min={getCurrentDate()} onChange={(e) => setDateOfEvent(e.target.value)} required /></td>
+              <td>Time Of Event:<input type="time" id="timeOfEvent" name="timeOfEvent" value={timeOfEvent} onChange={(e) => setTimeOfEvent(e.target.value)} required /></td>
             </tr>
             <tr>
-              <td colSpan={2}>Address Of the Event:<input type="text" id="address" value={address} onChange={(e) => setAddress(e.target.value)} required /></td>
+              <td colSpan={2}>Address Of the Event:<input type="text" id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)} required /></td>
             </tr>
             <tr>
-              <td colSpan={2}><Link to="/orderDet"><button type="submit">Schedule Meeting</button></Link></td>
+              <td colSpan={2}><button type="submit" >Booking the Meeting</button></td>
             </tr>
           </tbody>
         </table>
       </form>
     </div>
   );
-}
+};
 
 export default CusOrder;

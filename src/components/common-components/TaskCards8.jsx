@@ -8,7 +8,7 @@ function TasksCards8() {
             <Card.Img variant="top" src={TR} />
             <Card.Body>
                 <Card.Title>Table Reservation Management</Card.Title>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary" href='/booking'>Go somewhere</Button>
             </Card.Body>
         </Card>
     );
