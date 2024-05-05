@@ -19,7 +19,7 @@ function SalaryAssign() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // Perform auto-calculation when updating basicamount, othours, or amountperhour
+       
         let amount = calculateAmount(value, name);
         setInputs(prevState => ({
             ...prevState,
@@ -27,7 +27,7 @@ function SalaryAssign() {
             amount: isNaN(amount) ? '' : amount.toFixed(2)
         }));
     };
-
+    
     const calculateAmount = (value, name) => {
         const { basicamount, othours, amountperhour } = inputs;
         if (name === 'basicamount' || name === 'othours' || name === 'amountperhour') {
@@ -38,6 +38,8 @@ function SalaryAssign() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        
 
         try {
             const response = await axios.post("http://localhost:5050/salary/addsalary", inputs);

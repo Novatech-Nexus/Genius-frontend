@@ -11,8 +11,8 @@ function staffmemberimg() {
             
             <div style={{ marginLeft: "100px" }}>
                 <h2 style={{ color: "grey" }}>Welcome to<br />
-                    Genius<br />
-                    Restaurant
+                    Staff<br />
+                    Management
                 </h2>
             </div>
         </div>

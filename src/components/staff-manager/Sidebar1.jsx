@@ -16,25 +16,8 @@ const Sidebar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav ms-auto">
-                <li class="nav-item">
-          
-          <a class="nav-link" aria-current="page" href="/staffmember">Home</a>
-          
-          </li>
-        <li class="nav-item">
-        
-        <a class="nav-link"  href="/attendance">mark attendance</a>
-        
-        </li>
-        
-        <li className="nav-item">
-        
-        <a class="nav-link"  href="/staffprofile">profile</a>
-        
-        </li>
-                   
-                </ul>
+                <ul className="navbar-nav ms-auto">       
+             </ul>
             </div>
         </div>
     </nav>

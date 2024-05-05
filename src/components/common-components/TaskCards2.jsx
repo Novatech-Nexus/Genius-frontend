@@ -8,7 +8,7 @@ function TasksCards2() {
             <Card.Img variant="top" src={EM} />
             <Card.Body>
                 <Card.Title>Employee Management</Card.Title>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary" href='/sm_dashboard'>Go somewhere</Button>
             </Card.Body>
         </Card>
     );
