@@ -27,7 +27,7 @@ export const Carousal = () => {
       <img className='d-block width-100' src={carousal3} alt="" style={{ maxHeight: '600px', objectFit: 'cover' }}/>
         <Carousel.Caption>
         <h3>Indulge Your Guests: Book Our Catering Service for Culinary Excellence!</h3>
-          <a className={styles.btn3} href="/profile">Catering service</a>
+          <a className={styles.btn3} href="/catMain">Catering service</a>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
