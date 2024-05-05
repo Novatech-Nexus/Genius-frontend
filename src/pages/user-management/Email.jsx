@@ -18,12 +18,7 @@ export default function Email() {
   const navigate = useNavigate();
 
   const setEmail = useAuthStore(state => state.setEmail);
-  // const setPassword = useAuthStore(state => state.setPassword);
   const email = useAuthStore(state => state.auth.email);
-
-  // useEffect(() => {
-  //   console.log(email);
-  // })
 
   const formik = useFormik({
     initialValues: {

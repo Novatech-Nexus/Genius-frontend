@@ -98,7 +98,7 @@ function App() {
         <Route path="/email" element={<Email/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
-        <Route path="/reset" element={<Reset/>}></Route>
+        <Route path="/reset" element={<AuthorizeUser><Reset/></AuthorizeUser>}></Route>
         <Route path="/recoveryemail" element={<RecoveryEmail/>}></Route>
         <Route path="/newpassword/:token" element={<NewPassword/>}></Route>
 
