@@ -5,6 +5,8 @@ import '../../styles/CustomerCare.css';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import FeedbackApprovalTable from '../../components/customer-care/FeedbackApprovalTable';
+import Footer from '../../components/Footer';
+import NavbarManager from '../../components/customer-care/customer-care-navbar.jsx'
 
 export default function FeedbackApproval() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -74,11 +76,11 @@ export default function FeedbackApproval() {
 
     return (
         <div className="feedback-approval-body">
-            <article className="feedback-approval-page">
+            <NavbarManager/>
                 <header className="feedback-approval-title">
                     <h2>Customer Feedback Approval</h2>
                 </header>
-            </article>
+            
 
             <div className='feedback-approval-cont'>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: '80%' }}>
@@ -105,6 +107,8 @@ export default function FeedbackApproval() {
             />
 
             </div>
+        <br/>
+        <Footer/>
         </div>
     );
 }
