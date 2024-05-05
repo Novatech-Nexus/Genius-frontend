@@ -7,8 +7,8 @@ function TasksCards1() {
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={UM} />
             <Card.Body>
-                <Card.Title>User Management</Card.Title>
-                <Button variant="primary" href='/alluser'>Go somewhere</Button>
+                {/* <Card.Title></Card.Title> */}
+                <Button variant="primary" href='/alluser'>User Management</Button>
             </Card.Body>
         </Card>
     );

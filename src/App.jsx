@@ -95,14 +95,14 @@ function App() {
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/profile" element={<AuthorizeUser><Profile/></AuthorizeUser>}></Route>
         <Route path="/reset" element={<AuthorizeUser><Reset/></AuthorizeUser>}></Route>
-        <Route path="/recoveryemail" element={<AuthorizeUser><RecoveryEmail/></AuthorizeUser>}></Route>
-        <Route path="/newpassword/:token" element={<AuthorizeUser><NewPassword/></AuthorizeUser>}></Route>
+        <Route path="/recoveryemail" element={<RecoveryEmail/>}></Route>
+        <Route path="/newpassword/:token" element={<NewPassword/>}></Route>
 
         <Route path="*" element={<PageNotFound/>}></Route>
-        <Route path="/alluser" element={<AuthorizeUser><AllUser/></AuthorizeUser>}></Route>
+        <Route path="/alluser" element={<AllUser/>}></Route>
 
         <Route path="/employeelogin" element={<EmployeeLogin/>}></Route>
-        <Route path="/employeedashboard" element={<AuthorizeUser><EmployeeDashboard/></AuthorizeUser>}></Route>
+        <Route path="/employeedashboard" element={<EmployeeDashboard/>}></Route>
 
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
@@ -122,51 +122,51 @@ function App() {
 
 
         {/* Customer-care */}
-        <Route path="/contact" element={<AuthorizeUser><Contact/></AuthorizeUser>}></Route>
-        <Route path="/feedback" element={<AuthorizeUser><Feedback/></AuthorizeUser>}></Route>
-        <Route path='/feedback/addFeedback' element={<AuthorizeUser><Feedback_form/></AuthorizeUser>}></Route>
-        <Route path='/feedback/getFeedback' element={<AuthorizeUser><Feedback_history/></AuthorizeUser>}></Route>
-        <Route path='/manager' element={<AuthorizeUser><Customer_care_manager/></AuthorizeUser>}></Route>
-        <Route path='/manager/feedbackApproval' element={<AuthorizeUser><Feedback_approval/></AuthorizeUser>}></Route>
-        {/* <Route path='/manager/servicesFeedback' element={<AuthorizeUser></AuthorizeUser>}></Route> */}
-        <Route path='/manager/feedbackAnalysis' element={<AuthorizeUser><FeedbackDataAnalysis/></AuthorizeUser>}></Route>
+        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/feedback" element={<Feedback/>}></Route>
+        <Route path='/feedback/addFeedback' element={<Feedback_form/>}></Route>
+        <Route path='/feedback/getFeedback' element={<Feedback_history/>}></Route>
+        <Route path='/manager' element={<Customer_care_manager/>}></Route>
+        <Route path='/manager/feedbackApproval' element={<Feedback_approval/>}></Route>
+        {/* <Route path='/manager/servicesFeedback' element={}></Route> */}
+        <Route path='/manager/feedbackAnalysis' element={<FeedbackDataAnalysis/>}></Route>
 
         {/* Menu Management */}
-        <Route path="/homeMenu" element={<AuthorizeUser><HomeMenu/></AuthorizeUser>}></Route>
-        <Route path="/itemMenu" element={<AuthorizeUser><ItemMenu/></AuthorizeUser>}></Route>
-        <Route path='/tableMenu' element={<AuthorizeUser><TableMenu/></AuthorizeUser>}></Route>
-        <Route path='/orderMenu' element={<AuthorizeUser><OrderMenu/></AuthorizeUser>}></Route> 
-        <Route path='/orders2Menu' element={<AuthorizeUser><Orders2Menu/></AuthorizeUser>}></Route> 
-        <Route path='/invenMenu' element={<AuthorizeUser><InventoryMenu/></AuthorizeUser>}></Route>   
+        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
+        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
+        <Route path='/tableMenu' element={<TableMenu/>}></Route>
+        <Route path='/orderMenu' element={<OrderMenu/>}></Route> 
+        <Route path='/orders2Menu' element={<Orders2Menu/>}></Route> 
+        <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
 
         {/* Order Management */}
-        <Route path='/orderMenuHome' element={<AuthorizeUser><OrderHome/></AuthorizeUser>}/>
-        <Route path='/cart' element={<AuthorizeUser><Cart/></AuthorizeUser>}/>
-        <Route path='/orderMenuHome/create' element={<AuthorizeUser><CreatePost/></AuthorizeUser>}/>  
-        <Route path='/orderMenuHome/create/posts' element={<AuthorizeUser><Posts/></AuthorizeUser>}/>  
-        <Route path='/orderMenuHome/create/posts/payment' element={<AuthorizeUser><PaymentReceipt/></AuthorizeUser>}/>  
-        <Route path='/orderDetails' element={<AuthorizeUser><OrderCartDisplay/></AuthorizeUser>}/>
-        <Route path='/orderManager/reports' element={<AuthorizeUser><Statistics/></AuthorizeUser>} />
-        <Route path='/orderManager/orderUserDetails' element={<AuthorizeUser><OrderDetails/></AuthorizeUser>} />
-        <Route path='/orderManager' element={<AuthorizeUser><OrderManager/></AuthorizeUser>}/>
+        <Route path='/orderMenuHome' element={<OrderHome/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/orderMenuHome/create' element={<CreatePost/>}/>  
+        <Route path='/orderMenuHome/create/posts' element={<Posts/>}/>  
+        <Route path='/orderMenuHome/create/posts/payment' element={<PaymentReceipt/>}/>  
+        <Route path='/orderDetails' element={<OrderCartDisplay/>}/>
+        <Route path='/orderManager/reports' element={<Statistics/>} />
+        <Route path='/orderManager/orderUserDetails' element={<OrderDetails/>} />
+        <Route path='/orderManager' element={<OrderManager/>}/>
         {/* <Route path='/paymentReceipt' element={<PaymentReceipt />} /> */}
 
 
         {/* Catering Management */}
-        <Route path="/catMain" element={<AuthorizeUser><CatMain/></AuthorizeUser>}></Route>
-        <Route path="/ordercat" element={<AuthorizeUser><OrderCat/></AuthorizeUser>}></Route>
-        <Route path="/ordercus" element={<AuthorizeUser><OrderCus/></AuthorizeUser>}></Route>
-        <Route path="/orderplace" element={<AuthorizeUser><OrderPlace/></AuthorizeUser>}></Route>
-        <Route path="/celOccMenu" element={<AuthorizeUser><CelOccMenu/></AuthorizeUser>}></Route>
-        <Route path="/kidMenus" element={<AuthorizeUser><KidMenus/></AuthorizeUser>}></Route>
-        <Route path="/orderDetail" element={<AuthorizeUser><OrderDetail/></AuthorizeUser>}></Route>
-        <Route path="/seacelMenu" element={<AuthorizeUser><SeacelMenu/></AuthorizeUser>}></Route>
-        <Route path="/kidsParty" element={<AuthorizeUser><KidsParty/></AuthorizeUser>}></Route>
-        <Route path="/seationCeleb" element={<AuthorizeUser><SeationCeleb/></AuthorizeUser>}></Route>
-        <Route path="/wedsMenu" element={<AuthorizeUser><WedsMenu/></AuthorizeUser>}></Route>
-        <Route path="/weddings" element={<AuthorizeUser><Weddings/></AuthorizeUser>}></Route>
-        <Route path="/updateCat" element={<AuthorizeUser><UpdateCat/></AuthorizeUser>}></Route>
-        <Route path="/celebOcc" element={<AuthorizeUser><CelebOcc/></AuthorizeUser>}></Route>
+        <Route path="/catMain" element={<CatMain/>}></Route>
+        <Route path="/ordercat" element={<OrderCat/>}></Route>
+        <Route path="/ordercus" element={<OrderCus/>}></Route>
+        <Route path="/orderplace" element={<OrderPlace/>}></Route>
+        <Route path="/celOccMenu" element={<CelOccMenu/>}></Route>
+        <Route path="/kidMenus" element={<KidMenus/>}></Route>
+        <Route path="/orderDetail" element={<OrderDetail/>}></Route>
+        <Route path="/seacelMenu" element={<SeacelMenu/>}></Route>
+        <Route path="/kidsParty" element={<KidsParty/>}></Route>
+        <Route path="/seationCeleb" element={<SeationCeleb/>}></Route>
+        <Route path="/wedsMenu" element={<WedsMenu/>}></Route>
+        <Route path="/weddings" element={<Weddings/>}></Route>
+        <Route path="/updateCat" element={<UpdateCat/>}></Route>
+        <Route path="/celebOcc" element={<CelebOcc/>}></Route>
   </Routes>
     </main>
 </>

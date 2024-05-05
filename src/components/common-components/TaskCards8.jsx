@@ -7,8 +7,8 @@ function TasksCards8() {
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={TR} />
             <Card.Body>
-                <Card.Title>Table Reservation Management</Card.Title>
-                <Button variant="primary">Go somewhere</Button>
+                {/* <Card.Title></Card.Title> */}
+                <Button variant="primary">Table Reservation Management</Button>
             </Card.Body>
         </Card>
     );
