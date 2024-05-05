@@ -17,7 +17,7 @@ const Footer = () => {
                 <a className="text-white">Menu</a>
               </p>
               <p>
-                <a className="text-white">Reservations</a>
+                <a className="text-white"  href='/reservation'>Reservations</a>
               </p>
               <p>
                 <a className="text-white">Specials</a>
