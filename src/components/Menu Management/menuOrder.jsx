@@ -5,6 +5,10 @@ import { Modal } from 'react-bootstrap';
 import item3 from "../../assets/MenuM/item3.jpg";
 import searchMenu from '../../assets/MenuM/searchMenu.png';
 import "../../styles/menu/menuTable.css";
+import pdfBG from '../../assets/MenuM/pdfBG.jpg';
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
+
 
 function MenOrder() {
     const [orders, setOrders] = useState([]);
@@ -29,6 +33,7 @@ function MenOrder() {
     const fetchData = async () => {
         try {
             const response = await axios.get("http://localhost:5050/CatOrdering/");
+            //date ek future to past
             const sortedOrders = response.data.sort((a, b) => {
                 const dateA = new Date(a.date);
                 const dateB = new Date(b.date);
@@ -40,10 +45,12 @@ function MenOrder() {
         }
     };
 
+    //search
     const handleSearch = (term) => {
         setSearchTerm(term);
     };
 
+    //date format day,month+date,year
     const formatDate = (dateString) => {
         const options = { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-US', options);
@@ -81,11 +88,13 @@ function MenOrder() {
         });
     };
 
+    //modal ekt data pass krnw
     const loadModel = (id) => {
         setSelectedItemId(id);
         setModelState(true);
         const selectedOrder = orders.find(order => order._id === id);
         if (selectedOrder) {
+            //kalin data form ekata pass karan eka
             setUpdateFunctionType(selectedOrder.functionType);
             setUpdateNoOfPer(selectedOrder.noOfPer);
             setUpdateFName(selectedOrder.fName);
@@ -99,7 +108,7 @@ function MenOrder() {
         }
     };
     
-
+    //update function
     const updateItem = async () => {
         try {
             const response = await axios.put(`http://localhost:5050/CatOrdering/update/${selectedItemId}`, {
@@ -126,9 +135,70 @@ function MenOrder() {
         }
     };
 
+    //pdf download
+    const generatePDF = () => {
+        const doc = new jsPDF();
     
+        try {
+            // Add image at the top
+            const imgWidth = 220;
+            const imgHeight = 50;
+            const imgX = (doc.internal.pageSize.getWidth() - imgWidth) / 2;
+            const imgY = 0;
+            doc.addImage(pdfBG, 'JPEG', imgX, imgY, imgWidth, imgHeight);
+    
+            // Set up the PDF content
+            doc.setFontSize(20);
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor("black");
+    
+            // Add title text
+            const titleText = "Catering Orders";
+            const titleTextWidth = doc.getStringUnitWidth(titleText) * doc.internal.getFontSize();
+            const titleTextX = (doc.internal.pageSize.getWidth() - titleTextWidth) / 2;
+            const titleTextY = imgY + imgHeight + 10;
+            doc.text(titleText, titleTextX, titleTextY);
+    
+            // Add table content with index numbers
+            const tableData = orders.map((order, index) => [
+                index + 1, // Index number
+                order.functionType,
+                order.noOfPer,
+                order.fName,
+                order.conNum1,
+                formatDate(order.date),
+                order.totalPrice
+            ]);
+    
+            const startY = titleTextY + 10;
 
-    
+            const tableColumns = [
+                'Index', // Index column
+                'Function Type',
+                'Quantity',
+                'Name of Customer',
+                'Contact Number',
+                'Date',
+                'Total Price (Rs.)'
+            ];
+
+            doc.autoTable({
+                head: [tableColumns],
+                body: tableData,
+                startY: startY
+            });
+
+            doc.save('Catering Orders.pdf');
+        } catch (error) {
+            console.error("Error generating PDF:", error);
+
+            Swal.fire({
+                title: "Error!",
+                text: `Error generating PDF: ${error.message}`,
+                icon: "error"
+            });
+        }
+    };
 
     return (
         <div style={{
@@ -182,11 +252,13 @@ function MenOrder() {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* search ekt data filter krnw */}
                         {orders
                             .filter(order => {
                                 return order.fName.toLowerCase().includes(searchTerm.toLowerCase());
                             })
                             .map((order, index) => (
+                                // dawasa check karala ada dwsa highlight karanwa
                                 <tr key={index} style={{ backgroundColor: new Date(order.date).toDateString() === today.toDateString() ? 'lightgray' : 'transparent' }}>
 
                                     <td style={{ textAlign: "center", color: new Date(order.date).toDateString() === today.toDateString() ? '#009900' : 'inherit', fontWeight: new Date(order.date).toDateString() === today.toDateString() ? 'bold' : 'normal' }}>{index + 1}</td>
@@ -221,10 +293,12 @@ function MenOrder() {
 
                 </table>
                 <div>
-                    <button className="Mbtn3 delete-btn">Generate Report</button>
+                <button className="Mbtn3 delete-btn" onClick={generatePDF}>Generate Report</button>
                 </div>
             </div>
 
+
+            {/* update Modal */}
             <Modal show={modelState} onHide={() => setModelState(false)}>
                 <Modal.Body style={{ backgroundColor: '#cccccc', borderRadius: '15px' }}>
                     <div className="p-4">
