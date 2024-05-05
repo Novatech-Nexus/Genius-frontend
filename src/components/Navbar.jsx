@@ -1,17 +1,17 @@
-import {Link} from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
+// import {Link} from 'react-router-dom'
+// import { useLocation } from 'react-router-dom';
 // import logo from '../assets/logo.jpg';
 import '../components/Navbar.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Navbar() {
 
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
 
     <div>
-        {((location.pathname == "/recovery") ||(location.pathname == "/") ||(location.pathname == "dashboard") )&&(<nav>
+        {/* {((location.pathname == "/recovery") ||(location.pathname == "/") ||(location.pathname == "dashboard") )&&(<nav>
             <li><Link to='/register'>Register</Link></li>
             <li><Link to='/email'>Login</Link></li>
             <li><Link to='/profile'>Profile</Link></li>
@@ -31,15 +31,8 @@ export default function Navbar() {
 
             <li><Link to='/catMain'>Catering</Link></li>
   
-
-            <li><Link to='/sm_dashboard'>staff manager dashboard</Link></li>
-            <li><Link to='/addemployee'>staff member adding page</Link></li>
-            <li><Link to='/editemployee'>member editing page</Link></li>
-            <li><Link to='/staffdetails'>staff member datails</Link></li>
-            <li><Link to='/staffmember'>staff member page</Link></li>
-            </nav>
-        )}
-        </div>)}
-      
-
+        </nav>)} */}
+    </div>
+  );
+}
 

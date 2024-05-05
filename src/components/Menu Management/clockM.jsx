@@ -19,7 +19,7 @@ function Clock() {
     fontFamily: 'Arial, sans-serif', 
     textAlign: 'center', 
     fontSize: '24px', 
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#e6e6e6',
     padding: '10px 20px', 
     borderRadius: '10px', 
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)', 

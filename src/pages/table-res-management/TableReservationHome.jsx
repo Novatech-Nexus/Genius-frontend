@@ -1,7 +1,8 @@
 
 import Accountform from '../../components/table-res/Accountform';
-// import TableResHeader from'../../components/table-res/TableResHeader';
 import TableRNavBar from '../../components/table-res/TableRNavBar';
+import Footer from '../../../src/components/Footer'
+
 
 
 function TableReservationHome() {
@@ -10,9 +11,9 @@ function TableReservationHome() {
 
     return (
       <div>
-        {/* <TableResHeader/> */}
         <TableRNavBar/>
         <Accountform/>  
+        <Footer/>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import image from "../../assets/order-images/bg.png";
-import Navbarnew from "../../components/user-management/UMnavbar.jsx";
+import Navbarnew from "../../components/order/orderCusNavbar.jsx";
 import Footer from '../../components/Footer.jsx';
 
 function Posts() {
