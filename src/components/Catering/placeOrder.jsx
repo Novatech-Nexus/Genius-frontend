@@ -59,7 +59,7 @@ function PlaceOrder() {
       totalPrice
     };
 
-    axios.post("http://localhost:8099/CatOrdering/add", newCatOrder)
+    axios.post("http://localhost:5050/CatOrdering/add", newCatOrder)
       .then(response => {
         Swal.fire({
           title: "Order Added Successfully!",

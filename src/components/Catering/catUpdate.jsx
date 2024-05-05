@@ -26,7 +26,7 @@ function CatUpdate() {
 
   useEffect(() => {
     console.log("Fetching data...");
-    axios.get("http://localhost:8099/CatOrdering")
+    axios.get("http://localhost:5050/CatOrdering")
       .then(res => {
         console.log("Data fetched:", res.data);
         const latestOrder = res.data[res.data.length - 1];
@@ -110,7 +110,7 @@ function CatUpdate() {
   function handleUpdate(e) {
     e.preventDefault();
 
-    axios.put(`http://localhost:8099/CatOrdering/update/${data._id}`, formData)
+    axios.put(`http://localhost:5050/CatOrdering/update/${data._id}`, formData)
       .then(response => {
         Swal.fire({
           title: "Order Updated Successfully!",

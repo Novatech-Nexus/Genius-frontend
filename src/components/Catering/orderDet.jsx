@@ -13,7 +13,7 @@ function OrderDet() {
 
     useEffect(() => {
         console.log("Fetching data...");
-        axios.get("http://localhost:8099/CatOrdering")
+        axios.get("http://localhost:5050/CatOrdering")
             .then(res => {
                 console.log("Data fetched:", res.data);
                 const latestOrder = res.data[res.data.length - 1];
@@ -38,7 +38,7 @@ function OrderDet() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:8099/CatOrdering/delete/` + id)
+                axios.delete(`http://localhost:5050/CatOrdering/delete/` + id)
                     .then(() => {
                         Swal.fire({
                             title: 'Order Deleted Successfully!',
