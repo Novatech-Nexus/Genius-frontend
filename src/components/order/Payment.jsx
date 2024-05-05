@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/order/DummyPaymentGateway.css'; // Import CSS for styling
 import image from "../../assets/order-images/form_bg.png";
-import Navbarnew from "../../components/user-management/UMnavbar.jsx";
+import Navbarnew from "../../components/order/orderCusNavbar.jsx";
 import Footer from '../../components/Footer.jsx';
 
 const DummyPaymentGateway = () => {

@@ -4,7 +4,7 @@ import Navbar from "../../components/order/Navbar.jsx";
 import Cart from "../../components/order/cart.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../styles/order/Homepage.css";
-import Navbarnew from "../../components/user-management/UMnavbar.jsx";
+import Navbarnew from "../../components/order/orderCusNavbar.jsx";
 import Footer from '../../components/Footer.jsx';
 
 const OrderHome = () => {
