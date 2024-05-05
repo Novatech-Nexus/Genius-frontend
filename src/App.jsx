@@ -68,9 +68,14 @@ import CelebOcc from './pages/catering-management/CellbOcc';
 import Cart from './components/order/cart.jsx';
 import CreatePost from './components/order/CreatePost.jsx';
 import Posts from './pages/order-management/Post.jsx';
-import DummyPaymentGateway from './components/order/Payment.jsx';
-//import OrderReport from './components/order/'
+//import PaymentGateway from './pages/order-management/PaymentReceipt.jsx';
 import OrderHome from './pages/order-management/OrderHome.jsx';
+import OrderCartDisplay from './pages/order-management/OrderCartDisplay.jsx';
+import Statistics from './pages/order-management/Statistics.jsx';
+import OrderDetails from './pages/order-management/OrderDetails.jsx';
+import OrderManager from './pages/order-management/OrderManager.jsx';
+import PaymentReceipt from './components/order/Payment.jsx';
+
 
 
 //table reservation
@@ -139,13 +144,16 @@ function App() {
         <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
 
         {/* Order Management */}
-        <Route path='/orderMenu' element={<OrderHome/>}/>
+        <Route path='/orderMenuHome' element={<OrderHome/>}/>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/orderMenu/create' element={<CreatePost/>}/>  
-        <Route path='/orderMenu/create/posts' element={<Posts/>}/>  
-        <Route path='/orderMenu/create/posts/payment' element={<DummyPaymentGateway/>}/>  
-        {/* <Route path='/reports' element={<OrderReport/>} />  */}
-        
+        <Route path='/orderMenuHome/create' element={<CreatePost/>}/>  
+        <Route path='/orderMenuHome/create/posts' element={<Posts/>}/>  
+        <Route path='/orderMenuHome/create/posts/payment' element={<PaymentReceipt/>}/>  
+        <Route path='/orderDetails' element={<OrderCartDisplay/>}/>
+        <Route path='/orderManager/reports' element={<Statistics/>} />
+        <Route path='/orderManager/orderUserDetails' element={<OrderDetails/>} />
+        <Route path='/orderManager' element={<OrderManager/>}/>
+        {/* <Route path='/paymentReceipt' element={<PaymentReceipt />} /> */}
 
 
         {/* Catering Management */}
