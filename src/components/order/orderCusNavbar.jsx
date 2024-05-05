@@ -22,7 +22,7 @@ function UMnavbar1(){
                                 <a className="nav-link" href="/contact">Contact us</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href='/profile'>Profile</a>
+                                <a className="nav-link" href='/feedback'>Feedback</a>
                             </li>
                         </ul>
                     </div>
