@@ -76,7 +76,7 @@ const Cart = ({ cart, setCart, handleChange }) => {
         <span>Total Price of your Cart</span>
         <span>Rs : {prices}</span>
       </div>
-      <Button onClick={handleCheckout}>Checkout</Button>
+      <Button style={{marginBottom: '50px'}} onClick={handleCheckout}>Checkout</Button>
     </article>
   );
 };

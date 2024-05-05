@@ -10,16 +10,15 @@ const Amazon = ({ handleClick }) => {
   return (
     
     <div>
-      <SearchList />
+      <SearchList handleClick={handleClick} />
       <div className="row">
-      {list.map((item) => (
-        <div key={item.id} className="col-md-4">
-          <div>
-            <Cards item={item} handleClick={handleClick} />
+        {list.map((item) => (
+          <div key={item.id} className="col-md-4">
+            <div>
+              <Cards item={item} handleClick={handleClick} />
+            </div>
           </div>
-        </div>
-      ))}
-
+        ))}
       </div>
     </div>
   );

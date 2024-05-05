@@ -16,11 +16,17 @@ import Navbar from './components/Navbar';
 
 import EmployeeLogin from './pages/Employee-login/EmployeeLogin.jsx';
 import EmployeeDashboard from './pages/Employee-login/EmployeeDashboard.jsx';
+import AllUser from './pages/user-management/allUser';
 
 // inventory---------------------------------------------------
 import Dashboard from './pages/inventory-management/dashboard';
 import AddItempage from './pages/inventory-management/addinventory';
-import AllUser from './pages/user-management/allUser';
+import AllitemPage from './pages/inventory-management/allitems.jsx';
+import AllSupplierPage from './pages/inventory-management/allSupplier.jsx';
+import ReportPage from './pages/inventory-management/reportgenerate.jsx';
+import RecordPage from './pages/inventory-management/inventoryRecods.jsx';
+import AddSupplierpage from './pages/inventory-management/addSupplier.jsx';
+
 
 
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
@@ -64,9 +70,14 @@ import CelebOcc from './pages/catering-management/CellbOcc';
 import Cart from './components/order/cart.jsx';
 import CreatePost from './components/order/CreatePost.jsx';
 import Posts from './pages/order-management/Post.jsx';
-import DummyPaymentGateway from './components/order/Payment.jsx';
-//import OrderReport from './components/order/'
+//import PaymentGateway from './pages/order-management/PaymentReceipt.jsx';
 import OrderHome from './pages/order-management/OrderHome.jsx';
+import OrderCartDisplay from './pages/order-management/OrderCartDisplay.jsx';
+import Statistics from './pages/order-management/Statistics.jsx';
+import OrderDetails from './pages/order-management/OrderDetails.jsx';
+import OrderManager from './pages/order-management/OrderManager.jsx';
+import PaymentReceipt from './components/order/Payment.jsx';
+
 
 import BookingTable from './pages/table-res-management/BookingTable'
 
@@ -97,8 +108,11 @@ function App() {
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/dashboard/additem" element={<AddItempage/>}></Route>
-        {/* <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route> */}
-        {/* <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route> */}
+        <Route path="/dashboard/allitem" element={<AllitemPage/>}></Route>
+        <Route path="/dashboard/allsupplier" element={<AllSupplierPage/>}></Route>
+        <Route path="/dashboard/addsupplier" element={<AddSupplierpage/>}></Route>
+        <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
+        <Route path='/dashboard/allitem/record/:id' element={<RecordPage/>}></Route>
 
         {/* -------------------------------------------------------------------------- */}
 
@@ -128,13 +142,16 @@ function App() {
         <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
 
         {/* Order Management */}
-        <Route path='/orderMenu' element={<OrderHome/>}/>
+        <Route path='/orderMenuHome' element={<OrderHome/>}/>
         <Route path='/cart' element={<Cart/>}/>
-        <Route path='/orderMenu/create' element={<CreatePost/>}/>  
-        <Route path='/orderMenu/create/posts' element={<Posts/>}/>  
-        <Route path='/orderMenu/create/posts/payment' element={<DummyPaymentGateway/>}/>  
-        {/* <Route path='/reports' element={<OrderReport/>} />  */}
-        
+        <Route path='/orderMenuHome/create' element={<CreatePost/>}/>  
+        <Route path='/orderMenuHome/create/posts' element={<Posts/>}/>  
+        <Route path='/orderMenuHome/create/posts/payment' element={<PaymentReceipt/>}/>  
+        <Route path='/orderDetails' element={<OrderCartDisplay/>}/>
+        <Route path='/orderManager/reports' element={<Statistics/>} />
+        <Route path='/orderManager/orderUserDetails' element={<OrderDetails/>} />
+        <Route path='/orderManager' element={<OrderManager/>}/>
+        {/* <Route path='/paymentReceipt' element={<PaymentReceipt />} /> */}
 
 
         {/* Catering Management */}
