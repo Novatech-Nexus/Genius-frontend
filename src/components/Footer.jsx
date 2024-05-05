@@ -17,7 +17,7 @@ const Footer = () => {
                 <a style={{ textDecoration: 'none' }} className="text-white">Menu</a>
               </p>
               <p>
-                <a style={{ textDecoration: 'none' }} className="text-white">Reservations</a>
+                <a className="text-white"  href='/reservation'>Reservations</a>
               </p>
               <p>
                 <a style={{ textDecoration: 'none' }} className="text-white">Specials</a>

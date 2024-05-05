@@ -29,7 +29,6 @@ import AddSupplierpage from './pages/inventory-management/addSupplier.jsx';
 
 
 
-import TableReservationHome from './pages/table-res-management/TableReservationHome';
 import Contact from './pages/customer-care-management/Contact';
 import Feedback from './pages/customer-care-management/Feedback';
 import Feedback_form from './pages/customer-care-management/Feedback_form';
@@ -79,7 +78,11 @@ import OrderManager from './pages/order-management/OrderManager.jsx';
 import PaymentReceipt from './components/order/Payment.jsx';
 
 
-import BookingTable from './pages/table-res-management/BookingTable'
+
+//table reservation
+import ArchTabble from './pages/table-res-management/ArchTabble.jsx';
+import TableReservationHome from './pages/table-res-management/TableReservationHome';
+import BookingTable from './pages/table-res-management/BookingTable';
 
 
 function App() {
@@ -117,7 +120,8 @@ function App() {
         {/* -------------------------------------------------------------------------- */}
 
         {/* Table Reservation */}
-        <Route path="/reservation" element = {<TableReservationHome/>} ></Route>
+        <Route path="/reservation" element = {<ArchTabble/>} ></Route>
+        <Route path="/arch" element = {<TableReservationHome/>} ></Route>
         <Route path="/booking" element = {<BookingTable/>} ></Route>
 
 
