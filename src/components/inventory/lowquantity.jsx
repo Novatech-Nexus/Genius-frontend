@@ -64,7 +64,7 @@ function LowQuantity(){
             <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                 <img src={logo} style={{height:"40px",width:"40px"}} class="rounded me-2" alt="..."/>
-                <h5 class="me-auto">Lower quantity items</h5>
+                <h5 class="me-auto">Items with low quantity</h5>
                 <small></small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
