@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import '../../styles/CustomerCare.css';
 import ApprovedFeedbackTable from '../../components/customer-care/ApprovedFeedbackTable';
 import PendingFeedbackTable from '../../components/customer-care/PendingFeedbackTable';
+import Footer from '../../components/Footer';
+import NavbarManager from '../../components/customer-care/customer-care-navbar.jsx';
 
 export default function Feedback_of_services() {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -52,11 +54,11 @@ export default function Feedback_of_services() {
 
   return (
     <div className='feedback-services-body'>
-      <article className='feedback-services-page'>
+        <NavbarManager/>
         <header className='feedback-services-title'>
           <h2>Customer Feedback Approve & Pending List</h2>
         </header>
-      </article>
+      
 
       <div className='feedback-services-cont'>   
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: '100%' }}>
@@ -78,6 +80,8 @@ export default function Feedback_of_services() {
       <br /><br />
       <PendingFeedbackTable feedback={filteredPendingFeedback} />
       </div>
+      <br/>
+      <Footer/>
     </div>
   );
 }

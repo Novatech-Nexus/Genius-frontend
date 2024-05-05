@@ -58,12 +58,12 @@ function KidMenu() {
                 }
                 
                 h2 {
-                    background-color: #FFD300; 
+                    background-color:#D3D3D3; 
                     padding: 5px;
                     max-width: 1400px;
                     margin-top: 20px;
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    color: black;
+                    color: #E2522F;
                     text-align:center;
                 }
                 
