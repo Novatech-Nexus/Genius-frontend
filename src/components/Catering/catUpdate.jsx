@@ -1,28 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import img5 from '../../assets/catering/img5.jpeg';
+import img5 from '../../assets/catering/img6.jpeg';
+import Swal from 'sweetalert2';
 
 function CatUpdate() {
   const [formData, setFormData] = useState({
-    menuType: [],
-    noOfPer: '',
-    fName: '',
-    lName: '',
-    email: '',
-    conNum1: '',
-    conNum2: '',
-    date: '',
-    time: '',
-    address: ''
+    functionType: '', 
+    menuType: [], 
+    noOfPer: 25, 
+    fName: '', 
+    lName: '', 
+    email: '', 
+    conNum1: '', 
+    conNum2: '', 
+    date: '', 
+    time: '', 
+    address: '', 
+    perPersonPrice: 0, 
+    totalPrice: 0
   });
-
+  const [functionType, setFunctionType] = useState('');
   const [data, setData] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log("Fetching data...");
-    axios.get("http://localhost:8099/CatOrdering")
+    axios.get("http://localhost:5050/CatOrdering")
       .then(res => {
         console.log("Data fetched:", res.data);
         const latestOrder = res.data[res.data.length - 1];
@@ -31,6 +35,7 @@ function CatUpdate() {
           setData(latestOrder);
           // Update formData with fetched data
           setFormData({
+            functionType: latestOrder.functionType,
             menuType: latestOrder.menuType,
             noOfPer: latestOrder.noOfPer,
             fName: latestOrder.fName,
@@ -40,8 +45,11 @@ function CatUpdate() {
             conNum2: latestOrder.conNum2,
             date: latestOrder.date,
             time: latestOrder.time,
-            address: latestOrder.address
+            address: latestOrder.address,
+            perPersonPrice: latestOrder.perPersonPrice,
+            totalPrice: latestOrder.totalPrice
           });
+          setFunctionType(latestOrder.functionType); // Update functionType state
         } else {
           console.log("No orders found");
         }
@@ -49,38 +57,73 @@ function CatUpdate() {
       .catch(err => console.error("Error fetching data:", err));
   }, []);
 
+  // Define handleSelectChange function
+  function handleSelectChange(e) {
+    setFunctionType(e.target.value);
+    setFormData(prevState => ({ ...prevState, functionType: e.target.value }));
+  }
+
   // Define state update functions
-  const setnoOfPer = (value) => setFormData({ ...formData, noOfPer: value });
+
   const setfName = (value) => setFormData({ ...formData, fName: value });
   const setlName = (value) => setFormData({ ...formData, lName: value });
   const setconNum1 = (value) => setFormData({ ...formData, conNum1: value });
   const setconNum2 = (value) => setFormData({ ...formData, conNum2: value });
 
+ const menuTypes = useMemo(() => [
+    { type: "Morning", price: 4500 },
+    { type: "Afternoon", price: 6000 },
+    { type: "Evening", price: 4500 },
+    { type: "Night", price: 6000 }
+  ], []);
+
+  useEffect(() => {
+    const price = formData.menuType.reduce((total, selectedType) => {
+      const type = menuTypes.find(type => type.type === selectedType);
+      if (type) {
+        return total + type.price;
+      }
+      return total;
+    }, 0);
+    setFormData(prevState => ({ ...prevState, perPersonPrice: price }));
+  }, [formData.menuType, menuTypes]);
+
+  useEffect(() => {
+    const total = formData.perPersonPrice * parseInt(formData.noOfPer) || 0;
+    setFormData(prevState => ({ ...prevState, totalPrice: total }));
+  }, [formData.perPersonPrice, formData.noOfPer]);
+
   function handleCheckboxChange(e) {
     const value = e.target.value;
     if (e.target.checked) {
-      setFormData({ ...formData, menuType: [...formData.menuType, value] });
+      setFormData(prevState => ({ ...prevState, menuType: [...formData.menuType, value] }));
     } else {
-      setFormData({ ...formData, menuType: formData.menuType.filter(item => item !== value) });
+      setFormData(prevState => ({ ...prevState, menuType: formData.menuType.filter(item => item !== value) }));
     }
   }
 
   function handleInputChange(e) {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    
+    setFormData(prevState => ({ ...prevState, [name]: value }));
   }
 
   function handleUpdate(e) {
     e.preventDefault();
 
-    axios.put(`http://localhost:8099/CatOrdering/update/${data._id}`, formData)
+    axios.put(`http://localhost:5050/CatOrdering/update/${data._id}`, formData)
       .then(response => {
-        alert("Order Updated Successfully");
+        Swal.fire({
+          title: "Order Updated Successfully!",
+          icon: "success"
+        });
         navigate('/orderDetail');
       })
       .catch(err => {
-        alert("Error updating order");
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to add order. Please try again later.",
+          icon: "error"
+        });
         console.error("Error:", err);
       });
   }
@@ -92,8 +135,17 @@ function CatUpdate() {
     minHeight: '100vh',
   };
 
-  // Inline CSS
+  function getCurrentDate() {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = today.getFullYear();
+
+    return yyyy + '-' + mm + '-' + dd;
+}
+
   const inlineCSS = `
+    /* Add your additional CSS styles here */
     .Jcheckbox-container {
       display: flex; 
       align-items: center; 
@@ -128,7 +180,6 @@ function CatUpdate() {
       border-radius: 4px;
     }
     
-    /* Add your additional CSS styles here */
     button[type="submit"] {
       background-color: #6B4423;
       color: white;
@@ -154,7 +205,6 @@ function CatUpdate() {
 
     /* Body styles */
     body {
-      font-family: Arial, sans-serif;
       background-color: #f8f8f8;
     }
 
@@ -167,7 +217,6 @@ function CatUpdate() {
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-
 
     /* Table styles */
     table {
@@ -189,8 +238,19 @@ function CatUpdate() {
     
     h2{
       text-align: center;
-      background-color: #CC9966;
     }
+
+    .dropdown-container {
+      margin-bottom: 10px;
+  }
+  select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+  }
   `;
 
   return (
@@ -204,6 +264,20 @@ function CatUpdate() {
             </tr>
             <tr>
               <td colSpan="2">
+                Function Type:
+                <div>
+                  <select onChange={handleSelectChange} value={functionType} required>
+                    <option value="">Select Function Type</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Kids Parties">Kids Parties</option>
+                    <option value="Seasonal Celebration">Seasonal Celebration</option>
+                    <option value="Celebrations & Occasions">Celebrations & Occasions</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="2">
                 Menu Types:
                 <div className="Jcheckbox-container">
                   <input type="checkbox" onChange={handleCheckboxChange} value="Morning" checked={formData.menuType.includes('Morning')} /> Morning
@@ -214,7 +288,7 @@ function CatUpdate() {
               </td>
             </tr>
             <tr>
-              <td colSpan="2">Number Of Persons:<input type="number" name="noOfPer" value={formData.noOfPer} onChange={(e) => setnoOfPer(Math.min(Math.max(parseInt(e.target.value), 25), 1000))} min="25" max="1000" required /></td>
+              <td colSpan="2">Number Of Persons:<input type="number" name="noOfPer" value={formData.noOfPer} onChange={handleInputChange} min="25" max="1000" required /></td>
             </tr>
             <tr>
               <th colSpan="2">Customer Details</th>
@@ -231,11 +305,15 @@ function CatUpdate() {
               <td>Contact Number 2:<input type="tel" name="conNum2" maxLength={10} value={formData.conNum2} onChange={(e) => setconNum2(e.target.value.replace(/\D/, ''))} required /></td>
             </tr>
             <tr>
-              <td>Date Of Event:<input type="shortdate" name="date" value={formData.date} onChange={handleInputChange} required /></td>
-              <td>Time Of Event:<input type="time" name="time" value={formData.time} onChange={handleInputChange} required /></td>
+                <td>Date Of Event: <input type="shortdate" name="date" value={formData.date} onChange={handleInputChange} required min={getCurrentDate()} /></td>
+                <td>Time Of Event: <input type="time" name="time" value={formData.time} onChange={handleInputChange} required /></td>
             </tr>
             <tr>
               <td colSpan="2">Address Of the Event:<input type="text" name="address" value={formData.address} onChange={handleInputChange} required /></td>
+            </tr>
+            <tr>
+              <td>Price per Person : Rs.<input type="text" value={formData.perPersonPrice.toFixed(2)} required readOnly/></td>
+              <td>Total Price: Rs.<input type="text" value={formData.totalPrice.toFixed(2)} required readOnly/></td>
             </tr>
             <tr>
               <td colSpan="2"><button type="submit">Update Order</button></td>
