@@ -283,7 +283,7 @@ function OrderDet() {
                         <td><Link to="/updateCat"><button type="button" className="custom-button">Update Order</button></Link></td>
                         <td><button type="button" className="custom-button" onClick={() => handleDelete(data._id)}>Delete Order</button></td>
                         <td><button className="custom-button" onClick={downloadPDF}>Download Bill</button></td>
-                        <td><Link to="/wedmenu/#evening"><button type="button" className="custom-button">Confirm Order</button></Link></td>
+                        <td><Link to="/orderMenuHome/create/posts/payment"><button type="button" className="custom-button">Confirm Order</button></Link></td>
                     </tr>
                 </tbody>
             </table>
