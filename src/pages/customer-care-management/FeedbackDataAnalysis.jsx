@@ -9,6 +9,8 @@ import '../../styles/CustomerCare.css';
 import { prepareBarChartData, preparePieChartData} from '../../components/customer-care/ChartData.jsx';
 import DataFeedbackTable from '../../components/customer-care/DataFeedbackTable.jsx';
 import DataAverageRatingsTable from '../../components/customer-care/DataAverageRatingsTable.jsx';
+import Footer from '../../components/Footer.jsx';
+import NavbarManager from '../../components/customer-care/customer-care-navbar.jsx';
 
 export default function FeedbackDataAnalysis() {
     const [feedbackData, setFeedbackData] = useState([]);
@@ -76,12 +78,13 @@ export default function FeedbackDataAnalysis() {
 
     return (
         <div className='feedback-services-body'>
-            <article className='feedback-services-page' style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom:"20px"}}>
+            <NavbarManager/>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom:"20px"}}>
                 <div className='d-flex' style={{ justifyContent: "space-between", width: '80%' }}>
                     <Button className='report-btn' variant="outline-dark" onClick={handleDownload}>Generate report</Button>
                     <Button className='report-btn' style={{width:'20%'}} variant="outline-dark" onClick={() => navigate(-1)}>BACK</Button>
                 </div>
-            </article>
+            </div>
 
             <div ref={componentsRef}>
                 <header className='feedback-services-title'>
@@ -108,6 +111,8 @@ export default function FeedbackDataAnalysis() {
                     <Pie ref={pieChartRef} data={pieChartData} options={pieChartOptions} />
                 </div>
             </div>
+            <br/>
+        <Footer/>
         </div>
     );
 }

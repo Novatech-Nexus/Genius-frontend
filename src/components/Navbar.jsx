@@ -1,17 +1,17 @@
-import {Link} from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
+// import {Link} from 'react-router-dom'
+// import { useLocation } from 'react-router-dom';
 // import logo from '../assets/logo.jpg';
 import '../components/Navbar.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Navbar() {
 
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
 
     <div>
-        {((location.pathname == "/recovery") ||(location.pathname == "/") ||(location.pathname == "dashboard") )&&(<nav>
+        {/* {((location.pathname == "/recovery") ||(location.pathname == "/") ||(location.pathname == "dashboard") )&&(<nav>
             <li><Link to='/register'>Register</Link></li>
             <li><Link to='/email'>Login</Link></li>
             <li><Link to='/profile'>Profile</Link></li>
@@ -26,11 +26,12 @@ export default function Navbar() {
 
             <li><Link to='/homemenu'>Menu</Link></li>  
             
-            <li><Link to='/orderMenu'>Order</Link></li>
+            <li><Link to='/orderMenuHome'>Order</Link></li>
+            <li><Link to='/orderManager'>Order Manager</Link></li>
 
             <li><Link to='/catMain'>Catering</Link></li>
   
-        </nav>)}
+        </nav>)} */}
     </div>
   );
 }

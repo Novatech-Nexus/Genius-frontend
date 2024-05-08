@@ -16,10 +16,10 @@ function UMnavbar1(){
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Menu</a>
+                                <a className="nav-link active" aria-current="page" href="/orderMenuHome">Menu</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Contact us</a>
+                                <a className="nav-link" href="/contact">Contact us</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href='/profile'>Profile</a>

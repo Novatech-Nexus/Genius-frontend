@@ -4,6 +4,8 @@ import Navbar from "../../components/order/Navbar.jsx";
 import Cart from "../../components/order/cart.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../styles/order/Homepage.css";
+import Navbarnew from "../../components/order/orderCusNavbar.jsx";
+import Footer from '../../components/Footer.jsx';
 
 const OrderHome = () => {
   const [show, setShow] = useState(true);
@@ -25,6 +27,7 @@ const OrderHome = () => {
 
   return (
     <React.Fragment>
+      <Navbarnew/>
       <Navbar setShow={setShow} size={cart.length} />
       
       {show ? (
@@ -32,6 +35,7 @@ const OrderHome = () => {
       ) : (
         <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
       )}
+      <Footer/>
     </React.Fragment>
   );
 };

@@ -1,7 +1,7 @@
 
 import Header from'../../components/inventory/header';
 import AddSupplier from '../../components/inventory/addsupplier';
-import Navbar from '../../components/inventory/navbar';
+import Footer from '../../components/Footer';
 
 
 function AddSupplierpage() {
@@ -9,7 +9,8 @@ function AddSupplierpage() {
       <div>
         <Header/>
         {/* <Navbar/> */}
-        <AddSupplier/>  
+        <AddSupplier/>
+        <Footer/>  
       </div>
     );
   }
