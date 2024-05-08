@@ -330,9 +330,7 @@ function MenOrder() {
                                     type="number"
                                     className="form-control"
                                     id="price"
-                                    value={updateTotalPrice}
-                                    step="0.01" // Ensure decimal step
-                                />
+                                    value={updateTotalPrice}/>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <button type="button" className="Mbtn2 update-btn" style={{ marginRight: '10px' }} onClick={updateItem}>Save</button>
