@@ -1,0 +1,21 @@
+.background-staff-image{
+  background-image: url('../../assets/staff-images/staffdetailsimg.jpg'); 
+    background-size:cover;
+    background-position: center;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.background-add-staff1 {
+  background-image: url('../../assets/staff-images/staffimg1.jpg');
+  background-size: cover; /* Cover the entire background */
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  
+   
+}
+
+

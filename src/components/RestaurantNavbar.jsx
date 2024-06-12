@@ -16,13 +16,7 @@ function RestaurantNavbar(){
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Link1</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Link 2</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link">Link 3</a>
+                                <a className="nav-link active" aria-current="page" href="/attendance">Attendance</a>
                             </li>
                         </ul>
                     </div>

@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 /**Import all routes */
 
@@ -51,7 +51,7 @@ import Orders2Menu from './pages/menu-management/Orders2Menu.jsx';
 import InventoryMenu from './pages/menu-management/InventoryMenu.jsx';
 
 
-import CatMain from './pages/catering-management/CatMain'; 
+import CatMain from './pages/catering-management/CatMain';
 import CelOccMenu from './pages/catering-management/CelOccMenu';
 import KidMenus from './pages/catering-management/kidMenu';
 import KidsParty from './pages/catering-management/KidsParty';
@@ -83,6 +83,20 @@ import PaymentReceipt from './components/order/Payment.jsx';
 import ArchTabble from './pages/table-res-management/ArchTabble.jsx';
 import TableReservationHome from './pages/table-res-management/TableReservationHome';
 import BookingTable from './pages/table-res-management/BookingTable';
+import BookingTable from './pages/table-res-management/BookingTable'
+import Sm_dashboard from './pages/staff-management/sm_dashboard';
+import Addemployee from './pages/staff-management/addemployee';
+import Staffdetails from './pages/staff-management/staffdetails';
+import Salaryassign from './pages/staff-management/salaryassign';
+import SalaryDetails from './pages/staff-management/salarydetails.jsx';
+import Staffmember from './pages/staff-management/staffmember';
+import AttendanceQRCode from './pages/staff-management/attendance';
+import StaffProfile from './pages/staff-management/staffprofile.jsx';
+
+
+
+
+
 
 
 function App() {
@@ -102,11 +116,22 @@ function App() {
         <Route path="/recoveryemail" element={<RecoveryEmail/>}></Route>
         <Route path="/newpassword/:token" element={<NewPassword/>}></Route>
 
-        <Route path="*" element={<PageNotFound/>}></Route>
-        <Route path="/alluser" element={<AllUser/>}></Route>
+          <Route path="*" element={<PageNotFound />}></Route>
+          <Route path="/alluser" element={<AllUser />}></Route>
 
-        <Route path="/employeelogin" element={<EmployeeLogin/>}></Route>
-        <Route path="/employeedashboard" element={<EmployeeDashboard/>}></Route>
+          <Route path="/employeelogin" element={<EmployeeLogin />}></Route>
+          <Route path="/employeedashboard" element={<EmployeeDashboard />}></Route>
+
+          {/* staff management */}
+          <Route path="/sm_dashboard" element={<Sm_dashboard />}></Route>
+          <Route path="/addemployee" element={<Addemployee />}></Route>
+          {/* <Route path="/editemployee/:id" element={<Editemployee/>}></Route> */}
+          <Route path="/staffdetails" element={<Staffdetails />}></Route>
+          <Route path="/salaryassign" element={<Salaryassign />}></Route>
+          <Route path="/salarydetails" element={<SalaryDetails />}></Route>
+          <Route path="/staffmember" element={<Staffmember />}></Route>
+          <Route path="/attendance" element={<AttendanceQRCode />} />
+          <Route path="/staffprofile" element={<StaffProfile />} />
 
         {/* inventory management */}
         <Route path="/dashboard" element={<Dashboard/>}></Route>
@@ -117,7 +142,7 @@ function App() {
         <Route path='/dashboard/allitem/report' element={<ReportPage/>}></Route>
         <Route path='/dashboard/allitem/record/:id' element={<RecordPage/>}></Route>
 
-        {/* -------------------------------------------------------------------------- */}
+          {/* -------------------------------------------------------------------------- */}
 
         {/* Table Reservation */}
         <Route path="/reservation" element = {<ArchTabble/>} ></Route>
@@ -137,13 +162,13 @@ function App() {
         <Route path='/manager/feedbackAnalysis' element={<FeedbackDataAnalysis/>}></Route>
         <Route path='/manager/notifications' element={<Notifications/>}></Route>
 
-        {/* Menu Management */}
-        <Route path="/homeMenu" element={<HomeMenu/>}></Route>
-        <Route path="/itemMenu" element={<ItemMenu/>}></Route>
-        <Route path='/tableMenu' element={<TableMenu/>}></Route>
-        <Route path='/orderMenu' element={<OrderMenu/>}></Route> 
-        <Route path='/orders2Menu' element={<Orders2Menu/>}></Route> 
-        <Route path='/invenMenu' element={<InventoryMenu/>}></Route>   
+          {/* Menu Management */}
+          <Route path="/homeMenu" element={<HomeMenu />}></Route>
+          <Route path="/itemMenu" element={<ItemMenu />}></Route>
+          <Route path='/tableMenu' element={<TableMenu />}></Route>
+          <Route path='/orderMenu' element={<OrderMenu />}></Route>
+          <Route path='/orders2Menu' element={<Orders2Menu />}></Route>
+          <Route path='/invenMenu' element={<InventoryMenu />}></Route>
 
         {/* Order Management */}
         <Route path='/orderMenuHome' element={<OrderHome/>}/>
