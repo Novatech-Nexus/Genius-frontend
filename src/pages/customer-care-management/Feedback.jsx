@@ -6,7 +6,7 @@ import axios from 'axios';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import '../../styles/CustomerCare.css';
 import Footer from '../../components/Footer';
-import UMnavbar from '../../components/user-management/UMnavbar';
+import UMnavbar from '../../components/customer-care/customer-navbar.jsx';
 
 export default function Feedback() {  
 
