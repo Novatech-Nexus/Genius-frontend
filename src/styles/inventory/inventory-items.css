@@ -1,0 +1,19 @@
+.add-inventory-background {
+    background-image: url('../../assets/inventory-images/kInventory1.jpg'); 
+    background-size:cover;
+    background-position: center;
+    align-items: center;
+    display: flex;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+  }
+
+  .add-supplier-background {
+    background-image: url('../../assets/inventory-images/suppAdd.jpg'); 
+    background-size:cover;
+    background-position: center;
+    align-items: center;
+    display: flex;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+  }

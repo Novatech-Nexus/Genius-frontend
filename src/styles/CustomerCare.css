@@ -1,0 +1,514 @@
+.feedback-main-body {
+    width: 100%;
+  }
+  
+  .feedback-subtitle{
+    padding-left: 10%;
+  }
+  .feedback-subtitle-sec{
+    padding-left: 10%;
+    margin-top: 70px;
+  }
+  .feedback_title {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .feedback-artical-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .feedback-left {
+    flex: 1;
+    flex-direction: column;
+    padding-top: 5vh;
+    margin-left: 10vw;
+  }
+  
+  .feedback-left h5 {
+    margin-top: 2vh;
+  }
+  
+  .feedback-left p {
+    margin-bottom: 4vh;
+    color: gray;
+  }
+  
+  .feedback-buttons {
+    width: 80%;
+    word-wrap: break-word;
+  }
+  
+  .get-btn {
+    width: 50%;
+    margin-bottom: 2vh;
+  }
+  
+  .feedback-right {
+    flex: 1;
+    padding: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .feedbackPic {
+    max-width: 80%;
+    max-height: 100vh;
+  }
+  
+  .feedback-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3vh;
+    width: 100%; 
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .feedback-container > div {
+    width: 100%;
+  }
+  
+  .feedback-item {
+    border: solid lightgray 1px;
+    border-radius: 20px;
+    padding: 4vh;
+    background-color: #fde19b;
+    width: 100%;
+  }
+  
+  .feedback-item h6 {
+    margin-top: 1vh;
+    font-weight: bold;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+  
+  .feedback-item p {
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 1vh;
+  }    
+
+  .contact-main-body {
+    width: 100%;
+  }
+  
+  .contact_title {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .contact-artical-body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .contact-left {
+    width: 60%;
+    flex: 1;
+    flex-direction: column;
+    padding-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .contact-left h5 {
+    text-align: center;
+    font-weight: 500;
+    color: gray;
+    font-style: italic;
+  }
+  
+  .card-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contact-right {
+    width: 40%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contactPic {
+    width: 80%;
+    max-height: 70vh;
+    display: block;
+    margin-right: auto;
+    margin-left: 0;
+  }
+  
+  .contact-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  
+  .contact-form h5 {
+    margin-bottom: 1rem;
+    font-weight: 400;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .contact-form form {
+    width: 80%;
+  }
+  
+  .contact-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .feedback_form_page {
+    width: 100%;
+  }
+
+  .feedback_form_title {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .feedback-form-all {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+  }
+
+  .feedback-form {
+    width: 90%;
+  }
+
+  .feedback-form label {
+    font-weight: bold;
+  }
+
+  .feedback-form p {
+    font-style: italic;
+  }
+  .feedback-form h6 {
+    margin-left: 20px;
+  }
+
+  .feedback-checkbox{
+    margin-bottom: 30px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+  }
+
+  .servicerate {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .FillStar,
+  .OutlineStar {
+    color: orange;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .feedback-btns {
+    margin-Top:40px; 
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    margin-bottom: 70px;
+  }
+
+  .feedback-submit-btn{
+    width: 30%;
+    word-wrap: break-word;
+    margin-top: 10px;
+  }
+
+  .feedback_update-body {
+    width: 100%;
+  }
+  
+  
+  .feedback_update_title {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .feedback_update-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .feedback-status {
+    padding: 5px 10px;
+    border: solid lightgray 1px;
+    border-radius: 8px;
+    font-size: 14px;
+    max-width: 100px;
+  }
+  
+  .feedback-status.approved {
+    color: green;
+    background-color: aquamarine;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .feedback-status.pending {
+    color: rgb(255, 153, 0);
+    background-color: rgb(255, 246, 127);
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .feedback_update-item {
+    margin-top: 20px;
+    border: solid lightgray 1px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 850px;
+    word-wrap: break-word;
+  }
+  
+  .feedback_update-item-con{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  .empty-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 70px;
+    color: gray;
+  }
+  
+  .empty-feedback-pic {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .emptypic {
+    width: 60%;
+    height: auto;
+  }
+
+  .feedback-submit-btn-back{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .feedback_update-button {
+    width: 45%;
+  }
+
+  .feedback-approval-body {
+    width: 100%;
+  }
+  
+  
+  .feedback-approval-title {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .feedback-approval-cont{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .report-btn{
+    margin-top: 20px;
+    width: 20%;
+  }
+  
+  .feedback-approval-table {
+    width: 80%;
+    border-collapse: collapse;
+  }
+  
+  .feedback-approval-table th,
+  .feedback-approval-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .feedback-approval-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .feedback-approval-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .feedback-approval-table tr:hover {
+    background-color: #ddd;
+  }
+
+  .feedback-message {
+    max-width: 400px;
+  }
+  
+  .feedback-approval-actions {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 150px;
+  }
+  
+  .feedback-approval-actions > button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    word-wrap: break-word;
+  }
+
+  .feedback-services-body {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  .feedback-services-title {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .feedback-services-cont{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feedback-search{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feedback_services-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .feedback_services-table th,
+  .feedback_services-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .feedback_services-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .feedback_services-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .feedback_services-table tr:hover {
+    background-color: #ddd;
+  }
+
+  .approved {
+    color: green;
+    background-color: rgba(75, 192, 192, 0.2);
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .pending {
+    color: orange;
+    background-color: rgba(255, 206, 86, 0.2);
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 768px) {
+    .feedback-artical-body {
+      flex-direction: column;
+    }
+  
+    .feedback-left,
+    .feedback-right {
+      width: 100%;
+    }
+
+    .feedbackPic {
+      width: 80%;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  
+    .get-btn {
+      width: 100%;
+    }
+  
+    .contact-artical-body {
+      flex-direction: column;
+    }
+  
+    .contact-left,
+    .contact-right {
+      width: 100%;
+    }
+
+    .contactPic {
+        width: 80%;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+      }
+  }
+  

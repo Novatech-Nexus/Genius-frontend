@@ -1,116 +1,277 @@
 import React, { useState } from "react";
+import {
+    TextField,
+    Button,
+    Grid,
+    Paper,
+    Typography,
+    MenuItem
+} from "@mui/material";
+import axios from "axios";
+import book6 from '../../assets/table-manage/book6.jpg';
+import Swal from "sweetalert2";
 
-const Accountform = () => {
+const AccountForm = ({history}) => {
     const [userName, setUserName] = useState('');
     const [contactNo, setContactNo] = useState('');
+    const [email, setEmail] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [category, setCategory] = useState('');
+    const [tNumber, setTableNumber] = useState('');
     const [nGuest, setNoOfGuest] = useState('');
     const [error, setError] = useState(null);
+ 
+    //time optins
+    const timeOptions = [
+        { value: '6.30am - 10.30am', label: '6.30am - 10.30am' },
+        { value: '12.00pm - 3.30pm', label: '12.00pm - 3.30pm' },
+        { value: '4.00pm - 6.30pm', label: '4.00pm - 6.30pm' },
+        { value: '7.30pm - 11.30pm', label: '7.30pm - 11.30pm' }
+    ];
 
-    const handleSubmit = async (e) => {
+    //category optin
+    const categoryOptions = [
+        { value: 'Couple', label: 'Couple' },
+        { value: 'Family/Friends', label: 'Family/Friends' },
+        { value: 'Business Meeting', label: 'Business Meeting' }
+    ];
+
+    //table number oftion
+    const tableNumberOptions = {
+        'Couple': ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8','C9' ,'C10'],
+        'Family/Friends': ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8','F9' , 'F10'],
+        'Business Meeting': ['B1', 'B2', 'B3', 'B4', 'B5']
+    };
+
+    //email validation
+    const numberOfGuestsOptions = Array.from({ length: 15 }, (_, index) => index + 1);
+    const isValidEmail = (email) => {
+        // Regular expression for basic email validation
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    //didn't wort pass date
+    const getCurrentDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+
+        // Add leading zero if month or day is less than 10
+        month = month < 10 ? `0${month}` : month;
+        day = day < 10 ? `0${day}` : day;
+
+        return `${year}-${month}-${day}`;
+    };
+
+    const sendData = (e) => {
         e.preventDefault();
 
-        const account = { userName, contactNo, date, time, category, nGuest };
+        const newReservation = {
+            userName,
+            contactNo,
+            email,
+            date,
+            time,
+            category,
+            tNumber,
+            nGuest
+        };
 
-        const response = await fetch('/api/accounts', {
-            method: 'POST',
-            body: JSON.stringify(account),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const json = await response.json();
+        axios.post(`http://localhost:5050/Reservation/addtr`, newReservation)
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Reservation added',
+                    showConfirmButton: false
+                    
+                });
+                
+            })
+            .catch((err) => {
+                let errorMessage = "Reservation failed. Please try again.";
+                if (err.response && err.response.status === 400 && err.response.data.message === 'This table is already booked for the selected date and time') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Table Already Booked',
+                        text: 'This table is already booked for the selected date and time.'
+                    });
 
-        if (!response.ok) {
-            setError(json.error);
-        } else {
-            setUserName('');
-            setContactNo('');
-            setDate('');
-            setTime('');
-            setCategory('');
-            setNoOfGuest('');
-            setError(null);
-            console.log('New account added', json);
-        }
+                }
+                else
+                {Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: errorMessage
+                });}
+            });
     };
-
-    const inputStyle = {
-        marginBottom: '10px',
-        padding: '8px',
-        width: '100%',
-        boxSizing: 'border-box',
-        border: '1px solid #ccc',
-        borderRadius: '4px',
-    };
-
-    const buttonStyle = {
-        backgroundColor: '#4CAF50',
-        color: 'white',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
+    
+    const resetForm = () => {
+        setUserName('');
+        setContactNo('');
+        setEmail('');
+        setDate('');
+        setTime('');
+        setCategory('');
+        setTableNumber('');
+        setNoOfGuest('');
+        setError(null);
     };
 
     return (
-        <form className="create" onSubmit={handleSubmit}>
-            <h3>Add a new reservation</h3>
-
-            <label>User Name :</label>
-            <input
-                type="text"
-                style={inputStyle}
-                onChange={(e) => setUserName(e.target.value)}
-                value={userName}
-            />
-
-            <label>Contact No :</label>
-            <input
-                type="text"
-                style={inputStyle}
-                onChange={(e) => setContactNo(e.target.value)}
-                value={contactNo}
-            />
-
-            <label>Date :</label>
-            <input
-                type="text"
-                style={inputStyle}
-                onChange={(e) => setDate(e.target.value)}
-                value={date}
-            />
-
-            <label>Time :</label>
-            <input
-                type="text"
-                style={inputStyle}
-                onChange={(e) => setTime(e.target.value)}
-                value={time}
-            />
-
-            <label>Category :</label>
-            <input
-                type="text"
-                style={inputStyle}
-                onChange={(e) => setCategory(e.target.value)}
-                value={category}
-            />
-
-            <label>No Of Guest :</label>
-            <input
-                type="number"
-                style={inputStyle}
-                onChange={(e) => setNoOfGuest(e.target.value)}
-                value={nGuest}
-            />
-
-            <button style={buttonStyle}>Add</button>
-            {error && <div className="error"> {error} </div>}
-        </form>
+        <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            style={{
+                backgroundImage: `url(${book6})`,
+                backgroundSize: 'cover',
+                minHeight: '100vh',
+                backgroundColor: "#e7e7e7",
+            }}
+        >
+            <Grid item xs={12} sm={8} md={6}>
+                <Paper
+                    elevation={3}
+                    style={{
+                        padding: 20,
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    }}
+                >
+                    <Typography variant="h4" align="center" gutterBottom fontFamily= 'CustomFont'>
+                        Reservation Form
+                    </Typography>
+                    <form onSubmit={sendData}>
+                        <TextField
+                            label="User Name"
+                            variant="outlined"
+                            fullWidth
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                            required
+                            margin="normal"
+                        />
+                        <TextField
+                            label="Contact No"
+                            variant="outlined"
+                            fullWidth
+                            value={contactNo}
+                            onChange={(e) => {
+                                const inputContactNo = e.target.value.replace(/\D/g, '');
+                                if (inputContactNo.length <= 10) {
+                                    setContactNo(inputContactNo);
+                                }
+                            }}
+                            required
+                            margin="normal"
+                            inputProps={{ maxLength: 10 }}
+                        />
+                        <TextField
+                            label="Email"
+                            variant="outlined"
+                            fullWidth
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            margin="normal"
+                            error={!!email && !isValidEmail(email)} // Checking if email is present and not valid
+                            helperText={email && !isValidEmail(email) ? 'Please enter a valid email address' : ''}
+                            inputProps={{ maxLength: 100 }} // Adjust maxLength as needed
+                        />
+                        <TextField
+                            label="Date"
+                            variant="outlined"
+                            type="date"
+                            fullWidth
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                            required
+                            margin="normal"
+                            inputProps={{ min: getCurrentDate() }}
+                        />
+                        <TextField
+                            label="Time"
+                            variant="outlined"
+                            fullWidth
+                            select
+                            value={time}
+                            onChange={(e) => setTime(e.target.value)}
+                            required
+                            margin="normal"
+                        >
+                            {timeOptions.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                        <TextField
+                            label="Category"
+                            variant="outlined"
+                            fullWidth
+                            select
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                            required
+                            margin="normal"
+                        >
+                            {categoryOptions.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                        {category && (
+                            <TextField
+                                label="Table Number"
+                                variant="outlined"
+                                fullWidth
+                                select
+                                value={tNumber}
+                                onChange={(e) => setTableNumber(e.target.value)}
+                                required
+                                margin="normal"
+                            >
+                                {tableNumberOptions[category]?.map((number) => (
+                                    <MenuItem key={number} value={number}>
+                                        {number}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        )}
+                        <TextField
+                            label="No Of Guests"
+                            variant="outlined"
+                            fullWidth
+                            select
+                            value={nGuest}
+                            onChange={(e) => setNoOfGuest(e.target.value)}
+                            required
+                            margin="normal"
+                        >
+                            {numberOfGuestsOptions.map((guests) => (
+                                <MenuItem key={guests} value={guests}>
+                                    {guests}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            fullWidth
+                            style={{ marginTop: 20 }}
+                        >
+                            Submit
+                        </Button>
+                        {error && <div style={{ color: 'red', marginTop: 10 }}>{error}</div>}
+                    </form>
+                </Paper>
+            </Grid>
+        </Grid>
     );
 };
 
-export default Accountform;
+export default AccountForm;

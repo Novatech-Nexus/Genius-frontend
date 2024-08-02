@@ -1,15 +1,16 @@
 
 import AddItem from '../../components/inventory/additem';
 import Header from'../../components/inventory/header';
-import Navbar from '../../components/inventory/navbar';
+import Footer from '../../components/Footer';
 
 
 function AddItempage() {
     return (
       <div>
         <Header/>
-        <Navbar/>
-        <AddItem/>  
+        {/* <Navbar/> */}
+        <AddItem/> 
+        <Footer/> 
       </div>
     );
   }
